@@ -1,0 +1,105 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/sante-prevoyance-entreprise/';
+const title = 'Santé et prévoyance entreprise | Assuromieux Paris';
+const description = 'Santé et prévoyance entreprise : analyse des catégories, garanties, conventions collectives, dispenses, portabilité et obligations applicables.';
+const contactHref = '/?besoin=sante-prevoyance#contact';
+const faqItems = [
+  { question: 'Santé collective et prévoyance couvrent-elles les mêmes événements ?', answer: 'Non. La complémentaire santé intervient sur des frais de soins selon ses niveaux de remboursement. La prévoyance traite notamment, selon le contrat, l’incapacité, l’invalidité ou le décès. Leur articulation doit être vérifiée.' },
+  { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Les catégories et régimes doivent être étudiés selon la situation de l’entreprise, la convention collective, les accords applicables et les règles en vigueur. Une validation métier ou juridique peut être nécessaire.' },
+  { question: 'Que faut-il vérifier lors d’un changement de contrat ?', answer: 'Les niveaux de couverture, la participation employeur, les catégories, dispenses, services, délais de gestion, situations en cours, modalités de maintien et information des salariés doivent être préparés avec prudence.' },
+  { question: 'La protection du dirigeant est-elle incluse ?', answer: 'Pas nécessairement. Son statut social, son affiliation et ses besoins personnels doivent être examinés. La protection du dirigeant peut nécessiter une analyse distincte de celle des salariés.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'Santé et prévoyance entreprise', path }]),
+  serviceSchema('Conseil en santé et prévoyance collective', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Santé et prévoyance collective"
+      title="Construire une protection sociale lisible pour l’entreprise et ses équipes."
+      lead="Nous rapprochons la situation de l’entreprise, les catégories de personnel, les textes applicables et les garanties pour identifier les décisions à préparer."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Santé et prévoyance' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur la protection collective" size="large" />
+      <CTA href="#risques" label="Comprendre les deux volets" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="orbit" />
+    </PageHero>
+
+    <ProductAudience
+      title="Aux employeurs qui veulent clarifier leurs régimes collectifs et leur évolution."
+      paragraphs={[
+        'La complémentaire santé collective et la prévoyance concernent les salariés, mais leur organisation dépend de la situation de l’entreprise, de la convention collective, des accords applicables et des catégories de personnel. Les obligations ne doivent pas être déduites d’une présentation générale.',
+        'L’analyse devient utile lors d’une embauche, d’un changement de convention collective, d’une restructuration des catégories, d’une hausse de cotisation ou d’une évolution des garanties. Elle doit aussi anticiper l’information des salariés et les situations individuelles en cours.',
+      ]}
+      markers={['Employeurs', 'Salariés', 'Catégories de personnel', 'Dirigeants selon leur statut']}
+      variant="split"
+    />
+
+    <ProductRiskOverview
+      title="Santé et prévoyance répondent à des besoins différents."
+      intro="La première complète les remboursements de soins. La seconde organise, selon les garanties souscrites, une réponse aux conséquences d’une incapacité, d’une invalidité ou d’un décès."
+      items={[
+        { title: 'Complémentaire santé', text: 'Niveaux de remboursement, postes de soins, réseau éventuel, services associés et reste à charge sont comparés au regard des besoins identifiés.' },
+        { title: 'Incapacité de travail', text: 'Franchise, durée, assiette et niveau de prestation doivent être rapprochés des dispositions applicables et du maintien de salaire.' },
+        { title: 'Invalidité et décès', text: 'Rentes, capitaux, bénéficiaires et définitions contractuelles sont lus avec prudence, sous réserve des exclusions et des catégories concernées.' },
+        { title: 'Maintien des droits', text: 'Portabilité, maintien de garanties, dispenses et situations de suspension du contrat de travail nécessitent une vérification selon les règles applicables.' },
+      ]}
+      distinction="Santé et prévoyance ne couvrent pas les mêmes événements. Un contrat collectif peut comporter plusieurs volets, mais leurs obligations, garanties et bénéficiaires doivent être étudiés séparément."
+      variant="flow"
+    />
+
+    <ProductReview
+      checksTitle="Vérifier le cadre avant de comparer les niveaux."
+      checksIntro="Toute conclusion réglementaire dépend du contexte. Les documents de l’entreprise et les textes applicables doivent être rapprochés."
+      checks={[
+        'La convention collective, les accords et décisions applicables sont identifiés dans leur version pertinente.',
+        'Les catégories de personnel et les conditions d’affiliation sont définies avec précision.',
+        'La participation de l’employeur et les modalités de financement sont vérifiées selon la situation.',
+        'Les dispenses sont documentées et administrées selon les règles applicables.',
+        'Les garanties santé sont comparées par poste et les garanties prévoyance par événement et définition.',
+        'Portabilité, maintien de garanties et situations en cours sont préparés avant un changement.',
+        'La protection du dirigeant est examinée séparément selon son statut social et son affiliation.',
+      ]}
+      mistakesTitle="Les décisions qui demandent le plus de précaution."
+      mistakesIntro="Le risque principal est de comparer des tableaux de garanties sans vérifier le cadre collectif qui leur donne effet."
+      mistakes={[
+        { title: 'Appliquer une règle générale', text: 'Les obligations doivent être vérifiées selon l’entreprise, la convention collective, les accords applicables et la catégorie de personnel.' },
+        { title: 'Mélanger santé et prévoyance', text: 'Un bon remboursement de soins ne renseigne pas sur la protection en cas d’incapacité, d’invalidité ou de décès.' },
+        { title: 'Changer sans préparer la transition', text: 'Les affiliations, dispenses, salariés en arrêt, maintiens et informations collectives peuvent nécessiter un traitement spécifique.' },
+        { title: 'Inclure le dirigeant par défaut', text: 'Le statut social et les dispositifs existants du dirigeant doivent être analysés avant de conclure sur sa couverture.' },
+      ]}
+      note={{ title: 'Santé et prévoyance ne couvrent pas les mêmes événements', text: 'Les deux volets se complètent mais ne se substituent pas. Les garanties, obligations et niveaux doivent être lus selon le cadre réellement applicable à l’entreprise.' }}
+      variant="reverse"
+    />
+
+    <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique." />
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de faire évoluer un régime collectif." id="faq-title" /><FAQ items={faqItems} /></div></section>
+    <RelatedLinks items={[
+      { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Étudier les besoins personnels et la continuité.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier les régimes collectifs au programme global.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Revenir à la vision d’ensemble des protections.' },
+    ]} />
+    <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel="Échanger sur la protection collective" secondaryHref="/protection-dirigeant/" secondaryLabel="Voir la protection du dirigeant" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

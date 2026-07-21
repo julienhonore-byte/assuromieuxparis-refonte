@@ -1,0 +1,248 @@
+---
+interface Mistake {
+  title: string;
+  text: string;
+}
+
+interface Note {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  checksTitle: string;
+  checksIntro: string;
+  checks: string[];
+  mistakesTitle: string;
+  mistakesIntro: string;
+  mistakes: Mistake[];
+  note: Note;
+  variant?: 'split' | 'reverse' | 'stacked';
+}
+
+const {
+  checksTitle,
+  checksIntro,
+  checks,
+  mistakesTitle,
+  mistakesIntro,
+  mistakes,
+  note,
+  variant = 'split',
+} = Astro.props;
+---
+
+<div class:list={['product-review', `product-review--${variant}`]}>
+  <section id="points-verifier" class="section product-review__checks" aria-labelledby="checks-title">
+    <div class="container-wide product-review__checks-layout">
+      <header>
+        <p class="eyebrow">Points essentiels à vérifier</p>
+        <h2 id="checks-title">{checksTitle}</h2>
+        <p>{checksIntro}</p>
+      </header>
+      <ol>
+        {checks.map((check, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><p>{check}</p></li>)}
+      </ol>
+      <aside class="product-review__note" aria-labelledby="product-note-title">
+        <p class="eyebrow">À retenir</p>
+        <h3 id="product-note-title">{note.title}</h3>
+        <p>{note.text}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="erreurs-frequentes" class="section section--surface product-review__mistakes" aria-labelledby="mistakes-title">
+    <div class="container-wide product-review__mistakes-layout">
+      <header>
+        <p class="eyebrow">Erreurs fréquentes</p>
+        <h2 id="mistakes-title">{mistakesTitle}</h2>
+        <p>{mistakesIntro}</p>
+      </header>
+      <div class="product-review__mistake-list">
+        {mistakes.map((mistake) => (
+          <article><h3>{mistake.title}</h3><p>{mistake.text}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .product-review h2 {
+    max-width: 17ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .product-review header > p:not(.eyebrow) {
+    max-width: 38rem;
+    margin: var(--space-5) 0 0;
+    color: var(--color-text-soft);
+  }
+
+  .product-review__checks-layout,
+  .product-review__mistakes-layout {
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: start;
+  }
+
+  .product-review__checks-layout {
+    grid-template-columns: minmax(16rem, 0.58fr) minmax(0, 1.05fr) minmax(15rem, 0.52fr);
+  }
+
+  .product-review__checks ol {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .product-review__checks li {
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-review__checks li span {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .product-review__checks li p {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .product-review__note {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--color-text-on-dark-soft);
+    background: var(--color-brand-deep);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .product-review__note :global(.eyebrow) {
+    color: var(--color-gold-soft);
+  }
+
+  .product-review__note h3 {
+    margin: 0;
+    color: var(--color-surface);
+    font-size: var(--font-size-h3);
+    line-height: 1.2;
+  }
+
+  .product-review__note > p:not(.eyebrow) {
+    margin: var(--space-4) 0 0;
+    color: var(--color-text-on-dark-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .product-review__mistakes-layout {
+    grid-template-columns: minmax(16rem, 0.52fr) minmax(0, 1.48fr);
+  }
+
+  .product-review__mistake-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-review__mistake-list article {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.48fr) minmax(0, 1.52fr);
+    gap: var(--space-5);
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-review__mistake-list h3 {
+    margin: 0;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-h4);
+  }
+
+  .product-review__mistake-list p {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .product-review--reverse .product-review__checks-layout {
+    grid-template-columns: minmax(15rem, 0.52fr) minmax(0, 1.05fr) minmax(16rem, 0.58fr);
+  }
+
+  .product-review--reverse .product-review__checks-layout header {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .product-review--reverse .product-review__checks ol {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .product-review--reverse .product-review__note {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .product-review--stacked .product-review__checks-layout {
+    grid-template-columns: minmax(15rem, 0.5fr) minmax(0, 1fr);
+  }
+
+  .product-review--stacked .product-review__note {
+    grid-column: 1 / -1;
+    max-width: 52rem;
+    border-radius: var(--radius-control);
+    box-shadow: none;
+  }
+
+  .product-review--stacked .product-review__mistakes-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .product-review--stacked .product-review__mistake-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--space-8);
+  }
+
+  .product-review--stacked .product-review__mistake-list article {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
+  @media (max-width: 980px) {
+    .product-review__checks-layout,
+    .product-review__mistakes-layout,
+    .product-review--reverse .product-review__checks-layout,
+    .product-review--stacked .product-review__checks-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .product-review--reverse .product-review__checks-layout header,
+    .product-review--reverse .product-review__checks ol,
+    .product-review--reverse .product-review__note {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .product-review__note {
+      max-width: 38rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .product-review__mistake-list article,
+    .product-review--stacked .product-review__mistake-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

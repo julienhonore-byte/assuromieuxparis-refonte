@@ -1,0 +1,154 @@
+---
+interface Props {
+  label: string;
+  items: [string, string, string, string];
+  variant?: 'orbit' | 'axis' | 'steps';
+}
+
+const { label, items, variant = 'orbit' } = Astro.props;
+---
+
+<figure
+  class:list={['product-diagram', `product-diagram--${variant}`]}
+  role="img"
+  aria-label={`${label} : ${items.join(', ')}`}
+>
+  <figcaption>{label}</figcaption>
+  <ol aria-hidden="true">
+    {items.map((item, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}
+  </ol>
+</figure>
+
+<style>
+  .product-diagram {
+    position: relative;
+    min-height: 22rem;
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-brand-deep);
+    background:
+      linear-gradient(rgba(18, 54, 95, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 54, 95, 0.07) 1px, transparent 1px),
+      rgba(255, 255, 255, 0.78);
+    background-size: 3rem 3rem;
+    border: 1px solid rgba(18, 54, 95, 0.14);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .product-diagram::before,
+  .product-diagram::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+  }
+
+  figcaption {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    max-width: 10rem;
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-surface);
+    background: var(--color-brand-deep);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+  }
+
+  ol {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: absolute;
+    z-index: 1;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+  }
+
+  li span {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+  }
+
+  li:nth-child(1) { top: 10%; left: 8%; }
+  li:nth-child(2) { top: 13%; right: 7%; }
+  li:nth-child(3) { bottom: 11%; left: 10%; }
+  li:nth-child(4) { right: 8%; bottom: 14%; }
+
+  .product-diagram--orbit::before {
+    inset: 16%;
+    border: 1px solid rgba(201, 154, 70, 0.52);
+    border-radius: 50%;
+  }
+
+  .product-diagram--orbit::after {
+    inset: 29%;
+    border: 1px solid rgba(18, 54, 95, 0.16);
+    border-radius: 50%;
+  }
+
+  .product-diagram--axis::before {
+    top: 12%;
+    bottom: 12%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(var(--color-gold), var(--color-border));
+  }
+
+  .product-diagram--axis::after {
+    top: 50%;
+    right: 10%;
+    left: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-border), var(--color-gold), var(--color-border));
+  }
+
+  .product-diagram--steps::before {
+    top: 20%;
+    right: 17%;
+    bottom: 20%;
+    left: 17%;
+    border: 1px solid rgba(201, 154, 70, 0.44);
+    transform: rotate(-8deg);
+  }
+
+  .product-diagram--steps::after {
+    top: 30%;
+    right: 9%;
+    bottom: 30%;
+    left: 9%;
+    border: 1px solid rgba(18, 54, 95, 0.16);
+    transform: rotate(8deg);
+  }
+
+  @media (max-width: 640px) {
+    .product-diagram {
+      min-height: 19rem;
+    }
+
+    li {
+      max-width: 9.5rem;
+      font-size: var(--font-size-xs);
+    }
+  }
+</style>

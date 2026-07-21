@@ -2,7 +2,7 @@
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
-import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '../data/site';
+import { footerAdviceLinks, footerProductLinks, mainNavigation, site } from '../data/site';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
@@ -46,8 +46,8 @@ const {
     addressCountry={site.addressCountry}
     orias={site.orias}
     rcs={site.rcs}
-    expertiseLinks={footerExpertiseLinks}
-    sectorLinks={footerSectorLinks}
+    productLinks={footerProductLinks}
+    adviceLinks={footerAdviceLinks}
   />
   <StickyMobileCTA href={ctaHref} />
 </BaseLayout>

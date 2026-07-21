@@ -1,0 +1,142 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+  markers: string[];
+  variant?: 'split' | 'aside' | 'band';
+}
+
+const { title, paragraphs, markers, variant = 'split' } = Astro.props;
+---
+
+<section id="public" class:list={['section', 'product-audience', `product-audience--${variant}`]} aria-labelledby="public-title">
+  <div class="container-wide product-audience__layout">
+    <header>
+      <p class="eyebrow">À qui s’adresse cette assurance ?</p>
+      <h2 id="public-title">{title}</h2>
+    </header>
+    <div class="product-audience__copy">
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <ul aria-label="Situations concernées">
+      {markers.map((marker) => <li>{marker}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .product-audience__layout {
+    display: grid;
+    gap: clamp(2rem, 6vw, 6rem);
+  }
+
+  header h2 {
+    max-width: 16ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .product-audience__copy {
+    max-width: var(--container-reading);
+  }
+
+  .product-audience__copy p {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-body-lg);
+  }
+
+  .product-audience__copy p + p {
+    margin-top: var(--space-5);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-brand-deep);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .product-audience--split .product-audience__layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .product-audience--split ul {
+    grid-column: 2;
+  }
+
+  .product-audience--aside {
+    background: var(--color-surface);
+  }
+
+  .product-audience--aside .product-audience__layout {
+    grid-template-columns: minmax(17rem, 0.52fr) minmax(0, 0.9fr) minmax(13rem, 0.48fr);
+    align-items: start;
+  }
+
+  .product-audience--aside ul {
+    display: grid;
+    padding-left: var(--space-6);
+    border-left: 1px solid var(--color-gold);
+  }
+
+  .product-audience--aside li {
+    justify-content: flex-start;
+    padding-inline: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-audience--band {
+    background: linear-gradient(90deg, var(--color-gold-wash), var(--color-page));
+  }
+
+  .product-audience--band .product-audience__layout {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .product-audience--band ul {
+    grid-column: 1 / -1;
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(138, 98, 34, 0.28);
+  }
+
+  @media (max-width: 980px) {
+    .product-audience--split .product-audience__layout,
+    .product-audience--aside .product-audience__layout,
+    .product-audience--band .product-audience__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .product-audience--split ul,
+    .product-audience--band ul {
+      grid-column: auto;
+    }
+
+    .product-audience--aside ul {
+      padding: var(--space-5) 0 0;
+      border-top: 1px solid var(--color-gold);
+      border-left: 0;
+    }
+  }
+</style>

@@ -1,0 +1,105 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/cyberassurance/';
+const title = 'Cyberassurance entreprise et risques numériques | Assuromieux Paris';
+const description = 'Cyberassurance entreprise : analyse des données, interruptions, assistance de crise, restauration, responsabilités, prévention et exclusions.';
+const contactHref = '/?besoin=cyber#contact';
+const faqItems = [
+  { question: 'La cyberassurance remplace-t-elle les mesures de sécurité ?', answer: 'Non. Elle complète la prévention et la capacité de réponse. Sauvegardes, mises à jour, contrôle des accès, sensibilisation et procédures de crise restent essentiels et peuvent conditionner la souscription ou la garantie.' },
+  { question: 'Quels événements peuvent être étudiés ?', answer: 'Selon le contrat, l’analyse peut porter sur une attaque, un rançongiciel, une atteinte aux données, une interruption, des frais de restauration, une assistance de crise ou une responsabilité envers des tiers. Aucune garantie ne doit être présumée.' },
+  { question: 'Pourquoi le questionnaire de souscription est-il important ?', answer: 'Il décrit l’environnement informatique et les mesures de sécurité. Les réponses doivent être précises, cohérentes avec la réalité et mises à jour lorsque le système ou l’organisation évolue.' },
+  { question: 'Les incidents d’un sous-traitant sont-ils couverts ?', answer: 'Pas automatiquement. La dépendance aux prestataires, les services externalisés, les interruptions chez un tiers et les exclusions doivent être examinés dans les conditions particulières et générales.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'Cyberassurance', path }]),
+  serviceSchema('Conseil en cyberassurance entreprise', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Cyberassurance entreprise"
+      title="Préparer la réponse financière et opérationnelle à un incident numérique."
+      lead="Nous rapprochons les données, les dépendances informatiques, la prévention et les scénarios de crise pour analyser la portée d’une couverture cyber."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Cyberassurance' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur mon risque cyber" size="large" />
+      <CTA href="#points-verifier" label="Voir les points à préparer" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="Risque cyber" items={['Prévention', 'Incident', 'Assistance', 'Reprise']} variant="steps" />
+    </PageHero>
+
+    <ProductAudience
+      title="Aux entreprises dont l’activité dépend de données, logiciels, réseaux ou prestataires numériques."
+      paragraphs={[
+        'Une entreprise peut être exposée même sans équipe informatique importante. Messagerie, facturation, outils métiers, commerce en ligne, données clients, production connectée ou services hébergés créent des dépendances qui doivent être décrites concrètement.',
+        'L’analyse devient utile lorsque l’interruption d’un service affecterait rapidement l’exploitation, que des données sensibles sont traitées ou que des clients imposent des exigences. Elle doit commencer par la prévention et les procédures existantes, pas par la seule lecture d’un plafond.',
+      ]}
+      markers={['PME connectées', 'Services et conseil', 'Commerces', 'Activités avec données sensibles']}
+      variant="band"
+    />
+
+    <ProductRiskOverview
+      title="Un incident combine souvent technique, continuité et responsabilité."
+      intro="Attaque, erreur humaine, fraude ou défaillance d’un prestataire peuvent produire des conséquences différentes. La couverture doit être lue scénario par scénario."
+      items={[
+        { title: 'Attaque et fraude', text: 'Rançongiciel, phishing, compromission de messagerie ou fraude peuvent mobiliser des garanties distinctes. Les pertes financières directes ne sont pas toujours traitées comme les frais de crise.' },
+        { title: 'Données et tiers', text: 'Une atteinte à des données peut nécessiter expertise, notification, communication et défense. La responsabilité envers les clients ou partenaires dépend des faits et du contrat.' },
+        { title: 'Interruption et restauration', text: 'Perte d’exploitation, restauration des systèmes, récupération des données et dépenses supplémentaires sont étudiées avec leurs franchises temporelles, plafonds et événements déclencheurs.' },
+        { title: 'Assistance de crise', text: 'Les prestataires mobilisables, les modalités d’appel, l’expertise technique, la gestion juridique et la communication doivent être compris avant l’incident.' },
+      ]}
+      distinction="L’assurance complète la prévention, elle ne la remplace pas. Les mesures de sécurité, sauvegardes et procédures déclarées doivent exister et rester cohérentes avec le questionnaire de souscription."
+      variant="columns"
+    />
+
+    <ProductReview
+      checksTitle="Décrire l’environnement avant de mesurer le transfert."
+      checksIntro="Une analyse du risque est nécessaire pour relier les dépendances, les scénarios et les conditions demandées par le marché."
+      checks={[
+        'Les systèmes, données essentielles et services externalisés sont identifiés avec leurs dépendances.',
+        'Les sauvegardes précisent fréquence, séparation, protection et tests de restauration.',
+        'Mises à jour, authentification, gestion des accès et protection de la messagerie correspondent aux pratiques réelles.',
+        'Le questionnaire de souscription est rempli avec les responsables techniques et conservé comme document de référence.',
+        'Assistance de crise, expertise, notification et frais de restauration sont lus séparément.',
+        'Perte d’exploitation, franchise temporelle, période d’indemnisation, plafonds et sous-limites sont rapprochés des scénarios.',
+        'Sous-traitants, prestataires cloud, fraude, événements antérieurs et exclusions majeures sont examinés explicitement.',
+      ]}
+      mistakesTitle="Les suppositions dangereuses dans un contrat cyber."
+      mistakesIntro="Le vocabulaire peut sembler large alors que les définitions, sous-limites et prérequis réduisent la réponse dans un scénario précis."
+      mistakes={[
+        { title: 'Répondre seul au questionnaire', text: 'Les réponses techniques doivent être vérifiées avec les personnes qui administrent réellement les systèmes, sauvegardes et accès.' },
+        { title: 'Confondre crise et fraude', text: 'Les frais de restauration ou d’assistance ne signifient pas nécessairement qu’une somme détournée à la suite d’un phishing est couverte.' },
+        { title: 'Négliger un prestataire critique', text: 'Une interruption chez un hébergeur ou un sous-traitant peut affecter l’activité sans être traitée comme un incident sur le propre système de l’entreprise.' },
+        { title: 'Considérer la sauvegarde comme acquise', text: 'Une sauvegarde non isolée, non testée ou inaccessible au moment de l’incident peut ne pas permettre la reprise attendue.' },
+      ]}
+      note={{ title: 'L’assurance complète la prévention, elle ne la remplace pas', text: 'La couverture transfère certaines conséquences selon le contrat. Elle ne dispense ni de sécuriser les accès, ni de maintenir les systèmes, ni de tester les sauvegardes et la réponse de crise.' }}
+      variant="split"
+    />
+
+    <SolutionMethod title="Analyser le scénario avant la garantie." text="Assuromieux fait décrire l’environnement et les dépendances, relit le questionnaire et les exclusions, puis compare les services et limites. Les recommandations distinguent prévention, transfert d’assurance et organisation de crise." />
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une cyberassurance." id="faq-title" /><FAQ items={faqItems} /></div></section>
+    <RelatedLinks items={[
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer prestations, tiers et responsabilité numérique.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier l’interruption numérique à la continuité globale.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Intégrer le cyber au programme de l’entreprise.' },
+    ]} />
+    <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel="Échanger sur mon risque cyber" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

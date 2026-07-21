@@ -29,18 +29,21 @@ export const mainNavigation: NavigationItem[] = [
   { href: '/#contact', label: 'Contact' },
 ];
 
-export const footerExpertiseLinks: NavigationItem[] = [
+export const footerProductLinks: NavigationItem[] = [
+  { href: '/rc-professionnelle/', label: 'RC professionnelle' },
+  { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle' },
+  { href: '/flotte-automobile/', label: 'Flotte automobile' },
+  { href: '/sante-prevoyance-entreprise/', label: 'Santé et prévoyance' },
+  { href: '/protection-dirigeant/', label: 'Protection du dirigeant' },
+  { href: '/cyberassurance/', label: 'Cyberassurance' },
+];
+
+export const footerAdviceLinks: NavigationItem[] = [
   { href: '/audit-assurances-entreprise/', label: 'Audit des assurances' },
   { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
   { href: '/assurance-transport/', label: 'Transport et logistique' },
   { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
-];
-
-export const footerSectorLinks: NavigationItem[] = [
   { href: '/cabinet/', label: 'Le cabinet' },
-  { href: '/#secteurs', label: 'Domaines d’expertise' },
-  { href: '/#ressources', label: 'Ressources' },
-  { href: '/#contact', label: 'Prendre contact' },
 ];
 
 export const organizationSchema = {

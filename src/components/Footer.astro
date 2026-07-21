@@ -10,8 +10,8 @@ interface Props {
   addressCountry: string;
   orias: string;
   rcs: string;
-  expertiseLinks: NavigationItem[];
-  sectorLinks: NavigationItem[];
+  productLinks: NavigationItem[];
+  adviceLinks: NavigationItem[];
   auditHref?: string;
 }
 
@@ -24,8 +24,8 @@ const {
   addressCountry,
   orias,
   rcs,
-  expertiseLinks,
-  sectorLinks,
+  productLinks,
+  adviceLinks,
   auditHref = '/audit-assurances-entreprise/',
 } = Astro.props;
 
@@ -42,14 +42,14 @@ const year = new Date().getFullYear();
         <a class="site-footer__audit" href={auditHref}>Demander un audit gratuit <span aria-hidden="true">→</span></a>
       </div>
 
-      <nav aria-label="Expertises">
-        <h2>Expertises</h2>
-        {expertiseLinks.map((item) => <a href={item.href}>{item.label}</a>)}
+      <nav aria-label="Assurances">
+        <h2>Assurances</h2>
+        {productLinks.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
 
-      <nav aria-label="Secteurs">
-        <h2>Secteurs</h2>
-        {sectorLinks.map((item) => <a href={item.href}>{item.label}</a>)}
+      <nav aria-label="Conseil et expertises">
+        <h2>Conseil &amp; expertises</h2>
+        {adviceLinks.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
 
       <div class="site-footer__contact">

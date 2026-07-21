@@ -2,12 +2,16 @@
 import { productIssues } from '../data/products';
 ---
 
-<nav class="issue-links" aria-label="Choisir une assurance selon votre enjeu">
-  <p>Ou partir de votre enjeu</p>
+<nav class="issue-links" aria-label="Accéder aux assurances selon votre enjeu">
+  <p>Accéder par enjeu</p>
   <ul>
     {productIssues.map((issue) => (
       <li>
-        <a href={issue.href} data-product-slug={issue.productSlug}>
+        <a
+          href={issue.href}
+          data-product-slug={issue.productSlug}
+          aria-label={`${issue.label}${issue.productSlug ? ' — voir la page dédiée' : ''}`}
+        >
           <span>{issue.label}</span>
           <i aria-hidden="true">↗</i>
         </a>

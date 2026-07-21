@@ -1,0 +1,116 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/rc-professionnelle/';
+const title = 'Assurance RC professionnelle entreprise | Assuromieux Paris';
+const description = 'RC professionnelle : analyse des activités déclarées, responsabilités, dommages, plafonds, franchises, exclusions et sous-traitance.';
+const contactHref = '/?besoin=rc-professionnelle#contact';
+
+const audience = {
+  title: 'Aux entreprises dont l’activité peut engager une responsabilité envers un client ou un tiers.',
+  paragraphs: [
+    'La responsabilité civile professionnelle concerne les conséquences que peuvent avoir une prestation, un conseil, une erreur, une faute, une omission ou une négligence. La nature exacte de l’exposition dépend du métier, des engagements contractuels et des dommages susceptibles d’être invoqués.',
+    'L’analyse est utile lors de la création d’une activité, de l’ajout d’une prestation, du recours à des sous-traitants ou de la signature d’un contrat client exigeant des garanties précises. Elle consiste d’abord à vérifier que l’activité décrite au contrat correspond à celle réellement exercée.',
+  ],
+  markers: ['Entreprises de services', 'Professions libérales', 'Conseil et ingénierie', 'Artisans et PME'],
+};
+
+const risks = [
+  { title: 'Prestations et conseils', text: 'Une erreur, une omission, un retard ou une prestation contestée peut conduire un client à demander réparation. La réponse dépend de l’activité déclarée, du fait générateur, des exclusions et des garanties souscrites.' },
+  { title: 'Dommages causés à des tiers', text: 'Les réclamations peuvent porter sur des dommages corporels, matériels ou immatériels. Leur définition et leur prise en charge ne sont pas identiques d’un contrat à l’autre.' },
+  { title: 'Vie courante de l’exploitation', text: 'Un dommage peut survenir en dehors de la prestation elle-même : accueil d’un visiteur, intervention dans des locaux, événement ou manipulation d’un bien. Cette exposition relève souvent d’une lecture distincte de la RC exploitation.' },
+  { title: 'Responsabilités propres au métier', text: 'Certaines activités appellent des extensions, des obligations ou des contrats spécifiques. Défense, recours, responsabilité après livraison ou atteinte aux données doivent être vérifiés selon le contrat.' },
+];
+
+const checks = [
+  'Les activités, prestations et zones d’intervention sont décrites sans approximation dans les conditions particulières.',
+  'Les dommages corporels, matériels et immatériels sont définis et articulés avec des plafonds adaptés au risque étudié.',
+  'Les franchises, sous-limites et exclusions sont lues pour chaque type de réclamation important.',
+  'La territorialité correspond aux pays dans lesquels l’entreprise travaille, livre ou peut être mise en cause.',
+  'Le recours à la sous-traitance et la responsabilité qui en découle sont déclarés et compris.',
+  'La période de garantie, les modalités de réclamation et les contrats antérieurs sont rapprochés.',
+  'La défense et le recours sont identifiés sans présumer qu’ils sont inclus dans toutes les situations.',
+];
+
+const mistakes = [
+  { title: 'Décrire l’activité trop largement', text: 'Un libellé générique ne prouve pas que chaque prestation est couverte. Les activités réelles et leurs évolutions doivent être présentées précisément.' },
+  { title: 'Confondre RC Pro et RC exploitation', text: 'La première vise principalement les conséquences de l’activité professionnelle ; la seconde concerne davantage la vie courante de l’entreprise. Leur articulation varie selon le contrat.' },
+  { title: 'Comparer uniquement le plafond global', text: 'Des sous-limites, franchises ou exclusions peuvent modifier fortement la réponse sur un dommage immatériel, une atteinte particulière ou une réclamation à l’étranger.' },
+  { title: 'Oublier contrats et sous-traitants', text: 'Les engagements acceptés auprès des clients et l’organisation de la sous-traitance peuvent créer des écarts entre le risque réel et le dossier présenté au marché.' },
+];
+
+const faqItems = [
+  { question: 'La RC professionnelle est-elle obligatoire pour toutes les entreprises ?', answer: 'Non, pas dans tous les métiers. Certaines professions ou activités sont soumises à des obligations spécifiques. La situation doit être vérifiée selon l’activité, la réglementation applicable et les engagements pris par l’entreprise.' },
+  { question: 'Quelle différence entre dommage matériel et dommage immatériel ?', answer: 'Le dommage matériel atteint un bien ; le dommage immatériel correspond notamment à une conséquence financière. Les contrats distinguent souvent le dommage immatériel consécutif d’un dommage immatériel non consécutif, avec des conditions et plafonds différents.' },
+  { question: 'La RC Pro couvre-t-elle automatiquement les sous-traitants ?', answer: 'Non. Le recours à la sous-traitance, la responsabilité conservée par l’entreprise et les assurances des intervenants doivent être examinés. La réponse dépend des garanties souscrites et des exclusions.' },
+  { question: 'Que faut-il préparer pour analyser la RC professionnelle ?', answer: 'Une description précise des prestations, les contrats clients significatifs, les zones d’intervention, la part sous-traitée, les attestations et les informations de sinistralité disponibles constituent une base utile.' },
+];
+
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'RC professionnelle', path }]),
+  serviceSchema('Conseil en assurance responsabilité civile professionnelle', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Responsabilité civile professionnelle"
+      title="Comprendre ce que votre responsabilité professionnelle doit réellement couvrir."
+      lead="Nous rapprochons vos prestations, vos engagements et les réclamations possibles pour vérifier la cohérence des responsabilités assurées."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'RC professionnelle' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur ma RC professionnelle" size="large" />
+      <CTA href="#points-verifier" label="Voir les points à vérifier" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="RC professionnelle" items={['Prestations', 'Tiers', 'Exploitation', 'Réclamations']} variant="orbit" />
+    </PageHero>
+
+    <ProductAudience {...audience} variant="split" />
+    <ProductRiskOverview
+      title="Plusieurs responsabilités peuvent se croiser."
+      intro="Le nom du contrat ne suffit pas à décrire sa portée. Les définitions, faits générateurs et exclusions doivent être rapprochés des situations concrètes de l’entreprise."
+      items={risks}
+      distinction="RC Pro et RC exploitation : deux notions à distinguer. Elles peuvent figurer dans un même contrat, mais ne répondent pas nécessairement aux mêmes faits, dommages ou plafonds."
+      variant="ledger"
+    />
+    <ProductReview
+      checksTitle="Lire les limites avant d’évaluer la protection."
+      checksIntro="Une analyse du risque est nécessaire pour hiérarchiser les clauses réellement déterminantes."
+      {checks}
+      mistakesTitle="Les raccourcis qui fragilisent l’analyse."
+      mistakesIntro="La prudence consiste à partir des prestations et des engagements, puis à revenir aux conditions particulières et générales."
+      {mistakes}
+      note={{ title: 'RC Pro et RC exploitation : deux notions à distinguer', text: 'Selon le contrat, leurs garanties peuvent être regroupées ou séparées. Il faut vérifier les dommages visés, les plafonds, les exclusions et le moment où la responsabilité est engagée.' }}
+      variant="split"
+    />
+
+    <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation précise les limites et arbitrages à conserver." />
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir votre RC professionnelle." id="faq-title" /><FAQ items={faqItems} /></div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier la RC professionnelle au programme global.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Examiner les locaux, les biens et la continuité.' },
+      { href: '/cyberassurance/', label: 'Cyberassurance', text: 'Distinguer responsabilité numérique, crise et restauration.' },
+    ]} />
+    <PageCTA title="Votre activité est-elle décrite avec suffisamment de précision ?" text="Présentez vos prestations, vos clients et votre prochaine échéance pour cadrer les clauses à examiner en priorité." primaryHref={contactHref} primaryLabel="Échanger sur ma RC professionnelle" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

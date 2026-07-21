@@ -1,0 +1,105 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/flotte-automobile/';
+const title = 'Assurance flotte automobile entreprise | Assuromieux Paris';
+const description = 'Assurance flotte automobile : analyse du parc, des conducteurs, usages, garanties, franchises, sinistralité et gestion des véhicules.';
+const contactHref = '/?besoin=flotte#contact';
+const faqItems = [
+  { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Les pratiques varient selon les assureurs et la composition du parc. Une analyse est nécessaire pour déterminer si un contrat flotte ou une autre organisation est pertinente pour l’entreprise.' },
+  { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. Le véhicule, la responsabilité circulation, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
+  { question: 'Pourquoi le relevé de sinistralité est-il important ?', answer: 'Il aide à comprendre la fréquence, la nature et le coût des événements. Associé aux usages et à la prévention, il permet de présenter le risque et d’étudier les franchises avec davantage de cohérence.' },
+  { question: 'Comment gérer les entrées et sorties de véhicules ?', answer: 'Les modalités dépendent du contrat et des outils retenus. Il faut organiser la transmission des immatriculations, usages, conducteurs et dates afin d’éviter qu’un véhicule ne soit ajouté ou retiré trop tard.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'Flotte automobile', path }]),
+  serviceSchema('Conseil en assurance flotte automobile', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Flotte automobile"
+      title="Assurer les véhicules selon leurs usages, pas seulement leur immatriculation."
+      lead="Nous rapprochons le parc, les conducteurs, les déplacements et la sinistralité pour construire une vision exploitable de la flotte."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Flotte automobile' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur ma flotte" size="large" />
+      <CTA href="#points-verifier" label="Préparer les informations" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="steps" />
+    </PageHero>
+
+    <ProductAudience
+      title="Aux entreprises qui exploitent plusieurs véhicules et doivent suivre un parc en mouvement."
+      paragraphs={[
+        'La flotte peut réunir des véhicules légers, des utilitaires, des véhicules de fonction et, lorsque l’activité le justifie, des poids lourds. L’enjeu n’est pas seulement leur nombre : leurs usages, conducteurs, zones de circulation et rythmes d’entrée ou de sortie déterminent la qualité du dossier.',
+        'Une revue devient utile lorsque le parc grandit, que les tournées évoluent, que la sinistralité se dégrade ou que les franchises deviennent difficiles à piloter. Elle permet également de distinguer les véhicules des matériels ou marchandises transportés.',
+      ]}
+      markers={['Véhicules légers', 'Utilitaires', 'Véhicules de fonction', 'Poids lourds selon activité']}
+      variant="band"
+    />
+
+    <ProductRiskOverview
+      title="Quatre lectures pour comprendre la flotte."
+      intro="Les garanties dommages ne suffisent pas à expliquer le risque. Le parc doit être lu comme un outil d’exploitation avec ses conducteurs, ses déplacements et ses procédures de gestion."
+      items={[
+        { title: 'Le véhicule', text: 'Valeur, âge, mode de financement et équipements orientent l’étude du dommage, du vol, de l’incendie et du bris de glace.' },
+        { title: 'Le conducteur', text: 'Profils autorisés, affectation, prêt, nouveaux conducteurs et règles internes doivent correspondre aux conditions du contrat.' },
+        { title: 'L’usage', text: 'Déplacements professionnels, tournées, kilométrage, stationnement, zones de circulation et transport de matériel décrivent l’exposition réelle.' },
+        { title: 'La continuité', text: 'Assistance, véhicule de remplacement, délais de réparation et franchises prennent leur sens au regard des conséquences d’une immobilisation.' },
+      ]}
+      distinction="Assurance du véhicule, responsabilité circulation, matériel ou marchandises transportées et responsabilité professionnelle ne doivent pas être confondus. Ils peuvent relever de garanties ou contrats distincts."
+      variant="flow"
+    />
+
+    <ProductReview
+      checksTitle="Présenter un parc que le marché peut comprendre."
+      checksIntro="Une liste d’immatriculations est nécessaire, mais rarement suffisante pour expliquer les usages et arbitrer les garanties."
+      checks={[
+        'Le parc distingue véhicules légers, utilitaires, véhicules de fonction et poids lourds lorsque cela est pertinent.',
+        'Les usages, tournées, kilométrages et zones de circulation correspondent à l’exploitation actuelle.',
+        'Les conducteurs autorisés, restrictions éventuelles et modalités de prêt sont compris.',
+        'Dommages, vol, incendie, bris de glace, assistance et véhicule de remplacement sont comparés séparément.',
+        'Les franchises sont rapprochées de la fréquence des sinistres et de la capacité de l’entreprise à les absorber.',
+        'Le relevé de sinistralité est analysé par nature, véhicule, conducteur et coût lorsque les données le permettent.',
+        'Une procédure existe pour déclarer rapidement les entrées, sorties et changements d’usage.',
+      ]}
+      mistakesTitle="Les écarts qui compliquent la gestion d’une flotte."
+      mistakesIntro="La plupart apparaissent lorsque le contrat et le parc ne sont plus mis à jour au même rythme."
+      mistakes={[
+        { title: 'Raisonner uniquement véhicule par véhicule', text: 'La flotte permet une lecture globale des usages, de la sinistralité et des règles de gestion. Cette vision se perd si chaque événement est traité isolément.' },
+        { title: 'Mélanger contenu et véhicule', text: 'Le matériel professionnel ou les marchandises présents dans un véhicule peuvent nécessiter une garantie distincte, avec leurs propres limites et exclusions.' },
+        { title: 'Choisir une franchise sans la simuler', text: 'Une franchise plus élevée peut modifier la prime, mais aussi le coût conservé par l’entreprise. La fréquence des sinistres doit éclairer l’arbitrage.' },
+        { title: 'Oublier la prévention', text: 'Règles de conduite, stationnement, entretien, analyse des accidents et accompagnement des conducteurs peuvent compléter le transfert d’assurance.' },
+      ]}
+      note={{ title: 'Un parc vivant exige une procédure simple', text: 'Les entrées, sorties, changements d’affectation et d’usage doivent être transmis selon les modalités du contrat. La qualité de cette gestion limite les écarts administratifs.' }}
+      variant="stacked"
+    />
+
+    <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles." />
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser votre parc." id="faq-title" /><FAQ items={faqItems} /></div></section>
+    <RelatedLinks items={[
+      { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Relier la flotte aux flux et responsabilités sectorielles.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Mettre la flotte en regard du programme global.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Distinguer véhicules, matériels et sites.' },
+    ]} />
+    <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel="Échanger sur ma flotte" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

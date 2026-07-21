@@ -1,0 +1,108 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/multirisque-professionnelle/';
+const title = 'Assurance multirisque professionnelle | Assuromieux Paris';
+const description = 'Multirisque professionnelle : analyse des locaux, matériels, stocks, pertes d’exploitation, valeurs, franchises et mesures de prévention.';
+const contactHref = '/?besoin=multirisque#contact';
+
+const faqItems = [
+  { question: 'Que peut couvrir une multirisque professionnelle ?', answer: 'Selon le contrat, elle peut regrouper des garanties portant sur les locaux, le mobilier, le matériel, les stocks, certains dommages et des responsabilités liées à l’occupation. Chaque garantie, exclusion et franchise doit être vérifiée.' },
+  { question: 'La perte d’exploitation est-elle toujours incluse ?', answer: 'Non. Sa présence, sa période d’indemnisation, sa franchise, les événements déclencheurs et le mode de calcul doivent être lus dans les conditions particulières et générales.' },
+  { question: 'Comment déclarer la valeur des biens ?', answer: 'L’inventaire doit tenir compte du mobilier, du matériel, des aménagements, des stocks et, selon l’activité, des biens confiés. Les méthodes d’évaluation et les éventuelles limites par catégorie doivent être confirmées.' },
+  { question: 'Un entrepôt ou une dépendance est-il automatiquement couvert ?', answer: 'Non. Chaque adresse, bâtiment, dépendance ou zone de stockage doit être identifié. L’usage, les protections, les valeurs et les activités exercées peuvent modifier l’analyse du risque.' },
+];
+
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'Multirisque professionnelle', path }]),
+  serviceSchema('Conseil en assurance multirisque professionnelle', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Multirisque professionnelle"
+      title="Protéger les lieux, les biens et la capacité à poursuivre l’activité."
+      lead="Nous mettons en regard les locaux, les valeurs déclarées, les événements couverts et les conséquences d’une interruption pour construire une lecture utile."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Multirisque professionnelle' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur ma multirisque" size="large" />
+      <CTA href="#risques" label="Voir les situations couvertes" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="Multirisque" items={['Locaux', 'Matériels', 'Stocks', 'Continuité']} variant="axis" />
+    </PageHero>
+
+    <ProductAudience
+      title="Aux entreprises qui occupent des locaux ou dépendent de biens physiques pour travailler."
+      paragraphs={[
+        'Commerce, bureau, atelier, cabinet, dépôt ou entrepôt : la multirisque professionnelle doit partir des lieux réellement occupés, de leur statut et de ce qu’ils contiennent. Une entreprise locataire n’examine pas exactement les mêmes responsabilités qu’une entreprise propriétaire.',
+        'L’analyse devient prioritaire après un déménagement, des travaux, un achat de matériel, une hausse des stocks ou une évolution de l’activité. Elle concerne aussi les entreprises pour lesquelles l’indisponibilité d’un site ou d’une machine peut désorganiser rapidement la production ou le service.',
+      ]}
+      markers={['Commerces et bureaux', 'Ateliers', 'Dépôts et entrepôts', 'Cabinets professionnels']}
+      variant="aside"
+    />
+
+    <ProductRiskOverview
+      title="Les biens ne sont qu’une partie du sujet."
+      intro="Incendie, dégât des eaux, vol ou dommage électrique n’ont pas les mêmes conditions de garantie. La prévention, les valeurs et la continuité doivent être étudiées ensemble."
+      items={[
+        { title: 'Bâtiments et occupation', text: 'Les adresses, surfaces, usages, qualités de locataire ou propriétaire, dépendances et responsabilités d’occupation sont décrits avec précision.' },
+        { title: 'Contenu professionnel', text: 'Mobilier, matériels, machines, aménagements et stocks sont inventoriés. Le bris de machine ou les biens confiés demandent, selon l’activité, une vérification distincte.' },
+        { title: 'Événements et prévention', text: 'Incendie, dégât des eaux, vol, vandalisme et dommages électriques sont rapprochés des protections demandées : alarme, fermeture, maintenance ou stockage.' },
+        { title: 'Pertes d’exploitation', text: 'La marge, les charges permanentes, les délais de reprise et les solutions temporaires permettent d’étudier les conséquences financières d’un arrêt couvert.' },
+      ]}
+      variant="columns"
+    />
+
+    <ProductReview
+      checksTitle="Déclarer ce qui devrait être reconstruit ou remplacé."
+      checksIntro="Les valeurs et mesures de prévention doivent pouvoir être expliquées, datées et actualisées."
+      checks={[
+        'Toutes les adresses, dépendances et zones de stockage sont mentionnées avec leur usage réel.',
+        'Les locaux loués ou détenus et les responsabilités d’occupation sont correctement distingués.',
+        'Les valeurs du mobilier, du matériel, des aménagements et des stocks reposent sur un inventaire récent.',
+        'Les plafonds, franchises et exclusions sont vérifiés événement par événement.',
+        'Les mesures de prévention déclarées correspondent aux équipements réellement installés et entretenus.',
+        'Le bris de machine, les biens confiés et les dommages électriques sont examinés selon l’activité.',
+        'La perte d’exploitation précise les événements déclencheurs, la franchise et la période d’indemnisation.',
+      ]}
+      mistakesTitle="Ce qui devient vite obsolète dans une multirisque."
+      mistakesIntro="Un contrat peut rester inchangé alors que les locaux, les équipements et l’organisation ont profondément évolué."
+      mistakes={[
+        { title: 'Conserver une ancienne valeur', text: 'Des acquisitions, travaux ou variations de stocks peuvent rendre la déclaration initiale insuffisante ou inadaptée.' },
+        { title: 'Déclarer une adresse sans son usage', text: 'Un bureau, un atelier et un entrepôt n’exposent pas l’assureur aux mêmes événements ni aux mêmes mesures de prévention.' },
+        { title: 'Supposer la continuité acquise', text: 'La garantie des biens ne signifie pas que toutes les pertes financières consécutives sont couvertes. Les conditions de la perte d’exploitation sont propres au contrat.' },
+        { title: 'Négliger les obligations de prévention', text: 'Une protection antivol, un entretien ou une règle de stockage déclarés doivent rester conformes à la réalité et aux conditions demandées.' },
+      ]}
+      note={{ title: 'La valeur du contenu professionnel doit être régulièrement réévaluée', text: 'Matériels, aménagements et stocks évoluent. Une revue périodique limite les écarts entre le risque déclaré et les biens à remplacer après un événement couvert.' }}
+      variant="reverse"
+    />
+
+    <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir vos locaux et vos biens." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks items={[
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer les biens des responsabilités liées à l’activité.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Analyser séparément les véhicules et leurs usages.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier la multirisque aux autres contrats.' },
+    ]} />
+    <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel="Échanger sur ma multirisque" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

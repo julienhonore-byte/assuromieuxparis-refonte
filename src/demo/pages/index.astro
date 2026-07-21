@@ -8,7 +8,7 @@ import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '../../data/site';
+import { footerAdviceLinks, footerProductLinks, mainNavigation, site } from '../../data/site';
 ---
 
 <BaseLayout title="Démonstration interne | Assuromieux Paris" description="Démonstration locale non publiée du système graphique Assuromieux Paris.">
@@ -23,7 +23,7 @@ import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '.
     <section id="cartes" class="section"><div class="container-wide"><SectionHeader kicker="Composants" title="Titres, boutons et cartes" /><div class="demo-grid"><Card title="Audit" text="Analyse structurée du besoin et des contrats." /><Card title="Diagnostic" text="Lecture claire des garanties et exclusions." tone="soft" /><Card title="Accompagnement" text="Une recommandation expliquée et suivie." tone="gold" /></div></div></section>
     <section id="formulaire" class="section section--surface"><div class="container demo-form"><SectionHeader kicker="Formulaire" title="Formspree accessible" text="Démonstration technique : ne pas envoyer de données réelles." /><ContactForm action={site.formspreeUrl} calUrl={site.calUrl} /></div></section>
   </main>
-  <Footer phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} addressStreet={site.addressStreet} addressLocality={site.addressLocality} addressCountry={site.addressCountry} orias={site.orias} rcs={site.rcs} expertiseLinks={footerExpertiseLinks} sectorLinks={footerSectorLinks} />
+  <Footer phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} addressStreet={site.addressStreet} addressLocality={site.addressLocality} addressCountry={site.addressCountry} orias={site.orias} rcs={site.rcs} productLinks={footerProductLinks} adviceLinks={footerAdviceLinks} />
 </BaseLayout>
 
 <style>

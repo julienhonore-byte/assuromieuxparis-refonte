@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '../data/site';
+import { footerAdviceLinks, footerProductLinks, mainNavigation, site } from '../data/site';
 ---
 
 <BaseLayout title="Page introuvable | Assuromieux Paris" description="La page demandée n’existe pas ou a été déplacée." canonical={`${site.canonicalUrl}404`}>
@@ -24,8 +24,8 @@ import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '.
     addressCountry={site.addressCountry}
     orias={site.orias}
     rcs={site.rcs}
-    expertiseLinks={footerExpertiseLinks}
-    sectorLinks={footerSectorLinks}
+    productLinks={footerProductLinks}
+    adviceLinks={footerAdviceLinks}
   />
 </BaseLayout>
 

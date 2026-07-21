@@ -1,0 +1,105 @@
+---
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import ProductAudience from '../components/ProductAudience.astro';
+import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
+import ProductReview from '../components/ProductReview.astro';
+import ProductRiskOverview from '../components/ProductRiskOverview.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/protection-dirigeant/';
+const title = 'Protection du dirigeant d’entreprise | Assuromieux Paris';
+const description = 'Protection du dirigeant : analyse de la santé, prévoyance, revenus, homme-clé, frais généraux, responsabilité et continuité de l’entreprise.';
+const contactHref = '/?besoin=protection-dirigeant#contact';
+const faqItems = [
+  { question: 'Quelles protections faut-il étudier pour un dirigeant ?', answer: 'Le périmètre peut inclure santé, prévoyance personnelle, incapacité, invalidité, décès, responsabilité des dirigeants, protection juridique, homme-clé ou frais généraux permanents. Ces solutions ont des objets différents.' },
+  { question: 'L’assurance homme-clé protège-t-elle directement le dirigeant ?', answer: 'Son objectif principal est généralement de protéger l’entreprise contre les conséquences financières liées à l’indisponibilité ou au décès d’une personne essentielle, selon le contrat. Elle ne remplace pas la prévoyance personnelle.' },
+  { question: 'Pourquoi le statut social du dirigeant est-il important ?', answer: 'Il influence les régimes auxquels le dirigeant est affilié et les prestations existantes. Une analyse du statut, des revenus et de la situation familiale est nécessaire avant d’identifier un besoin complémentaire.' },
+  { question: 'Comment estimer le besoin de continuité ?', answer: 'Il faut examiner le rôle opérationnel du dirigeant, les personnes capables de le remplacer, les charges qui continuent, les engagements financiers et le temps nécessaire pour réorganiser l’entreprise.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path: '/assurances-entreprises/' }, { name: 'Protection du dirigeant', path }]),
+  serviceSchema('Conseil en protection du dirigeant', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} image={pageUrl('/og-produits-lot-02.jpg')} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Protection du dirigeant"
+      title="Protéger la personne, les revenus et la continuité autour du dirigeant."
+      lead="Nous distinguons les risques personnels du dirigeant de ceux que son indisponibilité peut créer pour l’entreprise."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Protection du dirigeant' }]}
+    >
+      <CTA href={contactHref} label="Échanger sur ma protection" size="large" />
+      <CTA href="#risques" label="Distinguer les solutions" variant="secondary" size="large" />
+      <ProductHeroDiagram slot="visual" label="Dirigeant" items={['Personne', 'Revenus', 'Responsabilité', 'Continuité']} variant="axis" />
+    </PageHero>
+
+    <ProductAudience
+      title="Aux dirigeants dont la situation personnelle et le rôle opérationnel méritent une lecture coordonnée."
+      paragraphs={[
+        'La protection dépend du statut social, des revenus, de la situation familiale et des prestations déjà acquises. Elle dépend aussi de la place du dirigeant dans l’entreprise : production, relation commerciale, financement, signature ou détention d’un savoir difficile à remplacer.',
+        'L’analyse est particulièrement utile lors d’un changement de statut, d’une évolution de rémunération, d’un financement, de l’arrivée d’associés ou lorsque l’entreprise repose fortement sur une personne. Elle ne conduit pas à confondre les assurances personnelles avec celles souscrites par l’entreprise.',
+      ]}
+      markers={['Dirigeants associés', 'Travailleurs non salariés', 'Mandataires sociaux', 'Personnes-clés']}
+      variant="aside"
+    />
+
+    <ProductRiskOverview
+      title="Des solutions différentes pour des conséquences différentes."
+      intro="Prévoyance personnelle, homme-clé, frais généraux, responsabilité des dirigeants et protection juridique ne répondent ni au même bénéficiaire ni au même événement."
+      items={[
+        { title: 'Protection personnelle', text: 'Santé, incapacité, invalidité, décès et perte de revenus sont étudiés à partir du statut, des prestations existantes et des besoins du foyer.' },
+        { title: 'Dépendance de l’entreprise', text: 'L’assurance homme-clé peut, selon le contrat, aider l’entreprise à absorber certaines conséquences financières liées à l’absence ou au décès d’une personne stratégique.' },
+        { title: 'Charges et continuité', text: 'Les frais généraux permanents visent un autre besoin : financer certaines charges professionnelles pendant une indisponibilité couverte, selon les limites souscrites.' },
+        { title: 'Décisions et mise en cause', text: 'Responsabilité des dirigeants et protection juridique traitent des expositions distinctes. Les actes, exclusions, frais de défense et personnes assurées doivent être lus précisément.' },
+      ]}
+      distinction="Assurance homme-clé, prévoyance personnelle, responsabilité des dirigeants, protection juridique et frais généraux permanents ne sont pas interchangeables."
+      variant="ledger"
+    />
+
+    <ProductReview
+      checksTitle="Commencer par les conséquences à financer."
+      checksIntro="Les capitaux et indemnités n’ont de sens qu’après avoir identifié les revenus, charges, engagements et délais de réorganisation."
+      checks={[
+        'Le statut social et les régimes auxquels le dirigeant est affilié sont identifiés avec les prestations disponibles.',
+        'Les revenus personnels, charges familiales et besoins de protection sont évalués sans extrapolation automatique.',
+        'Le rôle du dirigeant dans l’exploitation et les solutions de remplacement sont décrits.',
+        'Les charges permanentes, engagements financiers et délais de continuité de l’entreprise sont estimés.',
+        'Le bénéficiaire, l’assuré et le souscripteur sont distingués pour chaque solution étudiée.',
+        'Définitions de l’incapacité et de l’invalidité, franchises, exclusions et limites d’âge sont vérifiées.',
+        'La protection est articulée avec la santé collective, les autres assurances de l’entreprise et la situation patrimoniale à faire valider par les professionnels compétents.',
+      ]}
+      mistakesTitle="Les confusions qui empêchent une décision claire."
+      mistakesIntro="Additionner des contrats ne garantit pas que les besoins personnels et ceux de l’entreprise soient correctement répartis."
+      mistakes={[
+        { title: 'Assimiler homme-clé et prévoyance', text: 'Le premier protège généralement l’entreprise ; la seconde vise la personne et ses proches. Les bénéficiaires et objectifs doivent être distingués.' },
+        { title: 'Partir d’un capital standard', text: 'Le montant utile dépend des revenus, charges, dettes, personnes à protéger et conséquences opérationnelles. Aucun niveau ne peut être fixé sans analyse.' },
+        { title: 'Ignorer les prestations existantes', text: 'Les régimes obligatoires, collectifs ou personnels déjà en place doivent être recensés avant d’étudier un complément.' },
+        { title: 'Oublier la responsabilité personnelle', text: 'Une mise en cause liée aux décisions de gestion ne relève pas nécessairement de la RC professionnelle de l’entreprise.' },
+      ]}
+      note={{ title: 'Le dirigeant est souvent le premier actif stratégique de l’entreprise', text: 'Le protéger implique de distinguer sa situation personnelle, sa responsabilité et les conséquences de son absence pour l’organisation. Une même solution ne répond pas à ces trois dimensions.' }}
+      variant="stacked"
+    />
+
+    <SolutionMethod title="Séparer les besoins pour mieux les coordonner." text="Assuromieux inventorie les dispositifs, décrit les conséquences personnelles et professionnelles, puis identifie les écarts. Les sujets sociaux, fiscaux, patrimoniaux ou juridiques sont signalés lorsqu’ils nécessitent une validation spécialisée." />
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’organiser la protection du dirigeant." id="faq-title" /><FAQ items={faqItems} /></div></section>
+    <RelatedLinks items={[
+      { href: '/sante-prevoyance-entreprise/', label: 'Santé et prévoyance entreprise', text: 'Distinguer la protection collective de la situation du dirigeant.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Coordonner protection personnelle et programme d’entreprise.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Revenir à la vision globale des contrats.' },
+    ]} />
+    <PageCTA title="Que se passerait-il si le dirigeant devait s’arrêter ?" text="Un premier échange permet de distinguer les conséquences pour la personne, la famille et la continuité de l’entreprise." primaryHref={contactHref} primaryLabel="Échanger sur ma protection" secondaryHref="/sante-prevoyance-entreprise/" secondaryLabel="Voir la protection collective" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

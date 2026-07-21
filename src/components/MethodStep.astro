@@ -1,0 +1,52 @@
+---
+interface Props {
+  step: string;
+  title: string;
+  text: string;
+}
+
+const { step, title, text } = Astro.props;
+---
+
+<article class="method-step">
+  <div class="method-step__number">{step}</div>
+  <div>
+    <h3>{title}</h3>
+    <p>{text}</p>
+  </div>
+</article>
+
+<style>
+  .method-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-5);
+    padding: var(--space-6) 0;
+    border-top: 1px solid rgba(217, 227, 238, 0.18);
+  }
+
+  .method-step__number {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-ink);
+    background: var(--color-gold-soft);
+    border-radius: var(--radius-control);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-heading);
+  }
+
+  h3 {
+    margin: 0 0 var(--space-2);
+    color: var(--color-surface);
+    font-size: var(--font-size-h4);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-on-dark-soft);
+    font-size: 0.9375rem;
+  }
+</style>

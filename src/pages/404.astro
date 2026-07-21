@@ -4,14 +4,31 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '../data/site';
 ---
 
-<BaseLayout title="Page introuvable | Assuromieux Paris" description="Page 404 technique provisoire.">
-  <Header />
-  <main>
-    <Hero eyebrow="Erreur 404" title="Cette page n’existe pas.">
-      <CTA href="/" label="Revenir à l’accueil" />
+<BaseLayout title="Page introuvable | Assuromieux Paris" description="La page demandée n’existe pas ou a été déplacée." canonical={`${site.canonicalUrl}404`}>
+  <Header items={mainNavigation} phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} orias={site.orias} />
+  <main id="contenu-principal">
+    <Hero eyebrow="Erreur 404" title="Cette page n’existe pas." lead="Revenez à l’accueil ou contactez-nous pour parler de vos assurances d’entreprise.">
+      <CTA href="/" label="Revenir à l’accueil" size="large" />
+      <div slot="visual" class="error-code" aria-hidden="true">404</div>
     </Hero>
   </main>
-  <Footer />
+  <Footer
+    phoneDisplay={site.phoneDisplay}
+    phoneHref={site.phoneHref}
+    email={site.email}
+    addressStreet={site.addressStreet}
+    addressLocality={site.addressLocality}
+    addressCountry={site.addressCountry}
+    orias={site.orias}
+    rcs={site.rcs}
+    expertiseLinks={footerExpertiseLinks}
+    sectorLinks={footerSectorLinks}
+  />
 </BaseLayout>
+
+<style>
+  .error-code { color: var(--color-brand-deep); font-size: clamp(8rem, 22vw, 18rem); font-weight: 850; letter-spacing: -0.1em; line-height: 0.8; opacity: 0.12; }
+</style>

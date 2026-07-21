@@ -1,0 +1,96 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item, index) => (
+    <details class="faq-item" open={index === 0}>
+      <summary>
+        <span>{item.question}</span>
+        <span class="faq-item__icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="faq-item__answer"><p>{item.answer}</p></div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-list {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base);
+  }
+
+  .faq-item[open] {
+    border-color: rgba(18, 54, 95, 0.32);
+    box-shadow: var(--shadow-card);
+  }
+
+  summary {
+    min-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-6);
+    color: var(--color-brand-deep);
+    cursor: pointer;
+    font-weight: var(--font-weight-strong);
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__icon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: var(--color-brand-deep);
+    background: var(--color-gold-soft);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    transition: transform var(--transition-base);
+  }
+
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--space-6) var(--space-6);
+  }
+
+  p {
+    max-width: 50rem;
+    margin: 0;
+    color: var(--color-text-soft);
+  }
+
+  @media (max-width: 640px) {
+    summary,
+    .faq-item__answer {
+      padding-right: var(--space-4);
+      padding-left: var(--space-4);
+    }
+  }
+</style>

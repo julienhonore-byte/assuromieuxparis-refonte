@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  code: string;
+  href?: string;
+  futureHref: string;
+  id?: string;
+}
+
+const { title, text, code, href = '#contact', futureHref, id } = Astro.props;
+---
+
+<article class="expertise-card card card--interactive" {id}>
+  <div class="expertise-card__head">
+    <span class="expertise-card__code" aria-hidden="true">{code}</span>
+    <span class="expertise-card__line" aria-hidden="true"></span>
+  </div>
+  <h3>{title}</h3>
+  <p>{text}</p>
+  <a href={href} data-future-route={futureHref} aria-label={`Échanger sur ${title}`}>
+    Échanger sur ce besoin <span aria-hidden="true">→</span>
+  </a>
+</article>
+
+<style>
+  .expertise-card {
+    min-height: 19rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .expertise-card__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+  }
+
+  .expertise-card__code {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.08em;
+  }
+
+  .expertise-card__line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, var(--color-gold), transparent);
+  }
+
+  h3 {
+    margin: 0 0 var(--space-4);
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+  }
+
+  a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-top: auto;
+    color: var(--color-brand);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-brand-deep);
+    text-decoration: underline;
+  }
+</style>

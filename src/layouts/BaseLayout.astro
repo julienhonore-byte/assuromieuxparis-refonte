@@ -5,18 +5,29 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  canonical?: string;
+  image?: string;
   noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, noindex = true } = Astro.props;
+const {
+  title,
+  description,
+  canonical = 'https://www.assuromieuxparis.com/',
+  image,
+  noindex = true,
+  structuredData,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <SEOHead {title} {description} {noindex} />
+    <SEOHead {title} {description} {canonical} {image} {noindex} {structuredData} />
   </head>
   <body>
+    <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <slot />
   </body>
 </html>

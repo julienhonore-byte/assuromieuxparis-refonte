@@ -3,35 +3,38 @@ interface Props {
   kicker?: string;
   title: string;
   text?: string;
+  align?: 'left' | 'center';
+  tone?: 'light' | 'dark';
+  id?: string;
 }
 
-const { kicker, title, text } = Astro.props;
+const { kicker, title, text, align = 'left', tone = 'light', id } = Astro.props;
 ---
 
-<header class="section-header">
-  {kicker && <p class="section-header__kicker">{kicker}</p>}
-  <h2>{title}</h2>
+<header class:list={['section-header', `section-header--${align}`, `section-header--${tone}`]}>
+  {kicker && <p class="eyebrow">{kicker}</p>}
+  <h2 {id}>{title}</h2>
   {text && <p class="section-header__text">{text}</p>}
 </header>
 
 <style>
   .section-header {
-    max-width: var(--container-text);
-    margin-bottom: 2.375rem;
+    max-width: var(--container-reading);
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
   }
 
-  .section-header__kicker {
-    margin: 0 0 0.625rem;
-    color: var(--color-gold);
-    font-size: 0.75rem;
-    font-weight: var(--font-weight-heading);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .section-header--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .section-header--center :global(.eyebrow) {
+    justify-content: center;
   }
 
   h2 {
-    margin: 0 0 var(--space-4);
-    color: var(--color-blue-dark);
+    margin: 0;
+    color: var(--color-brand-deep);
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-heading);
     letter-spacing: var(--letter-spacing-heading);
@@ -39,8 +42,26 @@ const { kicker, title, text } = Astro.props;
   }
 
   .section-header__text {
-    margin: 0;
+    max-width: 42rem;
+    margin: var(--space-5) 0 0;
     color: var(--color-text-soft);
-    font-size: 1.125rem;
+    font-size: var(--font-size-body-lg);
+    line-height: 1.7;
+  }
+
+  .section-header--center .section-header__text {
+    margin-inline: auto;
+  }
+
+  .section-header--dark h2 {
+    color: var(--color-surface);
+  }
+
+  .section-header--dark .section-header__text {
+    color: var(--color-text-on-dark-soft);
+  }
+
+  .section-header--dark :global(.eyebrow) {
+    color: var(--color-gold-soft);
   }
 </style>

@@ -1,69 +1,120 @@
 ---
+import type { NavigationItem } from '../data/site';
+import CTA from './CTA.astro';
 import DesktopNavigation from './DesktopNavigation.astro';
 import MobileNavigation from './MobileNavigation.astro';
 import Topbar from './Topbar.astro';
 
-interface Item {
-  href: string;
-  label: string;
-}
-
 interface Props {
-  items?: Item[];
-  currentPath?: string;
+  items: NavigationItem[];
+  phoneDisplay: string;
+  phoneHref: string;
+  email: string;
+  orias: string;
+  ctaHref?: string;
+  ctaLabel?: string;
 }
 
-const { items, currentPath = '/' } = Astro.props;
+const {
+  items,
+  phoneDisplay,
+  phoneHref,
+  email,
+  orias,
+  ctaHref = '#contact',
+  ctaLabel = 'Demander un audit gratuit',
+} = Astro.props;
 ---
 
-<header>
-  <Topbar />
+<header class="site-header-shell">
+  <Topbar {phoneDisplay} {phoneHref} {email} {orias} auditHref={ctaHref} />
   <div class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="/" aria-label="Assuromieux Paris — Accueil">
+    <div class="container-wide site-header__inner">
+      <a class="brand" href="#top" aria-label="Assuromieux Paris — Accueil">
         <img src="/logo/assuromieux-paris.jpeg" width="300" height="83" alt="Assuromieux Paris" />
         <span>Paris</span>
       </a>
-      <DesktopNavigation {items} {currentPath} />
-      <MobileNavigation {items} {currentPath} />
+      <DesktopNavigation {items} />
+      <div class="site-header__actions">
+        <CTA class="site-header__cta" href={ctaHref} label={ctaLabel} showArrow={false} />
+        <MobileNavigation {items} {ctaHref} {ctaLabel} />
+      </div>
     </div>
   </div>
 </header>
 
 <style>
+  .site-header-shell {
+    position: relative;
+    z-index: 50;
+  }
+
   .site-header {
     background: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid var(--color-border);
-    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(185, 202, 219, 0.72);
+    backdrop-filter: blur(18px);
   }
 
   .site-header__inner {
-    min-height: 4.875rem;
-    display: flex;
+    min-height: 5.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-6);
+    gap: clamp(1rem, 2.2vw, 2rem);
   }
 
   .brand {
-    display: flex;
+    min-height: 2.75rem;
+    display: inline-flex;
     align-items: center;
-    gap: 0.875rem;
-    color: var(--color-blue-dark);
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-strong);
+    gap: 0.75rem;
+    color: var(--color-brand-deep);
+    font-size: 1rem;
+    font-weight: var(--font-weight-heading);
     letter-spacing: -0.02em;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .brand img {
-    width: 11.25rem;
+    width: clamp(8.75rem, 13vw, 10.75rem);
     height: auto;
   }
 
-  @media (max-width: 640px) {
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .site-header__actions :global(.site-header__cta) {
+    min-height: 2.875rem;
+    padding-inline: 1.25rem;
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 1180px) {
+    .site-header__actions :global(.site-header__cta) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .site-header__inner {
+      min-height: 4.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .brand {
+      gap: var(--space-2);
+      font-size: 0.875rem;
+    }
+
     .brand img {
-      width: 9.0625rem;
+      width: 8.35rem;
     }
   }
 </style>

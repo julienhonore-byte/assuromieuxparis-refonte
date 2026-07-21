@@ -1,0 +1,48 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const { href = '#contact', label = 'Demander mon audit gratuit' } = Astro.props;
+---
+
+<div class="sticky-mobile-cta">
+  <a href={href}>{label} <span aria-hidden="true">→</span></a>
+</div>
+
+<style>
+  .sticky-mobile-cta {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .sticky-mobile-cta {
+      position: fixed;
+      z-index: 45;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      padding: 0.65rem max(0.875rem, env(safe-area-inset-right)) calc(0.65rem + env(safe-area-inset-bottom)) max(0.875rem, env(safe-area-inset-left));
+      background: rgba(255, 255, 255, 0.94);
+      border-top: 1px solid var(--color-border);
+      backdrop-filter: blur(16px);
+    }
+
+    a {
+      min-height: 3.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      color: var(--color-surface);
+      background: var(--color-brand);
+      border-radius: var(--radius-pill);
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-strong);
+      text-decoration: none;
+      box-shadow: var(--shadow-action);
+    }
+  }
+</style>

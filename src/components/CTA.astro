@@ -2,10 +2,30 @@
 interface Props {
   href: string;
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'gold';
+  size?: 'default' | 'large';
+  external?: boolean;
+  showArrow?: boolean;
+  class?: string;
 }
 
-const { href, label, variant = 'primary' } = Astro.props;
+const {
+  href,
+  label,
+  variant = 'primary',
+  size = 'default',
+  external = false,
+  showArrow = true,
+  class: className,
+} = Astro.props;
 ---
 
-<a class:list={['button', `button--${variant}`]} href={href}>{label}</a>
+<a
+  class:list={['button', `button--${variant}`, size === 'large' && 'button--large', className]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <span>{label}</span>
+  {showArrow && <span aria-hidden="true">→</span>}
+</a>

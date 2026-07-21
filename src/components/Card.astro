@@ -2,13 +2,43 @@
 interface Props {
   title: string;
   text?: string;
+  overline?: string;
+  tone?: 'default' | 'soft' | 'gold';
+  id?: string;
 }
 
-const { title, text } = Astro.props;
+const { title, text, overline, tone = 'default', id } = Astro.props;
 ---
 
-<article class="card">
+<article class:list={['card', `card--${tone}`]} {id}>
+  {overline && <p class="card__overline">{overline}</p>}
   <h3>{title}</h3>
   {text && <p>{text}</p>}
   <slot />
 </article>
+
+<style>
+  .card--soft {
+    background: var(--color-surface-soft);
+  }
+
+  .card--gold {
+    background: var(--color-gold-wash);
+    border-color: rgba(201, 154, 70, 0.3);
+  }
+
+  .card__overline {
+    margin-bottom: var(--space-3) !important;
+    color: var(--color-gold-dark) !important;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  :global(.card ul) {
+    margin: var(--space-5) 0 0;
+    padding-left: 1.2rem;
+    color: var(--color-text-soft);
+  }
+</style>

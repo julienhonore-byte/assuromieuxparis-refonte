@@ -1,0 +1,50 @@
+---
+interface Props {
+  type: string;
+  title: string;
+  summary: string;
+  status?: string;
+}
+
+const { type, title, summary, status = 'À venir' } = Astro.props;
+---
+
+<article class="article-card card">
+  <div class="article-card__meta">
+    <span>{type}</span>
+    <strong>{status}</strong>
+  </div>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+</article>
+
+<style>
+  .article-card {
+    min-height: 18rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: auto;
+    padding-bottom: var(--space-10);
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .article-card__meta strong {
+    padding: 0.35rem 0.65rem;
+    color: var(--color-text-soft);
+    background: var(--color-page);
+    border-radius: var(--radius-pill);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+</style>

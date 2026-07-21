@@ -2,15 +2,43 @@
 interface Props {
   title: string;
   description: string;
+  canonical: string;
+  image?: string;
   noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, noindex = true } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  image,
+  noindex = true,
+  structuredData = [],
+} = Astro.props;
+
+const schemas = Array.isArray(structuredData) ? structuredData : [structuredData];
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 <meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 <meta name="theme-color" content="#12365f" />
+
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Assuromieux Paris" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+{image && <meta property="og:image" content={image} />}
+
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{image && <meta name="twitter:image" content={image} />}
+
+{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

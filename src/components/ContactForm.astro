@@ -41,15 +41,15 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
       <label for="contact-priority">Besoin principal</label>
       <select id="contact-priority" name="contrat_prioritaire">
         <option value="">Je souhaite être conseillé</option>
-        <option>RC professionnelle</option>
-        <option>Multirisque professionnelle</option>
-        <option>Flotte automobile</option>
-        <option>Assurance décennale / BTP</option>
-        <option>Transport / marchandises</option>
-        <option>Santé et prévoyance</option>
-        <option>Protection du dirigeant</option>
-        <option>Cyberassurance</option>
-        <option>Audit des contrats</option>
+        <option data-product-slug="rc-professionnelle">RC professionnelle</option>
+        <option data-product-slug="multirisque">Multirisque professionnelle</option>
+        <option data-product-slug="flotte">Flotte automobile</option>
+        <option data-product-slug="assurance-btp-decennale">Assurance décennale / BTP</option>
+        <option data-product-slug="assurance-transport">Transport / marchandises</option>
+        <option data-product-slug="sante-prevoyance">Santé et prévoyance</option>
+        <option data-product-slug="protection-dirigeant">Protection du dirigeant</option>
+        <option data-product-slug="cyber">Cyberassurance</option>
+        <option data-product-slug="audit-assurances-entreprise">Audit des contrats</option>
         <option>Autre besoin</option>
       </select>
     </div>
@@ -85,13 +85,32 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
 
 <script>
   const forms = document.querySelectorAll<HTMLFormElement>('[data-contact-form]');
+  const selectedProductKey = 'assuromieux:selected-product';
 
   forms.forEach((form) => {
     const submit = form.querySelector<HTMLButtonElement>('[data-form-submit]');
     const status = form.querySelector<HTMLElement>('[data-form-status]');
     const success = form.parentElement?.querySelector<HTMLElement>('[data-form-success]');
     const successHeading = success?.querySelector<HTMLElement>('[data-success-heading]');
+    const priority = form.querySelector<HTMLSelectElement>('#contact-priority');
     if (!submit || !status || !success) return;
+
+    if (priority) {
+      let requestedProduct = new URLSearchParams(window.location.search).get('besoin');
+
+      if (!requestedProduct) {
+        try {
+          requestedProduct = window.sessionStorage.getItem(selectedProductKey);
+        } catch {
+          // Le formulaire reste utilisable lorsque le stockage est indisponible.
+        }
+      }
+
+      const matchingOption = Array.from(priority.options).find(
+        (option) => option.dataset.productSlug === requestedProduct,
+      );
+      if (matchingOption) priority.value = matchingOption.value;
+    }
 
     const setStatus = (message: string, state: 'error' | 'success' | '') => {
       status.textContent = message;
@@ -126,6 +145,11 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
         form.hidden = true;
         success.hidden = false;
         successHeading?.focus();
+        try {
+          window.sessionStorage.removeItem(selectedProductKey);
+        } catch {
+          // Aucun impact sur la confirmation si le stockage est indisponible.
+        }
       } catch {
         setStatus('La demande n’a pas pu être envoyée. Réessayez dans quelques instants ou contactez-nous par téléphone.', 'error');
         submit.disabled = false;

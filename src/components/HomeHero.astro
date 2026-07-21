@@ -1,0 +1,347 @@
+---
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import CTA from './CTA.astro';
+
+const desktopImageUrl = '/images/paris-tour-eiffel-hero.webp';
+const mobileImageUrl = '/images/paris-tour-eiffel-hero-mobile.webp';
+const desktopImagePath = fileURLToPath(new URL('../../public/images/paris-tour-eiffel-hero.webp', import.meta.url));
+const mobileImagePath = fileURLToPath(new URL('../../public/images/paris-tour-eiffel-hero-mobile.webp', import.meta.url));
+const hasDesktopImage = existsSync(desktopImagePath);
+const hasMobileImage = existsSync(mobileImagePath);
+---
+
+<section class:list={['home-hero', { 'home-hero--with-image': hasDesktopImage }]} aria-labelledby="home-title">
+  <div class="home-hero__media" aria-hidden={!hasDesktopImage}>
+    {hasDesktopImage ? (
+      <picture>
+        {hasMobileImage && <source media="(max-width: 640px)" srcset={mobileImageUrl} />}
+        <img
+          src={desktopImageUrl}
+          alt="Vue éditoriale de Paris et de la Tour Eiffel"
+          width="1600"
+          height="1050"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+    ) : (
+      <div class="home-hero__fallback" aria-hidden="true">
+        <span class="home-hero__orbit"></span>
+        <span class="home-hero__tower">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <span class="home-hero__coordinate">48°52′ N<br />2°18′ E</span>
+      </div>
+    )}
+  </div>
+  <div class="home-hero__veil" aria-hidden="true"></div>
+
+  <div class="container-wide home-hero__inner">
+    <div class="home-hero__copy">
+      <p class="eyebrow">Conseil & courtage en assurances d’entreprise</p>
+      <h1 id="home-title">Vos assurances d’entreprise méritent une stratégie, pas un simple renouvellement.</h1>
+      <p class="home-hero__lead">Assuromieux Paris analyse vos contrats, identifie les risques et consulte le marché pour construire une protection cohérente avec votre activité.</p>
+      <div class="home-hero__actions">
+        <CTA href="#contact" label="Demander un audit gratuit" size="large" />
+        <CTA href="#produits" label="Voir nos assurances" variant="secondary" size="large" />
+      </div>
+      <p class="home-hero__proof"><span>Paris 8e</span><span>Accompagnement en France</span><span>Interlocuteur direct</span></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-hero {
+    position: relative;
+    min-height: clamp(39rem, 76vh, 50rem);
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--color-surface);
+    background:
+      radial-gradient(circle at 79% 38%, rgba(201, 154, 70, 0.2), transparent 25%),
+      linear-gradient(122deg, var(--color-brand-ink) 0 51%, var(--color-brand-deep) 51% 100%);
+  }
+
+  .home-hero::after {
+    position: absolute;
+    z-index: 3;
+    right: clamp(1rem, 5vw, 5rem);
+    bottom: 1.4rem;
+    width: clamp(4rem, 8vw, 8rem);
+    height: 1px;
+    content: '';
+    background: rgba(244, 227, 191, 0.72);
+  }
+
+  .home-hero__media,
+  .home-hero__veil {
+    position: absolute;
+    inset: 0;
+  }
+
+  .home-hero__media {
+    z-index: -3;
+  }
+
+  picture,
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: 70% center;
+  }
+
+  .home-hero__veil {
+    z-index: -2;
+    background:
+      linear-gradient(90deg, rgba(7, 28, 51, 0.98) 0%, rgba(7, 28, 51, 0.9) 42%, rgba(7, 28, 51, 0.3) 70%, rgba(7, 28, 51, 0.2) 100%),
+      linear-gradient(180deg, rgba(7, 28, 51, 0.12), rgba(7, 28, 51, 0.55));
+  }
+
+  .home-hero:not(.home-hero--with-image) .home-hero__veil {
+    background: linear-gradient(90deg, rgba(7, 28, 51, 0.22), transparent 62%);
+  }
+
+  .home-hero__inner {
+    width: 100%;
+    padding-block: clamp(4.75rem, 9vw, 7.75rem);
+  }
+
+  .home-hero__copy {
+    position: relative;
+    z-index: 2;
+    max-width: 51rem;
+  }
+
+  .home-hero :global(.eyebrow) {
+    color: var(--color-gold-soft);
+  }
+
+  h1 {
+    max-width: 18ch;
+    margin: 0;
+    color: var(--color-surface);
+    font-size: clamp(2.55rem, 2rem + 2.65vw, 4.3rem);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: var(--letter-spacing-display);
+    line-height: 0.99;
+    text-wrap: balance;
+  }
+
+  .home-hero__lead {
+    max-width: 41rem;
+    margin: var(--space-6) 0 0;
+    color: var(--color-text-on-dark);
+    font-size: var(--font-size-lead);
+    line-height: 1.55;
+  }
+
+  .home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .home-hero__actions :global(.button--secondary) {
+    color: var(--color-surface);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(8px);
+  }
+
+  .home-hero__actions :global(.button--secondary:hover) {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+
+  .home-hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    margin: var(--space-8) 0 0;
+    color: var(--color-text-on-dark-soft);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  .home-hero__proof span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .home-hero__proof span:not(:first-child)::before {
+    width: 0.25rem;
+    height: 0.25rem;
+    content: '';
+    background: var(--color-gold);
+    border-radius: 50%;
+  }
+
+  .home-hero__fallback {
+    position: absolute;
+    inset: 0 0 0 48%;
+    overflow: hidden;
+  }
+
+  .home-hero__fallback::before,
+  .home-hero__fallback::after {
+    position: absolute;
+    content: '';
+  }
+
+  .home-hero__fallback::before {
+    inset: -8% -28% 9% 15%;
+    border: 1px solid rgba(244, 227, 191, 0.22);
+    border-radius: 50%;
+    transform: rotate(-12deg);
+  }
+
+  .home-hero__fallback::after {
+    right: -6%;
+    bottom: -28%;
+    width: 72%;
+    aspect-ratio: 1;
+    background: var(--color-gold-wash);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .home-hero__orbit {
+    position: absolute;
+    top: 13%;
+    left: 18%;
+    width: min(34vw, 29rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(201, 154, 70, 0.36);
+    border-radius: 50%;
+  }
+
+  .home-hero__tower {
+    position: absolute;
+    right: 18%;
+    bottom: -3%;
+    width: min(22vw, 14rem);
+    height: min(67%, 30rem);
+    filter: drop-shadow(0 1.5rem 3rem rgba(0, 0, 0, 0.25));
+  }
+
+  .home-hero__tower::before,
+  .home-hero__tower::after {
+    position: absolute;
+    bottom: 0;
+    width: 0.52rem;
+    height: 100%;
+    content: '';
+    background: linear-gradient(90deg, #8a6222, #f4e3bf 48%, #c99a46);
+    border-radius: var(--radius-pill);
+    transform-origin: bottom;
+  }
+
+  .home-hero__tower::before { left: 22%; transform: rotate(6.5deg); }
+  .home-hero__tower::after { right: 22%; transform: rotate(-6.5deg); }
+
+  .home-hero__tower i {
+    position: absolute;
+    z-index: 2;
+    left: 17%;
+    width: 66%;
+    height: 0.3rem;
+    display: block;
+    background: var(--color-gold-soft);
+    border-radius: var(--radius-pill);
+  }
+
+  .home-hero__tower i:nth-child(1) { bottom: 72%; left: 40%; width: 20%; }
+  .home-hero__tower i:nth-child(2) { bottom: 48%; left: 29%; width: 42%; }
+  .home-hero__tower i:nth-child(3) { bottom: 21%; }
+  .home-hero__tower i:nth-child(4) { bottom: 5%; left: 5%; width: 90%; height: 0.55rem; }
+
+  .home-hero__coordinate {
+    position: absolute;
+    right: 6%;
+    bottom: 13%;
+    color: rgba(244, 227, 191, 0.64);
+    font-size: var(--font-size-xs);
+    font-style: normal;
+    letter-spacing: 0.16em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 980px) {
+    .home-hero {
+      min-height: 43rem;
+    }
+
+    .home-hero__copy {
+      max-width: 42rem;
+    }
+
+    .home-hero__fallback {
+      inset-inline-start: 56%;
+      opacity: 0.62;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .home-hero {
+      min-height: 0;
+      align-items: end;
+    }
+
+    .home-hero__media {
+      opacity: 0.58;
+    }
+
+    img {
+      object-position: 68% center;
+    }
+
+    .home-hero__veil,
+    .home-hero:not(.home-hero--with-image) .home-hero__veil {
+      background: linear-gradient(180deg, rgba(7, 28, 51, 0.38), rgba(7, 28, 51, 0.98) 54%);
+    }
+
+    .home-hero__inner {
+      padding-block: 4.5rem 3.25rem;
+    }
+
+    h1 {
+      max-width: 16ch;
+      font-size: clamp(2.45rem, 11vw, 3.4rem);
+    }
+
+    .home-hero__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .home-hero__actions :global(.button) {
+      width: 100%;
+    }
+
+    .home-hero__proof span:not(:first-child)::before {
+      display: none;
+    }
+
+    .home-hero__proof {
+      gap: var(--space-2) var(--space-4);
+    }
+
+    .home-hero__fallback {
+      inset: 0;
+      opacity: 0.38;
+      transform: translateX(26%);
+    }
+  }
+</style>

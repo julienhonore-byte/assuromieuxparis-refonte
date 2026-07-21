@@ -1,0 +1,147 @@
+<section class="section section--dark home-method" aria-labelledby="method-title">
+  <div class="container-wide">
+    <header class="home-method__header">
+      <div>
+        <p class="eyebrow">Méthode</p>
+        <h2 id="method-title">Comprendre, analyser, consulter, recommander.</h2>
+      </div>
+      <p>L’audit transforme des contrats techniques en décisions lisibles, puis organise leur mise en œuvre et leur suivi.</p>
+    </header>
+
+    <ol class="home-method__timeline">
+      <li><span>01</span><strong>Comprendre</strong><small>L’activité réelle et ses contraintes.</small></li>
+      <li><span>02</span><strong>Analyser</strong><small>Les contrats, garanties et zones de risque.</small></li>
+      <li><span>03</span><strong>Consulter</strong><small>Le marché lorsque la situation le justifie.</small></li>
+      <li><span>04</span><strong>Recommander</strong><small>Des arbitrages expliqués et hiérarchisés.</small></li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .home-method {
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 92% 14%, rgba(201, 154, 70, 0.18), transparent 24rem),
+      var(--color-brand-deep);
+  }
+
+  .home-method__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.55fr);
+    gap: clamp(2rem, 7vw, 7rem);
+    align-items: end;
+  }
+
+  .home-method :global(.eyebrow) {
+    color: var(--color-gold-soft);
+  }
+
+  h2 {
+    max-width: 18ch;
+    margin: 0;
+    color: var(--color-surface);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .home-method__header > p {
+    margin: 0;
+    color: var(--color-text-on-dark-soft);
+  }
+
+  .home-method__timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-method__timeline::before {
+    position: absolute;
+    top: 1.15rem;
+    right: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    background: linear-gradient(90deg, var(--color-gold), rgba(244, 227, 191, 0.22));
+  }
+
+  li {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: var(--space-2);
+    padding-top: 3rem;
+  }
+
+  li::before {
+    position: absolute;
+    top: 0.78rem;
+    left: 0;
+    width: 0.72rem;
+    height: 0.72rem;
+    content: '';
+    background: var(--color-brand-deep);
+    border: 2px solid var(--color-gold-soft);
+    border-radius: 50%;
+  }
+
+  span {
+    color: var(--color-gold-soft);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.1em;
+  }
+
+  strong {
+    color: var(--color-surface);
+    font-size: var(--font-size-h4);
+  }
+
+  small {
+    max-width: 15rem;
+    color: var(--color-text-on-dark-soft);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 760px) {
+    .home-method__header,
+    .home-method__timeline {
+      grid-template-columns: 1fr;
+    }
+
+    .home-method__header {
+      align-items: start;
+    }
+
+    .home-method__timeline {
+      gap: var(--space-6);
+      margin-left: var(--space-2);
+      padding-left: var(--space-8);
+    }
+
+    .home-method__timeline::before {
+      top: 0;
+      right: auto;
+      bottom: 0;
+      left: 0.35rem;
+      width: 1px;
+      height: auto;
+      background: linear-gradient(180deg, var(--color-gold), rgba(244, 227, 191, 0.22));
+    }
+
+    li {
+      padding-top: 0;
+    }
+
+    li::before {
+      top: 0.35rem;
+      left: -2.02rem;
+    }
+  }
+</style>

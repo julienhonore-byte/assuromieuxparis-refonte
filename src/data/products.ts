@@ -11,6 +11,12 @@ export interface InsuranceProduct {
   status: ProductStatus;
 }
 
+export interface ProductIssue {
+  label: string;
+  href: string;
+  productSlug?: string;
+}
+
 export const insuranceProducts: InsuranceProduct[] = [
   {
     name: 'RC professionnelle',
@@ -97,3 +103,16 @@ export const insuranceProducts: InsuranceProduct[] = [
 
 export const transversalProducts = insuranceProducts.filter((product) => product.category === 'transversal');
 export const sectorProducts = insuranceProducts.filter((product) => product.category === 'sector');
+
+const productBySlug = (slug: string) => insuranceProducts.find((product) => product.slug === slug)!;
+
+export const productIssues: ProductIssue[] = [
+  { label: 'Protéger mon activité', href: productBySlug('rc-professionnelle').href, productSlug: 'rc-professionnelle' },
+  { label: 'Protéger mes locaux', href: productBySlug('multirisque').href, productSlug: 'multirisque' },
+  { label: 'Protéger mes véhicules', href: productBySlug('flotte').href, productSlug: 'flotte' },
+  { label: 'Protéger mes marchandises', href: productBySlug('assurance-transport').href, productSlug: 'assurance-transport' },
+  { label: 'Protéger mes équipes', href: productBySlug('sante-prevoyance').href, productSlug: 'sante-prevoyance' },
+  { label: 'Protéger le dirigeant', href: productBySlug('protection-dirigeant').href, productSlug: 'protection-dirigeant' },
+  { label: 'Sécuriser un risque sectoriel', href: '/#expertises-sectorielles' },
+  { label: 'Analyser mes contrats', href: productBySlug('audit-assurances-entreprise').href, productSlug: 'audit-assurances-entreprise' },
+];

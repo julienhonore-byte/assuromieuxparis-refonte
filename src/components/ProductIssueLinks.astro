@@ -1,0 +1,76 @@
+---
+import { productIssues } from '../data/products';
+---
+
+<nav class="issue-links" aria-label="Choisir une assurance selon votre enjeu">
+  <p>Ou partir de votre enjeu</p>
+  <ul>
+    {productIssues.map((issue) => (
+      <li>
+        <a href={issue.href} data-product-slug={issue.productSlug}>
+          <span>{issue.label}</span>
+          <i aria-hidden="true">↗</i>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .issue-links {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.38fr) minmax(0, 1.62fr);
+    gap: var(--space-6);
+    align-items: start;
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+    text-decoration-color: rgba(201, 154, 70, 0.48);
+    text-underline-offset: 0.32em;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+  }
+
+  a:hover {
+    color: var(--color-brand-deep);
+    text-decoration-color: var(--color-gold-dark);
+  }
+
+  i {
+    color: var(--color-gold-dark);
+    font-style: normal;
+  }
+
+  @media (max-width: 760px) {
+    .issue-links {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+  }
+</style>

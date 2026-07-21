@@ -1,13 +1,12 @@
 ---
 import ArticleCard from '../components/ArticleCard.astro';
 import ContactForm from '../components/ContactForm.astro';
-import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
-import Hero from '../components/Hero.astro';
-import ParisHeroVisual from '../components/ParisHeroVisual.astro';
+import HomeHero from '../components/HomeHero.astro';
+import HomeMethodTimeline from '../components/HomeMethodTimeline.astro';
+import ProductIssueLinks from '../components/ProductIssueLinks.astro';
 import ProductSelector from '../components/ProductSelector.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { insuranceProducts } from '../data/products';
 import { organizationSchema, site } from '../data/site';
@@ -23,7 +22,7 @@ const faqItems = [
   },
   {
     question: 'Le cabinet accompagne-t-il d’autres secteurs que le transport ?',
-    answer: 'Oui. Assuromieux Paris accompagne différentes entreprises sur leurs assurances professionnelles. Le transport, la logistique et le BTP sont deux expertises sectorielles parmi une approche plus large.',
+    answer: 'Oui. Assuromieux Paris accompagne différentes entreprises sur leurs assurances professionnelles. Le transport et le BTP sont deux expertises sectorielles au sein d’une approche plus large.',
   },
   {
     question: 'Intervenez-vous en dehors de Paris ?',
@@ -39,7 +38,7 @@ const structuredData = [
     '@id': `${site.canonicalUrl}#insurance-agency`,
     name: site.name,
     url: site.canonicalUrl,
-    image: `${site.canonicalUrl}og-homepage-03.jpg`,
+    image: `${site.canonicalUrl}og-homepage-04.jpg`,
     telephone: '+33695699674',
     email: site.email,
     address: organizationSchema.address,
@@ -77,98 +76,102 @@ const structuredData = [
   title="Courtier en assurance entreprise à Paris | Assuromieux Paris"
   description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles."
   canonical={site.canonicalUrl}
+  image={`${site.canonicalUrl}og-homepage-04.jpg`}
   currentPath="/"
   ctaHref="#contact"
   {structuredData}
 >
   <main id="contenu-principal">
-    <Hero
-      eyebrow="Conseil & courtage en assurances d’entreprise"
-      title="Vos assurances d’entreprise méritent une stratégie, pas un simple renouvellement."
-      lead="Assuromieux Paris analyse vos contrats, identifie les risques et consulte le marché pour construire une protection cohérente avec votre activité."
-    >
-      <div class="hero-actions">
-        <CTA href="#contact" label="Demander un audit gratuit" size="large" />
-        <CTA href="#produits" label="Voir nos assurances" variant="secondary" size="large" />
-      </div>
-      <ParisHeroVisual slot="visual" />
-    </Hero>
+    <HomeHero />
 
-    <section id="produits" class="section products" aria-labelledby="products-title">
+    <section id="produits" class="section section--surface products" aria-labelledby="products-title">
       <div class="container-wide">
-        <SectionHeader
-          kicker="Accès direct"
-          title="Quelle assurance recherchez-vous ?"
-          text="Choisissez votre besoin pour accéder directement à la page ou au point de contact pertinent."
-          id="products-title"
-        />
-        <ProductSelector products={insuranceProducts} />
+        <div class="products__heading">
+          <SectionHeader
+            kicker="Accès direct"
+            title="Quelle assurance recherchez-vous ?"
+            text="Accédez immédiatement à la protection qui correspond à votre besoin."
+            id="products-title"
+          />
+          <p>Neuf points d’entrée, une même exigence : relier chaque contrat à l’activité réelle de l’entreprise.</p>
+        </div>
+        <ProductSelector products={insuranceProducts} variant="editorial" />
+        <ProductIssueLinks />
       </div>
     </section>
 
-    <section class="section section--surface promise" aria-labelledby="promise-title">
-      <div class="container-wide promise__grid">
-        <div class="promise__intro">
-          <p class="eyebrow">Une vision globale de vos assurances</p>
-          <h2 id="promise-title">Relier vos contrats à votre activité réelle.</h2>
-          <p>Nous identifions les incohérences, les risques insuffisamment couverts et les conditions qui peuvent être renégociées.</p>
+    <section class="section section--compact manifesto" aria-labelledby="manifesto-title">
+      <div class="container-wide manifesto__grid">
+        <p class="eyebrow">Notre parti pris</p>
+        <div>
+          <h2 id="manifesto-title">Un contrat n’est pertinent que s’il répond à la réalité de l’entreprise.</h2>
+          <p>Notre rôle ne consiste pas simplement à distribuer des contrats. Nous étudions l’activité, les risques, les garanties et les conditions du marché pour permettre au dirigeant de prendre une décision cohérente.</p>
         </div>
-        <ol class="promise__steps">
-          <li><span>01</span><strong>Analyser</strong><small>Activité, contrats et risques.</small></li>
-          <li><span>02</span><strong>Comparer</strong><small>Garanties, conditions et marché.</small></li>
-          <li><span>03</span><strong>Accompagner</strong><small>Décisions, mise en œuvre et suivi.</small></li>
+      </div>
+    </section>
+
+    <section class="section section--surface program" aria-labelledby="program-title">
+      <div class="container-wide program__layout">
+        <div class="program__intro">
+          <p class="eyebrow">Vision globale</p>
+          <h2 id="program-title">Lire vos assurances comme un programme.</h2>
+          <p>Une décision solide ne part pas d’un produit isolé. Elle met en relation quatre dimensions.</p>
+        </div>
+        <ol class="program__flow">
+          <li><span>01</span><h3>L’activité réelle</h3><p>Métiers, organisation, flux et contraintes.</p></li>
+          <li><span>02</span><h3>Les contrats existants</h3><p>Garanties, exclusions, franchises et déclarations.</p></li>
+          <li><span>03</span><h3>Les risques</h3><p>Expositions prioritaires et conséquences possibles.</p></li>
+          <li><span>04</span><h3>Les solutions du marché</h3><p>Maintien, ajustement ou mise en concurrence.</p></li>
         </ol>
       </div>
     </section>
 
-    <section id="secteurs" class="section offer-overview" aria-labelledby="offer-title">
-      <div class="container-wide">
-        <SectionHeader
-          kicker="Produits & expertises"
-          title="Une base commune, complétée par deux lectures sectorielles."
-          id="offer-title"
-        />
-        <div class="offer-overview__grid">
+    <HomeMethodTimeline />
+
+    <section id="secteurs" class="section section--compact sectors" aria-labelledby="sectors-title">
+      <div id="expertises-sectorielles" class="container-wide sectors__layout">
+        <header class="sectors__intro">
+          <p class="eyebrow">Expertises sectorielles</p>
+          <h2 id="sectors-title">Deux lectures métier au sein d’une offre plus large.</h2>
+          <p>Le transport et le BTP demandent une attention particulière aux usages, responsabilités et obligations. Ils ne résument pas le champ d’intervention du cabinet.</p>
+        </header>
+        <div class="sectors__list">
           <article>
-            <span class="offer-overview__label">Assurances transversales</span>
-            <h3>Les protections essentielles de l’entreprise</h3>
-            <p>RC professionnelle, multirisque professionnelle, flotte automobile, santé et prévoyance, protection du dirigeant et cyberassurance.</p>
-            <a class="link-arrow" href="/assurances-entreprises/">Voir toutes les assurances <span aria-hidden="true">→</span></a>
+            <span>01</span>
+            <div><h3>Transport & logistique</h3><p>Flux, marchandises, véhicules et responsabilités d’exploitation.</p></div>
+            <a href="/assurance-transport/" aria-label="Découvrir l’expertise Transport et logistique">Découvrir <i aria-hidden="true">→</i></a>
           </article>
-          <article class="offer-overview__sector">
-            <span class="offer-overview__label">Expertises sectorielles</span>
-            <h3>Transport, logistique, BTP et décennale</h3>
-            <p>Deux secteurs où l’exploitation, les responsabilités et les obligations nécessitent une lecture métier plus précise.</p>
-            <div class="offer-overview__links">
-              <a href="/assurance-transport/">Transport & logistique <span aria-hidden="true">→</span></a>
-              <a href="/assurance-btp-decennale/">BTP & décennale <span aria-hidden="true">→</span></a>
-            </div>
+          <article>
+            <span>02</span>
+            <div><h3>BTP & décennale</h3><p>Activités déclarées, attestations et risques de chantier.</p></div>
+            <a href="/assurance-btp-decennale/" aria-label="Découvrir l’expertise BTP et décennale">Découvrir <i aria-hidden="true">→</i></a>
           </article>
         </div>
       </div>
     </section>
 
-    <SolutionMethod
-      title="Comprendre, analyser, consulter, recommander."
-      text="L’audit assurance entreprise transforme des contrats techniques en décisions compréhensibles. Le suivi est ensuite adapté aux échéances et aux évolutions de l’activité."
-    />
-
-    <section id="cabinet" class="section cabinet-home" aria-labelledby="cabinet-title">
+    <section id="cabinet" class="section section--surface cabinet-home" aria-labelledby="cabinet-title">
       <div class="container-wide cabinet-home__grid">
         <div class="cabinet-home__place" aria-hidden="true">
-          <span>PARIS</span><strong>08</strong><small>Intervention nationale</small>
+          <span class="cabinet-home__axis cabinet-home__axis--horizontal"></span>
+          <span class="cabinet-home__axis cabinet-home__axis--vertical"></span>
+          <p>PARIS <strong>08</strong></p>
+          <small>48°52′ N · 2°18′ E</small>
         </div>
         <div class="cabinet-home__copy">
           <p class="eyebrow">Assuromieux Paris</p>
           <h2 id="cabinet-title">Un cabinet parisien, un accompagnement national.</h2>
-          <p>Basé dans le 8e arrondissement, Assuromieux Paris accompagne les entreprises parisiennes, franciliennes et nationales dans l’analyse et l’optimisation de leurs assurances.</p>
-          <ul><li>Interlocuteur direct</li><li>Approche accessible</li><li>Accompagnement personnalisé</li></ul>
+          <p>Basé dans le 8e arrondissement, Assuromieux Paris accompagne les entreprises à Paris, en Île-de-France et partout en France avec un interlocuteur direct et une analyse personnalisée.</p>
+          <div class="cabinet-home__details">
+            <a href={site.phoneHref}><span>Téléphone</span>{site.phoneDisplay}</a>
+            <a href={`mailto:${site.email}`}><span>Email</span>{site.email}</a>
+          </div>
           <a class="link-arrow" href="/cabinet/">Découvrir le cabinet <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section id="ressources" class="section section--surface resources" aria-labelledby="resources-title">
+    <section id="ressources" class="section section--compact resources" aria-labelledby="resources-title">
       <div class="container-wide">
         <SectionHeader kicker="Ressources" title="Trois repères pour mieux décider." id="resources-title" />
         <div class="article-grid">
@@ -179,7 +182,7 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="section faq-section" aria-labelledby="faq-title">
+    <section class="section section--compact section--surface faq-section" aria-labelledby="faq-title">
       <div class="container faq-layout">
         <SectionHeader kicker="Questions fréquentes" title="L’essentiel avant un premier échange." id="faq-title" />
         <FAQ items={faqItems} />
@@ -209,66 +212,468 @@ const structuredData = [
 </SiteLayout>
 
 <style>
-  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-  .products { background: var(--color-surface); }
+  .products {
+    padding-block: var(--section-space-compact);
+  }
 
-  .promise__grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(2.5rem,7vw,7rem); align-items: center; }
-  .promise__intro h2 { max-width: 13ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
-  .promise__intro p:not(.eyebrow) { max-width: 40rem; color: var(--color-text-soft); }
-  .promise__steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-panel); overflow: hidden; list-style: none; }
-  .promise__steps li { min-height: 10rem; display: grid; align-content: start; gap: var(--space-2); padding: var(--space-6); background: white; }
-  .promise__steps span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
-  .promise__steps strong { color: var(--color-brand-deep); font-size: var(--font-size-h4); }
-  .promise__steps small { color: var(--color-text-soft); font-size: var(--font-size-sm); line-height: 1.45; }
+  .products__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.42fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+  }
 
-  .offer-overview__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-6); }
-  .offer-overview article { min-height: 22rem; display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.75rem,4vw,3.25rem); background: var(--color-page-soft); border: 1px solid var(--color-border); border-radius: var(--radius-panel); }
-  .offer-overview__sector { color: var(--color-text-on-dark); background: var(--color-brand-deep) !important; border-color: var(--color-brand-deep) !important; }
-  .offer-overview__label { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .1em; text-transform: uppercase; }
-  .offer-overview__sector .offer-overview__label { color: var(--color-gold-soft); }
-  .offer-overview h3 { max-width: 18ch; margin: var(--space-5) 0 var(--space-4); color: var(--color-brand-ink); font-size: var(--font-size-h3); line-height: 1.15; }
-  .offer-overview__sector h3 { color: white; }
-  .offer-overview p { max-width: 38rem; margin: 0 0 auto; color: var(--color-text-soft); }
-  .offer-overview__sector p { color: var(--color-text-on-dark-soft); }
-  .offer-overview .link-arrow { margin-top: var(--space-8); }
-  .offer-overview__links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
-  .offer-overview__links a { min-height: 2.75rem; display: inline-flex; align-items: center; gap: var(--space-2); padding: .5rem .85rem; color: white; border: 1px solid rgba(255,255,255,.24); border-radius: var(--radius-pill); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); text-decoration: none; }
+  .products__heading :global(.section-header) {
+    margin-bottom: var(--space-8);
+  }
 
-  .cabinet-home { background: radial-gradient(circle at 16% 30%, rgba(201,154,70,.13), transparent 23%), var(--color-surface); }
-  .cabinet-home__grid { display: grid; grid-template-columns: minmax(17rem,.55fr) minmax(0,1.15fr); gap: clamp(2.5rem,8vw,8rem); align-items: center; }
-  .cabinet-home__place { position: relative; min-height: 20rem; display: grid; align-content: center; justify-items: center; overflow: hidden; color: white; background: var(--color-brand-ink); border-radius: 50% 50% var(--radius-panel) var(--radius-panel); box-shadow: var(--shadow-panel); }
-  .cabinet-home__place::before { position: absolute; inset: 13%; content: ''; border: 1px solid rgba(201,154,70,.45); border-radius: 50%; }
-  .cabinet-home__place span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .28em; }
-  .cabinet-home__place strong { font-size: 5rem; line-height: .95; }
-  .cabinet-home__place small { color: var(--color-text-on-dark-soft); }
-  .cabinet-home__copy { max-width: 46rem; }
-  .cabinet-home__copy h2 { max-width: 15ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
-  .cabinet-home__copy p:not(.eyebrow) { color: var(--color-text-soft); }
-  .cabinet-home__copy ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-6) 0; padding: 0; list-style: none; }
-  .cabinet-home__copy li { padding: .5rem .8rem; color: var(--color-brand-deep); background: var(--color-page); border-radius: var(--radius-pill); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+  .products__heading > p {
+    margin: 0 0 var(--space-8);
+    padding-left: var(--space-5);
+    color: var(--color-text-soft);
+    border-left: 1px solid var(--color-gold);
+    font-size: var(--font-size-sm);
+  }
 
-  .article-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-5); }
-  .faq-layout { max-width: 58rem; }
+  .manifesto {
+    background:
+      linear-gradient(90deg, rgba(201, 154, 70, 0.1), transparent 38%),
+      var(--color-page);
+  }
 
-  .contact { color: var(--color-text-on-dark); background: linear-gradient(135deg,var(--color-brand-ink),var(--color-brand-deep)); }
-  .contact__grid { display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(2.5rem,7vw,7rem); align-items: start; }
-  .contact__intro { position: sticky; top: var(--space-8); }
-  .contact__details { display: grid; gap: var(--space-4); margin-top: var(--space-8); }
-  .contact__details p { display: grid; gap: .2rem; margin: 0; }
-  .contact__details span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .08em; text-transform: uppercase; }
-  .contact__details a, .contact__details strong { min-height: 2.75rem; display: inline-flex; align-items: center; width: fit-content; color: white; font-size: var(--font-size-body-lg); text-decoration: none; }
+  .manifesto__grid {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.34fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .manifesto__grid h2 {
+    max-width: 23ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: clamp(1.8rem, 1.45rem + 1.55vw, 2.8rem);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: 1.12;
+  }
+
+  .manifesto__grid div > p {
+    max-width: 48rem;
+    margin: var(--space-5) 0 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-body-lg);
+  }
+
+  .program__layout {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.52fr) minmax(0, 1.48fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .program__intro {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .program__intro h2 {
+    max-width: 13ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .program__intro > p:not(.eyebrow) {
+    margin: var(--space-5) 0 0;
+    color: var(--color-text-soft);
+  }
+
+  .program__flow {
+    position: relative;
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .program__flow::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2.2rem;
+    width: 1px;
+    content: '';
+    background: linear-gradient(var(--color-gold), var(--color-border));
+  }
+
+  .program__flow li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) minmax(12rem, 0.72fr);
+    gap: var(--space-5);
+    align-items: baseline;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .program__flow li:first-child {
+    padding-top: 0;
+  }
+
+  .program__flow span {
+    position: relative;
+    z-index: 1;
+    width: 2.15rem;
+    height: 2.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold-dark);
+    background: var(--color-surface);
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .program__flow h3 {
+    margin: 0;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-h4);
+  }
+
+  .program__flow p {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .sectors {
+    background: var(--color-gold-wash);
+  }
+
+  .sectors__layout {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.62fr) minmax(0, 1.38fr);
+    gap: clamp(2.5rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .sectors__intro h2 {
+    max-width: 14ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .sectors__intro > p:not(.eyebrow) {
+    max-width: 34rem;
+    margin: var(--space-5) 0 0;
+    color: var(--color-text-soft);
+  }
+
+  .sectors__list {
+    border-top: 1px solid rgba(138, 98, 34, 0.34);
+  }
+
+  .sectors__list article {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: var(--space-5);
+    align-items: center;
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid rgba(138, 98, 34, 0.34);
+  }
+
+  .sectors__list article > span {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .sectors__list h3 {
+    margin: 0;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-h3);
+  }
+
+  .sectors__list p {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-soft);
+  }
+
+  .sectors__list a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+    text-decoration: none;
+  }
+
+  .sectors__list i {
+    color: var(--color-gold-dark);
+    font-style: normal;
+  }
+
+  .cabinet-home {
+    background:
+      radial-gradient(circle at 18% 36%, rgba(201, 154, 70, 0.1), transparent 25rem),
+      var(--color-surface);
+  }
+
+  .cabinet-home__grid {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: center;
+  }
+
+  .cabinet-home__place {
+    position: relative;
+    min-height: 24rem;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    overflow: hidden;
+    color: var(--color-surface);
+    background: var(--color-brand-ink);
+    clip-path: polygon(0 8%, 88% 0, 100% 91%, 13% 100%);
+  }
+
+  .cabinet-home__place::before {
+    position: absolute;
+    width: 15rem;
+    aspect-ratio: 1;
+    content: '';
+    border: 1px solid rgba(201, 154, 70, 0.46);
+    border-radius: 50%;
+  }
+
+  .cabinet-home__place p {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    margin: 0;
+    color: var(--color-gold-soft);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.22em;
+  }
+
+  .cabinet-home__place strong {
+    color: var(--color-surface);
+    font-size: clamp(4.5rem, 9vw, 7rem);
+    letter-spacing: -0.08em;
+    line-height: 0.92;
+  }
+
+  .cabinet-home__place small {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--space-4);
+    color: var(--color-text-on-dark-soft);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+  }
+
+  .cabinet-home__axis {
+    position: absolute;
+    background: rgba(244, 227, 191, 0.18);
+  }
+
+  .cabinet-home__axis--horizontal {
+    right: 8%;
+    left: 8%;
+    height: 1px;
+  }
+
+  .cabinet-home__axis--vertical {
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+  }
+
+  .cabinet-home__copy {
+    max-width: 48rem;
+  }
+
+  .cabinet-home__copy h2 {
+    max-width: 15ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h2);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  .cabinet-home__copy > p:not(.eyebrow) {
+    margin: var(--space-5) 0 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-body-lg);
+  }
+
+  .cabinet-home__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-8);
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .cabinet-home__details a {
+    min-height: 2.75rem;
+    display: grid;
+    align-content: center;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+    text-decoration: none;
+  }
+
+  .cabinet-home__details span {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .faq-layout {
+    max-width: 58rem;
+  }
+
+  .contact {
+    color: var(--color-text-on-dark);
+    background: linear-gradient(135deg, var(--color-brand-ink), var(--color-brand-deep));
+  }
+
+  .contact__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: start;
+  }
+
+  .contact__intro {
+    position: sticky;
+    top: var(--space-8);
+  }
+
+  .contact__details {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .contact__details p {
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+  }
+
+  .contact__details span {
+    color: var(--color-gold-soft);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact__details a,
+  .contact__details strong {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    color: var(--color-surface);
+    font-size: var(--font-size-body-lg);
+    text-decoration: none;
+  }
 
   @media (max-width: 980px) {
-    .promise__grid, .cabinet-home__grid, .contact__grid { grid-template-columns: 1fr; }
-    .contact__intro { position: static; }
+    .products__heading,
+    .program__layout,
+    .sectors__layout,
+    .cabinet-home__grid,
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products__heading > p {
+      display: none;
+    }
+
+    .program__intro,
+    .contact__intro {
+      position: static;
+    }
+
+    .program__intro h2,
+    .sectors__intro h2,
+    .cabinet-home__copy h2 {
+      max-width: 20ch;
+    }
+
+    .cabinet-home__place {
+      min-height: 20rem;
+    }
   }
+
   @media (max-width: 760px) {
-    .promise__steps, .offer-overview__grid, .article-grid { grid-template-columns: 1fr; }
-    .promise__steps li, .offer-overview article { min-height: 0; }
-    .cabinet-home__place { min-height: 17rem; }
+    .manifesto__grid,
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .manifesto__grid {
+      gap: var(--space-3);
+    }
+
+    .program__flow li {
+      grid-template-columns: 3.5rem minmax(0, 1fr);
+    }
+
+    .program__flow p {
+      grid-column: 2;
+    }
+
+    .program__flow::before {
+      left: 1.05rem;
+    }
+
+    .sectors__list article {
+      grid-template-columns: 1.5rem minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: start;
+    }
+
+    .sectors__list a {
+      grid-column: 2;
+    }
+
+    .cabinet-home__place {
+      min-height: 17rem;
+    }
   }
-  @media (max-width: 540px) {
-    .hero-actions { flex-direction: column; }
-    .hero-actions :global(.button) { width: 100%; }
+
+  @media (max-width: 480px) {
+    .cabinet-home__details {
+      display: grid;
+      gap: var(--space-2);
+    }
   }
 </style>

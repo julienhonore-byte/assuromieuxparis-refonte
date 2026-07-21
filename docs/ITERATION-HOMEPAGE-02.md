@@ -83,7 +83,7 @@ La proposition 1 est retenue. Elle est la plus cohérente avec le design éditor
 ### Cabinet et humanisation
 
 - ajout d'une section « Le cabinet » ;
-- intégration d'un emplacement CSS pour le futur portrait de Jules Honoré ;
+- intégration initiale d'un emplacement CSS pour le futur portrait de Jules Honoré, supprimé depuis par la décision validée dans l'itération Homepage 03 ;
 - présentation volontairement factuelle et provisoire ;
 - fusion de l'ancrage parisien et de l'intervention nationale dans cette section ;
 - création de la page `/cabinet/` pour développer le rôle du cabinet.

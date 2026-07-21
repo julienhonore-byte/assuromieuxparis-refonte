@@ -1,19 +1,26 @@
 ---
 import CTA from '../components/CTA.astro';
-import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
 const path = '/assurance-transport/';
 const description = 'Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.';
+const faqItems = [
+  { question: 'Quels métiers sont concernés ?', answer: 'Le transport routier de marchandises, la commission de transport, la logistique, l’exploitation d’entrepôts, le déménagement, le convoyage et les entreprises disposant d’une flotte significative peuvent être concernés.' },
+  { question: 'La flotte suffit-elle à couvrir une activité de transport ?', answer: 'Non. Les véhicules ne traitent pas à eux seuls les responsabilités du transporteur, les marchandises confiées, le stockage, la sous-traitance ou l’interruption d’activité.' },
+  { question: 'Quelles informations préparer avant une consultation ?', answer: 'La composition du parc, les flux, les marchandises, les valeurs, les zones, la sous-traitance, les donneurs d’ordre et la sinistralité permettent de présenter le risque avec plus de précision.' },
+];
 const structuredData = [
   ...baseSchemas,
   breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurance transport', path }]),
   serviceSchema('Conseil en assurance transport et logistique', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
 ];
 ---
 
@@ -21,66 +28,69 @@ const structuredData = [
   <main id="contenu-principal">
     <PageHero
       eyebrow="Expertise sectorielle"
-      title="L’assurance transport commence par une lecture précise de l’exploitation."
-      lead="Véhicules, marchandises, responsabilités, stockage et sous-traitance composent une même chaîne de risque. Nous l’analysons sans réduire le sujet à la seule flotte."
+      title="Assurer l’ensemble de la chaîne transport et logistique."
+      lead="Nous rapprochons véhicules, marchandises, responsabilités, stockage et sous-traitance pour construire une lecture cohérente de l’exploitation."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance transport' }]}
     >
-      <CTA href="#audit-sectoriel" label="Demander un audit sectoriel" size="large" />
-      <CTA href="#risques" label="Voir les risques analysés" variant="secondary" size="large" />
-      <MediaPlaceholder slot="visual" kind="sector" label="Transport & logistique" note="Photographie métier sobre à produire" alt="Emplacement prévu pour un visuel original montrant une exploitation de transport ou de logistique" />
+      <CTA href="/#contact" label="Demander un audit transport" size="large" />
+      <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
     </PageHero>
 
-    <section id="risques" class="section" aria-labelledby="chaine-title">
+    <section class="section" aria-labelledby="public-title">
       <div class="container-wide content-grid">
         <div class="content-copy">
-          <p class="eyebrow">Une chaîne de responsabilités</p>
-          <h2 id="chaine-title">Le risque ne s’arrête ni au véhicule ni à la marchandise.</h2>
+          <p class="eyebrow">À qui s’adresse cette expertise ?</p>
+          <h2 id="public-title">Aux entreprises qui déplacent, stockent ou confient des marchandises.</h2>
         </div>
         <div class="content-copy">
-          <p>La responsabilité du transporteur dépend des opérations réalisées, des contrats, des marchandises confiées et des intervenants. La flotte, l’exploitation, le stockage et la sous-traitance doivent être rapprochés.</p>
-          <p>Cette lecture permet de préparer un dossier de risque plus cohérent et d’éviter que plusieurs contrats répondent imparfaitement à une même situation.</p>
+          <p>L’approche concerne notamment les transporteurs routiers, logisticiens, commissionnaires, exploitants d’entrepôts, déménageurs et convoyeurs.</p>
+          <p>Elle s’adapte aussi aux entreprises dont la flotte ou les flux sont devenus un enjeu majeur, sans faire du transport le seul positionnement du cabinet.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section--surface" aria-labelledby="piliers-title">
+    <section id="risques" class="section section--surface" aria-labelledby="risks-title">
       <div class="container-wide">
-        <SectionHeader kicker="Périmètre sectoriel" title="Les dimensions étudiées selon votre activité." id="piliers-title" />
-        <div class="feature-grid">
+        <SectionHeader kicker="Risques couverts" title="Quatre ensembles à relier." id="risks-title" />
+        <div class="feature-grid feature-grid--2">
           {[
-            ['responsabilites', 'Responsabilités du transporteur', 'Cadre des prestations, limites contractuelles et engagements envers les donneurs d’ordre.'],
-            ['flotte', 'Flotte et véhicules', 'Poids lourds, VUL, usages, conducteurs, franchises et sinistralité.'],
-            ['tpm', 'TPM et marchandises', 'Valeurs confiées, flux, limites, stockage temporaire et conditions de transport.'],
-            ['logistique', 'Logistique et entrepôts', 'Exploitation des sites, biens stockés, matériels et interruption d’activité.'],
-            ['convoyage', 'Convoyage et déménagement', 'Opérations particulières, véhicules confiés et responsabilités spécifiques.'],
-            ['sous-traitance', 'Sous-traitance', 'Répartition des missions, recours, attestations et dépendance aux partenaires.'],
-            ['donneurs-ordre', 'Donneurs d’ordre', 'Exigences d’assurance, plafonds et obligations contractuelles à rapprocher des polices.'],
-            ['sinistralite', 'Sinistralité', 'Lecture des événements, fréquences, coûts et mesures de prévention communiquées.'],
-            ['audit-sectoriel', 'Audit sectoriel', 'Synthèse des contrats, des risques et des priorités avant une consultation éventuelle.'],
-          ].map(([id, title, text], index) => <article class="feature-item" {id}><span class="feature-item__index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}
+            ['Responsabilités', 'Prestations, engagements contractuels, donneurs d’ordre et recours.'],
+            ['Flotte et conducteurs', 'Parc, usages, véhicules, franchises et sinistralité.'],
+            ['Marchandises et flux', 'TPM, valeurs confiées, zones, ruptures de charge et stockage temporaire.'],
+            ['Sites et continuité', 'Entrepôts, matériels, sous-traitance et interruption d’activité.'],
+          ].map(([title, text]) => <article class="feature-item"><h3>{title}</h3><p>{text}</p></article>)}
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="metiers-title">
+    <section class="section" aria-labelledby="checks-title">
       <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
-          <h2 id="metiers-title">Métiers concernés</h2>
+          <h2 id="checks-title">Points à vérifier</h2>
           <ul>
-            <li>transport routier de marchandises ;</li>
-            <li>commission de transport ;</li>
-            <li>logistique et exploitation d’entrepôts ;</li>
-            <li>convoyage et transport de véhicules ;</li>
-            <li>déménagement ;</li>
-            <li>entreprises disposant d’une flotte significative.</li>
+            <li>nature des prestations et responsabilités ;</li>
+            <li>parc, conducteurs et usages réels ;</li>
+            <li>marchandises, valeurs et zones desservies ;</li>
+            <li>stockage, partenaires et sous-traitance ;</li>
+            <li>exigences des donneurs d’ordre ;</li>
+            <li>fréquence et coût des sinistres.</li>
           </ul>
         </div>
         <div class="content-copy">
           <p class="eyebrow">Présenter le risque</p>
-          <h2>Une consultation utile repose sur des informations structurées.</h2>
-          <p>Composition du parc, typologie des flux, marchandises, stockage, sous-traitance, donneurs d’ordre et historique des événements donnent du sens aux demandes adressées au marché.</p>
-          <p class="notice">Les futures pages spécialisées consacrées à la flotte, aux marchandises transportées et à la logistique seront reliées ici après leur publication. Aucun lien inactif n’est affiché à ce stade.</p>
+          <h2>Une consultation utile repose sur des données structurées.</h2>
+          <p>Le marché doit comprendre l’exploitation, pas seulement recevoir une liste de véhicules. Les flux, les marchandises, les responsabilités et la prévention donnent du sens au dossier.</p>
+          <p>Cette préparation aide à comparer les garanties et les conditions sur une base plus cohérente.</p>
         </div>
+      </div>
+    </section>
+
+    <SolutionMethod title="Une méthode commune, adaptée au transport." text="L’analyse sectorielle conserve les quatre temps Assuromieux et accorde une attention particulière aux flux, aux responsabilités et à la sinistralité." />
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <SectionHeader kicker="Questions fréquentes" title="Avant d’analyser l’exploitation." id="faq-title" />
+        <FAQ items={faqItems} />
       </div>
     </section>
 
@@ -92,3 +102,5 @@ const structuredData = [
     <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." />
   </main>
 </SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

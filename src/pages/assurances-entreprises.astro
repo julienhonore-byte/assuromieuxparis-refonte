@@ -1,97 +1,89 @@
 ---
 import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProductSelector from '../components/ProductSelector.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
+import { transversalProducts } from '../data/products';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
 const path = '/assurances-entreprises/';
-const description = 'Assurances entreprises à Paris : analyse globale de la RC, multirisque, flotte, cyber, santé, prévoyance et protection du dirigeant.';
+const description = 'Assurances entreprises à Paris : analyse globale de la RC professionnelle, multirisque, flotte, cyber, santé, prévoyance et protection du dirigeant.';
+const faqItems = [
+  { question: 'Quelles assurances une entreprise doit-elle étudier ?', answer: 'Le périmètre dépend de l’activité, des actifs, des salariés et des engagements pris. RC professionnelle, multirisque, flotte, santé, prévoyance, protection du dirigeant et cyberassurance sont des points fréquents, mais ils ne sont pas systématiquement nécessaires dans les mêmes conditions.' },
+  { question: 'Pourquoi analyser plusieurs contrats ensemble ?', answer: 'Un même événement peut concerner plusieurs garanties. Une lecture globale aide à repérer les écarts de déclaration, les doublons apparents, les franchises qui se cumulent et les zones insuffisamment traitées.' },
+  { question: 'Le prix est-il le premier critère de comparaison ?', answer: 'Le coût compte, mais il doit être rapproché des garanties, exclusions, plafonds, franchises et conditions de gestion. Une prime plus basse n’est utile que si la protection reste cohérente.' },
+];
 const structuredData = [
   ...baseSchemas,
   breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path }]),
   serviceSchema('Conseil en assurances d’entreprise', description, path),
-];
-
-const covers = [
-  ['rc-professionnelle', 'RC professionnelle', 'Responsabilités liées aux prestations, aux produits et à l’exploitation.'],
-  ['multirisque', 'Multirisque professionnelle', 'Locaux, matériels, événements garantis et continuité de l’activité.'],
-  ['flotte', 'Flotte automobile', 'Parc, usages, conducteurs, franchises et sinistralité.'],
-  ['cyber', 'Cyberassurance', 'Prévention, assistance et transfert du risque numérique.'],
-  ['sante-prevoyance', 'Santé et prévoyance', 'Protection collective et obligations de l’employeur.'],
-  ['protection-dirigeant', 'Protection du dirigeant', 'Continuité, prévoyance et exposition personnelle du décideur.'],
-  ['pertes-exploitation', 'Pertes d’exploitation', 'Capacité à absorber une interruption couverte de l’activité.'],
-  ['protection-juridique', 'Protection juridique', 'Information, accompagnement et défense selon les garanties prévues.'],
-  ['risques-specifiques', 'Risques spécifiques', 'Garanties adaptées aux activités, actifs et engagements particuliers.'],
-  ['audit', 'Audit du programme', 'Vision consolidée des contrats, échéances et priorités.'],
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
 ];
 ---
 
 <SiteLayout title="Assurances entreprises à Paris | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
   <main id="contenu-principal">
     <PageHero
-      eyebrow="Une vision globale des contrats"
+      eyebrow="Assurances professionnelles"
       title="Piloter les assurances de l’entreprise comme un seul programme."
-      lead="Responsabilités, actifs, personnes et continuité d’activité sont liés. Nous étudions les contrats ensemble pour éviter qu’une décision prise police par police fragilise l’ensemble."
+      lead="Nous relions responsabilités, actifs, équipes et continuité afin de rendre les protections et les arbitrages plus lisibles."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurances entreprises' }]}
     >
-      <CTA href="/audit-assurances-entreprise/" label="Découvrir l’audit" size="large" />
-      <CTA href="#protections" label="Explorer les protections" variant="secondary" size="large" />
+      <CTA href="#protections" label="Voir les assurances" size="large" />
+      <CTA href="/audit-assurances-entreprise/" label="Découvrir l’audit" variant="secondary" size="large" />
     </PageHero>
 
-    <section class="section" aria-labelledby="ensemble-title">
+    <section class="section" aria-labelledby="public-title">
       <div class="container-wide content-grid">
         <div class="content-copy">
-          <p class="eyebrow">Une architecture, pas un empilement</p>
-          <h2 id="ensemble-title">Chaque contrat répond à un risque. Le programme doit répondre à l’entreprise.</h2>
+          <p class="eyebrow">À qui s’adresse notre approche ?</p>
+          <h2 id="public-title">Aux entreprises qui veulent une vision claire de leur protection.</h2>
         </div>
         <div class="content-copy">
-          <p>Une responsabilité peut concerner plusieurs polices. Un sinistre matériel peut interrompre l’exploitation. Une évolution de flotte peut modifier les obligations d’un client. Étudier les contrats séparément masque ces dépendances.</p>
-          <p>Notre rôle consiste à relier activités, responsabilités, actifs, équipes et engagements pour rendre les choix plus lisibles.</p>
-          <div class="section-actions"><CTA href="/audit-assurances-entreprise/" label="Faire analyser mes contrats" /></div>
+          <p>Assuromieux Paris accompagne notamment les PME, artisans, entreprises de services, commerces, professions libérales et dirigeants. L’analyse part de l’activité réelle, pas d’une liste de produits imposée.</p>
+          <p>Elle devient particulièrement utile lorsque l’entreprise évolue, que les contrats se sont accumulés ou qu’une échéance importante approche.</p>
         </div>
       </div>
     </section>
 
     <section id="protections" class="section section--surface" aria-labelledby="protections-title">
       <div class="container-wide">
-        <SectionHeader kicker="Protections transversales" title="Les principales briques d’un programme d’assurances." text="La liste ne préjuge pas des garanties nécessaires : le périmètre dépend de l’activité et de l’exposition réelle." id="protections-title" />
-        <div class="feature-grid feature-grid--2 coverage-grid">
-          {covers.map(([id, title, text], index) => <article class="feature-item" {id}><span class="feature-item__index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}
-        </div>
+        <SectionHeader kicker="Risques & besoins couverts" title="Les protections transversales à examiner." text="Chaque entrée ouvre directement le point correspondant ; le besoin exact reste à confirmer selon votre situation." id="protections-title" />
+        <ProductSelector products={transversalProducts} compact />
       </div>
     </section>
 
-    <section class="section" aria-labelledby="lecture-title">
+    <section class="section" aria-labelledby="checks-title">
       <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
-          <h2 id="lecture-title">Ce que la lecture globale fait apparaître</h2>
+          <h2 id="checks-title">Points à vérifier</h2>
           <ul>
-            <li>activités absentes ou décrites trop largement ;</li>
-            <li>plafonds incohérents entre contrats et obligations ;</li>
-            <li>franchises qui se cumulent ou déplacent le risque ;</li>
-            <li>doublons apparents et véritables zones non couvertes ;</li>
-            <li>échéances dispersées qui compliquent la consultation ;</li>
-            <li>informations qui ne sont plus à jour.</li>
+            <li>activités et chiffres déclarés ;</li>
+            <li>plafonds, franchises et exclusions ;</li>
+            <li>articulation entre les contrats ;</li>
+            <li>échéances et informations à actualiser.</li>
           </ul>
         </div>
         <div class="content-copy">
-          <p class="eyebrow">Du contrat à la décision</p>
-          <h2>Comparer une prime n’est utile qu’après avoir comparé la protection.</h2>
-          <p>Le prix doit être lu avec les garanties, les exclusions, les franchises, la qualité de présentation du risque et les conditions de gestion. Cette discipline évite une économie apparente qui dégraderait un point essentiel.</p>
-          <p class="notice"><strong>Notre principe :</strong> conserver ce qui reste pertinent, faire évoluer ce qui ne l’est plus et consulter le marché lorsque cela apporte une information utile.</p>
+          <p class="eyebrow">Une lecture d’ensemble</p>
+          <h2>Comparer la protection avant de comparer la prime.</h2>
+          <p>Les contrats sont rapprochés des obligations, des actifs et des responsabilités de l’entreprise. Cette lecture fait apparaître ce qui reste pertinent, ce qui doit évoluer et ce qui mérite une consultation du marché.</p>
+          <p class="notice">Une recommandation ne conduit pas automatiquement à changer d’assureur : conserver ou ajuster un contrat peut être la décision la plus cohérente.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section--surface" aria-labelledby="publics-title">
-      <div class="container-wide">
-        <SectionHeader kicker="Entreprises accompagnées" title="Une approche ouverte à plusieurs modèles d’activité." id="publics-title" />
-        <ul class="tag-list">
-          {['PME', 'Artisans', 'Entreprises de services', 'Commerces', 'Professions libérales', 'Dirigeants', 'Transport et logistique', 'Entreprises du BTP'].map((item) => <li>{item}</li>)}
-        </ul>
+    <SolutionMethod />
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <SectionHeader kicker="Questions fréquentes" title="Comprendre le programme d’assurances." id="faq-title" />
+        <FAQ items={faqItems} />
       </div>
     </section>
 
@@ -103,3 +95,5 @@ const covers = [
     <PageCTA title="Votre programme mérite une lecture d’ensemble." text="Un premier échange permet de définir les contrats prioritaires et l’échéance utile pour commencer." secondaryHref="/cabinet/" secondaryLabel="Découvrir le cabinet" />
   </main>
 </SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

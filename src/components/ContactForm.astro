@@ -26,21 +26,6 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
     </div>
 
     <div class="form-field">
-      <label for="contact-sector">Secteur <span aria-hidden="true">*</span></label>
-      <select id="contact-sector" name="secteur" required aria-describedby="contact-required">
-        <option value="">Sélectionner votre secteur</option>
-        <option>Transport routier</option>
-        <option>Logistique / entrepôt</option>
-        <option>Déménagement</option>
-        <option>Convoyage</option>
-        <option>BTP / artisan</option>
-        <option>Commerce / services</option>
-        <option>Profession libérale</option>
-        <option>Autre activité</option>
-      </select>
-    </div>
-
-    <div class="form-field">
       <label for="contact-email">Email professionnel <span aria-hidden="true">*</span></label>
       <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="contact-required contact-email-help" />
       <p class="form-help" id="contact-email-help">Exemple : nom@entreprise.fr</p>
@@ -53,29 +38,26 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
     </div>
 
     <div class="form-field">
-      <label for="contact-priority">Contrat prioritaire</label>
+      <label for="contact-priority">Besoin principal</label>
       <select id="contact-priority" name="contrat_prioritaire">
         <option value="">Je souhaite être conseillé</option>
-        <option>Assurance transport</option>
-        <option>Flotte automobile</option>
-        <option>TPM / marchandises transportées</option>
         <option>RC professionnelle</option>
         <option>Multirisque professionnelle</option>
+        <option>Flotte automobile</option>
         <option>Assurance décennale / BTP</option>
-        <option>Santé / prévoyance</option>
+        <option>Transport / marchandises</option>
+        <option>Santé et prévoyance</option>
+        <option>Protection du dirigeant</option>
+        <option>Cyberassurance</option>
+        <option>Audit des contrats</option>
         <option>Autre besoin</option>
       </select>
     </div>
 
-    <div class="form-field">
-      <label for="contact-deadline">Prochaine échéance</label>
-      <input id="contact-deadline" name="echeance" type="text" placeholder="Ex. dans 3 mois" />
-    </div>
-
     <div class="form-field form-field--full">
-      <label for="contact-message">Votre besoin</label>
+      <label for="contact-message">Message</label>
       <textarea id="contact-message" name="message" aria-describedby="contact-message-help"></textarea>
-      <p class="form-help" id="contact-message-help">Indiquez les contrats concernés, votre contexte et vos priorités. N'envoyez aucun document confidentiel à cette étape.</p>
+      <p class="form-help" id="contact-message-help">Précisez votre contexte ou votre prochaine échéance si vous la connaissez. N'envoyez aucun document confidentiel à cette étape.</p>
     </div>
 
     <div class="form-field visually-hidden" aria-hidden="true">

@@ -2,7 +2,7 @@
 interface Props {
   label: string;
   alt: string;
-  kind?: 'portrait' | 'place' | 'sector';
+  kind?: 'place' | 'sector';
   note?: string;
 }
 
@@ -33,7 +33,6 @@ const { label, alt, kind = 'place', note = 'Visuel original à produire' } = Ast
     box-shadow: var(--shadow-panel);
   }
 
-  .media-placeholder--portrait { min-height: 35rem; }
   .media-placeholder--sector { min-height: 22rem; border-radius: var(--radius-panel) 45% var(--radius-panel) 45%; }
 
   .media-placeholder__shape {
@@ -85,7 +84,6 @@ const { label, alt, kind = 'place', note = 'Visuel original à produire' } = Ast
   figcaption span { color: var(--color-text-on-dark-soft); font-size: var(--font-size-xs); }
 
   @media (max-width: 640px) {
-    .media-placeholder,
-    .media-placeholder--portrait { min-height: 24rem; }
+    .media-placeholder { min-height: 24rem; }
   }
 </style>

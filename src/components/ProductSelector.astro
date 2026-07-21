@@ -1,0 +1,94 @@
+---
+import type { InsuranceProduct } from '../data/products';
+
+interface Props {
+  products: InsuranceProduct[];
+  compact?: boolean;
+}
+
+const { products, compact = false } = Astro.props;
+---
+
+<ol class:list={['product-selector', { 'product-selector--compact': compact }]}>
+  {products.map((product, index) => (
+    <li id={compact ? product.slug : undefined}>
+      <a href={product.href} aria-label={`${product.cta} : ${product.name}`}>
+        <span class="product-selector__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+        <span class="product-selector__copy">
+          <strong>{product.name}</strong>
+          <small>{product.description}</small>
+        </span>
+        <span class="product-selector__cta">{product.cta}<i aria-hidden="true">→</i></span>
+      </a>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .product-selector {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    list-style: none;
+    box-shadow: var(--shadow-card);
+  }
+
+  li { min-width: 0; background: var(--color-surface); }
+
+  a {
+    min-height: 9rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3) var(--space-4);
+    align-content: start;
+    padding: clamp(1.1rem, 2.1vw, 1.55rem);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background var(--transition-base), color var(--transition-base);
+  }
+
+  a:hover { color: var(--color-brand-deep); background: var(--color-page-soft); }
+
+  .product-selector__index {
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: .08em;
+  }
+
+  .product-selector__copy { min-width: 0; display: grid; gap: var(--space-2); }
+  strong { color: var(--color-brand-deep); line-height: 1.2; }
+  small { color: var(--color-text-soft); font-size: var(--font-size-sm); line-height: 1.45; }
+
+  .product-selector__cta {
+    grid-column: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-brand);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .product-selector__cta i { font-style: normal; transition: transform var(--transition-fast); }
+  a:hover .product-selector__cta i { transform: translateX(.2rem); }
+
+  .product-selector--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product-selector--compact a { min-height: 8.25rem; }
+
+  @media (max-width: 860px) {
+    .product-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 540px) {
+    .product-selector,
+    .product-selector--compact { grid-template-columns: 1fr; }
+    a { min-height: 0; }
+  }
+</style>

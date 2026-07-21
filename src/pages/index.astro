@@ -2,32 +2,33 @@
 import ArticleCard from '../components/ArticleCard.astro';
 import ContactForm from '../components/ContactForm.astro';
 import CTA from '../components/CTA.astro';
-import ExpertiseCard from '../components/ExpertiseCard.astro';
 import FAQ from '../components/FAQ.astro';
 import Hero from '../components/Hero.astro';
-import MediaPlaceholder from '../components/MediaPlaceholder.astro';
-import MethodStep from '../components/MethodStep.astro';
+import ParisHeroVisual from '../components/ParisHeroVisual.astro';
+import ProductSelector from '../components/ProductSelector.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import TrustBadge from '../components/TrustBadge.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
+import { insuranceProducts } from '../data/products';
 import { organizationSchema, site } from '../data/site';
 
-const transversalExpertises = [
-  { code: '01', title: 'Audit des assurances entreprise', text: 'Une lecture structurée de l’activité, des contrats et des risques avant toute recommandation.', href: '/audit-assurances-entreprise/' },
-  { code: '02', title: 'RC professionnelle', text: 'Responsabilités liées aux prestations, aux produits et au fonctionnement de l’entreprise.', href: '/assurances-entreprises/#rc-professionnelle' },
-  { code: '03', title: 'Multirisque professionnelle', text: 'Locaux, matériels, pertes d’exploitation et continuité étudiés dans un même ensemble.', href: '/assurances-entreprises/#multirisque' },
-  { code: '04', title: 'Flotte automobile', text: 'Parc, usages, franchises et sinistralité rapprochés des besoins opérationnels.', href: '/assurances-entreprises/#flotte' },
-  { code: '05', title: 'Santé et prévoyance', text: 'Protection collective, obligations de l’employeur et lisibilité des dispositifs.', href: '/assurances-entreprises/#sante-prevoyance' },
-  { code: '06', title: 'Protection du dirigeant', text: 'Continuité de l’activité et protection personnelle du décideur à coordonner.', href: '/assurances-entreprises/#protection-dirigeant' },
-  { code: '07', title: 'Cyberassurance', text: 'Prévention, assistance et transfert du risque numérique selon l’exposition réelle.', href: '/assurances-entreprises/#cyber' },
-];
-
 const faqItems = [
-  { question: 'Que regarde Assuromieux Paris avant de consulter le marché ?', answer: 'Nous commençons par l’activité, les risques, les contrats disponibles, les obligations et les échéances. La consultation n’a de sens qu’après avoir cadré ce qui doit réellement être protégé.' },
-  { question: 'L’audit conduit-il forcément à changer d’assureur ?', answer: 'Non. Un contrat peut être conservé, ajusté ou remis en concurrence. La recommandation dépend de sa cohérence globale, pas du changement pour lui-même.' },
-  { question: 'Accompagnez-vous uniquement les entreprises du transport ?', answer: 'Non. Le cabinet accompagne les PME, artisans, entreprises de services, commerces, professions libérales et dirigeants. Le transport, la logistique et le BTP sont des expertises sectorielles fortes parmi une offre plus large.' },
-  { question: 'Intervenez-vous en dehors de Paris ?', answer: 'Oui. Assuromieux Paris est basé à Paris et peut accompagner des entreprises partout en France, avec des modalités d’échange adaptées à la mission.' },
-  { question: 'Une analyse garantit-elle une économie ?', answer: 'Non. La maîtrise des coûts fait partie des arbitrages, mais aucune économie ne peut être garantie. La qualité des garanties et la cohérence avec le risque restent prioritaires.' },
+  {
+    question: 'Que vérifie un audit des assurances d’entreprise ?',
+    answer: 'L’audit rapproche l’activité, les risques et les contrats disponibles. Il examine notamment les garanties, exclusions, franchises, déclarations et échéances afin de rendre les arbitrages plus lisibles.',
+  },
+  {
+    question: 'Faut-il changer d’assureur après l’audit ?',
+    answer: 'Non. Un contrat peut être conservé, ajusté ou remis en concurrence. La recommandation dépend de sa cohérence avec l’entreprise, pas du changement pour lui-même.',
+  },
+  {
+    question: 'Le cabinet accompagne-t-il d’autres secteurs que le transport ?',
+    answer: 'Oui. Assuromieux Paris accompagne différentes entreprises sur leurs assurances professionnelles. Le transport, la logistique et le BTP sont deux expertises sectorielles parmi une approche plus large.',
+  },
+  {
+    question: 'Intervenez-vous en dehors de Paris ?',
+    answer: 'Oui. Le cabinet est implanté dans le 8e arrondissement et accompagne des entreprises parisiennes, franciliennes et situées ailleurs en France.',
+  },
 ];
 
 const structuredData = [
@@ -38,19 +39,43 @@ const structuredData = [
     '@id': `${site.canonicalUrl}#insurance-agency`,
     name: site.name,
     url: site.canonicalUrl,
-    image: `${site.canonicalUrl}og.jpg`,
+    image: `${site.canonicalUrl}og-homepage-03.jpg`,
     telephone: '+33695699674',
     email: site.email,
     address: organizationSchema.address,
     areaServed: { '@type': 'Country', name: 'France' },
     parentOrganization: { '@id': `${site.canonicalUrl}#organization` },
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Assurances professionnelles proposées par Assuromieux Paris',
+    itemListElement: insuranceProducts.map((product, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: product.name,
+        description: product.description,
+        url: new URL(product.href, site.canonicalUrl).toString(),
+      },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
 ];
 ---
 
 <SiteLayout
   title="Courtier en assurance entreprise à Paris | Assuromieux Paris"
-  description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, négocier et optimiser leurs assurances."
+  description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles."
   canonical={site.canonicalUrl}
   currentPath="/"
   ctaHref="#contact"
@@ -60,161 +85,103 @@ const structuredData = [
     <Hero
       eyebrow="Conseil & courtage en assurances d’entreprise"
       title="Vos assurances d’entreprise méritent une stratégie, pas un simple renouvellement."
-      lead="Avant de consulter le marché, nous étudions votre activité, vos contrats et vos risques. Vous disposez ensuite d’une recommandation claire pour arbitrer garanties, conditions et budget."
+      lead="Assuromieux Paris analyse vos contrats, identifie les risques et consulte le marché pour construire une protection cohérente avec votre activité."
     >
       <div class="hero-actions">
-        <CTA href="#contact" label="Demander mon audit gratuit" size="large" />
-        <CTA href="/audit-assurances-entreprise/" label="Découvrir notre méthode" variant="secondary" size="large" />
+        <CTA href="#contact" label="Demander un audit gratuit" size="large" />
+        <CTA href="#produits" label="Voir nos assurances" variant="secondary" size="large" />
       </div>
-      <ul class="hero-cues" aria-label="Points clés">
-        <li>Vision globale des contrats</li>
-        <li>Conseil au dirigeant</li>
-        <li>Paris & France entière</li>
-      </ul>
-
-      <div slot="visual" class="risk-map" aria-hidden="true">
-        <div class="risk-map__orbit risk-map__orbit--one"></div>
-        <div class="risk-map__orbit risk-map__orbit--two"></div>
-        <div class="risk-map__core"><span>STRATÉGIE</span><strong>Votre activité</strong><small>guide l’analyse</small></div>
-        <div class="risk-map__item risk-map__item--one"><span>01</span> Comprendre</div>
-        <div class="risk-map__item risk-map__item--two"><span>02</span> Analyser</div>
-        <div class="risk-map__item risk-map__item--three"><span>03</span> Arbitrer</div>
-        <div class="risk-map__item risk-map__item--four"><span>04</span> Suivre</div>
-        <div class="risk-map__seal">Conseil<br />au dirigeant</div>
-      </div>
+      <ParisHeroVisual slot="visual" />
     </Hero>
 
-    <section class="trust-strip" aria-label="Notre approche">
-      <div class="container-wide trust-grid">
-        <TrustBadge label="Analyse des contrats" />
-        <TrustBadge label="Lecture des risques" />
-        <TrustBadge label="Approche indépendante" />
-        <TrustBadge label="Arbitrages expliqués" />
-        <TrustBadge label="Accompagnement personnalisé" />
-      </div>
-    </section>
-
-    <section id="assurances-entreprises" class="section enterprise-first" aria-labelledby="entreprise-title">
-      <div class="container-wide content-grid">
-        <div class="content-copy">
-          <p class="eyebrow">Assurances entreprises</p>
-          <h2 id="entreprise-title">Protéger l’entreprise exige de relier responsabilités, actifs, personnes et continuité.</h2>
-          <p>RC professionnelle, multirisque, flotte, cyber, santé, prévoyance et protection du dirigeant ne doivent pas être pilotées comme des sujets isolés.</p>
-          <div class="section-actions">
-            <CTA href="/assurances-entreprises/" label="Découvrir notre vision globale" />
-            <CTA href="/audit-assurances-entreprise/" label="Faire auditer mes contrats" variant="secondary" />
-          </div>
-        </div>
-        <div class="program-map" aria-label="Les dimensions du programme d’assurances">
-          <div class="program-map__center"><span>Programme</span><strong>Entreprise</strong></div>
-          {['Responsabilités', 'Biens', 'Mobilité', 'Équipes', 'Dirigeant', 'Numérique', 'Continuité'].map((item, index) => <span class={`program-map__item program-map__item--${index + 1}`}>{item}</span>)}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--surface signals" aria-labelledby="signaux-title">
+    <section id="produits" class="section products" aria-labelledby="products-title">
       <div class="container-wide">
-        <SectionHeader kicker="Trois signaux" title="Quand le renouvellement ne suffit plus." text="La page d’accueil va à l’essentiel ; le diagnostic détaillé appartient à la mission d’audit." id="signaux-title" />
-        <div class="signal-grid">
-          <article><span>01</span><h3>L’activité a changé</h3><p>Nouveaux clients, prestations, locaux ou équipements modifient l’exposition.</p></article>
-          <article><span>02</span><h3>Les contrats se sont empilés</h3><p>Les responsabilités et échéances deviennent difficiles à suivre dans leur ensemble.</p></article>
-          <article><span>03</span><h3>Les coûts progressent</h3><p>Il faut comprendre garanties, franchises et sinistralité avant de négocier.</p></article>
-        </div>
+        <SectionHeader
+          kicker="Accès direct"
+          title="Quelle assurance recherchez-vous ?"
+          text="Choisissez votre besoin pour accéder directement à la page ou au point de contact pertinent."
+          id="products-title"
+        />
+        <ProductSelector products={insuranceProducts} />
       </div>
     </section>
 
-    <section id="expertises" class="section" aria-labelledby="expertises-title">
+    <section class="section section--surface promise" aria-labelledby="promise-title">
+      <div class="container-wide promise__grid">
+        <div class="promise__intro">
+          <p class="eyebrow">Une vision globale de vos assurances</p>
+          <h2 id="promise-title">Relier vos contrats à votre activité réelle.</h2>
+          <p>Nous identifions les incohérences, les risques insuffisamment couverts et les conditions qui peuvent être renégociées.</p>
+        </div>
+        <ol class="promise__steps">
+          <li><span>01</span><strong>Analyser</strong><small>Activité, contrats et risques.</small></li>
+          <li><span>02</span><strong>Comparer</strong><small>Garanties, conditions et marché.</small></li>
+          <li><span>03</span><strong>Accompagner</strong><small>Décisions, mise en œuvre et suivi.</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="secteurs" class="section offer-overview" aria-labelledby="offer-title">
       <div class="container-wide">
-        <SectionHeader kicker="Niveau 1 — Offres transversales" title="Les protections qui accompagnent la vie de l’entreprise." text="Sept domaines structurants, reliés par une même méthode d’analyse et de conseil." id="expertises-title" />
-        <div class="expertise-grid expertise-grid--transversal">
-          {transversalExpertises.map((expertise) => <ExpertiseCard {...expertise} />)}
-        </div>
-
-        <div class="sector-heading">
-          <p class="eyebrow">Niveau 2 — Expertises sectorielles</p>
-          <h2>Deux secteurs qui demandent une lecture métier approfondie.</h2>
-          <p>Ces expertises renforcent l’offre générale du cabinet ; elles ne la remplacent pas.</p>
-        </div>
-        <div class="sector-grid">
-          <a href="/assurance-transport/" class="sector-feature">
-            <span class="sector-feature__index">01 · Transport & logistique</span>
-            <h3>Analyser toute la chaîne de risque.</h3>
-            <p>Responsabilités, flotte, marchandises, entrepôts, sous-traitance et sinistralité.</p>
-            <ul><li>Transport routier</li><li>Logistique</li><li>TPM</li></ul>
-            <strong>Découvrir l’expertise <span aria-hidden="true">→</span></strong>
-          </a>
-          <a href="/assurance-btp-decennale/" class="sector-feature sector-feature--gold">
-            <span class="sector-feature__index">02 · BTP & décennale</span>
-            <h3>Rapprocher les contrats des activités exercées.</h3>
-            <p>Décennale, RC, attestations, procédés, sous-traitance, véhicules et multirisque.</p>
-            <ul><li>Artisans</li><li>Entreprises BTP</li><li>Chantiers</li></ul>
-            <strong>Découvrir l’expertise <span aria-hidden="true">→</span></strong>
-          </a>
+        <SectionHeader
+          kicker="Produits & expertises"
+          title="Une base commune, complétée par deux lectures sectorielles."
+          id="offer-title"
+        />
+        <div class="offer-overview__grid">
+          <article>
+            <span class="offer-overview__label">Assurances transversales</span>
+            <h3>Les protections essentielles de l’entreprise</h3>
+            <p>RC professionnelle, multirisque professionnelle, flotte automobile, santé et prévoyance, protection du dirigeant et cyberassurance.</p>
+            <a class="link-arrow" href="/assurances-entreprises/">Voir toutes les assurances <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="offer-overview__sector">
+            <span class="offer-overview__label">Expertises sectorielles</span>
+            <h3>Transport, logistique, BTP et décennale</h3>
+            <p>Deux secteurs où l’exploitation, les responsabilités et les obligations nécessitent une lecture métier plus précise.</p>
+            <div class="offer-overview__links">
+              <a href="/assurance-transport/">Transport & logistique <span aria-hidden="true">→</span></a>
+              <a href="/assurance-btp-decennale/">BTP & décennale <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="methode" class="section method" aria-labelledby="methode-title">
-      <div class="container-wide method__grid">
-        <div class="method__intro">
-          <SectionHeader kicker="L’audit Assuromieux" title="Comprendre d’abord. Recommander ensuite." text="La méthode transforme des contrats techniques en arbitrages compréhensibles pour le dirigeant." tone="dark" id="methode-title" />
-          <CTA href="/audit-assurances-entreprise/" label="Voir la mission d’audit" variant="gold" size="large" />
-        </div>
-        <div class="method__steps">
-          <MethodStep step="01" title="Analyse" text="Comprendre l’activité, les contrats, les obligations et les échéances." />
-          <MethodStep step="02" title="Diagnostic" text="Repérer incohérences, doublons, exclusions sensibles et priorités." />
-          <MethodStep step="03" title="Consultation" text="Interroger le marché sur la base d’un risque correctement présenté." />
-          <MethodStep step="04" title="Négociation" text="Travailler garanties, franchises, conditions et paramètres économiques." />
-          <MethodStep step="05" title="Recommandation" text="Comparer les scénarios et expliciter les arbitrages proposés." />
-          <MethodStep step="06" title="Suivi" text="Faire évoluer le programme avec l’entreprise et ses enjeux." />
-        </div>
-      </div>
-    </section>
+    <SolutionMethod
+      title="Comprendre, analyser, consulter, recommander."
+      text="L’audit assurance entreprise transforme des contrats techniques en décisions compréhensibles. Le suivi est ensuite adapté aux échéances et aux évolutions de l’activité."
+    />
 
-    <section class="section method-proof" aria-labelledby="preuve-title">
-      <div class="container-wide content-grid content-grid--reverse">
-        <div class="deliverable" aria-hidden="true">
-          <div><span>01</span><strong>Cartographie</strong><small>Contrats & risques</small></div>
-          <div><span>02</span><strong>Diagnostic</strong><small>Vigilances & priorités</small></div>
-          <div><span>03</span><strong>Recommandation</strong><small>Scénarios & arbitrages</small></div>
-        </div>
-        <div class="content-copy">
-          <p class="eyebrow">Une preuve de méthode</p>
-          <h2 id="preuve-title">Le dirigeant reçoit une lecture structurée, pas une promesse abstraite.</h2>
-          <p>Selon le périmètre, la restitution rassemble les contrats étudiés, les points de vigilance, les priorités et les scénarios à approfondir. Elle ne garantit ni économie automatique ni acceptation par un assureur.</p>
-          <a class="link-arrow" href="/audit-assurances-entreprise/#livrable-title">Voir le contenu du livrable <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="cabinet" class="section section--surface cabinet-home" aria-labelledby="cabinet-title">
+    <section id="cabinet" class="section cabinet-home" aria-labelledby="cabinet-title">
       <div class="container-wide cabinet-home__grid">
-        <MediaPlaceholder kind="portrait" label="Portrait de Jules Honoré" note="Photographie professionnelle à produire" alt="Emplacement réservé au futur portrait professionnel de Jules Honoré" />
-        <div class="content-copy">
-          <p class="eyebrow">Le cabinet</p>
-          <h2 id="cabinet-title">Un interlocuteur pour relier assurance et décisions d’entreprise.</h2>
-          <p>Assuromieux Paris est un cabinet de conseil et de courtage basé à Paris, qui accompagne les entreprises partout en France.</p>
-          <p>Jules Honoré est l’interlocuteur présenté pour comprendre l’activité, organiser l’analyse et restituer les arbitrages. Sa biographie détaillée sera complétée uniquement après validation.</p>
-          <ul class="cabinet-points"><li>Échange direct</li><li>Approche conseil</li><li>Implantation parisienne</li><li>Intervention nationale</li></ul>
-          <div class="section-actions"><CTA href="/cabinet/" label="Découvrir le cabinet" /><CTA href="#contact" label="Prendre contact" variant="secondary" /></div>
+        <div class="cabinet-home__place" aria-hidden="true">
+          <span>PARIS</span><strong>08</strong><small>Intervention nationale</small>
+        </div>
+        <div class="cabinet-home__copy">
+          <p class="eyebrow">Assuromieux Paris</p>
+          <h2 id="cabinet-title">Un cabinet parisien, un accompagnement national.</h2>
+          <p>Basé dans le 8e arrondissement, Assuromieux Paris accompagne les entreprises parisiennes, franciliennes et nationales dans l’analyse et l’optimisation de leurs assurances.</p>
+          <ul><li>Interlocuteur direct</li><li>Approche accessible</li><li>Accompagnement personnalisé</li></ul>
+          <a class="link-arrow" href="/cabinet/">Découvrir le cabinet <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section id="ressources" class="section resources" aria-labelledby="ressources-title">
+    <section id="ressources" class="section section--surface resources" aria-labelledby="resources-title">
       <div class="container-wide">
-        <SectionHeader kicker="Ressources" title="Rendre l’assurance d’entreprise plus intelligible." text="Les premiers guides développeront les sujets qui nécessitent plus de profondeur que la page d’accueil." id="ressources-title" />
+        <SectionHeader kicker="Ressources" title="Trois repères pour mieux décider." id="resources-title" />
         <div class="article-grid">
-          <ArticleCard type="Guide" title="Préparer l’audit de ses assurances d’entreprise" summary="Les documents, questions et points de vigilance à réunir avant une analyse complète." />
-          <ArticleCard type="Analyse" title="Étudier ses contrats comme un programme" summary="Une méthode pour rapprocher responsabilités, biens, personnes et continuité." />
-          <ArticleCard type="Décryptage" title="Distinguer économie apparente et arbitrage utile" summary="Pourquoi garanties, franchises et exclusions doivent être relues avec le prix." />
+          <ArticleCard type="Guide" title="Préparer l’audit de ses assurances" summary="Les documents et questions utiles avant une première analyse." />
+          <ArticleCard type="Analyse" title="Lire ses contrats comme un programme" summary="Pourquoi responsabilités, biens, équipes et continuité doivent être rapprochés." />
+          <ArticleCard type="Question" title="Faut-il toujours changer d’assureur ?" summary="La recommandation peut aussi conduire à conserver ou ajuster un contrat." />
         </div>
       </div>
     </section>
 
-    <section class="section section--surface faq-section" aria-labelledby="faq-title">
+    <section class="section faq-section" aria-labelledby="faq-title">
       <div class="container faq-layout">
-        <SectionHeader kicker="Questions fréquentes" title="Avant de commencer l’analyse." id="faq-title" />
+        <SectionHeader kicker="Questions fréquentes" title="L’essentiel avant un premier échange." id="faq-title" />
         <FAQ items={faqItems} />
       </div>
     </section>
@@ -222,7 +189,13 @@ const structuredData = [
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container-wide contact__grid">
         <div class="contact__intro">
-          <SectionHeader kicker="Premier échange" title="Faisons le point sur ce que vos contrats protègent vraiment." text="Décrivez votre activité, le contrat prioritaire et votre prochaine échéance. Nous reviendrons vers vous pour cadrer l’analyse utile." tone="dark" id="contact-title" />
+          <SectionHeader
+            kicker="Premier échange"
+            title="Faisons le point sur votre besoin prioritaire."
+            text="Présentez votre activité et le contrat concerné. Aucun document confidentiel n’est nécessaire à ce stade."
+            tone="dark"
+            id="contact-title"
+          />
           <div class="contact__details">
             <p><span>Téléphone</span><a href={site.phoneHref}>{site.phoneDisplay}</a></p>
             <p><span>Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
@@ -237,92 +210,65 @@ const structuredData = [
 
 <style>
   .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-  .hero-cues { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin: var(--space-7) 0 0; padding: 0; color: var(--color-text-soft); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); list-style: none; }
-  .hero-cues li { display: flex; align-items: center; gap: var(--space-2); }
-  .hero-cues li::before { width: .35rem; height: .35rem; content: ''; background: var(--color-gold); border-radius: 50%; }
+  .products { background: var(--color-surface); }
 
-  .risk-map { position: relative; min-height: 31rem; overflow: hidden; background: linear-gradient(145deg, rgba(255,255,255,.84), rgba(240,246,251,.55)); border: 1px solid rgba(18,54,95,.12); border-radius: 45% var(--radius-panel) 42% var(--radius-panel); box-shadow: var(--shadow-panel); }
-  .risk-map::before { position: absolute; inset: 10%; content: ''; border: 1px dashed rgba(18,54,95,.16); border-radius: 50%; }
-  .risk-map__orbit { position: absolute; top: 50%; left: 50%; aspect-ratio: 1; border: 1px solid rgba(201,154,70,.28); border-radius: 50%; transform: translate(-50%,-50%) rotate(-20deg); }
-  .risk-map__orbit--one { width: 75%; } .risk-map__orbit--two { width: 52%; }
-  .risk-map__core { position: absolute; top: 50%; left: 50%; width: 12.25rem; height: 12.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; background: var(--color-brand-deep); border: .6rem solid white; border-radius: 50%; box-shadow: 0 26px 55px rgba(7,28,51,.28); text-align: center; transform: translate(-50%,-50%); }
-  .risk-map__core span { color: var(--color-gold-soft); font-size: .7rem; font-weight: 800; letter-spacing: .16em; }
-  .risk-map__core strong { margin: .4rem 0 .15rem; font-size: 1.15rem; } .risk-map__core small { color: var(--color-text-on-dark-soft); }
-  .risk-map__item { position: absolute; min-height: 2.9rem; display: flex; align-items: center; gap: .55rem; padding: .65rem .9rem; color: var(--color-brand-deep); background: rgba(255,255,255,.94); border: 1px solid var(--color-border); border-radius: var(--radius-pill); box-shadow: var(--shadow-card); font-size: .8rem; font-weight: 750; }
-  .risk-map__item span { color: var(--color-gold-dark); font-size: .65rem; }
-  .risk-map__item--one { top: 12%; left: 9%; } .risk-map__item--two { top: 14%; right: 8%; } .risk-map__item--three { right: 7%; bottom: 13%; } .risk-map__item--four { bottom: 11%; left: 8%; }
-  .risk-map__seal { position: absolute; right: 4%; bottom: 43%; width: 5rem; height: 5rem; display: flex; align-items: center; justify-content: center; color: var(--color-brand-ink); background: var(--color-gold-soft); border-radius: 50%; font-size: .7rem; font-weight: 800; line-height: 1.15; text-align: center; transform: rotate(7deg); }
+  .promise__grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(2.5rem,7vw,7rem); align-items: center; }
+  .promise__intro h2 { max-width: 13ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .promise__intro p:not(.eyebrow) { max-width: 40rem; color: var(--color-text-soft); }
+  .promise__steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-panel); overflow: hidden; list-style: none; }
+  .promise__steps li { min-height: 10rem; display: grid; align-content: start; gap: var(--space-2); padding: var(--space-6); background: white; }
+  .promise__steps span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .promise__steps strong { color: var(--color-brand-deep); font-size: var(--font-size-h4); }
+  .promise__steps small { color: var(--color-text-soft); font-size: var(--font-size-sm); line-height: 1.45; }
 
-  .trust-strip { position: relative; z-index: 2; padding-block: var(--space-6); background: var(--color-page); border-block: 1px solid var(--color-border); }
-  .trust-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: var(--space-3); }
+  .offer-overview__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-6); }
+  .offer-overview article { min-height: 22rem; display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.75rem,4vw,3.25rem); background: var(--color-page-soft); border: 1px solid var(--color-border); border-radius: var(--radius-panel); }
+  .offer-overview__sector { color: var(--color-text-on-dark); background: var(--color-brand-deep) !important; border-color: var(--color-brand-deep) !important; }
+  .offer-overview__label { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .1em; text-transform: uppercase; }
+  .offer-overview__sector .offer-overview__label { color: var(--color-gold-soft); }
+  .offer-overview h3 { max-width: 18ch; margin: var(--space-5) 0 var(--space-4); color: var(--color-brand-ink); font-size: var(--font-size-h3); line-height: 1.15; }
+  .offer-overview__sector h3 { color: white; }
+  .offer-overview p { max-width: 38rem; margin: 0 0 auto; color: var(--color-text-soft); }
+  .offer-overview__sector p { color: var(--color-text-on-dark-soft); }
+  .offer-overview .link-arrow { margin-top: var(--space-8); }
+  .offer-overview__links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+  .offer-overview__links a { min-height: 2.75rem; display: inline-flex; align-items: center; gap: var(--space-2); padding: .5rem .85rem; color: white; border: 1px solid rgba(255,255,255,.24); border-radius: var(--radius-pill); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); text-decoration: none; }
 
-  .enterprise-first { background: radial-gradient(circle at 85% 25%, rgba(201,154,70,.11), transparent 25%), var(--color-surface); }
-  .program-map { position: relative; min-height: 30rem; background: var(--color-page); border: 1px solid var(--color-border); border-radius: var(--radius-panel); box-shadow: var(--shadow-card); }
-  .program-map::before { position: absolute; inset: 12%; content: ''; border: 1px solid rgba(18,54,95,.16); border-radius: 50%; }
-  .program-map__center { position: absolute; top: 50%; left: 50%; width: 9.5rem; height: 9.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; background: var(--color-brand-deep); border-radius: 50%; transform: translate(-50%,-50%); box-shadow: var(--shadow-action); }
-  .program-map__center span { color: var(--color-gold-soft); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; } .program-map__center strong { font-size: 1.25rem; }
-  .program-map__item { position: absolute; padding: .55rem .85rem; color: var(--color-brand-deep); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-pill); font-size: .75rem; font-weight: 750; box-shadow: var(--shadow-card); }
-  .program-map__item--1 { top: 9%; left: 10%; } .program-map__item--2 { top: 10%; right: 12%; } .program-map__item--3 { top: 44%; right: 4%; } .program-map__item--4 { right: 12%; bottom: 10%; } .program-map__item--5 { bottom: 8%; left: 13%; } .program-map__item--6 { top: 47%; left: 4%; } .program-map__item--7 { top: 27%; left: 37%; }
+  .cabinet-home { background: radial-gradient(circle at 16% 30%, rgba(201,154,70,.13), transparent 23%), var(--color-surface); }
+  .cabinet-home__grid { display: grid; grid-template-columns: minmax(17rem,.55fr) minmax(0,1.15fr); gap: clamp(2.5rem,8vw,8rem); align-items: center; }
+  .cabinet-home__place { position: relative; min-height: 20rem; display: grid; align-content: center; justify-items: center; overflow: hidden; color: white; background: var(--color-brand-ink); border-radius: 50% 50% var(--radius-panel) var(--radius-panel); box-shadow: var(--shadow-panel); }
+  .cabinet-home__place::before { position: absolute; inset: 13%; content: ''; border: 1px solid rgba(201,154,70,.45); border-radius: 50%; }
+  .cabinet-home__place span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .28em; }
+  .cabinet-home__place strong { font-size: 5rem; line-height: .95; }
+  .cabinet-home__place small { color: var(--color-text-on-dark-soft); }
+  .cabinet-home__copy { max-width: 46rem; }
+  .cabinet-home__copy h2 { max-width: 15ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .cabinet-home__copy p:not(.eyebrow) { color: var(--color-text-soft); }
+  .cabinet-home__copy ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-6) 0; padding: 0; list-style: none; }
+  .cabinet-home__copy li { padding: .5rem .8rem; color: var(--color-brand-deep); background: var(--color-page); border-radius: var(--radius-pill); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
 
-  .signal-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-block: 1px solid var(--color-border); }
-  .signal-grid article { padding: var(--space-7) clamp(1rem,3vw,2.5rem); border-right: 1px solid var(--color-border); }
-  .signal-grid article:first-child { padding-left: 0; } .signal-grid article:last-child { padding-right: 0; border-right: 0; }
-  .signal-grid span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: 800; }
-  .signal-grid h3 { margin: var(--space-4) 0 var(--space-2); color: var(--color-brand-deep); font-size: var(--font-size-h4); } .signal-grid p { margin: 0; color: var(--color-text-muted); font-size: var(--font-size-sm); }
+  .article-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-5); }
+  .faq-layout { max-width: 58rem; }
 
-  .expertise-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-5); }
-  .expertise-grid :global(.expertise-card:first-child) { grid-column: span 2; background: var(--color-gold-wash); border-color: rgba(201,154,70,.32); }
-  .sector-heading { max-width: 46rem; margin-top: var(--space-20); margin-bottom: var(--space-8); }
-  .sector-heading h2 { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h2); line-height: var(--line-height-heading); } .sector-heading > p:last-child { margin: var(--space-4) 0 0; color: var(--color-text-soft); }
-  .sector-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-5); }
-  .sector-feature { min-height: 25rem; display: flex; flex-direction: column; padding: clamp(1.5rem,4vw,3rem); color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 90% 8%, rgba(201,154,70,.18), transparent 24%), var(--color-brand-deep); border-radius: var(--radius-panel); text-decoration: none; box-shadow: var(--shadow-panel); transition: transform var(--transition-slow), box-shadow var(--transition-slow); }
-  .sector-feature--gold { color: var(--color-text-soft); background: var(--color-gold-wash); }
-  .sector-feature:hover { transform: translateY(-5px) rotate(-.2deg); box-shadow: 0 32px 85px rgba(12,42,78,.2); }
-  .sector-feature__index { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; } .sector-feature--gold .sector-feature__index { color: var(--color-gold-dark); }
-  .sector-feature h3 { max-width: 18ch; margin: var(--space-10) 0 var(--space-4); color: white; font-size: var(--font-size-h3); } .sector-feature--gold h3 { color: var(--color-brand-deep); }
-  .sector-feature p { max-width: 36rem; margin: 0; }
-  .sector-feature ul { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-7) 0; padding: 0; list-style: none; }
-  .sector-feature li { padding: .45rem .7rem; color: inherit; border: 1px solid currentColor; border-radius: var(--radius-pill); font-size: var(--font-size-xs); opacity: .82; }
-  .sector-feature > strong { margin-top: auto; color: white; } .sector-feature--gold > strong { color: var(--color-brand); }
-
-  .method { color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 20% 15%, rgba(201,154,70,.13), transparent 25%), var(--color-brand-ink); }
-  .method__grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: clamp(3rem,8vw,8rem); }
-  .method__intro { position: sticky; top: var(--space-8); align-self: start; } .method__steps { border-bottom: 1px solid rgba(217,227,238,.18); }
-
-  .method-proof { background: var(--color-page); }
-  .deliverable { display: grid; gap: var(--space-3); }
-  .deliverable div { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-4); padding: var(--space-5); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-card-sm); box-shadow: var(--shadow-card); transform: translateX(calc(var(--offset, 0) * 1rem)); }
-  .deliverable div:nth-child(2) { --offset: 1.5; } .deliverable div:nth-child(3) { --offset: 3; }
-  .deliverable span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: 800; } .deliverable strong { color: var(--color-brand-deep); } .deliverable small { color: var(--color-text-muted); }
-
-  .cabinet-home__grid { display: grid; grid-template-columns: minmax(19rem,.7fr) minmax(0,1fr); gap: clamp(3rem,8vw,8rem); align-items: center; }
-  .cabinet-home :global(.media-placeholder) { max-width: 30rem; }
-  .cabinet-points { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-3); margin: var(--space-7) 0 0; padding: 0; list-style: none; }
-  .cabinet-points li { padding: var(--space-3) var(--space-4); color: var(--color-brand-deep); background: var(--color-page); border-radius: var(--radius-control); font-size: var(--font-size-sm); font-weight: 700; }
-
-  .article-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-5); } .faq-layout { max-width: 58rem; }
-  .contact { color: var(--color-text-on-dark-soft); background: linear-gradient(120deg,var(--color-brand-ink),var(--color-brand-deep)); }
-  .contact__grid { display: grid; grid-template-columns: minmax(0,.82fr) minmax(32rem,1.18fr); gap: clamp(3rem,7vw,7rem); align-items: start; }
+  .contact { color: var(--color-text-on-dark); background: linear-gradient(135deg,var(--color-brand-ink),var(--color-brand-deep)); }
+  .contact__grid { display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(2.5rem,7vw,7rem); align-items: start; }
   .contact__intro { position: sticky; top: var(--space-8); }
-  .contact__details { display: grid; gap: var(--space-4); margin-top: var(--space-10); padding-top: var(--space-8); border-top: 1px solid rgba(255,255,255,.16); }
-  .contact__details p { display: grid; gap: .2rem; margin: 0; } .contact__details span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; } .contact__details a,.contact__details strong { color: white; font-size: var(--font-size-body-lg); text-decoration: none; }
+  .contact__details { display: grid; gap: var(--space-4); margin-top: var(--space-8); }
+  .contact__details p { display: grid; gap: .2rem; margin: 0; }
+  .contact__details span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .08em; text-transform: uppercase; }
+  .contact__details a, .contact__details strong { min-height: 2.75rem; display: inline-flex; align-items: center; width: fit-content; color: white; font-size: var(--font-size-body-lg); text-decoration: none; }
 
-  @media (max-width:1180px) { .trust-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-  @media (max-width:980px) {
-    .expertise-grid,.article-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-    .sector-grid,.method__grid,.cabinet-home__grid,.contact__grid { grid-template-columns: 1fr; }
-    .method__intro,.contact__intro { position: static; }
-    .cabinet-home :global(.media-placeholder) { max-width: 27rem; }
-    .contact__details a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  @media (max-width: 980px) {
+    .promise__grid, .cabinet-home__grid, .contact__grid { grid-template-columns: 1fr; }
+    .contact__intro { position: static; }
   }
-  @media (max-width:640px) {
-    .hero-actions { align-items: stretch; flex-direction: column; } .hero-actions :global(.button) { width: 100%; } .hero-cues { align-items: flex-start; flex-direction: column; }
-    .risk-map { min-height: 25rem; } .risk-map__core { width: 9.75rem; height: 9.75rem; } .risk-map__item--one { top: 8%; left: 4%; } .risk-map__item--two { top: 16%; right: 3%; } .risk-map__item--three { right: 3%; bottom: 8%; } .risk-map__item--four { bottom: 15%; left: 3%; } .risk-map__seal { display: none; }
-    .trust-grid,.signal-grid,.expertise-grid,.article-grid { grid-template-columns: 1fr; }
-    .trust-grid { gap: var(--space-2); } .signal-grid article { padding-inline: 0; border-right: 0; border-bottom: 1px solid var(--color-border); } .signal-grid article:last-child { border-bottom: 0; }
-    .expertise-grid :global(.expertise-card:first-child) { grid-column: auto; }
-    .program-map { min-height: 25rem; } .program-map__item--7 { top: 28%; left: 30%; }
-    .deliverable div,.deliverable div:nth-child(2),.deliverable div:nth-child(3) { grid-template-columns: auto 1fr; transform: none; } .deliverable small { grid-column: 2; }
-    .cabinet-points { grid-template-columns: 1fr; }
+  @media (max-width: 760px) {
+    .promise__steps, .offer-overview__grid, .article-grid { grid-template-columns: 1fr; }
+    .promise__steps li, .offer-overview article { min-height: 0; }
+    .cabinet-home__place { min-height: 17rem; }
+  }
+  @media (max-width: 540px) {
+    .hero-actions { flex-direction: column; }
+    .hero-actions :global(.button) { width: 100%; }
   }
 </style>

@@ -1,0 +1,112 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<figure
+  class:list={['paris-visual', { 'paris-visual--compact': compact }]}
+  role="img"
+  aria-label="Emplacement prévu pour une vue premium de Paris avec la Tour Eiffel, ville d’implantation d’Assuromieux Paris"
+  data-expected-image="/images/paris-tour-eiffel-hero.webp"
+>
+  <div class="paris-visual__sky" aria-hidden="true"></div>
+  <div class="paris-visual__eiffel" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="paris-visual__city" aria-hidden="true"></div>
+  <figcaption><span>Paris</span><strong>8e arrondissement</strong></figcaption>
+</figure>
+
+<style>
+  .paris-visual {
+    position: relative;
+    min-height: 30rem;
+    margin: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 72% 18%, rgba(255,255,255,.92), transparent 22%),
+      linear-gradient(165deg, #f8fbfe 5%, #dce9f4 60%, #b8cadb 100%);
+    border: 1px solid rgba(18,54,95,.14);
+    border-radius: var(--radius-display) var(--radius-display) var(--radius-panel) 48%;
+    box-shadow: var(--shadow-panel);
+  }
+
+  .paris-visual::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: linear-gradient(90deg, rgba(255,255,255,.15), transparent 45%, rgba(18,54,95,.08));
+  }
+
+  .paris-visual__sky {
+    position: absolute;
+    inset: 0;
+    opacity: .35;
+    background-image: linear-gradient(rgba(18,54,95,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(18,54,95,.1) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+  }
+
+  .paris-visual__eiffel {
+    position: absolute;
+    z-index: 2;
+    right: 20%;
+    bottom: 10%;
+    width: 8.5rem;
+    height: 22rem;
+  }
+
+  .paris-visual__eiffel::before,
+  .paris-visual__eiffel::after {
+    position: absolute;
+    bottom: 0;
+    width: .42rem;
+    height: 100%;
+    content: '';
+    background: var(--color-brand-deep);
+    border-radius: var(--radius-pill);
+    transform-origin: bottom;
+  }
+
+  .paris-visual__eiffel::before { left: 50%; transform: rotate(14deg); }
+  .paris-visual__eiffel::after { right: 50%; transform: rotate(-14deg); }
+  .paris-visual__eiffel span { position: absolute; z-index: 1; left: 17%; width: 66%; height: .28rem; background: var(--color-gold); border-radius: var(--radius-pill); }
+  .paris-visual__eiffel span:nth-child(1) { bottom: 21%; }
+  .paris-visual__eiffel span:nth-child(2) { bottom: 48%; left: 29%; width: 42%; }
+  .paris-visual__eiffel span:nth-child(3) { bottom: 72%; left: 40%; width: 20%; }
+
+  .paris-visual__city {
+    position: absolute;
+    z-index: 1;
+    right: -3%;
+    bottom: 0;
+    left: 0;
+    height: 20%;
+    background: linear-gradient(90deg, #183b61 0 10%, #244c75 10% 18%, #173a60 18% 31%, #2f567c 31% 42%, #183b61 42% 62%, #294f76 62% 74%, #183b61 74%);
+    clip-path: polygon(0 35%, 8% 35%, 8% 10%, 16% 10%, 16% 42%, 25% 42%, 25% 22%, 36% 22%, 36% 48%, 46% 48%, 46% 4%, 55% 4%, 55% 38%, 67% 38%, 67% 18%, 77% 18%, 77% 46%, 88% 46%, 88% 26%, 100% 26%, 100% 100%, 0 100%);
+  }
+
+  figcaption {
+    position: absolute;
+    z-index: 3;
+    bottom: var(--space-5);
+    left: var(--space-5);
+    display: grid;
+    padding: .75rem 1rem;
+    color: white;
+    background: rgba(7,28,51,.88);
+    border-radius: var(--radius-card-sm);
+    backdrop-filter: blur(10px);
+  }
+
+  figcaption span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .12em; text-transform: uppercase; }
+  figcaption strong { font-size: var(--font-size-sm); }
+  .paris-visual--compact { min-height: 23rem; }
+
+  @media (max-width: 640px) {
+    .paris-visual,
+    .paris-visual--compact { min-height: 21rem; border-radius: var(--radius-panel); }
+    .paris-visual__eiffel { right: 12%; height: 17rem; }
+  }
+</style>

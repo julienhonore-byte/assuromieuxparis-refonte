@@ -1,19 +1,26 @@
 ---
 import CTA from '../components/CTA.astro';
-import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
 const path = '/assurance-btp-decennale/';
 const description = 'Assurance BTP et décennale : analyse des activités déclarées, attestations, procédés, sous-traitance, véhicules et multirisque.';
+const faqItems = [
+  { question: 'La décennale suffit-elle à couvrir une entreprise du BTP ?', answer: 'Non. Selon l’activité, il faut aussi examiner la RC professionnelle, les locaux, matériels, véhicules, salariés, sous-traitants et conséquences d’une interruption d’activité.' },
+  { question: 'Pourquoi vérifier les activités déclarées ?', answer: 'L’attestation et le contrat doivent rester cohérents avec les travaux réellement réalisés. Les libellés, procédés et évolutions d’activité méritent donc une lecture attentive.' },
+  { question: 'Quels documents préparer ?', answer: 'Les contrats et attestations, la description des activités, leur part de chiffre d’affaires, les procédés utilisés, l’organisation de la sous-traitance et les principaux types de chantiers.' },
+];
 const structuredData = [
   ...baseSchemas,
   breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurance BTP et décennale', path }]),
   serviceSchema('Conseil en assurance BTP et décennale', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
 ];
 ---
 
@@ -21,75 +28,79 @@ const structuredData = [
   <main id="contenu-principal">
     <PageHero
       eyebrow="Expertise sectorielle"
-      title="Sécuriser le programme d’assurance autour des activités réellement exercées."
-      lead="En BTP, la décennale est centrale mais elle ne résume pas le risque. Activités déclarées, chantiers, procédés, sous-traitance, véhicules et exploitation doivent rester cohérents."
+      title="Relier la décennale aux activités réellement exercées."
+      lead="Nous examinons les activités, attestations, procédés, chantiers et autres contrats pour améliorer la cohérence du programme BTP."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance BTP et décennale' }]}
     >
-      <CTA href="#audit-btp" label="Demander un audit BTP" size="large" />
-      <CTA href="#perimetre" label="Voir le périmètre" variant="secondary" size="large" />
-      <MediaPlaceholder slot="visual" kind="sector" label="BTP & décennale" note="Photographie de chantier originale à produire" alt="Emplacement prévu pour un visuel original représentant un chantier et ses professionnels" />
+      <CTA href="/#contact" label="Demander un audit BTP" size="large" />
+      <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
     </PageHero>
 
-    <section class="section" aria-labelledby="coherence-title">
+    <section class="section" aria-labelledby="public-title">
       <div class="container-wide content-grid">
         <div class="content-copy">
-          <p class="eyebrow">Le point de départ</p>
-          <h2 id="coherence-title">L’attestation doit être rapprochée des travaux réellement réalisés.</h2>
+          <p class="eyebrow">À qui s’adresse cette solution ?</p>
+          <h2 id="public-title">Aux artisans et entreprises qui réalisent ou coordonnent des travaux.</h2>
         </div>
         <div class="content-copy">
-          <p>Intitulés d’activité, techniques employées, procédés, marchés acceptés et recours à la sous-traitance peuvent modifier la lecture du risque. Une attestation ne doit pas être interprétée isolément.</p>
-          <p>Assuromieux Paris aide à organiser les informations nécessaires à l’analyse et à identifier les questions à traiter avec les professionnels compétents lorsque le sujet dépasse le courtage.</p>
+          <p>L’approche concerne les professionnels du bâtiment, les entreprises intervenant sur plusieurs corps d’état et les structures qui font évoluer leurs techniques, leurs marchés ou leur recours à la sous-traitance.</p>
+          <p>Le point de départ reste simple : rapprocher ce qui est déclaré de ce qui est réellement réalisé.</p>
         </div>
       </div>
     </section>
 
-    <section id="perimetre" class="section section--surface" aria-labelledby="perimetre-title">
+    <section id="risques" class="section section--surface" aria-labelledby="risks-title">
       <div class="container-wide">
-        <SectionHeader kicker="Programme BTP" title="Dix dimensions à examiner ensemble." id="perimetre-title" />
+        <SectionHeader kicker="Risques couverts" title="Quatre dimensions du programme BTP." id="risks-title" />
         <div class="feature-grid feature-grid--2">
           {[
-            ['decennale', 'Garantie décennale', 'Portée déclarée, limites et cohérence avec les travaux envisagés.'],
-            ['rc-pro', 'RC professionnelle', 'Responsabilités avant, pendant et autour de la réalisation des travaux.'],
-            ['activites', 'Activités déclarées', 'Correspondance entre libellés, chiffre d’affaires et opérations effectuées.'],
-            ['attestations', 'Attestations', 'Lecture des mentions, périodes, activités et limites indiquées.'],
-            ['procedes', 'Procédés et techniques', 'Techniques courantes ou particulières à présenter avec précision.'],
-            ['sous-traitance', 'Sous-traitance', 'Missions confiées, attestations demandées et responsabilités.'],
-            ['vehicules', 'Véhicules et engins', 'Parc, usages professionnels, matériels mobiles et sinistralité.'],
-            ['multirisque', 'Multirisque', 'Locaux, dépôts, matériels, stocks et interruption d’activité.'],
-            ['dirigeant', 'Protection du dirigeant', 'Continuité de l’entreprise et protection personnelle à coordonner.'],
-            ['audit-btp', 'Audit du programme', 'Synthèse des contrats, des informations et des priorités de contrôle.'],
-          ].map(([id, title, text], index) => <article class="feature-item" {id}><span class="feature-item__index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}
+            ['Décennale et attestations', 'Activités déclarées, période, portée et cohérence avec les travaux.'],
+            ['RC professionnelle', 'Responsabilités avant, pendant et autour de la réalisation.'],
+            ['Véhicules et matériels', 'Parc, engins, usages, locaux, dépôts et équipements.'],
+            ['Entreprise et dirigeant', 'Sous-traitance, équipes, continuité et protection du décideur.'],
+          ].map(([title, text]) => <article class="feature-item"><h3>{title}</h3><p>{text}</p></article>)}
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="documents-btp-title">
+    <section class="section" aria-labelledby="checks-title">
       <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
-          <h2 id="documents-btp-title">Pièces utiles à préparer</h2>
+          <h2 id="checks-title">Points à vérifier</h2>
           <ul>
-            <li>contrats et attestations en cours ;</li>
-            <li>description détaillée des activités ;</li>
-            <li>répartition du chiffre d’affaires par activité ;</li>
-            <li>informations sur les procédés employés ;</li>
+            <li>libellés et répartition des activités ;</li>
+            <li>procédés et techniques employés ;</li>
+            <li>types de chantiers et donneurs d’ordre ;</li>
             <li>organisation de la sous-traitance ;</li>
-            <li>principaux types de chantiers et donneurs d’ordre.</li>
+            <li>attestations et périodes de garantie ;</li>
+            <li>véhicules, locaux et matériels.</li>
           </ul>
         </div>
         <div class="content-copy">
-          <p class="eyebrow">Un audit pragmatique</p>
+          <p class="eyebrow">Un contrôle pragmatique</p>
           <h2>Repérer les écarts avant qu’ils ne deviennent une difficulté.</h2>
-          <p>L’audit rapproche les déclarations, les attestations et les contrats des opérations décrites par l’entreprise. Il met en évidence les informations à mettre à jour et les points à approfondir.</p>
-          <p class="notice"><strong>Limite importante :</strong> cette analyse ne constitue pas un conseil juridique définitif. Les questions de qualification d’activité ou de responsabilité peuvent nécessiter l’intervention d’un professionnel du droit.</p>
+          <p>L’audit organise les informations, met en évidence les incohérences et précise les sujets à présenter au marché. Il facilite aussi la mise à jour des attestations et des données d’activité.</p>
+          <p class="notice"><strong>Limite importante :</strong> cette analyse ne constitue pas un conseil juridique définitif. Une question de qualification d’activité ou de responsabilité peut nécessiter un professionnel du droit.</p>
         </div>
+      </div>
+    </section>
+
+    <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise." />
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <SectionHeader kicker="Questions fréquentes" title="Avant de vérifier les contrats BTP." id="faq-title" />
+        <FAQ items={faqItems} />
       </div>
     </section>
 
     <RelatedLinks items={[
-      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Découvrir le déroulement complet de la mission.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Découvrir le déroulement de l’analyse.' },
       { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Relier décennale, flotte et multirisque.' },
       { href: '/cabinet/', label: 'Le cabinet', text: 'Comprendre notre rôle et notre méthode.' },
     ]} />
     <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." />
   </main>
 </SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

@@ -21,11 +21,11 @@ export const site = {
 
 export const mainNavigation: NavigationItem[] = [
   { href: '/', label: 'Accueil' },
-  { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
+  { href: '/assurances-entreprises/', label: 'Nos assurances' },
   { href: '/audit-assurances-entreprise/', label: 'Audit' },
-  { href: '/assurance-transport/', label: 'Transport' },
-  { href: '/assurance-btp-decennale/', label: 'BTP' },
+  { href: '/#secteurs', label: 'Secteurs' },
   { href: '/cabinet/', label: 'Cabinet' },
+  { href: '/#ressources', label: 'Ressources' },
   { href: '/#contact', label: 'Contact' },
 ];
 
@@ -38,7 +38,7 @@ export const footerExpertiseLinks: NavigationItem[] = [
 
 export const footerSectorLinks: NavigationItem[] = [
   { href: '/cabinet/', label: 'Le cabinet' },
-  { href: '/#expertises', label: 'Domaines d’expertise' },
+  { href: '/#secteurs', label: 'Domaines d’expertise' },
   { href: '/#ressources', label: 'Ressources' },
   { href: '/#contact', label: 'Prendre contact' },
 ];

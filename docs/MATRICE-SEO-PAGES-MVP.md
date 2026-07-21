@@ -2,7 +2,7 @@
 
 Date : 21 juillet 2026
 
-Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et le fichier `robots.txt` bloque l'exploration jusqu'à validation de production.
+Statut : matrice mise à jour après simplification Homepage 03. Toutes les pages restent en `noindex` et le fichier `robots.txt` bloque l'exploration jusqu'à validation de production.
 
 ## Vue synthétique
 
@@ -22,13 +22,13 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Mot-clé principal :** `courtier assurance entreprise Paris`.
 - **Mots-clés secondaires :** `conseil assurance entreprise`, `audit assurances`, `optimisation contrats assurance`, `courtier entreprise`.
 - **Title :** `Courtier en assurance entreprise à Paris | Assuromieux Paris`.
-- **Meta description :** `Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, négocier et optimiser leurs assurances.`
+- **Meta description :** `Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles.`
 - **H1 :** `Vos assurances d'entreprise méritent une stratégie, pas un simple renouvellement.`
-- **H2 principaux :** vision globale du programme ; trois signaux ; offres transversales ; expertises sectorielles ; méthode ; preuve de méthode ; cabinet ; ressources ; FAQ ; contact.
+- **H2 principaux :** sélection du besoin ; vision globale ; produits et expertises ; méthode en quatre temps ; cabinet parisien ; ressources ; FAQ ; contact.
 - **CTA principal :** `Demander mon audit gratuit` vers `#contact`.
 - **Liens entrants :** toutes les pages via logo, navigation et footer.
 - **Liens sortants :** Audit, Assurances entreprises, Transport, BTP, Cabinet et ancres internes.
-- **Données structurées :** `Organization`, `LocalBusiness`, `InsuranceAgency`.
+- **Données structurées :** `Organization`, `LocalBusiness`, `InsuranceAgency`, `ItemList` de services, `FAQPage`.
 - **Risque de cannibalisation :** modéré avec la page Cabinet sur « courtier assurance entreprise Paris ». L'accueil reste commercial et général ; Cabinet doit se concentrer sur l'organisation, le rôle et les valeurs.
 
 ## 2. Audit des assurances entreprise
@@ -39,9 +39,9 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Mots-clés secondaires :** `audit contrats assurance`, `analyse programme assurance`, `optimisation assurances entreprise`, `diagnostic assurance`.
 - **Title :** `Audit des assurances entreprise | Assuromieux Paris`.
 - **Meta description :** `Audit des assurances d'entreprise : analyse des contrats, risques, garanties et conditions pour éclairer les arbitrages du dirigeant.`
-- **H1 :** `Audit des assurances d'entreprise : décider avec une vision claire.`
-- **H2 principaux :** pourquoi auditer ; situations déclenchantes ; documents ; déroulement ; points contrôlés ; livrable ; limites ; FAQ ; formulaire.
-- **CTA principal :** `Demander mon audit` vers `#contact`.
+- **H1 :** `Décider avec une vision claire de ses contrats.`
+- **H2 principaux :** entreprises concernées ; quatre questions du diagnostic ; documents et points à vérifier ; méthode en quatre temps ; FAQ ; CTA.
+- **CTA principal :** `Demander mon audit` vers le formulaire de l'accueil.
 - **Liens entrants :** Accueil, Assurances entreprises, Transport, BTP, Cabinet, header et footer.
 - **Liens sortants :** Assurances entreprises, Transport, BTP, formulaire et page d'accueil.
 - **Données structurées :** `Organization`, `BreadcrumbList`, `Service`, `FAQPage`.
@@ -56,7 +56,7 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Title :** `Assurances entreprises à Paris | Assuromieux Paris`.
 - **Meta description :** `Assurances entreprises à Paris : analyse globale de la RC, multirisque, flotte, cyber, santé, prévoyance et protection du dirigeant.`
 - **H1 :** `Piloter les assurances de l'entreprise comme un seul programme.`
-- **H2 principaux :** architecture globale ; protections transversales ; lecture globale ; entreprises accompagnées.
+- **H2 principaux :** entreprises concernées ; protections transversales ; points à vérifier ; méthode en quatre temps ; FAQ ; CTA.
 - **CTA principal :** `Faire analyser mes contrats` vers la page Audit.
 - **Liens entrants :** Accueil, Audit, Transport, BTP, header et footer.
 - **Liens sortants :** Audit, Transport, BTP, Cabinet et contact.
@@ -71,9 +71,9 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Mots-clés secondaires :** `assurance transport routier`, `assurance logistique`, `marchandises transportées TPM`, `flotte poids lourds`, `responsabilité transporteur`.
 - **Title :** `Assurance transport et logistique | Assuromieux Paris`.
 - **Meta description :** `Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.`
-- **H1 :** `L'assurance transport commence par une lecture précise de l'exploitation.`
-- **H2 principaux :** chaîne de responsabilités ; périmètre sectoriel ; métiers concernés ; présentation du risque.
-- **CTA principal :** `Demander un audit sectoriel` vers `#audit-sectoriel` puis contact global.
+- **H1 :** `Assurer l'ensemble de la chaîne transport et logistique.`
+- **H2 principaux :** entreprises concernées ; quatre ensembles de risques ; points à vérifier ; méthode ; FAQ ; CTA.
+- **CTA principal :** `Demander un audit transport` vers le formulaire de l'accueil.
 - **Liens entrants :** Accueil, Audit, Assurances entreprises, Cabinet, header et footer.
 - **Liens sortants :** Audit, Assurances entreprises, Cabinet et contact.
 - **Données structurées :** `Organization`, `BreadcrumbList`, `Service`.
@@ -87,9 +87,9 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Mots-clés secondaires :** `assurance décennale entreprise`, `RC professionnelle BTP`, `attestation décennale`, `audit assurance BTP`.
 - **Title :** `Assurance BTP et décennale | Assuromieux Paris`.
 - **Meta description :** `Assurance BTP et décennale : analyse des activités déclarées, attestations, procédés, sous-traitance, véhicules et multirisque.`
-- **H1 :** `Sécuriser le programme d'assurance autour des activités réellement exercées.`
-- **H2 principaux :** cohérence activités/attestation ; programme BTP ; pièces utiles ; audit pragmatique et limites.
-- **CTA principal :** `Demander un audit BTP` vers `#audit-btp` puis contact global.
+- **H1 :** `Relier la décennale aux activités réellement exercées.`
+- **H2 principaux :** professionnels concernés ; quatre dimensions du programme ; points à vérifier ; méthode ; FAQ ; CTA.
+- **CTA principal :** `Demander un audit BTP` vers le formulaire de l'accueil.
 - **Liens entrants :** Accueil, Audit, Assurances entreprises, Cabinet, header et footer.
 - **Liens sortants :** Audit, Assurances entreprises, Cabinet et contact.
 - **Données structurées :** `Organization`, `BreadcrumbList`, `Service`.
@@ -103,12 +103,12 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 - **Mots-clés secondaires :** `cabinet courtage assurance Paris`, `conseil assurance entreprise`, `Assuromieux Paris`, `Jules Honoré assurance` après validation de la présentation.
 - **Title :** `Le cabinet | Assuromieux Paris`.
 - **Meta description :** `Découvrez Assuromieux Paris, cabinet de conseil et de courtage dédié à l'audit, l'optimisation et la sécurisation des assurances des entreprises.`
-- **H1 :** `Un cabinet de conseil pour éclairer les décisions d'assurance.`
-- **H2 principaux :** positionnement ; interlocuteur ; rôle du cabinet ; principes ; Paris et intervention nationale.
+- **H1 :** `Un cabinet de conseil pour éclairer vos décisions d'assurance.`
+- **H2 principaux :** positionnement ; méthode ; engagements et interlocuteur direct ; Paris et intervention nationale ; FAQ.
 - **CTA principal :** `Découvrir notre méthode` vers la page Audit.
 - **Liens entrants :** Accueil, Audit, Assurances entreprises, Transport, BTP et navigation.
 - **Liens sortants :** Audit, Assurances entreprises, Transport, contact et email.
-- **Données structurées :** `Organization`, `BreadcrumbList`, `AboutPage`.
+- **Données structurées :** `Organization`, `BreadcrumbList`, `AboutPage`, `FAQPage`.
 - **Risque de cannibalisation :** modéré avec l'accueil sur la requête locale. La page Cabinet doit privilégier les requêtes de marque et d'identité, sans répéter l'intégralité de l'offre.
 
 ## Contrôles avant indexation
@@ -120,3 +120,5 @@ Statut : matrice de prévisualisation. Toutes les pages restent en `noindex` et 
 5. Tester les données structurées dans un validateur dédié.
 6. Vérifier les ancres et le maillage après chaque création de page spécialisée.
 7. Éviter de transformer la page pilier Assurances entreprises en copie des futures pages produits.
+8. Conserver le sélecteur de produits centralisé dans `src/data/products.ts` et vérifier chaque ancre après ajout d'une future page.
+9. Valider le visuel Paris/Tour Eiffel, ses droits et ses recadrages avant de remplacer le placeholder CSS.

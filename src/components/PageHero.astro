@@ -39,7 +39,7 @@ const { eyebrow, title, lead, breadcrumbs } = Astro.props;
 
 <style>
   .page-hero {
-    padding-bottom: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
     background:
       radial-gradient(circle at 82% 26%, rgba(201, 154, 70, 0.18), transparent 24%),
       linear-gradient(135deg, var(--color-surface) 0%, var(--color-page) 100%);
@@ -49,9 +49,9 @@ const { eyebrow, title, lead, breadcrumbs } = Astro.props;
   .page-hero__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(21rem, 0.75fr);
-    gap: clamp(3rem, 7vw, 7rem);
+    gap: clamp(2.5rem, 6vw, 5.5rem);
     align-items: center;
-    padding-top: clamp(2rem, 5vw, 4.5rem);
+    padding-top: clamp(1.75rem, 4vw, 3.5rem);
   }
 
   .page-hero__copy {
@@ -94,7 +94,7 @@ const { eyebrow, title, lead, breadcrumbs } = Astro.props;
 
   .page-hero__diagram {
     position: relative;
-    min-height: 25rem;
+    min-height: 21rem;
     background:
       linear-gradient(rgba(18, 54, 95, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(18, 54, 95, 0.08) 1px, transparent 1px),
@@ -145,6 +145,6 @@ const { eyebrow, title, lead, breadcrumbs } = Astro.props;
     h1 { max-width: none; }
     .page-hero__actions { align-items: stretch; flex-direction: column; }
     .page-hero__actions :global(.button) { width: 100%; }
-    .page-hero__diagram { min-height: 20rem; }
+    .page-hero__diagram { min-height: 18rem; }
   }
 </style>

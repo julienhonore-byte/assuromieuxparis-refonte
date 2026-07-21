@@ -1,27 +1,28 @@
 ---
 import CTA from '../components/CTA.astro';
-import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ParisHeroVisual from '../components/ParisHeroVisual.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { organizationSchema, site } from '../data/site';
 import { breadcrumbSchema, pageUrl } from '../data/seo';
 
 const path = '/cabinet/';
 const description = 'Découvrez Assuromieux Paris, cabinet de conseil et de courtage dédié à l’audit, l’optimisation et la sécurisation des assurances des entreprises.';
+const faqItems = [
+  { question: 'Avec qui échange-t-on au cabinet ?', answer: `Jules Honoré est l’interlocuteur direct du cabinet. Il est joignable au ${site.phoneDisplay} et à l’adresse ${site.email}.` },
+  { question: 'Le cabinet intervient-il uniquement à Paris ?', answer: 'Non. L’implantation est parisienne, dans le 8e arrondissement, mais l’accompagnement concerne aussi des entreprises franciliennes et situées ailleurs en France.' },
+  { question: 'L’approche est-elle réservée à un secteur ?', answer: 'Non. Le cabinet adopte une vision transversale des assurances professionnelles, complétée par des expertises sectorielles en transport, logistique, BTP et décennale.' },
+];
 const structuredData = [
   organizationSchema,
   breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Le cabinet', path }]),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'Le cabinet Assuromieux Paris',
-    description,
-    url: pageUrl(path),
-    about: { '@id': `${site.canonicalUrl}#organization` },
-  },
+  { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'Le cabinet Assuromieux Paris', description, url: pageUrl(path), about: { '@id': `${site.canonicalUrl}#organization` } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
 ];
 ---
 
@@ -29,82 +30,77 @@ const structuredData = [
   <main id="contenu-principal">
     <PageHero
       eyebrow="Assuromieux Paris"
-      title="Un cabinet de conseil pour éclairer les décisions d’assurance."
-      lead="Notre rôle est de comprendre l’entreprise, d’analyser ses contrats et d’accompagner le dirigeant dans des arbitrages qui engagent sa protection, son budget et sa continuité."
+      title="Un cabinet de conseil pour éclairer vos décisions d’assurance."
+      lead="Une relation directe, une méthode structurée et un accompagnement adapté aux priorités de l’entreprise."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Le cabinet' }]}
     >
       <CTA href="/audit-assurances-entreprise/" label="Découvrir notre méthode" size="large" />
       <CTA href="/#contact" label="Prendre contact" variant="secondary" size="large" />
-      <MediaPlaceholder slot="visual" kind="portrait" label="Portrait de Jules Honoré" note="Portrait professionnel à produire — aucune photo générique" alt="Emplacement réservé au futur portrait professionnel de Jules Honoré" />
+      <ParisHeroVisual slot="visual" compact />
     </PageHero>
 
-    <section class="section" aria-labelledby="positionnement-title">
+    <section class="section" aria-labelledby="position-title">
       <div class="container-wide content-grid">
         <div class="content-copy">
-          <p class="eyebrow">Notre positionnement</p>
-          <h2 id="positionnement-title">Conseil et courtage au service d’une vision globale.</h2>
+          <p class="eyebrow">Le cabinet</p>
+          <h2 id="position-title">Comprendre l’entreprise avant de parler produit.</h2>
         </div>
         <div class="content-copy">
-          <p>Assuromieux Paris accompagne les entreprises dans l’audit, l’optimisation et la sécurisation de leurs assurances. Le cabinet ne se limite ni à un produit ni à un secteur.</p>
-          <p>Les expertises transport, logistique et BTP complètent une approche ouverte aux PME, artisans, entreprises de services, commerces, professions libérales et dirigeants.</p>
+          <p>Assuromieux Paris accompagne les entreprises dans l’analyse, la comparaison et l’évolution de leurs assurances professionnelles. L’objectif est de rendre les contrats plus lisibles et les décisions mieux reliées aux risques réels.</p>
+          <p>Le cabinet ne se limite pas à un produit. Ses expertises transport, logistique et BTP complètent une approche ouverte aux PME, artisans, services, commerces, professions libérales et dirigeants.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section--surface" aria-labelledby="interlocuteur-title">
-      <div class="container-wide content-grid content-grid--reverse cabinet-person">
-        <MediaPlaceholder kind="portrait" label="Votre interlocuteur" note="Portrait définitif et légende à valider" alt="Emplacement réservé à une photographie professionnelle de Jules Honoré" />
-        <div class="content-copy">
-          <p class="eyebrow">Votre interlocuteur</p>
-          <h2 id="interlocuteur-title">Jules Honoré</h2>
-          <p>Jules Honoré est l’interlocuteur présenté par Assuromieux Paris pour comprendre votre activité, organiser l’analyse des contrats et restituer les arbitrages de manière accessible.</p>
-          <p>Cette présentation reste volontairement factuelle. Une biographie détaillée, les qualifications et les références ne seront ajoutées qu’après validation des informations et de leur formulation.</p>
-          <a class="link-arrow" href={`mailto:${site.email}`}>Écrire à {site.email} <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
+    <SolutionMethod title="Une approche conseil en quatre temps." text="Comprendre l’activité, analyser les contrats, consulter lorsque cela apporte une comparaison utile et recommander des arbitrages explicites." />
 
-    <section class="section" aria-labelledby="role-title">
-      <div class="container-wide">
-        <SectionHeader kicker="Le rôle du cabinet" title="Transformer la complexité contractuelle en choix compréhensibles." id="role-title" />
-        <div class="feature-grid">
-          {[
-            ['01', 'Comprendre', 'L’activité, les contraintes, les contrats, les risques et les échéances.'],
-            ['02', 'Analyser', 'Les garanties, exclusions, franchises et interactions entre les polices.'],
-            ['03', 'Consulter', 'Le marché lorsque cette étape apporte une comparaison pertinente.'],
-            ['04', 'Négocier', 'Les garanties, conditions et paramètres économiques du dossier.'],
-            ['05', 'Recommander', 'Des scénarios explicités pour permettre au dirigeant d’arbitrer.'],
-            ['06', 'Suivre', 'Les décisions, les échéances et les évolutions de l’entreprise.'],
-          ].map(([index, title, text]) => <article class="feature-item"><span class="feature-item__index">{index}</span><h3>{title}</h3><p>{text}</p></article>)}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="valeurs-title">
-      <div class="container-wide content-grid">
+    <section class="section section--surface" aria-labelledby="engagements-title">
+      <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
-          <h2 id="valeurs-title">Principes de travail</h2>
+          <h2 id="engagements-title">Nos engagements</h2>
           <ul>
-            <li>partir de l’activité plutôt que du produit ;</li>
+            <li>partir de l’activité et des priorités ;</li>
             <li>expliquer les limites autant que les garanties ;</li>
-            <li>ne pas promettre un résultat non maîtrisable ;</li>
             <li>documenter les arbitrages importants ;</li>
-            <li>conserver un échange direct avec le dirigeant.</li>
+            <li>ne pas promettre un résultat non maîtrisable ;</li>
+            <li>maintenir une relation directe et accessible.</li>
           </ul>
         </div>
         <div class="content-copy">
-          <p class="eyebrow">Paris & France entière</p>
-          <h2>Un ancrage parisien, une intervention nationale.</h2>
-          <p>Le cabinet est basé au {site.addressStreet}, {site.addressLocality}. Il accompagne les entreprises parisiennes et franciliennes, ainsi que des organisations implantées ailleurs en France.</p>
-          <p>Les modalités d’échange sont adaptées au contexte de la mission et à la disponibilité des interlocuteurs.</p>
-          <ul class="tag-list"><li>Paris 8e</li><li>Île-de-France</li><li>France entière</li></ul>
+          <p class="eyebrow">Relation directe</p>
+          <h2>Un interlocuteur identifié, sans parcours impersonnel.</h2>
+          <p>Jules Honoré est l’interlocuteur du cabinet pour cadrer le besoin, organiser l’analyse et restituer les options de manière accessible. Cette présentation reste volontairement factuelle.</p>
+          <p class="cabinet-direct"><strong>Téléphone :</strong> <a href={site.phoneHref}>{site.phoneDisplay}</a><br /><strong>Email :</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
         </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="paris-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Paris & France entière</p>
+          <h2 id="paris-title">Un ancrage parisien, une intervention nationale.</h2>
+          <p>Le cabinet est basé au {site.addressStreet}, {site.addressLocality}. Il accompagne les entreprises parisiennes et franciliennes ainsi que des organisations implantées ailleurs en France.</p>
+        </div>
+        <div class="cabinet-facts">
+          <p><span>Implantation</span><strong>Paris 8e</strong></p>
+          <p><span>Périmètre</span><strong>France entière</strong></p>
+          <p><span>ORIAS</span><strong>{site.orias}</strong></p>
+          <p><span>Relation</span><strong>Interlocuteur direct</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <SectionHeader kicker="Questions fréquentes" title="Faire connaissance avec le cabinet." id="faq-title" />
+        <FAQ items={faqItems} />
       </div>
     </section>
 
     <RelatedLinks items={[
       { href: '/audit-assurances-entreprise/', label: 'Notre audit', text: 'Voir comment nous structurons l’analyse.' },
-      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Découvrir notre vision globale des contrats.' },
+      { href: '/assurances-entreprises/', label: 'Nos assurances', text: 'Découvrir les protections transversales.' },
       { href: '/assurance-transport/', label: 'Expertise transport', text: 'Approfondir une expertise sectorielle du cabinet.' },
     ]} />
     <PageCTA title="Échangeons directement sur vos priorités." text={`Contactez Assuromieux Paris au ${site.phoneDisplay} ou présentez votre besoin depuis le formulaire.`} secondaryHref={`mailto:${site.email}`} secondaryLabel="Écrire au cabinet" />
@@ -112,6 +108,11 @@ const structuredData = [
 </SiteLayout>
 
 <style>
-  .cabinet-person { align-items: center; }
-  .cabinet-person :global(.media-placeholder) { max-width: 29rem; }
+  .faq-layout { max-width: 58rem; }
+  .cabinet-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-panel); overflow: hidden; }
+  .cabinet-facts p { display: grid; gap: var(--space-2); margin: 0; padding: var(--space-6); background: white; }
+  .cabinet-facts span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .08em; text-transform: uppercase; }
+  .cabinet-facts strong { color: var(--color-brand-deep); }
+  .cabinet-direct :global(a) { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  @media (max-width: 540px) { .cabinet-facts { grid-template-columns: 1fr; } }
 </style>

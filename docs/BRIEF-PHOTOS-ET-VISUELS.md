@@ -2,7 +2,7 @@
 
 Date : 21 juillet 2026
 
-Statut : brief de production. Aucun visuel générique ou faux portrait ne doit remplacer les prises de vue originales décrites ici.
+Statut : brief de production. Aucun visuel générique, faux portrait ou photographie sans droits confirmés ne doit être intégré.
 
 ## 1. Direction générale
 
@@ -19,39 +19,20 @@ Principes communs :
 - diversité des entreprises représentées sans fabriquer de faux client ;
 - droits d'utilisation web, réseaux sociaux et communication commerciale documentés.
 
-## 2. Portrait du dirigeant
+## 2. Absence de portrait personnel — décision validée
 
-### Sujet et intention
+Aucune photographie personnelle de Jules Honoré n'est attendue pour le site. L'accueil, la page Cabinet, les contenus éditoriaux et les futures pages ne doivent pas réserver d'emplacement à un portrait.
 
-Portrait professionnel de Jules Honoré, regard direct ou légèrement décentré. L'image doit transmettre disponibilité, exigence et calme, sans posture trop institutionnelle.
+La dimension humaine repose sur :
 
-### Prises à produire
+- le nom et le rôle de l'interlocuteur ;
+- des coordonnées directes ;
+- un ton accessible et précis ;
+- une méthode expliquée simplement ;
+- l'ancrage parisien du cabinet ;
+- des visuels de lieu, d'architecture ou de situations de travail réellement autorisés.
 
-1. Portrait vertical mi-buste, fond clair texturé ou bureau sobre.
-2. Portrait horizontal environnemental, avec espace négatif à gauche ou à droite.
-3. Variante assise ou en situation de lecture d'un document non confidentiel.
-
-### Formats et dimensions
-
-- original RAW ou TIFF, côté long ≥ 5000 px ;
-- master vertical 4:5, minimum 2400 × 3000 px ;
-- variante web 3:4, minimum 1200 × 1600 px ;
-- variante horizontale 3:2, minimum 2400 × 1600 px ;
-- recadrage carré 1200 × 1200 px pour futurs profils ;
-- export AVIF/WebP, JPEG de secours, profil sRGB.
-
-### Usages
-
-- section « Le cabinet » de l'accueil ;
-- hero et section interlocuteur de `/cabinet/` ;
-- future page auteur ou prise de parole ;
-- communication sociale, après validation séparée.
-
-### Texte alternatif envisagé
-
-`Portrait professionnel de Jules Honoré, interlocuteur chez Assuromieux Paris.`
-
-Le texte final devra décrire la photographie réellement retenue, sans répéter une légende adjacente.
+Une éventuelle évolution de cette règle nécessiterait une validation explicite distincte.
 
 ## 3. Cabinet ou bureau
 
@@ -77,28 +58,56 @@ Montrer un environnement de travail crédible : bureau parisien, espace de rende
 
 À utiliser uniquement si le lieu photographié est effectivement celui du cabinet.
 
-## 4. Paris
+## 4. Visuel hero Paris et Tour Eiffel
 
 ### Intention
 
-Évoquer l'implantation parisienne sans produire une carte postale touristique. Privilégier une rue, une façade, une perspective urbaine ou un détail architectural cohérent avec le 8e arrondissement.
+Établir immédiatement l'implantation parisienne avec une photographie premium de Paris et de la Tour Eiffel, traitée de manière institutionnelle et contemporaine. La Tour Eiffel doit rester un repère secondaire dans la composition, jamais un sujet touristique central.
+
+### Fichiers attendus
+
+- desktop : `public/images/paris-tour-eiffel-hero.webp` ;
+- mobile : `public/images/paris-tour-eiffel-hero-mobile.webp` ;
+- aucun de ces fichiers ne doit être ajouté avant validation écrite de la licence et des droits d'usage.
 
 ### Contraintes
 
-- éviter la tour Eiffel comme raccourci visuel ;
+- format WebP, profil sRGB ;
+- largeur du master desktop : au moins 2 000 px ;
+- ratio desktop proche de 16:9, cadrage horizontal ;
+- Tour Eiffel visible mais décentrée, idéalement dans le tiers droit ;
+- espace calme suffisant pour le titre et les CTA ;
+- ciel clair ou lumière naturelle, couleurs douces et peu saturées ;
+- éviter les foules, enseignes, véhicules reconnaissables et effets de carte postale ;
 - ne pas faire apparaître d'adresse différente de l'adresse validée ;
 - ne pas suggérer que le cabinet occupe un bâtiment reconnaissable si ce n'est pas vérifié ;
-- prévoir un cadrage horizontal 21:9 ou 16:9 avec espace négatif.
+- appliquer un filtre CSS léger : saturation entre 75 et 90 %, contraste entre 85 et 95 % ;
+- ajouter un voile clair ou bleu très léger permettant un contraste AA du texte ;
+- viser un poids inférieur à 300 Ko pour le hero desktop.
 
 ### Dimensions
 
-- master minimum 3600 × 1800 px ;
-- variante web 1920 × 960 px ;
-- recadrage mobile 4:5 minimum 1200 × 1500 px.
+- master recommandé : 2 400 × 1 350 px minimum ;
+- export desktop : 2 000 × 1 125 px, inférieur à 300 Ko ;
+- export intermédiaire : 1 280 × 720 px ;
+- version mobile : ratio 4:5, 960 × 1 200 px minimum, cadrage distinct ;
+- déclarer les dimensions et utiliser `srcset`/`sizes` lors de l'intégration ;
+- précharger uniquement la variante réellement utilisée comme LCP.
 
 ### Texte alternatif envisagé
 
-`Perspective urbaine à Paris, ville d'implantation du cabinet Assuromieux Paris.`
+`Vue de Paris avec la Tour Eiffel en arrière-plan, ville d'implantation d'Assuromieux Paris.`
+
+Le texte alternatif final devra décrire le cadrage réellement retenu. Sur mobile, la Tour Eiffel doit rester visible sans réduire la lisibilité du texte. Si le recadrage automatique échoue, utiliser impérativement le fichier mobile dédié.
+
+### Placeholder actuel
+
+Faute d'image licenciée disponible dans le projet, le hero utilise une composition CSS temporaire représentant Paris. Elle :
+
+- ne déclenche aucune requête d'image ;
+- ne se présente pas comme une photographie ;
+- expose dans le code le chemin attendu `/images/paris-tour-eiffel-hero.webp` ;
+- doit être remplacée uniquement après validation de la licence, du poids, des recadrages et du contraste.
 
 ## 5. Entreprises et accompagnement des dirigeants
 
@@ -205,7 +214,7 @@ Formats : SVG produit par un designer, avec titres HTML séparés ; PNG/WebP uni
 
 ## 10. Placeholders actuels
 
-Les emplacements temporaires sont des compositions CSS neutres, clairement légendées. Ils ne contiennent aucune fausse personne et ne doivent pas être exportés comme photographies. Leur remplacement nécessite :
+Les emplacements temporaires sont des compositions CSS neutres. Ils ne contiennent aucune personne et ne doivent pas être exportés comme photographies. Leur remplacement nécessite :
 
 1. validation du visuel et de ses droits ;
 2. rédaction de l'alternative textuelle à partir de l'image finale ;

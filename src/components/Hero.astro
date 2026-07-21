@@ -27,7 +27,7 @@ const { eyebrow, title, lead, id = 'top' } = Astro.props;
   .hero {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(4rem, 7.5vw, 7rem);
+    padding-block: clamp(3.75rem, 6.5vw, 5.75rem);
     background:
       radial-gradient(circle at 78% 16%, rgba(201, 154, 70, 0.22), transparent 24%),
       radial-gradient(circle at 6% 86%, rgba(18, 54, 95, 0.08), transparent 23%),
@@ -49,8 +49,8 @@ const { eyebrow, title, lead, id = 'top' } = Astro.props;
 
   .hero__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+    gap: clamp(2.25rem, 4vw, 4rem);
     align-items: center;
   }
 
@@ -83,10 +83,10 @@ const { eyebrow, title, lead, id = 'top' } = Astro.props;
   }
 
   h1 {
-    max-width: 12ch;
+    max-width: 20ch;
     margin: 0;
     color: var(--color-brand-ink);
-    font-size: var(--font-size-h1);
+    font-size: clamp(2.5rem, 1.9rem + 2.75vw, 4.35rem);
     font-weight: var(--font-weight-heading);
     letter-spacing: var(--letter-spacing-display);
     line-height: var(--line-height-tight);
@@ -94,14 +94,14 @@ const { eyebrow, title, lead, id = 'top' } = Astro.props;
 
   .hero__lead {
     max-width: 40rem;
-    margin: var(--space-7) 0 0;
+    margin: var(--space-5) 0 0;
     color: var(--color-text-soft);
     font-size: var(--font-size-lead);
     line-height: 1.65;
   }
 
   .hero__content {
-    margin-top: var(--space-8);
+    margin-top: var(--space-6);
   }
 
   .hero__visual {

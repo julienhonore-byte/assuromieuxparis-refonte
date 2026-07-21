@@ -1,0 +1,45 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Une méthode en quatre temps.',
+  text = 'Le suivi des décisions et des échéances se poursuit ensuite avec l’entreprise.',
+} = Astro.props;
+
+const steps = [
+  ['01', 'Comprendre', 'L’activité, les objectifs et les contraintes.'],
+  ['02', 'Analyser', 'Les contrats, les risques et les écarts.'],
+  ['03', 'Consulter', 'Le marché lorsque la comparaison est utile.'],
+  ['04', 'Recommander', 'Des choix lisibles et leurs conséquences.'],
+];
+---
+
+<section class="section method-short" aria-labelledby="solution-method-title">
+  <div class="container-wide method-short__grid">
+    <div>
+      <p class="eyebrow">Méthode Assuromieux</p>
+      <h2 id="solution-method-title">{title}</h2>
+      <p>{text}</p>
+    </div>
+    <ol>
+      {steps.map(([index, stepTitle, stepText]) => <li><span>{index}</span><strong>{stepTitle}</strong><small>{stepText}</small></li>)}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .method-short { color: var(--color-text-on-dark); background: var(--color-brand-ink); }
+  .method-short__grid { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); gap: clamp(2.5rem,7vw,7rem); align-items: start; }
+  h2 { max-width: 12ch; margin: 0; color: white; font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  p:not(.eyebrow) { max-width: 35rem; color: var(--color-text-on-dark-soft); }
+  ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-panel); overflow: hidden; list-style: none; }
+  li { min-height: 9rem; display: grid; align-content: start; gap: var(--space-2); padding: var(--space-6); background: rgba(11,39,71,.95); }
+  li span { color: var(--color-gold); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  li strong { color: white; }
+  li small { color: var(--color-text-on-dark-soft); font-size: var(--font-size-sm); line-height: 1.45; }
+  @media (max-width: 860px) { .method-short__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { ol { grid-template-columns: 1fr; } li { min-height: 0; } }
+</style>

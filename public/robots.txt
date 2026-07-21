@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Blocage temporaire : aucune prévisualisation ne doit être indexée.

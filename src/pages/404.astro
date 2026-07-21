@@ -1,0 +1,17 @@
+---
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page introuvable | Assuromieux Paris" description="Page 404 technique provisoire.">
+  <Header />
+  <main>
+    <Hero eyebrow="Erreur 404" title="Cette page n’existe pas.">
+      <CTA href="/" label="Revenir à l’accueil" />
+    </Hero>
+  </main>
+  <Footer />
+</BaseLayout>

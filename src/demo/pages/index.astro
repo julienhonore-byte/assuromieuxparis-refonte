@@ -1,0 +1,108 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Card from '../../components/Card.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Démonstration interne | Assuromieux Paris"
+  description="Démonstration locale non publiée des fondations graphiques Assuromieux Paris."
+>
+  <Header />
+  <main>
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { label: 'Démonstration interne' }]} />
+    </div>
+
+    <Hero
+      eyebrow="Démonstration interne"
+      title="Fondations graphiques Assuromieux Paris"
+      lead="Palette, typographie, composants et rythmes extraits de la landing de référence."
+    >
+      <div class="demo-actions">
+        <CTA href="#cartes" label="Voir les composants" />
+        <CTA href="#formulaire" label="Voir le formulaire" variant="secondary" />
+      </div>
+    </Hero>
+
+    <section class="section section--surface">
+      <div class="container">
+        <SectionHeader kicker="Couleurs" title="Palette existante" text="Les couleurs ne sont pas réinterprétées à ce stade." />
+        <div class="swatches">
+          <div class="swatch swatch--blue">#12365f</div>
+          <div class="swatch swatch--dark">#0b2747</div>
+          <div class="swatch swatch--gold">#c99a46</div>
+          <div class="swatch swatch--background">#eef4fa</div>
+          <div class="swatch swatch--text">#162033</div>
+          <div class="swatch swatch--border">#d9e3ee</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cartes" class="section">
+      <div class="container">
+        <SectionHeader kicker="Composants" title="Titres, boutons et cartes" text="Première traduction réutilisable de la landing actuelle." />
+        <div class="demo-grid">
+          <Card title="Audit" text="Carte standard avec bordure, rayon et ombre issus de la référence." />
+          <Card title="Diagnostic" text="La typographie conserve le bleu profond et les graisses élevées." />
+          <Card title="Accompagnement" text="Les espacements seront affinés lors de la mission design system." />
+        </div>
+      </div>
+    </section>
+
+    <section id="formulaire" class="section section--surface">
+      <div class="container demo-form">
+        <SectionHeader kicker="Formulaire" title="Socle Formspree accessible" text="Aucune donnée réelle ne doit être envoyée depuis cette démonstration." />
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .demo-actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .swatch {
+    min-height: 8rem;
+    display: flex;
+    align-items: end;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card-small);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .swatch--blue { color: white; background: var(--color-blue); }
+  .swatch--dark { color: white; background: var(--color-blue-dark); }
+  .swatch--gold { color: var(--color-blue-dark); background: var(--color-gold); }
+  .swatch--background { background: var(--color-background); }
+  .swatch--text { color: white; background: var(--color-text); }
+  .swatch--border { background: var(--color-border); }
+
+  .demo-form {
+    max-width: var(--container-text);
+  }
+
+  @media (max-width: 640px) {
+    .swatches {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

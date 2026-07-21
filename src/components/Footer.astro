@@ -1,0 +1,46 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <img src="/logo/assuromieux-paris.jpeg" width="300" height="83" alt="Assuromieux Paris" />
+      <strong>Assuromieux Paris</strong>
+    </div>
+    <p>Socle technique provisoire · ORIAS 26003798</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 2.625rem;
+    color: var(--color-on-dark);
+    background: var(--color-blue-dark);
+    font-size: 0.875rem;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    align-items: end;
+  }
+
+  img {
+    width: 10.625rem;
+    height: auto;
+    margin-bottom: var(--space-3);
+  }
+
+  strong {
+    display: block;
+    color: var(--color-surface);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

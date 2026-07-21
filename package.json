@@ -1,0 +1,23 @@
+{
+  "name": "assuromieuxparis-refonte",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "dev:demo": "ASTRO_TELEMETRY_DISABLED=1 astro dev --config astro.demo.config.mjs",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:demo": "ASTRO_TELEMETRY_DISABLED=1 astro build --config astro.demo.config.mjs",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "pnpm build && pnpm check:links"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=7.1.0"
+  },
+  "devDependencies": {
+    "astro": "7.1.3"
+  }
+}

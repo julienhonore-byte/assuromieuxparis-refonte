@@ -1,0 +1,47 @@
+---
+interface Item {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  items?: Item[];
+  currentPath?: string;
+}
+
+const { items = [{ href: '/', label: 'Accueil' }], currentPath = '/' } = Astro.props;
+---
+
+<nav class="desktop-nav" aria-label="Navigation principale">
+  {items.map((item) => (
+    <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+  ))}
+</nav>
+
+<style>
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.625rem;
+    color: var(--color-text-strong);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-strong);
+  }
+
+  .desktop-nav a {
+    text-decoration: none;
+  }
+
+  .desktop-nav a[aria-current='page'] {
+    color: var(--color-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 0.4rem;
+  }
+
+  @media (max-width: 980px) {
+    .desktop-nav {
+      display: none;
+    }
+  }
+</style>

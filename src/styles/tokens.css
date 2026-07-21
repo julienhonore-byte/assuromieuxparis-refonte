@@ -1,0 +1,77 @@
+:root {
+  /* Couleurs extraites de la landing de référence */
+  --color-blue: #12365f;
+  --color-blue-dark: #0b2747;
+  --color-gold: #c99a46;
+  --color-gold-soft: #f4e3bf;
+  --color-background: #eef4fa;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f7fbff;
+  --color-text: #162033;
+  --color-text-strong: #344054;
+  --color-text-soft: #475467;
+  --color-muted: #667085;
+  --color-border: #d9e3ee;
+  --color-on-dark: #dce9f6;
+
+  /* Typographie */
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-lead: clamp(1.0625rem, 1.6vw, 1.1875rem);
+  --font-size-h1: clamp(2.5rem, 6vw, 4.5rem);
+  --font-size-h2: clamp(1.9375rem, 4vw, 3rem);
+  --font-size-h3: 1.3125rem;
+  --line-height-body: 1.5;
+  --line-height-heading: 1.06;
+  --letter-spacing-heading: -0.045em;
+  --font-weight-strong: 800;
+  --font-weight-heading: 900;
+
+  /* Largeurs */
+  --container-max: 73.75rem;
+  --container-text: 47.5rem;
+  --container-gutter: 1.25rem;
+  --container-gutter-mobile: 0.875rem;
+
+  /* Espacements */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-11: 2.75rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --section-space: clamp(3.75rem, 8vw, 5.125rem);
+
+  /* Rayons */
+  --radius-control: 0.875rem;
+  --radius-card-small: 1.125rem;
+  --radius-card: 1.375rem;
+  --radius-panel: 1.875rem;
+  --radius-pill: 999px;
+
+  /* Ombres */
+  --shadow-card: 0 14px 34px rgba(12, 42, 78, 0.07);
+  --shadow-panel: 0 22px 60px rgba(12, 42, 78, 0.16);
+  --shadow-action: 0 18px 34px rgba(12, 42, 78, 0.25);
+
+  /* Boutons */
+  --button-height: 3.25rem;
+  --button-padding-inline: 1.625rem;
+  --button-transition: 180ms ease;
+
+  /* Cartes */
+  --card-padding: clamp(1.5rem, 3vw, 1.75rem);
+  --card-border: 1px solid var(--color-border);
+
+  /* Breakpoints documentaires ; les media queries utilisent les mêmes valeurs littérales. */
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 980px;
+}

@@ -1,0 +1,21 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Socle technique | Assuromieux Paris"
+  description="Page technique provisoire du nouveau socle Astro Assuromieux Paris."
+>
+  <Header />
+  <main>
+    <Hero
+      eyebrow="Préparation technique"
+      title="Le nouveau socle Astro est prêt."
+      lead="Cette page provisoire valide uniquement la structure technique. Elle ne constitue pas la future page d’accueil."
+    />
+  </main>
+  <Footer />
+</BaseLayout>

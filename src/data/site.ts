@@ -20,25 +20,44 @@ export const site = {
 } as const;
 
 export const mainNavigation: NavigationItem[] = [
-  { href: '#top', label: 'Accueil' },
-  { href: '#assurances-entreprises', label: 'Assurances entreprises' },
-  { href: '#transport-logistique', label: 'Transport' },
-  { href: '#expertise-btp', label: 'BTP' },
-  { href: '#methode', label: 'Audit' },
-  { href: '#ressources', label: 'Ressources' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/', label: 'Accueil' },
+  { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
+  { href: '/audit-assurances-entreprise/', label: 'Audit' },
+  { href: '/assurance-transport/', label: 'Transport' },
+  { href: '/assurance-btp-decennale/', label: 'BTP' },
+  { href: '/cabinet/', label: 'Cabinet' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export const footerExpertiseLinks: NavigationItem[] = [
-  { href: '#expertises', label: 'Assurance transport' },
-  { href: '#expertises', label: 'Flotte automobile' },
-  { href: '#expertises', label: 'RC professionnelle' },
-  { href: '#expertise-btp', label: 'Assurance décennale' },
+  { href: '/audit-assurances-entreprise/', label: 'Audit des assurances' },
+  { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
+  { href: '/assurance-transport/', label: 'Transport et logistique' },
+  { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
 ];
 
 export const footerSectorLinks: NavigationItem[] = [
-  { href: '#transport-logistique', label: 'Transport et logistique' },
-  { href: '#assurances-entreprises', label: 'PME et entreprises' },
-  { href: '#expertise-btp', label: 'BTP et artisans' },
-  { href: '#paris', label: 'Paris et intervention nationale' },
+  { href: '/cabinet/', label: 'Le cabinet' },
+  { href: '/#expertises', label: 'Domaines d’expertise' },
+  { href: '/#ressources', label: 'Ressources' },
+  { href: '/#contact', label: 'Prendre contact' },
 ];
+
+export const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${site.canonicalUrl}#organization`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.canonicalUrl,
+  logo: `${site.canonicalUrl}logo/assuromieux-paris.jpeg`,
+  email: site.email,
+  telephone: '+33695699674',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.addressStreet,
+    postalCode: '75008',
+    addressLocality: 'Paris',
+    addressCountry: 'FR',
+  },
+};

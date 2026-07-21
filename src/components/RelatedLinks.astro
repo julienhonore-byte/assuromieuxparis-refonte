@@ -1,0 +1,41 @@
+---
+interface RelatedItem {
+  href: string;
+  label: string;
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  items: RelatedItem[];
+}
+
+const { title = 'Poursuivre votre lecture', items } = Astro.props;
+---
+
+<aside class="related" aria-labelledby="related-title">
+  <div class="container-wide">
+    <h2 id="related-title">{title}</h2>
+    <div class="related__grid">
+      {items.map((item) => (
+        <a href={item.href}>
+          <span>{item.label}</span>
+          <p>{item.text}</p>
+          <strong aria-hidden="true">→</strong>
+        </a>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  .related { padding-block: var(--section-space-compact); background: var(--color-page); border-block: 1px solid var(--color-border); }
+  h2 { margin: 0 0 var(--space-7); color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .related__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  a { position: relative; min-height: 11rem; display: flex; flex-direction: column; padding: var(--space-6); color: inherit; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); }
+  a:hover { border-color: rgba(18, 54, 95, 0.3); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+  span { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }
+  p { margin: var(--space-2) var(--space-8) 0 0; color: var(--color-text-muted); font-size: var(--font-size-sm); }
+  strong { position: absolute; right: var(--space-5); bottom: var(--space-5); color: var(--color-gold-dark); }
+  @media (max-width: 768px) { .related__grid { grid-template-columns: 1fr; } a { min-height: 8rem; } }
+</style>

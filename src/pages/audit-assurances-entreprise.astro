@@ -1,0 +1,170 @@
+---
+import CTA from '../components/CTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQ from '../components/FAQ.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { site } from '../data/site';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/audit-assurances-entreprise/';
+const description = 'Audit des assurances d’entreprise : analyse des contrats, risques, garanties et conditions pour éclairer les arbitrages du dirigeant.';
+const faqItems = [
+  { question: 'Quand demander un audit de ses assurances ?', answer: 'Un audit est particulièrement utile avant une échéance importante, après une évolution d’activité, un changement de parc ou de locaux, une hausse sensible de cotisation ou lorsque plusieurs contrats ont été ajoutés sans vision consolidée.' },
+  { question: 'Quels contrats peuvent être analysés ?', answer: 'Le périmètre peut couvrir la responsabilité civile, la multirisque, la flotte, la cyberassurance, la santé, la prévoyance et les garanties sectorielles. Il est défini avec le dirigeant avant l’analyse.' },
+  { question: 'L’audit impose-t-il de changer d’assureur ?', answer: 'Non. La conclusion peut être de conserver un contrat, de le faire évoluer ou de consulter le marché. Le changement n’est pas un objectif en soi.' },
+  { question: 'Un audit garantit-il une économie ?', answer: 'Non. Il vise d’abord la cohérence de la couverture et la compréhension des arbitrages. Une baisse de coût ne peut pas être promise automatiquement.' },
+  { question: 'Quel livrable est remis ?', answer: 'Le format dépend du périmètre. Il peut prendre la forme d’une synthèse des contrats, des points de vigilance, des priorités et des scénarios à étudier avec le dirigeant.' },
+];
+
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Audit des assurances entreprise', path }]),
+  serviceSchema('Audit des assurances d’entreprise', description, path),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+  },
+];
+---
+
+<SiteLayout
+  title="Audit des assurances entreprise | Assuromieux Paris"
+  {description}
+  canonical={pageUrl(path)}
+  currentPath={path}
+  ctaHref="#contact"
+  {structuredData}
+>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Le cœur de notre approche"
+      title="Audit des assurances d’entreprise : décider avec une vision claire."
+      lead="Nous rapprochons votre activité réelle de vos contrats pour identifier les incohérences, comprendre les arbitrages et préparer les décisions utiles — sans présumer qu’il faut tout changer."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Audit des assurances entreprise' }]}
+    >
+      <CTA href="#contact" label="Demander mon audit" size="large" />
+      <CTA href="#deroulement" label="Voir le déroulement" variant="secondary" size="large" />
+    </PageHero>
+
+    <section class="section" aria-labelledby="pourquoi-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Pourquoi auditer</p>
+          <h2 id="pourquoi-title">Les contrats évoluent rarement au même rythme que l’entreprise.</h2>
+        </div>
+        <div class="content-copy">
+          <p>Une nouvelle activité, un client exigeant, une croissance du parc ou un changement d’organisation peuvent modifier le risque. L’audit remet les contrats en regard de cette réalité.</p>
+          <p>Il ne s’agit pas seulement de comparer des primes : franchises, plafonds, exclusions, activités déclarées, responsabilités et articulation entre les polices doivent être lus ensemble.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="declencheurs-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Situations déclenchantes" title="Les moments où une revue devient particulièrement utile." id="declencheurs-title" />
+        <div class="feature-grid">
+          {[
+            ['01', 'Échéance à préparer', 'Anticiper suffisamment pour analyser avant de consulter le marché.'],
+            ['02', 'Activité qui évolue', 'Vérifier que les déclarations et garanties suivent les nouvelles prestations.'],
+            ['03', 'Hausse de cotisation', 'Comprendre les causes avant d’arbitrer entre coût, franchise et couverture.'],
+            ['04', 'Contrats dispersés', 'Repérer les doublons, les interstices et les responsabilités mal réparties.'],
+            ['05', 'Sinistre ou incident', 'Relire les limites révélées sans tirer de conclusion juridique hâtive.'],
+            ['06', 'Projet structurant', 'Acquisition, nouveaux locaux, flotte ou donneur d’ordre peuvent modifier l’exposition.'],
+          ].map(([index, title, text]) => <article class="feature-item"><span class="feature-item__index">{index}</span><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="deroulement" class="section" aria-labelledby="documents-title">
+      <div class="container-wide content-grid content-grid--reverse">
+        <div class="editorial-panel">
+          <h2 id="documents-title">Documents généralement analysés</h2>
+          <ul>
+            <li>contrats, avenants et conditions particulières disponibles ;</li>
+            <li>appels de cotisation et échéanciers ;</li>
+            <li>relevés de sinistralité selon le périmètre ;</li>
+            <li>description des activités et chiffre d’affaires associé ;</li>
+            <li>état du parc, des locaux ou des équipements concernés ;</li>
+            <li>obligations contractuelles utiles, notamment celles des donneurs d’ordre.</li>
+          </ul>
+        </div>
+        <div class="content-copy">
+          <p class="eyebrow">Une mission cadrée</p>
+          <h2>Six étapes pour passer des documents aux décisions.</h2>
+          <ol>
+            <li><strong>Cadrage :</strong> activité, objectifs, périmètre et échéances.</li>
+            <li><strong>Collecte :</strong> pièces réellement utiles à l’analyse.</li>
+            <li><strong>Diagnostic :</strong> garanties, exclusions, franchises et cohérence globale.</li>
+            <li><strong>Marché :</strong> consultation lorsque celle-ci est pertinente.</li>
+            <li><strong>Recommandation :</strong> scénarios et arbitrages explicités.</li>
+            <li><strong>Suivi :</strong> mise en œuvre et prochaines dates de contrôle.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="controle-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Points contrôlés" title="Une lecture contractuelle et opérationnelle." text="Le niveau de détail dépend toujours des documents disponibles et du périmètre convenu." id="controle-title" />
+        <div class="feature-grid feature-grid--2">
+          {[
+            ['Activités et déclarations', 'Correspondance entre ce que l’entreprise réalise et ce que les contrats décrivent.'],
+            ['Garanties et exclusions', 'Portée, plafonds, sous-limites, franchises et principales conditions.'],
+            ['Articulation des contrats', 'Doublons possibles, zones non couvertes et responsabilités entre polices.'],
+            ['Conditions économiques', 'Cotisations, franchises et modalités examinées avec le niveau de protection.'],
+            ['Obligations de l’entreprise', 'Exigences clients, bailleurs ou donneurs d’ordre remises dans leur contexte.'],
+            ['Pilotage', 'Échéances, interlocuteurs et informations à mettre à jour dans le temps.'],
+          ].map(([title, text]) => <article class="feature-item"><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="livrable-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Le livrable</p>
+          <h2 id="livrable-title">Une synthèse conçue pour l’arbitrage du dirigeant.</h2>
+          <p>Le livrable présente le périmètre étudié, les points cohérents, les vigilances, les priorités et les options à approfondir. Son format est adapté à la complexité du programme.</p>
+        </div>
+        <div class="notice">
+          <strong>Ce que l’audit ne garantit pas</strong>
+          <p>Il ne promet ni économie automatique, ni acceptation par un assureur, ni absence de sinistre. Il ne remplace pas un avis juridique ou comptable lorsque la situation l’exige.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <SectionHeader kicker="Questions fréquentes" title="Avant de lancer l’analyse." id="faq-title" />
+        <FAQ items={faqItems} />
+      </div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Comprendre le programme dans son ensemble.' },
+      { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Découvrir l’audit adapté aux risques de flux.' },
+      { href: '/assurance-btp-decennale/', label: 'BTP et décennale', text: 'Revoir activités, attestations et garanties.' },
+    ]} />
+
+    <section id="contact" class="section audit-contact" aria-labelledby="contact-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Premier échange</p>
+          <h2 id="contact-title">Cadrons l’analyse utile à votre entreprise.</h2>
+          <p>Indiquez le contrat prioritaire, votre activité et votre prochaine échéance. Aucun document confidentiel n’est nécessaire à ce stade.</p>
+        </div>
+        <ContactForm action={site.formspreeUrl} calUrl={site.calUrl} />
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .faq-layout { max-width: 58rem; }
+  .notice p { margin-bottom: 0; }
+  .audit-contact { background: var(--color-page); }
+</style>

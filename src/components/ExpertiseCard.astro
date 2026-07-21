@@ -4,30 +4,37 @@ interface Props {
   text: string;
   code: string;
   href?: string;
-  futureHref: string;
+  futureHref?: string;
   id?: string;
+  level?: 'transversal' | 'sector';
 }
 
-const { title, text, code, href = '#contact', futureHref, id } = Astro.props;
+const { title, text, code, href = '/#contact', futureHref, id, level = 'transversal' } = Astro.props;
 ---
 
-<article class="expertise-card card card--interactive" {id}>
+<article class:list={['expertise-card', `expertise-card--${level}`, 'card', 'card--interactive']} {id}>
   <div class="expertise-card__head">
     <span class="expertise-card__code" aria-hidden="true">{code}</span>
     <span class="expertise-card__line" aria-hidden="true"></span>
   </div>
   <h3>{title}</h3>
   <p>{text}</p>
-  <a href={href} data-future-route={futureHref} aria-label={`Échanger sur ${title}`}>
-    Échanger sur ce besoin <span aria-hidden="true">→</span>
+  <a href={href} data-future-route={futureHref} aria-label={`Découvrir ${title}`}>
+    Découvrir cette expertise <span aria-hidden="true">→</span>
   </a>
 </article>
 
 <style>
   .expertise-card {
-    min-height: 19rem;
+    min-height: 16rem;
     display: flex;
     flex-direction: column;
+  }
+
+  .expertise-card--sector {
+    min-height: 19rem;
+    background: var(--color-gold-wash);
+    border-color: rgba(201, 154, 70, 0.32);
   }
 
   .expertise-card__head {

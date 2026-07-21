@@ -1,0 +1,117 @@
+---
+import CTA from '../components/CTA.astro';
+import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { organizationSchema, site } from '../data/site';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+
+const path = '/cabinet/';
+const description = 'Découvrez Assuromieux Paris, cabinet de conseil et de courtage dédié à l’audit, l’optimisation et la sécurisation des assurances des entreprises.';
+const structuredData = [
+  organizationSchema,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Le cabinet', path }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Le cabinet Assuromieux Paris',
+    description,
+    url: pageUrl(path),
+    about: { '@id': `${site.canonicalUrl}#organization` },
+  },
+];
+---
+
+<SiteLayout title="Le cabinet | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Assuromieux Paris"
+      title="Un cabinet de conseil pour éclairer les décisions d’assurance."
+      lead="Notre rôle est de comprendre l’entreprise, d’analyser ses contrats et d’accompagner le dirigeant dans des arbitrages qui engagent sa protection, son budget et sa continuité."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Le cabinet' }]}
+    >
+      <CTA href="/audit-assurances-entreprise/" label="Découvrir notre méthode" size="large" />
+      <CTA href="/#contact" label="Prendre contact" variant="secondary" size="large" />
+      <MediaPlaceholder slot="visual" kind="portrait" label="Portrait de Jules Honoré" note="Portrait professionnel à produire — aucune photo générique" alt="Emplacement réservé au futur portrait professionnel de Jules Honoré" />
+    </PageHero>
+
+    <section class="section" aria-labelledby="positionnement-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Notre positionnement</p>
+          <h2 id="positionnement-title">Conseil et courtage au service d’une vision globale.</h2>
+        </div>
+        <div class="content-copy">
+          <p>Assuromieux Paris accompagne les entreprises dans l’audit, l’optimisation et la sécurisation de leurs assurances. Le cabinet ne se limite ni à un produit ni à un secteur.</p>
+          <p>Les expertises transport, logistique et BTP complètent une approche ouverte aux PME, artisans, entreprises de services, commerces, professions libérales et dirigeants.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="interlocuteur-title">
+      <div class="container-wide content-grid content-grid--reverse cabinet-person">
+        <MediaPlaceholder kind="portrait" label="Votre interlocuteur" note="Portrait définitif et légende à valider" alt="Emplacement réservé à une photographie professionnelle de Jules Honoré" />
+        <div class="content-copy">
+          <p class="eyebrow">Votre interlocuteur</p>
+          <h2 id="interlocuteur-title">Jules Honoré</h2>
+          <p>Jules Honoré est l’interlocuteur présenté par Assuromieux Paris pour comprendre votre activité, organiser l’analyse des contrats et restituer les arbitrages de manière accessible.</p>
+          <p>Cette présentation reste volontairement factuelle. Une biographie détaillée, les qualifications et les références ne seront ajoutées qu’après validation des informations et de leur formulation.</p>
+          <a class="link-arrow" href={`mailto:${site.email}`}>Écrire à {site.email} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="role-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Le rôle du cabinet" title="Transformer la complexité contractuelle en choix compréhensibles." id="role-title" />
+        <div class="feature-grid">
+          {[
+            ['01', 'Comprendre', 'L’activité, les contraintes, les contrats, les risques et les échéances.'],
+            ['02', 'Analyser', 'Les garanties, exclusions, franchises et interactions entre les polices.'],
+            ['03', 'Consulter', 'Le marché lorsque cette étape apporte une comparaison pertinente.'],
+            ['04', 'Négocier', 'Les garanties, conditions et paramètres économiques du dossier.'],
+            ['05', 'Recommander', 'Des scénarios explicités pour permettre au dirigeant d’arbitrer.'],
+            ['06', 'Suivre', 'Les décisions, les échéances et les évolutions de l’entreprise.'],
+          ].map(([index, title, text]) => <article class="feature-item"><span class="feature-item__index">{index}</span><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="valeurs-title">
+      <div class="container-wide content-grid">
+        <div class="editorial-panel">
+          <h2 id="valeurs-title">Principes de travail</h2>
+          <ul>
+            <li>partir de l’activité plutôt que du produit ;</li>
+            <li>expliquer les limites autant que les garanties ;</li>
+            <li>ne pas promettre un résultat non maîtrisable ;</li>
+            <li>documenter les arbitrages importants ;</li>
+            <li>conserver un échange direct avec le dirigeant.</li>
+          </ul>
+        </div>
+        <div class="content-copy">
+          <p class="eyebrow">Paris & France entière</p>
+          <h2>Un ancrage parisien, une intervention nationale.</h2>
+          <p>Le cabinet est basé au {site.addressStreet}, {site.addressLocality}. Il accompagne les entreprises parisiennes et franciliennes, ainsi que des organisations implantées ailleurs en France.</p>
+          <p>Les modalités d’échange sont adaptées au contexte de la mission et à la disponibilité des interlocuteurs.</p>
+          <ul class="tag-list"><li>Paris 8e</li><li>Île-de-France</li><li>France entière</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/audit-assurances-entreprise/', label: 'Notre audit', text: 'Voir comment nous structurons l’analyse.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Découvrir notre vision globale des contrats.' },
+      { href: '/assurance-transport/', label: 'Expertise transport', text: 'Approfondir une expertise sectorielle du cabinet.' },
+    ]} />
+    <PageCTA title="Échangeons directement sur vos priorités." text={`Contactez Assuromieux Paris au ${site.phoneDisplay} ou présentez votre besoin depuis le formulaire.`} secondaryHref={`mailto:${site.email}`} secondaryLabel="Écrire au cabinet" />
+  </main>
+</SiteLayout>
+
+<style>
+  .cabinet-person { align-items: center; }
+  .cabinet-person :global(.media-placeholder) { max-width: 29rem; }
+</style>

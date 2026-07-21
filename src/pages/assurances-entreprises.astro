@@ -1,0 +1,105 @@
+---
+import CTA from '../components/CTA.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/assurances-entreprises/';
+const description = 'Assurances entreprises à Paris : analyse globale de la RC, multirisque, flotte, cyber, santé, prévoyance et protection du dirigeant.';
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurances entreprises', path }]),
+  serviceSchema('Conseil en assurances d’entreprise', description, path),
+];
+
+const covers = [
+  ['rc-professionnelle', 'RC professionnelle', 'Responsabilités liées aux prestations, aux produits et à l’exploitation.'],
+  ['multirisque', 'Multirisque professionnelle', 'Locaux, matériels, événements garantis et continuité de l’activité.'],
+  ['flotte', 'Flotte automobile', 'Parc, usages, conducteurs, franchises et sinistralité.'],
+  ['cyber', 'Cyberassurance', 'Prévention, assistance et transfert du risque numérique.'],
+  ['sante-prevoyance', 'Santé et prévoyance', 'Protection collective et obligations de l’employeur.'],
+  ['protection-dirigeant', 'Protection du dirigeant', 'Continuité, prévoyance et exposition personnelle du décideur.'],
+  ['pertes-exploitation', 'Pertes d’exploitation', 'Capacité à absorber une interruption couverte de l’activité.'],
+  ['protection-juridique', 'Protection juridique', 'Information, accompagnement et défense selon les garanties prévues.'],
+  ['risques-specifiques', 'Risques spécifiques', 'Garanties adaptées aux activités, actifs et engagements particuliers.'],
+  ['audit', 'Audit du programme', 'Vision consolidée des contrats, échéances et priorités.'],
+];
+---
+
+<SiteLayout title="Assurances entreprises à Paris | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Une vision globale des contrats"
+      title="Piloter les assurances de l’entreprise comme un seul programme."
+      lead="Responsabilités, actifs, personnes et continuité d’activité sont liés. Nous étudions les contrats ensemble pour éviter qu’une décision prise police par police fragilise l’ensemble."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurances entreprises' }]}
+    >
+      <CTA href="/audit-assurances-entreprise/" label="Découvrir l’audit" size="large" />
+      <CTA href="#protections" label="Explorer les protections" variant="secondary" size="large" />
+    </PageHero>
+
+    <section class="section" aria-labelledby="ensemble-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Une architecture, pas un empilement</p>
+          <h2 id="ensemble-title">Chaque contrat répond à un risque. Le programme doit répondre à l’entreprise.</h2>
+        </div>
+        <div class="content-copy">
+          <p>Une responsabilité peut concerner plusieurs polices. Un sinistre matériel peut interrompre l’exploitation. Une évolution de flotte peut modifier les obligations d’un client. Étudier les contrats séparément masque ces dépendances.</p>
+          <p>Notre rôle consiste à relier activités, responsabilités, actifs, équipes et engagements pour rendre les choix plus lisibles.</p>
+          <div class="section-actions"><CTA href="/audit-assurances-entreprise/" label="Faire analyser mes contrats" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="protections" class="section section--surface" aria-labelledby="protections-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Protections transversales" title="Les principales briques d’un programme d’assurances." text="La liste ne préjuge pas des garanties nécessaires : le périmètre dépend de l’activité et de l’exposition réelle." id="protections-title" />
+        <div class="feature-grid feature-grid--2 coverage-grid">
+          {covers.map(([id, title, text], index) => <article class="feature-item" {id}><span class="feature-item__index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="lecture-title">
+      <div class="container-wide content-grid content-grid--reverse">
+        <div class="editorial-panel">
+          <h2 id="lecture-title">Ce que la lecture globale fait apparaître</h2>
+          <ul>
+            <li>activités absentes ou décrites trop largement ;</li>
+            <li>plafonds incohérents entre contrats et obligations ;</li>
+            <li>franchises qui se cumulent ou déplacent le risque ;</li>
+            <li>doublons apparents et véritables zones non couvertes ;</li>
+            <li>échéances dispersées qui compliquent la consultation ;</li>
+            <li>informations qui ne sont plus à jour.</li>
+          </ul>
+        </div>
+        <div class="content-copy">
+          <p class="eyebrow">Du contrat à la décision</p>
+          <h2>Comparer une prime n’est utile qu’après avoir comparé la protection.</h2>
+          <p>Le prix doit être lu avec les garanties, les exclusions, les franchises, la qualité de présentation du risque et les conditions de gestion. Cette discipline évite une économie apparente qui dégraderait un point essentiel.</p>
+          <p class="notice"><strong>Notre principe :</strong> conserver ce qui reste pertinent, faire évoluer ce qui ne l’est plus et consulter le marché lorsque cela apporte une information utile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="publics-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Entreprises accompagnées" title="Une approche ouverte à plusieurs modèles d’activité." id="publics-title" />
+        <ul class="tag-list">
+          {['PME', 'Artisans', 'Entreprises de services', 'Commerces', 'Professions libérales', 'Dirigeants', 'Transport et logistique', 'Entreprises du BTP'].map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Mettre les contrats en regard de l’activité.' },
+      { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Approfondir les risques de véhicules et de flux.' },
+      { href: '/assurance-btp-decennale/', label: 'BTP et décennale', text: 'Relier activités, chantiers et attestations.' },
+    ]} />
+    <PageCTA title="Votre programme mérite une lecture d’ensemble." text="Un premier échange permet de définir les contrats prioritaires et l’échéance utile pour commencer." secondaryHref="/cabinet/" secondaryLabel="Découvrir le cabinet" />
+  </main>
+</SiteLayout>

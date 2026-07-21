@@ -5,9 +5,12 @@ interface Props {
   items: NavigationItem[];
   ctaHref?: string;
   ctaLabel?: string;
+  currentPath?: string;
 }
 
-const { items, ctaHref = '#contact', ctaLabel = 'Demander un audit gratuit' } = Astro.props;
+const { items, ctaHref = '/#contact', ctaLabel = 'Demander un audit gratuit', currentPath = '/' } = Astro.props;
+
+const isCurrent = (href: string) => !href.includes('#') && href === currentPath;
 ---
 
 <div class="mobile-nav" data-mobile-nav>
@@ -24,8 +27,8 @@ const { items, ctaHref = '#contact', ctaLabel = 'Demander un audit gratuit' } = 
 
   <div class="mobile-nav__panel" id="mobile-navigation-panel" data-mobile-nav-panel hidden>
     <nav aria-label="Navigation mobile">
-      {items.map((item, index) => (
-        <a href={item.href} aria-current={index === 0 ? 'page' : undefined}>{item.label}</a>
+      {items.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
       ))}
       <a class="mobile-nav__cta" href={ctaHref}>{ctaLabel} <span aria-hidden="true">→</span></a>
     </nav>

@@ -13,6 +13,7 @@ interface Props {
   orias: string;
   ctaHref?: string;
   ctaLabel?: string;
+  currentPath?: string;
 }
 
 const {
@@ -21,8 +22,9 @@ const {
   phoneHref,
   email,
   orias,
-  ctaHref = '#contact',
+  ctaHref = '/#contact',
   ctaLabel = 'Demander un audit gratuit',
+  currentPath = '/',
 } = Astro.props;
 ---
 
@@ -30,14 +32,14 @@ const {
   <Topbar {phoneDisplay} {phoneHref} {email} {orias} auditHref={ctaHref} />
   <div class="site-header">
     <div class="container-wide site-header__inner">
-      <a class="brand" href="#top" aria-label="Assuromieux Paris — Accueil">
+      <a class="brand" href="/" aria-label="Assuromieux Paris — Accueil">
         <img src="/logo/assuromieux-paris.jpeg" width="300" height="83" alt="Assuromieux Paris" />
         <span>Paris</span>
       </a>
-      <DesktopNavigation {items} />
+      <DesktopNavigation {items} {currentPath} />
       <div class="site-header__actions">
         <CTA class="site-header__cta" href={ctaHref} label={ctaLabel} showArrow={false} />
-        <MobileNavigation {items} {ctaHref} {ctaLabel} />
+        <MobileNavigation {items} {ctaHref} {ctaLabel} {currentPath} />
       </div>
     </div>
   </div>

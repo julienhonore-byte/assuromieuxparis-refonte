@@ -3,14 +3,17 @@ import type { NavigationItem } from '../data/site';
 
 interface Props {
   items: NavigationItem[];
+  currentPath?: string;
 }
 
-const { items } = Astro.props;
+const { items, currentPath = '/' } = Astro.props;
+
+const isCurrent = (href: string) => !href.includes('#') && href === currentPath;
 ---
 
 <nav class="desktop-nav" aria-label="Navigation principale">
-  {items.map((item, index) => (
-    <a href={item.href} aria-current={index === 0 ? 'page' : undefined}>{item.label}</a>
+  {items.map((item) => (
+    <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
   ))}
 </nav>
 

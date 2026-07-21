@@ -1,0 +1,53 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '../data/site';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  currentPath: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  ctaHref?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  currentPath,
+  structuredData,
+  ctaHref = '/#contact',
+  image = `${site.canonicalUrl}og.jpg`,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {canonical} {image} {structuredData}>
+  <Header
+    items={mainNavigation}
+    phoneDisplay={site.phoneDisplay}
+    phoneHref={site.phoneHref}
+    email={site.email}
+    orias={site.orias}
+    {currentPath}
+    {ctaHref}
+  />
+  <slot />
+  <Footer
+    phoneDisplay={site.phoneDisplay}
+    phoneHref={site.phoneHref}
+    email={site.email}
+    addressStreet={site.addressStreet}
+    addressLocality={site.addressLocality}
+    addressCountry={site.addressCountry}
+    orias={site.orias}
+    rcs={site.rcs}
+    expertiseLinks={footerExpertiseLinks}
+    sectorLinks={footerSectorLinks}
+  />
+  <StickyMobileCTA href={ctaHref} />
+</BaseLayout>

@@ -8,7 +8,7 @@ import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '.
 ---
 
 <BaseLayout title="Page introuvable | Assuromieux Paris" description="La page demandée n’existe pas ou a été déplacée." canonical={`${site.canonicalUrl}404`}>
-  <Header items={mainNavigation} phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} orias={site.orias} />
+  <Header items={mainNavigation} phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} orias={site.orias} currentPath="/404" />
   <main id="contenu-principal">
     <Hero eyebrow="Erreur 404" title="Cette page n’existe pas." lead="Revenez à l’accueil ou contactez-nous pour parler de vos assurances d’entreprise.">
       <CTA href="/" label="Revenir à l’accueil" size="large" />

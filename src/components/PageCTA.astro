@@ -1,0 +1,45 @@
+---
+import CTA from './CTA.astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow = 'Parlons de votre situation',
+  title,
+  text,
+  primaryHref = '/#contact',
+  primaryLabel = 'Demander un audit gratuit',
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section class="page-cta" aria-labelledby="page-cta-title">
+  <div class="container page-cta__inner">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id="page-cta-title">{title}</h2>
+    <p class="page-cta__text">{text}</p>
+    <div class="page-cta__actions">
+      <CTA href={primaryHref} label={primaryLabel} variant="gold" size="large" />
+      {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-cta { padding-block: var(--section-space); color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 16% 18%, rgba(201, 154, 70, 0.18), transparent 25%), var(--color-brand-ink); text-align: center; }
+  .page-cta__inner { max-width: 53rem; }
+  :global(.page-cta .eyebrow) { justify-content: center; color: var(--color-gold-soft); }
+  h2 { margin: 0; color: var(--color-surface); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
+  .page-cta__text { max-width: 43rem; margin: var(--space-5) auto 0; font-size: var(--font-size-body-lg); }
+  .page-cta__actions { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-8); }
+  @media (max-width: 640px) { .page-cta__actions { flex-direction: column; } .page-cta__actions :global(.button) { width: 100%; } }
+</style>

@@ -1,0 +1,150 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface BreadcrumbItem {
+  href?: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  breadcrumbs: BreadcrumbItem[];
+}
+
+const { eyebrow, title, lead, breadcrumbs } = Astro.props;
+---
+
+<section id="top" class="page-hero">
+  <div class="container-wide">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="page-hero__eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p class="page-hero__lead">{lead}</p>
+        <div class="page-hero__actions"><slot /></div>
+      </div>
+      <div class="page-hero__visual">
+        <slot name="visual">
+          <div class="page-hero__diagram" aria-hidden="true">
+            <span>Activité</span><span>Contrats</span><span>Risques</span><strong>Conseil</strong>
+          </div>
+        </slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    background:
+      radial-gradient(circle at 82% 26%, rgba(201, 154, 70, 0.18), transparent 24%),
+      linear-gradient(135deg, var(--color-surface) 0%, var(--color-page) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(21rem, 0.75fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+    padding-top: clamp(2rem, 5vw, 4.5rem);
+  }
+
+  .page-hero__copy {
+    max-width: 48rem;
+  }
+
+  .page-hero__eyebrow {
+    margin: 0 0 var(--space-5);
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 13ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: var(--letter-spacing-display);
+    line-height: var(--line-height-tight);
+  }
+
+  .page-hero__lead {
+    max-width: 43rem;
+    margin: var(--space-7) 0 0;
+    color: var(--color-text-soft);
+    font-size: var(--font-size-lead);
+    line-height: 1.65;
+  }
+
+  .page-hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-8);
+  }
+
+  .page-hero__diagram {
+    position: relative;
+    min-height: 25rem;
+    background:
+      linear-gradient(rgba(18, 54, 95, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 54, 95, 0.08) 1px, transparent 1px),
+      rgba(255, 255, 255, 0.74);
+    background-size: 3rem 3rem;
+    border: 1px solid rgba(18, 54, 95, 0.14);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .page-hero__diagram::before,
+  .page-hero__diagram::after {
+    position: absolute;
+    content: '';
+    border: 1px solid rgba(201, 154, 70, 0.42);
+    border-radius: 50%;
+  }
+
+  .page-hero__diagram::before { inset: 15%; }
+  .page-hero__diagram::after { inset: 29%; }
+
+  .page-hero__diagram span,
+  .page-hero__diagram strong {
+    position: absolute;
+    z-index: 1;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    font-size: var(--font-size-sm);
+  }
+
+  .page-hero__diagram span:nth-child(1) { top: 12%; left: 8%; }
+  .page-hero__diagram span:nth-child(2) { top: 17%; right: 7%; }
+  .page-hero__diagram span:nth-child(3) { bottom: 12%; left: 12%; }
+  .page-hero__diagram strong { right: 12%; bottom: 18%; color: var(--color-surface); background: var(--color-brand-deep); border-color: var(--color-brand-deep); }
+
+  @media (max-width: 980px) {
+    .page-hero__grid { grid-template-columns: 1fr; }
+    .page-hero__visual { max-width: 42rem; }
+  }
+
+  @media (max-width: 640px) {
+    h1 { max-width: none; }
+    .page-hero__actions { align-items: stretch; flex-direction: column; }
+    .page-hero__actions :global(.button) { width: 100%; }
+    .page-hero__diagram { min-height: 20rem; }
+  }
+</style>

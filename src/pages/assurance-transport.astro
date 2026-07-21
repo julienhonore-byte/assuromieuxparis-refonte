@@ -1,0 +1,94 @@
+---
+import CTA from '../components/CTA.astro';
+import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+
+const path = '/assurance-transport/';
+const description = 'Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.';
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Assurance transport', path }]),
+  serviceSchema('Conseil en assurance transport et logistique', description, path),
+];
+---
+
+<SiteLayout title="Assurance transport et logistique | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Expertise sectorielle"
+      title="L’assurance transport commence par une lecture précise de l’exploitation."
+      lead="Véhicules, marchandises, responsabilités, stockage et sous-traitance composent une même chaîne de risque. Nous l’analysons sans réduire le sujet à la seule flotte."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance transport' }]}
+    >
+      <CTA href="#audit-sectoriel" label="Demander un audit sectoriel" size="large" />
+      <CTA href="#risques" label="Voir les risques analysés" variant="secondary" size="large" />
+      <MediaPlaceholder slot="visual" kind="sector" label="Transport & logistique" note="Photographie métier sobre à produire" alt="Emplacement prévu pour un visuel original montrant une exploitation de transport ou de logistique" />
+    </PageHero>
+
+    <section id="risques" class="section" aria-labelledby="chaine-title">
+      <div class="container-wide content-grid">
+        <div class="content-copy">
+          <p class="eyebrow">Une chaîne de responsabilités</p>
+          <h2 id="chaine-title">Le risque ne s’arrête ni au véhicule ni à la marchandise.</h2>
+        </div>
+        <div class="content-copy">
+          <p>La responsabilité du transporteur dépend des opérations réalisées, des contrats, des marchandises confiées et des intervenants. La flotte, l’exploitation, le stockage et la sous-traitance doivent être rapprochés.</p>
+          <p>Cette lecture permet de préparer un dossier de risque plus cohérent et d’éviter que plusieurs contrats répondent imparfaitement à une même situation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="piliers-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Périmètre sectoriel" title="Les dimensions étudiées selon votre activité." id="piliers-title" />
+        <div class="feature-grid">
+          {[
+            ['responsabilites', 'Responsabilités du transporteur', 'Cadre des prestations, limites contractuelles et engagements envers les donneurs d’ordre.'],
+            ['flotte', 'Flotte et véhicules', 'Poids lourds, VUL, usages, conducteurs, franchises et sinistralité.'],
+            ['tpm', 'TPM et marchandises', 'Valeurs confiées, flux, limites, stockage temporaire et conditions de transport.'],
+            ['logistique', 'Logistique et entrepôts', 'Exploitation des sites, biens stockés, matériels et interruption d’activité.'],
+            ['convoyage', 'Convoyage et déménagement', 'Opérations particulières, véhicules confiés et responsabilités spécifiques.'],
+            ['sous-traitance', 'Sous-traitance', 'Répartition des missions, recours, attestations et dépendance aux partenaires.'],
+            ['donneurs-ordre', 'Donneurs d’ordre', 'Exigences d’assurance, plafonds et obligations contractuelles à rapprocher des polices.'],
+            ['sinistralite', 'Sinistralité', 'Lecture des événements, fréquences, coûts et mesures de prévention communiquées.'],
+            ['audit-sectoriel', 'Audit sectoriel', 'Synthèse des contrats, des risques et des priorités avant une consultation éventuelle.'],
+          ].map(([id, title, text], index) => <article class="feature-item" {id}><span class="feature-item__index">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="metiers-title">
+      <div class="container-wide content-grid content-grid--reverse">
+        <div class="editorial-panel">
+          <h2 id="metiers-title">Métiers concernés</h2>
+          <ul>
+            <li>transport routier de marchandises ;</li>
+            <li>commission de transport ;</li>
+            <li>logistique et exploitation d’entrepôts ;</li>
+            <li>convoyage et transport de véhicules ;</li>
+            <li>déménagement ;</li>
+            <li>entreprises disposant d’une flotte significative.</li>
+          </ul>
+        </div>
+        <div class="content-copy">
+          <p class="eyebrow">Présenter le risque</p>
+          <h2>Une consultation utile repose sur des informations structurées.</h2>
+          <p>Composition du parc, typologie des flux, marchandises, stockage, sous-traitance, donneurs d’ordre et historique des événements donnent du sens aux demandes adressées au marché.</p>
+          <p class="notice">Les futures pages spécialisées consacrées à la flotte, aux marchandises transportées et à la logistique seront reliées ici après leur publication. Aucun lien inactif n’est affiché à ce stade.</p>
+        </div>
+      </div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Comprendre la méthode commune à tous les secteurs.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Relier le transport aux autres protections.' },
+      { href: '/cabinet/', label: 'Le cabinet', text: 'Découvrir l’approche de conseil Assuromieux Paris.' },
+    ]} />
+    <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." />
+  </main>
+</SiteLayout>

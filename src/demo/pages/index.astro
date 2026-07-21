@@ -12,7 +12,7 @@ import { footerExpertiseLinks, footerSectorLinks, mainNavigation, site } from '.
 ---
 
 <BaseLayout title="Démonstration interne | Assuromieux Paris" description="Démonstration locale non publiée du système graphique Assuromieux Paris.">
-  <Header items={mainNavigation} phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} orias={site.orias} />
+  <Header items={mainNavigation} phoneDisplay={site.phoneDisplay} phoneHref={site.phoneHref} email={site.email} orias={site.orias} currentPath="/demo" />
   <main id="contenu-principal">
     <div class="container"><Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { label: 'Démonstration interne' }]} /></div>
     <Hero eyebrow="Démonstration interne" title="Le système graphique Assuromieux Paris" lead="Couleurs, typographie, boutons, cartes, formulaire, header et footer dans leur contexte réel.">

@@ -13,7 +13,7 @@ status: "review-required"
 featured: false
 readingTime: 7
 relatedProducts: ["flotte", "audit", "transport", "multirisque"]
-relatedSectors: ["transport-logistique", "btp"]
+relatedSectors: ["transport-logistique", "transport-routier-marchandises", "convoyage-vehicules", "demenagement", "btp"]
 relatedArticles: ["comment-auditer-assurances-entreprise", "responsabilite-transporteur-assurance-marchandises-differences"]
 faq:
   - question: "Une assurance flotte couvre-t-elle les marchandises transportées ?"
@@ -82,6 +82,8 @@ Une procédure simple réduit les écarts. Elle doit correspondre aux modalités
 Le véhicule est un bien, la circulation crée une responsabilité particulière et son contenu constitue un autre objet de risque. Du matériel professionnel ou des marchandises peuvent exiger des garanties distinctes.
 
 Pour une entreprise de transport, il faut en plus distinguer la responsabilité envers les marchandises et une éventuelle assurance des biens. Cette frontière évite de comparer une offre automobile comme si elle couvrait toute l’exploitation.
+
+Dans le [transport routier de marchandises](/secteurs/transport-routier-marchandises/), la flotte s’articule avec les responsabilités et les flux. En [convoyage de véhicules](/secteurs/convoyage-vehicules/), le véhicule confié n’est pas automatiquement assimilable au parc propre du convoyeur. Pour une entreprise de [déménagement](/secteurs/demenagement/), véhicules, mobilier confié, manutention et stockage doivent rester distingués.
 
 ## 10. Comparer sur une base homogène
 

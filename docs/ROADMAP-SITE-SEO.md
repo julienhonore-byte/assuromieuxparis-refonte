@@ -94,7 +94,7 @@ Construire une autorité thématique progressive et approfondir les parcours sec
 ### Développement sectoriel
 
 - conserver `/assurance-transport/` comme hub Transport et logistique et `/assurance-btp-decennale/` comme hub BTP, sans créer de doublon généraliste ;
-- produire, après validation métier, les trois verticales classées priorité 1 : Transport routier de marchandises, Convoyage de véhicules et Déménagement ;
+- les trois verticales classées priorité 1 — Transport routier de marchandises, Convoyage de véhicules et Déménagement — sont réalisées en prévisualisation et restent bloquées à l’indexation jusqu’à validation métier documentée ;
 - relier chaque verticale à son hub, aux pages produits utiles et à un guide réellement complémentaire ;
 - évaluer Logistique et entrepôts ainsi qu'Entreprises générales BTP seulement après la mise en place du centre de ressources et l'observation de demandes réelles ;
 - ne pas créer de pages sectorielles génériques « PME », « entreprises de services », « entreprises avec flotte », « entreprises avec salariés » ou « dirigeants et TNS ».
@@ -118,6 +118,16 @@ Construire une autorité thématique progressive et approfondir les parcours sec
 ### Critère de sortie
 
 Le site couvre les thèmes prioritaires avec des parcours cohérents, sans page mince ni duplication, et dispose d'un processus réel de mise à jour.
+
+### Lot sectoriel Transport 01
+
+Le périmètre, les intentions, les risques de cannibalisation et les validations sont consignés dans :
+
+- `MATRICE-SEO-SECTEURS-TRANSPORT-LOT-01.md` ;
+- `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` ;
+- `REALISATION-SECTEURS-TRANSPORT-LOT-01.md`.
+
+La réalisation technique ne vaut pas validation métier. Aucun nouveau secteur ne doit être ajouté tant que ce lot n’a pas été relu et que les opportunités de priorité 2 ne disposent pas de données réelles.
 
 ### Arbitrage de référence
 

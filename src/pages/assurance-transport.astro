@@ -50,6 +50,25 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--surface transport-verticals" aria-labelledby="transport-verticals-title">
+      <div class="container-wide transport-verticals__layout">
+        <header>
+          <p class="eyebrow">Expertises métier</p>
+          <h2 id="transport-verticals-title">Trois activités, trois chaînes de risques distinctes.</h2>
+          <p>Ces pages partent de l’exploitation. Elles complètent cette vue générale sans répéter les pages produits.</p>
+        </header>
+        <ol>
+          {[
+            ['/secteurs/transport-routier-marchandises/', 'Transport routier de marchandises', 'Responsabilité du transporteur, marchandises, flotte, sous-traitance et sites.'],
+            ['/secteurs/convoyage-vehicules/', 'Convoyage de véhicules', 'Véhicule confié, circulation, mission, conducteur et restitution.'],
+            ['/secteurs/demenagement/', 'Déménagement', 'Biens confiés, manutention, transport, stockage et continuité.'],
+          ].map(([href, title, text], index) => (
+            <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3><a href={href}>{title}</a></h3><p>{text}</p></div><a href={href} aria-label={`Découvrir ${title}`}>Découvrir <i aria-hidden="true">→</i></a></li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <section id="risques" class="section section--surface" aria-labelledby="risks-title">
       <div class="container-wide">
         <SectionHeader kicker="Risques couverts" title="Quatre ensembles à relier." id="risks-title" />
@@ -96,6 +115,7 @@ const structuredData = [
     </section>
 
     <RelatedLinks items={[
+      { href: '/secteurs/', label: 'Secteurs', text: 'Choisir une lecture construite autour de l’activité réelle.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Comprendre la méthode commune à tous les secteurs.' },
       { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Distinguer l’usage des véhicules des responsabilités de transport.' },
       { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Relier le transport aux autres protections.' },
@@ -107,4 +127,20 @@ const structuredData = [
   </main>
 </SiteLayout>
 
-<style>.faq-layout { max-width: 58rem; }</style>
+<style>
+  .faq-layout { max-width: 58rem; }
+  .transport-verticals { border-block: 1px solid var(--color-border); }
+  .transport-verticals__layout { display: grid; grid-template-columns: minmax(17rem, .62fr) minmax(0, 1.38fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+  .transport-verticals h2 { max-width: 15ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
+  .transport-verticals header > p:not(.eyebrow) { margin: var(--space-5) 0 0; color: var(--color-text-soft); }
+  .transport-verticals ol { margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
+  .transport-verticals li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: var(--space-4); align-items: start; padding: var(--space-5) 0; border-bottom: 1px solid var(--color-border); }
+  .transport-verticals li > span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .transport-verticals h3 { margin: 0; font-size: var(--font-size-h4); }
+  .transport-verticals h3 a, .transport-verticals li > a { color: var(--color-brand-deep); }
+  .transport-verticals li p { margin: var(--space-2) 0 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .transport-verticals li > a { font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+  .transport-verticals li i { color: var(--color-gold-dark); font-style: normal; }
+  @media (max-width: 860px) { .transport-verticals__layout { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .transport-verticals li { grid-template-columns: 2rem minmax(0, 1fr); } .transport-verticals li > a { grid-column: 2; } }
+</style>

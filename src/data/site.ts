@@ -23,7 +23,7 @@ export const mainNavigation: NavigationItem[] = [
   { href: '/', label: 'Accueil' },
   { href: '/assurances-entreprises/', label: 'Nos assurances' },
   { href: '/audit-assurances-entreprise/', label: 'Audit' },
-  { href: '/#secteurs', label: 'Secteurs' },
+  { href: '/secteurs/', label: 'Secteurs' },
   { href: '/cabinet/', label: 'Cabinet' },
   { href: '/ressources/', label: 'Ressources' },
   { href: '/#contact', label: 'Contact' },
@@ -41,6 +41,7 @@ export const footerProductLinks: NavigationItem[] = [
 export const footerAdviceLinks: NavigationItem[] = [
   { href: '/audit-assurances-entreprise/', label: 'Audit des assurances' },
   { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
+  { href: '/secteurs/', label: 'Secteurs' },
   { href: '/assurance-transport/', label: 'Transport et logistique' },
   { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
   { href: '/cabinet/', label: 'Le cabinet' },

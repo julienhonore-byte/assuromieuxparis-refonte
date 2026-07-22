@@ -1,0 +1,122 @@
+---
+import CTA from '../../components/CTA.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import PageHero from '../../components/PageHero.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../data/seo';
+
+const path = '/secteurs/';
+const title = 'Assurances par secteur d’activité | Assuromieux Paris';
+const description = 'Découvrez l’approche Assuromieux par activité : transport routier, convoyage, déménagement, transport-logistique et BTP.';
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Secteurs', path }]),
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Assurances par secteur d’activité', description, url: pageUrl(path) },
+];
+
+const verticals = [
+  {
+    href: '/secteurs/transport-routier-marchandises/',
+    index: '01',
+    title: 'Transport routier de marchandises',
+    text: 'Relier responsabilité du transporteur, marchandises, véhicules, sous-traitance, sites et continuité.',
+    signal: 'Flux, parc et responsabilités',
+  },
+  {
+    href: '/secteurs/convoyage-vehicules/',
+    index: '02',
+    title: 'Convoyage de véhicules',
+    text: 'Analyser une mission où le véhicule circule, reste confié et peut mobiliser plusieurs responsabilités.',
+    signal: 'Mission, conduite et garde',
+  },
+  {
+    href: '/secteurs/demenagement/',
+    index: '03',
+    title: 'Déménagement',
+    text: 'Suivre le risque de la préparation et de la manutention jusqu’au transport, au stockage et à la restitution.',
+    signal: 'Biens, manutention et restitution',
+  },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Expertises sectorielles"
+      title="Comprendre le métier avant de lire les contrats."
+      lead="Un même produit d’assurance ne répond pas de la même manière selon l’activité, les opérations réalisées, les biens confiés et les responsabilités assumées."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Secteurs' }]}
+    >
+      <CTA href="#expertises" label="Voir les expertises" size="large" />
+      <CTA href="/audit-assurances-entreprise/" label="Découvrir l’audit" variant="secondary" size="large" />
+    </PageHero>
+
+    <section class="section sector-approach" aria-labelledby="sector-approach-title">
+      <div class="container-wide sector-approach__layout">
+        <div>
+          <p class="eyebrow">Une lecture sectorielle</p>
+          <h2 id="sector-approach-title">Partir des opérations réelles, puis coordonner les protections.</h2>
+        </div>
+        <div class="sector-approach__copy">
+          <p>Deux entreprises utilisant les mêmes véhicules peuvent porter des engagements très différents. La nature des prestations, les contrats clients, les zones, les sous-traitants, les valeurs et les procédures internes modifient les questions à poser.</p>
+          <p>Assuromieux rapproche cette réalité des contrats existants. L’objectif est d’identifier les responsabilités, les garanties susceptibles d’être concernées et les points qui demandent une confirmation écrite.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertises" class="section section--surface sector-verticals" aria-labelledby="sector-verticals-title">
+      <div class="container-wide">
+        <header class="sector-verticals__header">
+          <div><p class="eyebrow">Expertises publiées</p><h2 id="sector-verticals-title">Trois métiers du transport, trois chaînes de risques.</h2></div>
+          <p>Chaque page traite une activité complète. Les produits d’assurance restent expliqués dans leurs pages dédiées.</p>
+        </header>
+        <ol>
+          {verticals.map((vertical) => (
+            <li>
+              <span>{vertical.index}</span>
+              <div><small>{vertical.signal}</small><h3><a href={vertical.href}>{vertical.title}</a></h3></div>
+              <p>{vertical.text}</p>
+              <a class="sector-verticals__arrow" href={vertical.href} aria-label={`Découvrir l’expertise ${vertical.title}`}>Découvrir <i aria-hidden="true">→</i></a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section general-expertises" aria-labelledby="general-expertises-title">
+      <div class="container-wide general-expertises__layout">
+        <header><p class="eyebrow">Expertises générales</p><h2 id="general-expertises-title">Deux portes d’entrée pour une lecture plus large.</h2></header>
+        <div class="general-expertises__links">
+          <a href="/assurance-transport/"><span>Transport &amp; logistique</span><p>Comprendre les grands ensembles de risques liés aux flux, aux véhicules, aux marchandises et aux sites.</p><strong aria-hidden="true">→</strong></a>
+          <a href="/assurance-btp-decennale/"><span>BTP &amp; décennale</span><p>Rapprocher métiers exercés, chantiers, responsabilités, attestations, matériels et locaux.</p><strong aria-hidden="true">→</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <PageCTA title="Votre activité ne se résume pas à un intitulé de contrat." text="Un audit permet de cartographier les opérations, les responsabilités et les contrats avant toute consultation du marché." primaryHref="/?besoin=audit#contact" primaryLabel="Demander un audit" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Comprendre la méthode" />
+  </main>
+</SiteLayout>
+
+<style>
+  .sector-approach__layout, .general-expertises__layout, .sector-verticals__header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(20rem, .72fr); gap: clamp(2.5rem, 8vw, 8rem); align-items: start; }
+  h2 { max-width: 17ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .sector-approach__copy p, .sector-verticals__header > p { margin: 0; color: var(--color-text-soft); }
+  .sector-approach__copy p + p { margin-top: var(--space-5); }
+  .sector-verticals__header { align-items: end; }
+  .sector-verticals ol { margin: clamp(3rem, 6vw, 5rem) 0 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
+  .sector-verticals li { display: grid; grid-template-columns: 3rem minmax(13rem, .7fr) minmax(18rem, 1fr) auto; gap: var(--space-6); align-items: center; padding: var(--space-7) 0; border-bottom: 1px solid var(--color-border); }
+  .sector-verticals li > span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .sector-verticals small { color: var(--color-text-muted); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .06em; }
+  .sector-verticals h3 { margin: var(--space-2) 0 0; font-size: var(--font-size-h4); }
+  .sector-verticals h3 a, .sector-verticals__arrow { color: var(--color-brand-deep); }
+  .sector-verticals li > p { margin: 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .sector-verticals__arrow { font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); white-space: nowrap; }
+  .sector-verticals__arrow i { color: var(--color-gold-dark); font-style: normal; }
+  .general-expertises__links { display: grid; gap: var(--space-5); }
+  .general-expertises__links a { position: relative; display: block; padding: var(--space-6) var(--space-12) var(--space-6) 0; color: inherit; border-top: 2px solid var(--color-gold); text-decoration: none; }
+  .general-expertises__links span { color: var(--color-brand-deep); font-size: var(--font-size-h4); font-weight: var(--font-weight-heading); }
+  .general-expertises__links p { margin: var(--space-3) 0 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .general-expertises__links strong { position: absolute; top: var(--space-6); right: 0; color: var(--color-gold-dark); }
+  @media (max-width: 900px) { .sector-approach__layout, .general-expertises__layout, .sector-verticals__header { grid-template-columns: 1fr; } .sector-verticals li { grid-template-columns: 2.5rem minmax(0, 1fr) auto; } .sector-verticals li > p { grid-column: 2 / -1; } }
+  @media (max-width: 600px) { .sector-verticals li { grid-template-columns: 2rem minmax(0, 1fr); gap: var(--space-4); } .sector-verticals li > p, .sector-verticals__arrow { grid-column: 2; } }
+</style>

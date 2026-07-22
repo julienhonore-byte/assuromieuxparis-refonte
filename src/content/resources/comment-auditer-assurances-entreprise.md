@@ -13,7 +13,7 @@ status: "review-required"
 featured: true
 readingTime: 8
 relatedProducts: ["audit", "assurances", "rc", "multirisque"]
-relatedSectors: []
+relatedSectors: ["transport-routier-marchandises", "convoyage-vehicules", "demenagement"]
 relatedArticles: ["quelles-assurances-prevoir-pme", "rc-professionnelle-rc-exploitation-differences"]
 faq:
   - question: "Un audit conduit-il nécessairement à changer d’assureur ?"
@@ -80,6 +80,8 @@ Une consultation utile décrit l’entreprise et ses risques. Elle ne se limite 
 Terminez par une note courte : constats, niveau de priorité, informations manquantes, options et responsable de la décision. Chaque recommandation doit indiquer ce qu’elle améliore et ce qu’elle ne résout pas.
 
 Trois issues sont possibles : conserver, ajuster ou consulter. Le suivi compte autant que la première analyse, car l’activité, les valeurs et les contrats continuent d’évoluer.
+
+Pour une activité de transport, le [hub Secteurs](/secteurs/) permet ensuite de prolonger cette méthode par métier : transport routier de marchandises, convoyage de véhicules ou déménagement. Ces parcours ne remplacent pas l’inventaire global ; ils précisent les opérations et interfaces à examiner.
 
 ### Sources de cadrage
 

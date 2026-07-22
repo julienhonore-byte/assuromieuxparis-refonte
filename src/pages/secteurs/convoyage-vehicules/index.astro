@@ -1,0 +1,134 @@
+---
+import CTA from '../../../components/CTA.astro';
+import FAQ from '../../../components/FAQ.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductReview from '../../../components/ProductReview.astro';
+import ProductRiskOverview from '../../../components/ProductRiskOverview.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SectorActivityJourney from '../../../components/SectorActivityJourney.astro';
+import SectorCoverageCoordination from '../../../components/SectorCoverageCoordination.astro';
+import SectorHeroDiagram from '../../../components/SectorHeroDiagram.astro';
+import SolutionMethod from '../../../components/SolutionMethod.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../../../data/seo';
+
+const path = '/secteurs/convoyage-vehicules/';
+const title = 'Assurance convoyage de véhicules | Assuromieux Paris';
+const description = 'Analyse des assurances d’une entreprise de convoyage : véhicule confié, circulation, mission, conducteurs, dommages et responsabilités.';
+const contactHref = '/?besoin=convoyage#contact';
+const faqItems = [
+  { question: 'La RC professionnelle couvre-t-elle automatiquement les dommages au véhicule convoyé ?', answer: 'Non. La présence, l’étendue et les limites d’une garantie portant sur le véhicule confié doivent être vérifiées. La responsabilité de l’entreprise et les conditions de la mission restent également à établir.' },
+  { question: 'L’assurance du propriétaire du véhicule suffit-elle pour le convoyage ?', answer: 'Il ne faut pas le présumer. Le véhicule, le conducteur, l’usage, la mission et les responsabilités de chaque partie doivent être rapprochés des contrats concernés.' },
+  { question: 'Le convoyage est-il identique au transport sur porte-voitures ?', answer: 'Non. Conduire un véhicule confié et transporter des véhicules sur un porte-voitures décrivent des modes d’exécution différents. Certains contrats de transport peuvent inclure des phases accessoires de convoyage, ce qui impose d’identifier précisément la mission.' },
+  { question: 'Quels documents préparer pour l’audit ?', answer: 'Les contrats clients, ordres de mission, procès-verbaux ou états du véhicule, preuves de remise et de restitution, profils de conducteurs, zones, sous-traitants et sinistralité disponible sont utiles.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Secteurs', path: '/secteurs/' }, { name: 'Convoyage de véhicules', path }]),
+  serviceSchema('Conseil en assurance pour le convoyage de véhicules', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Secteur · Convoyage"
+      title="Comprendre une mission où le véhicule circule et reste confié."
+      lead="Le convoyage combine conduite, garde temporaire, exécution d’une prestation et restitution. La réponse d’assurance dépend du rôle exact de l’entreprise et des conditions de chaque mission."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/secteurs/', label: 'Secteurs' }, { label: 'Convoyage de véhicules' }]}
+    >
+      <CTA href={contactHref} label="Analyser mon activité" size="large" />
+      <CTA href="#risques" label="Voir les interfaces" variant="secondary" size="large" />
+      <SectorHeroDiagram slot="visual" label="Une chaîne de garde mobile" nodes={['Remise', 'Conduite', 'Incident', 'Restitution']} variant="convoy" />
+    </PageHero>
+
+    <SectorActivityJourney
+      title="Tracer la mission de la remise à la restitution."
+      intro="L’analyse doit suivre ce qui arrive au véhicule, qui le conduit et quels documents prouvent son état à chaque étape."
+      stages={[
+        { title: 'Ordre de mission', text: 'Client, motif du déplacement, véhicule, lieux, délais, conducteur, consignes et conditions particulières sont identifiés.' },
+        { title: 'Prise en charge', text: 'L’état, les accessoires, les documents, le niveau de carburant ou de charge et les réserves utiles sont consignés.' },
+        { title: 'Circulation', text: 'Le véhicule est conduit sur route selon un itinéraire, un usage et des règles définis ; il peut subir ou causer un dommage.' },
+        { title: 'Restitution', text: 'L’heure, le lieu, l’état final, les réserves, les clés et les preuves de remise ferment la chaîne de garde.' },
+      ]}
+      variant="staggered"
+    />
+
+    <ProductRiskOverview
+      title="Cinq interfaces à documenter avant de parler de couverture."
+      intro="Le convoyage ne doit être assimilé ni à une simple livraison, ni à la gestion d’une flotte appartenant à l’entreprise. Le véhicule confié est à la fois l’objet de la mission et un véhicule en circulation."
+      items={[
+        { title: 'Le rôle de l’entreprise', text: 'Convoyeur direct, intermédiaire, sous-traitant ou donneur d’ordre n’assument pas nécessairement les mêmes engagements envers le client.' },
+        { title: 'Le véhicule confié', text: 'Véhicule léger, utilitaire, poids lourd, autocar ou véhicule spécial peut présenter des valeurs, usages, équipements et procédures distincts.' },
+        { title: 'La circulation', text: 'Le conducteur, l’autorisation de conduire, le trajet, les zones et l’assurance automobile du véhicule doivent être identifiés.' },
+        { title: 'Les dommages et frais annexes', text: 'Accident, vol, erreur de carburant, immobilisation, rapatriement ou autres frais ne relèvent pas automatiquement d’une même garantie.' },
+        { title: 'Les partenaires', text: 'Plateforme, client, propriétaire, conducteur salarié ou indépendant et sous-traitant doivent former une chaîne contractuelle lisible.' },
+      ]}
+      distinction="Conduire un véhicule confié, transporter un véhicule sur un camion et livrer une marchandise ne décrivent pas le même mode d’exploitation. Le dossier doit nommer l’opération réelle."
+      variant="ledger"
+    />
+
+    <SectorCoverageCoordination
+      title="Distinguer circulation, prestation et dommage au véhicule."
+      intro="Une mission peut mettre en jeu l’assurance automobile attachée au véhicule, la responsabilité du conducteur, la responsabilité professionnelle du convoyeur et une garantie éventuelle concernant les véhicules confiés. Leur articulation n’est jamais déduite d’un intitulé seul."
+      statement="Convoyer un véhicule n’est pas seulement déplacer un bien : le véhicule circule et reste confié."
+      coverages={[
+        { title: 'Responsabilité liée à la circulation', text: 'Le socle automobile concerne les dommages causés par le véhicule. Le contrat, le véhicule, le propriétaire, le conducteur et l’usage doivent être vérifiés.' },
+        { title: 'Dommages au véhicule confié', text: 'Une garantie spécifique peut être nécessaire selon le montage. Valeur, événements, franchises, exclusions et conditions de prise en charge doivent être lus.' },
+        { title: 'Responsabilité professionnelle', text: 'Erreur dans l’exécution, manquement aux consignes ou restitution peuvent soulever d’autres responsabilités selon les faits et les clauses.' },
+        { title: 'Sous-traitance et chaîne de mission', text: 'Le recours à un autre convoyeur ne transfère pas automatiquement tous les engagements. Contrats, attestations et recours doivent être cohérents.' },
+      ]}
+      note="Le montage de couverture dépend notamment du rôle exact de l’entreprise, du véhicule, de la mission et des conditions contractuelles."
+    />
+
+    <ProductReview
+      checksTitle="Les contrôles qui rendent une mission assurable et défendable."
+      checksIntro="La qualité des procédures opérationnelles compte autant que la liste des garanties. Elle permet de comprendre le risque et de documenter un éventuel sinistre."
+      checks={[
+        'Le contrat client décrit la prestation, la prise en charge, la restitution, les responsabilités, les limites et les frais éventuels.',
+        'L’ordre de mission identifie sans ambiguïté le véhicule, le conducteur, les lieux, les dates, l’usage et les consignes.',
+        'L’état du véhicule à la remise et à la restitution est documenté par un processus constant et contradictoire lorsque cela est prévu.',
+        'Les catégories de véhicules acceptées correspondent aux déclarations et à l’expérience des conducteurs mobilisés.',
+        'Les zones, itinéraires, temps de mission, stationnements et conditions de garde sont décrits.',
+        'Le rôle du propriétaire et les conditions de l’assurance automobile du véhicule sont clarifiés avant la mission.',
+        'Sous-traitants et conducteurs disposent des autorisations, documents et attestations demandés par le montage retenu.',
+        'Plafonds, franchises, exclusions, frais annexes et procédure de déclaration sont rapprochés des incidents déjà rencontrés ou redoutés.',
+      ]}
+      mistakesTitle="Quatre confusions à éviter."
+      mistakesIntro="Elles peuvent conduire à croire qu’une garantie existe alors que le véhicule, l’usage ou le rôle ne correspond pas au contrat."
+      mistakes={[
+        { title: 'Présumer que la RC Pro couvre le véhicule', text: 'Une garantie de responsabilité professionnelle ne traite pas automatiquement tout dommage matériel subi par un bien confié.' },
+        { title: 'Présumer que la flotte du convoyeur suffit', text: 'Le véhicule convoyé n’appartient généralement pas au parc assuré comme les véhicules propres de l’entreprise.' },
+        { title: 'Oublier le conducteur et l’usage', text: 'L’autorisation de conduire, la catégorie du véhicule, la zone et l’usage déclaré peuvent modifier l’analyse automobile.' },
+        { title: 'Négliger les preuves de remise', text: 'Sans état cohérent à l’aller et au retour, l’origine d’un dommage et les responsabilités deviennent plus difficiles à établir.' },
+      ]}
+      note={{ title: 'Une mission, un dossier traçable', text: 'Ordre de mission, identité du conducteur, état du véhicule, heures, lieux, consignes, anomalies et preuve de restitution doivent former un ensemble cohérent.' }}
+      variant="reverse"
+    />
+
+    <SolutionMethod title="Auditer les missions, pas seulement le contrat annuel." text="Assuromieux échantillonne les missions types, cartographie les rôles et rapproche les procédures des contrats. Les écarts sont ensuite classés avant toute consultation du marché." />
+
+    <RelatedResources title="Guides utiles pour préparer le dossier" items={[
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Flotte automobile : les points à analyser', description: 'Distinguer véhicule, conducteur, usage et garanties automobiles.' },
+      { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'RC professionnelle et RC exploitation', description: 'Lire le fait générateur, les dommages, les assurés et les exclusions.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Réunir les pièces et organiser les décisions.' },
+    ]} />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser une activité de convoyage." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Relier la mission aux pages produits" items={[
+      { href: '/assurance-transport/', label: 'Transport & logistique', text: 'Situer le convoyage parmi les activités de transport.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Comprendre le socle automobile et les usages.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Analyser la responsabilité liée à la prestation.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Coordonner l’ensemble des contrats concernés.' },
+    ]} />
+
+    <PageCTA title="Vos contrats suivent-ils le déroulement réel d’une mission ?" text="Préparez vos contrats clients, ordres de mission, catégories de véhicules, conducteurs, procédures de remise et sinistralité pour identifier les interfaces à vérifier." primaryHref={contactHref} primaryLabel="Analyser mon activité" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

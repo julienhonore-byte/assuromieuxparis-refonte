@@ -1,0 +1,131 @@
+---
+interface Props {
+  label: string;
+  nodes: [string, string, string, string];
+  variant: 'freight' | 'convoy' | 'moving';
+}
+
+const { label, nodes, variant } = Astro.props;
+---
+
+<figure class:list={['sector-hero-diagram', `sector-hero-diagram--${variant}`]} role="img" aria-label={`${label} : ${nodes.join(', ')}`}>
+  <figcaption>{label}</figcaption>
+  <ol aria-hidden="true">
+    {nodes.map((node, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{node}</li>)}
+  </ol>
+  <div class="sector-hero-diagram__line" aria-hidden="true"></div>
+</figure>
+
+<style>
+  .sector-hero-diagram {
+    position: relative;
+    min-height: 23rem;
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-brand-deep);
+    background:
+      linear-gradient(rgba(18, 54, 95, 0.065) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 54, 95, 0.065) 1px, transparent 1px),
+      rgba(255, 255, 255, 0.82);
+    background-size: 2.8rem 2.8rem;
+    border: 1px solid rgba(18, 54, 95, 0.14);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  figcaption {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    max-width: 10.5rem;
+    padding: var(--space-3) var(--space-5);
+    color: var(--color-surface);
+    background: var(--color-brand-ink);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+  }
+
+  ol { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+
+  li {
+    position: absolute;
+    z-index: 2;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+  }
+
+  li span { color: var(--color-gold-dark); font-size: var(--font-size-xs); }
+  li:nth-child(1) { top: 9%; left: 7%; }
+  li:nth-child(2) { top: 17%; right: 6%; }
+  li:nth-child(3) { bottom: 14%; left: 8%; }
+  li:nth-child(4) { right: 7%; bottom: 8%; }
+
+  .sector-hero-diagram__line {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .sector-hero-diagram--freight .sector-hero-diagram__line {
+    inset: 18% 15%;
+    border: 1px solid rgba(201, 154, 70, 0.55);
+    border-width: 1px 1px 1px 0;
+    transform: skewY(13deg);
+  }
+
+  .sector-hero-diagram--freight::after {
+    position: absolute;
+    inset: 29% 26%;
+    content: '';
+    border: 1px solid rgba(18, 54, 95, 0.17);
+    transform: rotate(34deg);
+  }
+
+  .sector-hero-diagram--convoy li:nth-child(1) { top: 8%; left: 50%; transform: translateX(-50%); }
+  .sector-hero-diagram--convoy li:nth-child(2) { top: 42%; right: 4%; }
+  .sector-hero-diagram--convoy li:nth-child(3) { bottom: 7%; left: 50%; transform: translateX(-50%); }
+  .sector-hero-diagram--convoy li:nth-child(4) { top: 42%; left: 4%; }
+  .sector-hero-diagram--convoy .sector-hero-diagram__line {
+    inset: 17% 23%;
+    border: 1px solid rgba(201, 154, 70, 0.52);
+    transform: rotate(45deg);
+  }
+
+  .sector-hero-diagram--moving figcaption { top: 20%; }
+  .sector-hero-diagram--moving li:nth-child(1) { top: 41%; left: 5%; }
+  .sector-hero-diagram--moving li:nth-child(2) { top: 41%; right: 5%; }
+  .sector-hero-diagram--moving li:nth-child(3) { right: 6%; bottom: 8%; left: auto; }
+  .sector-hero-diagram--moving li:nth-child(4) { bottom: 8%; left: 6%; }
+  .sector-hero-diagram--moving .sector-hero-diagram__line {
+    top: 27%;
+    right: 16%;
+    bottom: 20%;
+    left: 16%;
+    border-right: 1px solid rgba(201, 154, 70, 0.5);
+    border-bottom: 1px solid rgba(201, 154, 70, 0.5);
+    border-left: 1px solid rgba(201, 154, 70, 0.5);
+  }
+
+  @media (max-width: 640px) {
+    .sector-hero-diagram { min-height: 19rem; }
+    li { max-width: 8.7rem; padding-inline: var(--space-3); font-size: var(--font-size-xs); }
+    .sector-hero-diagram--convoy li:nth-child(2) { right: 2%; }
+    .sector-hero-diagram--convoy li:nth-child(4) { left: 2%; }
+  }
+</style>

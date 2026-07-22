@@ -1,0 +1,136 @@
+---
+import CTA from '../../../components/CTA.astro';
+import FAQ from '../../../components/FAQ.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductReview from '../../../components/ProductReview.astro';
+import ProductRiskOverview from '../../../components/ProductRiskOverview.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SectorActivityJourney from '../../../components/SectorActivityJourney.astro';
+import SectorCoverageCoordination from '../../../components/SectorCoverageCoordination.astro';
+import SectorHeroDiagram from '../../../components/SectorHeroDiagram.astro';
+import SolutionMethod from '../../../components/SolutionMethod.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../../../data/seo';
+
+const path = '/secteurs/demenagement/';
+const title = 'Assurance entreprise de déménagement | Assuromieux Paris';
+const description = 'Analyse des assurances d’un déménageur : biens confiés, manutention, transport, stockage, flotte, locaux, responsabilités et sinistres.';
+const contactHref = '/?besoin=demenagement#contact';
+const faqItems = [
+  { question: 'Le risque commence-t-il uniquement lorsque le camion roule ?', answer: 'Non. Préparation, emballage, démontage, manutention, portage, chargement, utilisation d’un monte-meubles, stockage et restitution peuvent créer des dommages ou des responsabilités distincts.' },
+  { question: 'L’assurance du véhicule couvre-t-elle le mobilier confié ?', answer: 'Pas automatiquement. La circulation, les dommages au véhicule, la responsabilité du déménageur et une assurance portant sur les biens confiés ou transportés répondent à des objets différents.' },
+  { question: 'La déclaration de valeur suffit-elle à déterminer une indemnisation ?', answer: 'Elle constitue une information importante, mais il faut aussi examiner le contrat, les circonstances, les responsabilités, les limites, les exclusions et les éventuelles garanties portant sur les biens.' },
+  { question: 'Le stockage temporaire est-il compris dans le transport ?', answer: 'Il ne faut pas le présumer. Le lieu, la durée, la garde, les valeurs, les conditions de sécurité et les contrats applicables doivent être décrits et vérifiés.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Secteurs', path: '/secteurs/' }, { name: 'Déménagement', path }]),
+  serviceSchema('Conseil en assurance pour les entreprises de déménagement', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Secteur · Déménagement"
+      title="Suivre le risque du premier objet manipulé jusqu’à la restitution."
+      lead="Un déménagement combine biens confiés, gestes de manutention, transport, véhicules, équipements, locaux et parfois stockage. Chaque étape doit être rapprochée des responsabilités et contrats concernés."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/secteurs/', label: 'Secteurs' }, { label: 'Déménagement' }]}
+    >
+      <CTA href={contactHref} label="Demander un audit" size="large" />
+      <CTA href="#risques" label="Parcourir les risques" variant="secondary" size="large" />
+      <SectorHeroDiagram slot="visual" label="Une mission de bout en bout" nodes={['Préparer', 'Manipuler', 'Transporter', 'Restituer']} variant="moving" />
+    </PageHero>
+
+    <SectorActivityJourney
+      title="Lire une opération continue, pas quatre métiers séparés."
+      intro="La frontière du risque suit les biens et les personnes. Une avarie peut naître avant le départ, pendant la route, dans un garde-meubles ou lors de la remise."
+      stages={[
+        { title: 'Préparer et emballer', text: 'Visite, volume, accès, démontage, emballage, déclaration de valeur et définition de la prestation cadrent l’opération.' },
+        { title: 'Manutentionner', text: 'Portage, escaliers, ascenseur, monte-meubles, protections, chargement et arrimage exposent biens, salariés, tiers et bâtiments.' },
+        { title: 'Transporter ou stocker', text: 'Véhicule, conducteur, trajet, stationnement, rupture de charge et garde temporaire créent des interfaces différentes.' },
+        { title: 'Livrer et restituer', text: 'Déchargement, remontage prévu, état des biens, réserves, documents et réclamation ferment la chaîne de responsabilité.' },
+      ]}
+    />
+
+    <ProductRiskOverview
+      title="Six familles de risques au fil de la mission."
+      intro="Le contenu de l’offre, les clients, les valeurs, les accès, le matériel et le recours à des partenaires modifient le programme à analyser."
+      items={[
+        { title: 'Biens confiés', text: 'Perte, casse, vol, rayure, humidité ou mauvaise manipulation doivent être rapprochés des valeurs, documents et conditions contractuelles.' },
+        { title: 'Manutention et personnes', text: 'Les gestes, charges, équipements et accès peuvent causer des dommages corporels, matériels ou immatériels à différentes personnes.' },
+        { title: 'Véhicules et conducteurs', text: 'Camions, utilitaires, remorques, usages, conducteurs, stationnement et assistance relèvent de la lecture flotte.' },
+        { title: 'Locaux et stockage', text: 'Dépôt, garde-meubles, bureaux, quai, alarmes, incendie, dégât des eaux et cumuls de valeurs doivent être décrits.' },
+        { title: 'Équipements spécialisés', text: 'Monte-meubles, hayon, chariots et matériels loués ou prêtés peuvent nécessiter des vérifications propres.' },
+        { title: 'Continuité de l’activité', text: 'Indisponibilité d’un véhicule, d’un site ou d’un équipement peut perturber plusieurs opérations et générer des frais.' },
+      ]}
+      distinction="Le mobilier confié, le véhicule, le matériel de manutention, les locaux et la responsabilité envers le client ne constituent pas un objet d’assurance unique."
+      variant="columns"
+    />
+
+    <SectorCoverageCoordination
+      title="Coordonner les protections tout au long de l’opération."
+      intro="L’analyse part de la prestation vendue et des documents utilisés. Elle rapproche ensuite la responsabilité du déménageur, les biens confiés, la flotte, les locaux, le stockage et les équipements sans annoncer de réponse automatique."
+      statement="Le risque commence avant le transport et se poursuit jusqu’à la restitution."
+      coverages={[
+        { title: 'Responsabilité du déménageur', text: 'Son appréciation dépend des faits, du contrat, des documents, des réserves et des règles applicables à l’opération concernée.' },
+        { title: 'Biens confiés et assurance dommages', text: 'Une assurance portant sur les biens peut compléter un montage sans se confondre avec la responsabilité de l’entreprise.' },
+        { title: 'Assurance automobile', text: 'La responsabilité liée à la circulation et les dommages au véhicule sont distingués du contenu transporté et des gestes de manutention.' },
+        { title: 'RC professionnelle et exploitation', text: 'Dommages aux tiers, aux bâtiments ou liés à une prestation doivent être rapprochés des activités et définitions contractuelles.' },
+        { title: 'Multirisque, stockage et pertes d’exploitation', text: 'Locaux, équipements, valeurs gardées et conséquences d’un arrêt dépendent des événements, plafonds et durées prévus.' },
+      ]}
+      note="Les responsabilités, plafonds et modalités de réclamation varient selon le client, la prestation et les textes applicables. Une page générale ne remplace pas la lecture du dossier."
+    />
+
+    <ProductReview
+      checksTitle="Les informations qui doivent suivre les biens."
+      checksIntro="La cohérence documentaire aide à présenter le risque et à reconstituer une opération lorsqu’un dommage est signalé."
+      checks={[
+        'La prestation distingue ce que le client prépare de ce que l’entreprise emballe, démonte, manutentionne, transporte, stocke et remonte.',
+        'Les accès, volumes, difficultés, équipements nécessaires et conditions de stationnement sont évalués avant l’opération.',
+        'Les valeurs globales, objets de valeur particulière et éventuels pics ou cumuls en garde-meubles sont documentés.',
+        'Les devis, conditions, déclarations de valeur, lettres de voiture, bulletins de livraison et réserves utilisés correspondent à la mission.',
+        'Le parc, les conducteurs, les usages, l’assistance et les procédures de mouvement des véhicules sont à jour.',
+        'Les locaux et zones de stockage sont décrits avec leur construction, prévention, protections, occupation et valeurs maximales.',
+        'Sous-traitants, loueurs de matériel et partenaires sont identifiés avec leurs rôles, attestations et engagements.',
+        'Sinistres et réclamations sont analysés par étape, type de dommage, valeur, cause, franchise et action corrective.',
+      ]}
+      mistakesTitle="Quatre angles morts fréquents."
+      mistakesIntro="Ils apparaissent lorsque le contrat est étudié sans reprendre le déroulement précis d’un déménagement."
+      mistakes={[
+        { title: 'Commencer l’analyse au départ du camion', text: 'Un dommage peut survenir pendant l’emballage, le démontage, le portage ou le chargement, avant toute circulation.' },
+        { title: 'Assimiler valeur confiée et indemnisation', text: 'La valeur déclarée, la responsabilité, les limites du contrat et une éventuelle assurance dommages doivent être distinguées.' },
+        { title: 'Oublier le stockage temporaire', text: 'Une nuit en dépôt ou un passage en garde-meubles peut modifier la garde, les cumuls, la prévention et les contrats concernés.' },
+        { title: 'Traiter le monte-meubles comme un détail', text: 'L’équipement, son opérateur, sa propriété ou location et les dommages possibles créent des vérifications spécifiques.' },
+      ]}
+      note={{ title: 'Un sinistre doit pouvoir être situé dans la chaîne', text: 'Préparation, manipulation, chargement, route, stockage, déchargement ou restitution : l’étape éclaire les faits, les responsabilités et les contrats à consulter.' }}
+      variant="stacked"
+    />
+
+    <SolutionMethod title="Reconstituer l’exploitation, puis arbitrer." text="Assuromieux relie prestations, documents, flotte, sites, équipements et sinistres. Les points sensibles sont classés avant d’ajuster un contrat ou de présenter un dossier homogène au marché." />
+
+    <RelatedResources title="Guides utiles pour approfondir" items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité et assurance des marchandises', description: 'Distinguer responsabilités, biens, flotte et contrats.' },
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Flotte automobile : les points à analyser', description: 'Préparer parc, conducteurs, usages et franchises.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Inventorier les documents et formaliser les arbitrages.' },
+    ]} />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser une entreprise de déménagement." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Relier l’activité aux pages produits" items={[
+      { href: '/assurance-transport/', label: 'Transport & logistique', text: 'Revenir aux grands ensembles de risques transport.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Analyser les véhicules, conducteurs et usages.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Étudier les responsabilités de prestation et d’exploitation.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Rapprocher locaux, équipements, stockage et continuité.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Construire une lecture globale des contrats.' },
+    ]} />
+
+    <PageCTA title="Vos contrats suivent-ils les biens à chaque étape ?" text="Préparez vos prestations, documents, valeurs, parc, locaux, matériels, partenaires et sinistralité pour cadrer les premiers points à vérifier." primaryHref={contactHref} primaryLabel="Demander un audit" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

@@ -51,12 +51,13 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 ## Phase 3B — Architecture sectorielle future
 
 - [x] **P3B-01 — Auditer les opportunités sectorielles.** Dépendances : P3-03, P3-04 et P3-09. Validation : 21 secteurs et sujets analysés, dix chevauchements arbitrés, architecture et maillage documentés dans `AUDIT-OPPORTUNITE-PAGES-SECTORIELLES.md` et `MATRICE-OPPORTUNITE-SECTORIELLE.md`.
-- [ ] **P3B-02 — Valider les fiches métier des trois verticales prioritaires Transport.** Dépendances : P3B-01 et validation métier Transport. Validation : Transport routier, Convoyage et Déménagement disposent chacun d'un périmètre, de responsabilités, de documents, de distinctions contractuelles et d'un valideur identifiés.
-- [ ] **P3B-03 — Préparer le hub Secteurs.** Dépendances : P3B-02 et première verticale prête. Validation : le hub reste court, relie Transport et BTP, ne surcharge pas le menu et n'est jamais publié vide.
-- [ ] **P3B-04 — Produire Transport routier de marchandises.** Dépendances : P3B-02 et P3B-03. Validation : intention propre, distinction Flotte/RC/marchandises, maillage et validation métier complets.
-- [ ] **P3B-05 — Produire Convoyage de véhicules.** Dépendances : P3B-02 et P3B-03. Validation : mode d'exploitation, véhicules confiés, conducteurs, chaîne de garde et territorialité validés.
-- [ ] **P3B-06 — Produire Déménagement.** Dépendances : P3B-02 et P3B-03. Validation : biens confiés, manutention, valeurs, stockage, flotte et salariés traités sans promesse de garantie.
+- [ ] **P3B-02 — Valider les fiches métier des trois verticales prioritaires Transport.** Dépendances : P3B-01 et validation métier Transport. Validation : la grille `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` reçoit pour chaque ligne sensible ou bloquante un valideur, une décision et une date. **Préparation documentaire terminée ; validation humaine en attente.**
+- [x] **P3B-03 — Préparer le hub Secteurs.** Dépendances : P3B-01 et première verticale prête. Validation : le hub reste court, relie Transport et BTP, ne surcharge pas le menu et n'est jamais publié vide.
+- [x] **P3B-04 — Produire Transport routier de marchandises en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : intention propre, distinction Flotte/RC/marchandises, trois ressources, maillage et points métier consignés ; `noindex` maintenu.
+- [x] **P3B-05 — Produire Convoyage de véhicules en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : mode d'exploitation, véhicules confiés, conducteurs, chaîne de garde, trois ressources et points de territorialité documentés ; `noindex` maintenu.
+- [x] **P3B-06 — Produire Déménagement en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : biens confiés, manutention, valeurs, stockage, flotte et équipements traités sans promesse de garantie ; `noindex` maintenu.
 - [ ] **P3B-07 — Réévaluer les deux opportunités de priorité 2.** Dépendances : centre de ressources actif et données réelles après lancement. Validation : Logistique/entrepôts et Entreprises générales BTP ne sont créées que si expertise, demande et contenu distinct sont démontrés.
+- [x] **P3B-08 — Documenter le lot Secteurs Transport 01.** Dépendances : P3B-03 à P3B-06. Validation : matrice SEO, validation métier et réalisation décrivent routes, frontières, sources, risques, maillage et contrôles.
 
 **Sortie de phase :** une profondeur sectorielle limitée aux intentions réellement distinctes, sans doublon des pages produits ou des hubs existants.
 
@@ -94,6 +95,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md` et valider l'arbitrage sectoriel de la mission 4B.
-2. Préparer les fiches métier sources Transport routier, Convoyage et Déménagement sans créer de page publique.
+1. Faire statuer le référent Transport sur `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md`, en priorité sur les lignes bloquantes Convoyage et Déménagement.
+2. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md` et compléter les champs de revue des guides.
 3. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel avant la recette globale.

@@ -1,0 +1,136 @@
+---
+import CTA from '../../../components/CTA.astro';
+import FAQ from '../../../components/FAQ.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductReview from '../../../components/ProductReview.astro';
+import ProductRiskOverview from '../../../components/ProductRiskOverview.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SectorActivityJourney from '../../../components/SectorActivityJourney.astro';
+import SectorCoverageCoordination from '../../../components/SectorCoverageCoordination.astro';
+import SectorHeroDiagram from '../../../components/SectorHeroDiagram.astro';
+import SolutionMethod from '../../../components/SolutionMethod.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../../../data/seo';
+
+const path = '/secteurs/transport-routier-marchandises/';
+const title = 'Assurance transport routier de marchandises | Assuromieux Paris';
+const description = 'Analyse des assurances d’un transporteur routier : responsabilités, marchandises, flotte, sous-traitance, sites et continuité d’activité.';
+const contactHref = '/?besoin=transport-routier#contact';
+const faqItems = [
+  { question: 'L’assurance du camion couvre-t-elle les marchandises transportées ?', answer: 'Pas automatiquement. La responsabilité liée à la circulation, les dommages au véhicule, la responsabilité du transporteur et une assurance portant sur les marchandises répondent à des objets différents. Les contrats et la mission doivent être rapprochés.' },
+  { question: 'La responsabilité du transporteur correspond-elle toujours à la valeur de la marchandise ?', answer: 'Il ne faut pas le présumer. Les règles applicables, les conventions, les documents de transport, les circonstances et les éventuelles déclarations de valeur doivent être examinés pour la mission concernée.' },
+  { question: 'La sous-traitance transfère-t-elle toutes les responsabilités au transporteur exécutant ?', answer: 'Non, pas automatiquement. Il faut comprendre le rôle de chaque acteur, les engagements envers le donneur d’ordre, les attestations, les limites et les recours prévus.' },
+  { question: 'Quelles données préparer avant un audit ?', answer: 'Les activités, flux, marchandises, valeurs maximales, zones, parc, conducteurs, sites, sous-traitants, principaux contrats clients, documents de transport et sinistralité disponible constituent une base utile.' },
+];
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Secteurs', path: '/secteurs/' }, { name: 'Transport routier de marchandises', path }]),
+  serviceSchema('Conseil en assurance pour le transport routier de marchandises', description, path),
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Secteur · Transport routier"
+      title="Coordonner les risques d’une activité de transport de marchandises."
+      lead="La route n’est qu’une partie de l’exploitation. Marchandises confiées, responsabilités contractuelles, véhicules, conducteurs, sous-traitance, sites et continuité doivent être lus ensemble."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/secteurs/', label: 'Secteurs' }, { label: 'Transport routier de marchandises' }]}
+    >
+      <CTA href={contactHref} label="Demander un audit transport" size="large" />
+      <CTA href="#risques" label="Cartographier les risques" variant="secondary" size="large" />
+      <SectorHeroDiagram slot="visual" label="Une exploitation à coordonner" nodes={['Mission', 'Marchandises', 'Véhicules', 'Responsabilités']} variant="freight" />
+    </PageHero>
+
+    <SectorActivityJourney
+      title="Décrire le flux avant de chercher le contrat."
+      intro="Le transporteur doit pouvoir expliquer ce qu’il prend en charge, avec quels moyens, pour quels donneurs d’ordre et jusqu’à quel point de la chaîne."
+      stages={[
+        { title: 'Prise en charge', text: 'Nature, emballage, valeur, documents, réserves, opérations de chargement et rôle réel de chaque partie.' },
+        { title: 'Acheminement', text: 'Véhicule, conducteur, zones, arrêts, température ou sûreté lorsque ces contraintes concernent le flux.' },
+        { title: 'Ruptures et partenaires', text: 'Affrètement, sous-traitance, changement de véhicule, passage à quai et stockage temporaire éventuel.' },
+        { title: 'Livraison et suite', text: 'Déchargement, remise, réserves, réclamation, gestion du sinistre et conservation des preuves.' },
+      ]}
+    />
+
+    <ProductRiskOverview
+      title="Six expositions qui ne se résument pas à la flotte."
+      intro="Les priorités varient selon les marchandises, les zones, le parc, les clients et l’organisation. Cette carte sert à identifier les interfaces, pas à annoncer des garanties acquises."
+      items={[
+        { title: 'Marchandises confiées', text: 'Perte, avarie, vol, température, emballage, valeur et cumuls peuvent modifier l’exposition et les preuves attendues.' },
+        { title: 'Responsabilités de transport', text: 'Le rôle de transporteur, d’affréteur, de commissionnaire ou de donneur d’ordre doit être identifié sans être déduit du seul intitulé commercial.' },
+        { title: 'Véhicules et circulation', text: 'Tracteurs, porteurs, remorques, conducteurs, usages et zones relèvent d’une lecture automobile propre, distincte des marchandises.' },
+        { title: 'Sous-traitance', text: 'Le choix d’un exécutant, les attestations, les engagements conservés et les recours nécessitent une chaîne documentaire cohérente.' },
+        { title: 'Sites et matériels', text: 'Dépôts, quais, entrepôts, bureaux, équipements et marchandises en attente peuvent mobiliser d’autres garanties et responsabilités.' },
+        { title: 'Continuité et systèmes', text: 'Immobilisation, interruption d’un site, indisponibilité d’un outil d’exploitation ou incident cyber peuvent perturber les tournées.' },
+      ]}
+      distinction="Transporteur, véhicule, marchandise et site correspondent à des objets de risque différents. Une même cause peut les affecter simultanément sans qu’un contrat unique réponde à l’ensemble."
+      variant="columns"
+    />
+
+    <SectorCoverageCoordination
+      title="Relier chaque responsabilité au bon niveau d’analyse."
+      intro="L’audit distingue les textes et contrats qui organisent la mission des contrats d’assurance susceptibles d’intervenir. Il vérifie ensuite les activités déclarées, limites, exclusions, franchises, territoires et procédures."
+      statement="Un même transport peut mobiliser plusieurs contrats et plusieurs responsabilités."
+      coverages={[
+        { title: 'Responsabilité du transporteur', text: 'Elle dépend notamment du rôle, du contrat de transport, des faits, des documents et des règles applicables. Son assurance possède ensuite ses propres conditions.' },
+        { title: 'Assurance automobile et flotte', text: 'La responsabilité liée à la circulation constitue un socle distinct. Dommages aux véhicules, assistance, conducteurs et usages sont étudiés selon le parc.' },
+        { title: 'Marchandises et assurance pour compte', text: 'Une assurance portant sur les biens peut protéger un intérêt défini sans se confondre avec la responsabilité du transporteur.' },
+        { title: 'RC professionnelle et exploitation', text: 'Les prestations, incidents d’exploitation et dommages aux tiers doivent être rattachés aux activités et définitions prévues au contrat.' },
+        { title: 'Multirisque et pertes d’exploitation', text: 'Locaux, équipements, stocks et conséquences d’un arrêt peuvent relever d’un contrat de site, selon les événements et bases prévus.' },
+      ]}
+      note="Aucune de ces familles ne doit être présentée comme couvrant automatiquement les autres. La cohérence se vérifie scénario par scénario."
+    />
+
+    <ProductReview
+      checksTitle="Les points de vigilance qui changent la lecture du dossier."
+      checksIntro="Un dossier utile documente les pics et les exceptions, pas seulement une moyenne annuelle ou une liste de véhicules."
+      checks={[
+        'Les activités principales et accessoires décrivent les opérations réellement vendues et exécutées.',
+        'Les marchandises habituelles, sensibles ou exclues, ainsi que les valeurs maximales par véhicule et par site, sont identifiées.',
+        'Les zones, trajets, arrêts, stationnements et éventuelles contraintes de température ou de sûreté sont décrits.',
+        'Le parc, les conducteurs autorisés, les remorques, les usages et les procédures d’entrée ou de sortie sont à jour.',
+        'Les contrats clients, ordres de transport, lettres de voiture, réserves et déclarations de valeur utiles sont disponibles.',
+        'La sous-traitance et l’affrètement sont expliqués avec leurs contrôles, attestations et engagements contractuels.',
+        'Plafonds, sous-limites, franchises, exclusions, territorialité et conditions de prévention sont rapprochés de scénarios réels.',
+        'La sinistralité est analysée par cause, flux, véhicule, circonstances, coût et action corrective lorsque les données le permettent.',
+      ]}
+      mistakesTitle="Quatre raccourcis qui fragilisent la coordination."
+      mistakesIntro="Ils naissent souvent d’un vocabulaire trop général ou d’une consultation construite contrat par contrat."
+      mistakes={[
+        { title: 'Confondre TPM et toutes marchandises transportées', text: 'Un sigle commercial ne suffit pas. Il faut identifier l’objet garanti : responsabilité, biens, assurance pour compte ou autre montage, puis lire les limites.' },
+        { title: 'Considérer la flotte comme le programme transport', text: 'La circulation et les dommages aux véhicules ne traitent pas automatiquement la responsabilité de transport, les biens confiés ou les sites.' },
+        { title: 'Décrire la sous-traitance comme un simple transfert', text: 'L’entreprise peut conserver des engagements envers son client. Les rôles, attestations, plafonds et recours doivent rester lisibles.' },
+        { title: 'Comparer seulement la prime annuelle', text: 'Une différence de périmètre, de franchise, d’exclusion ou de valeur maximale peut rendre deux propositions incomparables.' },
+      ]}
+      note={{ title: 'Le scénario fait le lien', text: 'Pour chaque événement prioritaire, demandez qui peut être responsable, quel bien est atteint, quel contrat pourrait intervenir, dans quelle limite et avec quelle preuve.' }}
+      variant="split"
+    />
+
+    <SolutionMethod title="Construire une vision unique de l’exploitation." text="Assuromieux consolide activités, flux, parc, sites, sous-traitance et sinistres. Les contrats sont ensuite analysés ensemble avant de décider s’il faut maintenir, ajuster ou consulter le marché." />
+
+    <RelatedResources title="Trois guides pour préparer l’analyse" items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité du transporteur et assurance des marchandises', description: 'Distinguer responsabilité, biens, flotte et assurance pour compte.' },
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Flotte automobile : les points à analyser', description: 'Structurer parc, conducteurs, usages, franchises et gestion.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Inventorier les contrats et formaliser les arbitrages.' },
+    ]} />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser une activité de transport routier." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Relier l’activité aux pages produits" items={[
+      { href: '/assurance-transport/', label: 'Transport & logistique', text: 'Revenir à la lecture générale des flux et responsabilités.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Analyser le parc, les conducteurs et les usages.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Lire les responsabilités liées aux prestations et à l’exploitation.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Étudier les sites, équipements et conséquences d’un arrêt.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Rapprocher l’ensemble des contrats et de l’activité réelle.' },
+    ]} />
+
+    <PageCTA title="Votre programme suit-il vraiment vos flux ?" text="Préparez vos activités, marchandises, valeurs, zones, parc, sous-traitants et sinistralité pour cadrer les premiers scénarios à vérifier." primaryHref={contactHref} primaryLabel="Demander un audit transport" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout { max-width: 58rem; }</style>

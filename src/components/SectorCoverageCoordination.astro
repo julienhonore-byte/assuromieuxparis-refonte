@@ -1,0 +1,42 @@
+---
+interface Coverage { title: string; text: string; }
+interface Props {
+  title: string;
+  statement: string;
+  intro: string;
+  coverages: Coverage[];
+  note: string;
+}
+
+const { title, statement, intro, coverages, note } = Astro.props;
+---
+
+<section class="section sector-coordination" aria-labelledby="sector-coordination-title">
+  <div class="container-wide sector-coordination__layout">
+    <header>
+      <p class="eyebrow">Contrats et responsabilités</p>
+      <h2 id="sector-coordination-title">{title}</h2>
+      <p>{intro}</p>
+      <blockquote>{statement}</blockquote>
+    </header>
+    <div class="sector-coordination__list">
+      {coverages.map((coverage, index) => <article><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{coverage.title}</h3><p>{coverage.text}</p></div></article>)}
+      <p class="sector-coordination__note">{note}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sector-coordination { color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 12% 10%, rgba(201, 154, 70, .16), transparent 25%), var(--color-brand-ink); }
+  .sector-coordination__layout { display: grid; grid-template-columns: minmax(17rem, .68fr) minmax(0, 1.32fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+  h2 { max-width: 16ch; margin: 0; color: var(--color-surface); font-size: var(--font-size-h2); letter-spacing: var(--letter-spacing-heading); line-height: var(--line-height-heading); }
+  header > p:not(.eyebrow) { margin: var(--space-5) 0 0; color: var(--color-text-on-dark-soft); }
+  blockquote { margin: var(--space-8) 0 0; padding: var(--space-5) 0 var(--space-5) var(--space-6); color: var(--color-surface); border-left: 3px solid var(--color-gold); font-size: var(--font-size-body-lg); font-weight: var(--font-weight-medium); }
+  .sector-coordination__list { border-top: 1px solid rgba(255,255,255,.18); }
+  article { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--space-4); padding: var(--space-5) 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+  article > span { color: var(--color-gold-soft); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  h3 { margin: 0; color: var(--color-surface); font-size: var(--font-size-h4); }
+  article p { margin: var(--space-2) 0 0; color: var(--color-text-on-dark-soft); font-size: var(--font-size-sm); }
+  .sector-coordination__note { margin: var(--space-6) 0 0; padding: var(--space-5); color: var(--color-brand-ink); background: var(--color-gold-soft); border-radius: var(--radius-control); font-weight: var(--font-weight-medium); }
+  @media (max-width: 860px) { .sector-coordination__layout { grid-template-columns: 1fr; } header { max-width: 43rem; } }
+</style>

@@ -13,7 +13,7 @@ status: "review-required"
 featured: true
 readingTime: 8
 relatedProducts: ["transport", "flotte", "rc", "audit"]
-relatedSectors: ["transport-logistique"]
+relatedSectors: ["transport-logistique", "transport-routier-marchandises", "convoyage-vehicules", "demenagement"]
 relatedArticles: ["flotte-automobile-points-analyser-avant-comparer", "comment-auditer-assurances-entreprise"]
 faq:
   - question: "L’assurance du camion couvre-t-elle la marchandise transportée ?"
@@ -91,6 +91,10 @@ Pour chaque flux, notez : acteurs, rôle, marchandise, valeur, mission, véhicul
 
 Cette grille aide à poser les bonnes questions. Elle ne remplace ni l’analyse juridique du contrat de transport ni la décision de l’assureur sur un sinistre.
 
+## Prolonger l’analyse par activité
+
+La grille ne s’applique pas de manière identique à tous les métiers. La page [Transport routier de marchandises](/secteurs/transport-routier-marchandises/) coordonne flux, responsabilités, marchandises, flotte et sous-traitance. La page [Convoyage de véhicules](/secteurs/convoyage-vehicules/) part d’un véhicule qui circule tout en restant confié. La page [Déménagement](/secteurs/demenagement/) suit les biens depuis la préparation et la manutention jusqu’à leur restitution.
+
 ### Point de vigilance
 
-Les transporteurs routiers, convoyeurs et déménageurs ont des organisations différentes. Ce guide prépare de futurs maillages sectoriels, mais ne crée aucune conclusion commune à ces métiers ni aucune page sectorielle nouvelle.
+Les transporteurs routiers, convoyeurs et déménageurs ont des organisations différentes. Les pages sectorielles aident à préparer les questions ; elles ne créent aucune conclusion commune à ces métiers.

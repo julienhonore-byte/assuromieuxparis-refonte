@@ -93,9 +93,11 @@ Construire une autorité thématique progressive et approfondir les parcours sec
 
 ### Développement sectoriel
 
-- enrichir Transport et logistique avec des contenus distincts sur flotte, TPM, responsabilités ou entrepôts lorsque les intentions le justifient ;
-- enrichir BTP avec des contenus réellement différenciés sur activités déclarées, attestations, sous-traitance ou multirisque ;
-- évaluer une page sectorielle supplémentaire uniquement si le cabinet possède l'expertise, des cas d'usage et une intention de recherche claire.
+- conserver `/assurance-transport/` comme hub Transport et logistique et `/assurance-btp-decennale/` comme hub BTP, sans créer de doublon généraliste ;
+- produire, après validation métier, les trois verticales classées priorité 1 : Transport routier de marchandises, Convoyage de véhicules et Déménagement ;
+- relier chaque verticale à son hub, aux pages produits utiles et à un guide réellement complémentaire ;
+- évaluer Logistique et entrepôts ainsi qu'Entreprises générales BTP seulement après la mise en place du centre de ressources et l'observation de demandes réelles ;
+- ne pas créer de pages sectorielles génériques « PME », « entreprises de services », « entreprises avec flotte », « entreprises avec salariés » ou « dirigeants et TNS ».
 
 ### Centre de ressources
 
@@ -116,6 +118,10 @@ Construire une autorité thématique progressive et approfondir les parcours sec
 ### Critère de sortie
 
 Le site couvre les thèmes prioritaires avec des parcours cohérents, sans page mince ni duplication, et dispose d'un processus réel de mise à jour.
+
+### Arbitrage de référence
+
+Les décisions détaillées, les pages à fusionner et les sujets à traiter sous forme de guides sont consignés dans `AUDIT-OPPORTUNITE-PAGES-SECTORIELLES.md` et `MATRICE-OPPORTUNITE-SECTORIELLE.md`. Une idée reportée ne peut être réactivée qu'avec une intention distincte, une expertise démontrée, un propriétaire métier et des données réelles.
 
 ## Horizon 4 — Douze mois
 

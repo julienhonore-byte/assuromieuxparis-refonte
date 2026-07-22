@@ -72,6 +72,6 @@ Les validations métier globales, le test d’envoi Formspree réel et l’autor
 
 ## Mise à jour — Mission 7A
 
-La recette approfondie reprend les sept routes après correction. Elle ajoute le contrôle des identifiants du hub, des CTA génériques sans préremplissage forcé, des nouvelles issues de décision et des distinctions Flotte/Transport. Le verdict métier devient : hub validé pour préproduction ; cinq parcours validés sous réserve mineure ; Création/reprise en validation métier requise. Aucun parcours n’est bloqué pour promesse excessive.
+La recette approfondie reprend les sept routes après correction. Elle ajoute le contrôle des identifiants du hub, des CTA génériques sans préremplissage forcé, des nouvelles issues de décision et des distinctions Flotte/Transport. Après la validation humaine Création/reprise du 22 juillet 2026, le verdict métier devient : hub validé pour préproduction et six parcours validés sous réserve mineure. Aucun parcours n’est bloqué pour promesse excessive.
 
 Les résultats détaillés de conversion sont consignés dans `RECETTE-CONVERSION-PARCOURS-BESOINS-APPROFONDIE.md`. Les contrôles techniques 7A reproduisent les mêmes 37 pages et les 49 combinaisons responsive sans nouvelle route, débordement ni identifiant dupliqué.

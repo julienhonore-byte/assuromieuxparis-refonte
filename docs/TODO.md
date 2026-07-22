@@ -98,7 +98,7 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 - [ ] **P4C-07 — Obtenir la validation métier des parcours.** Dépendances : P4C-03 et référent compétent. Validation : activité réellement accompagnée, limites des formulations et décisions proposées sont approuvées sans créer de promesse contractuelle.
 - [ ] **P4C-08 — Mesurer après lancement.** Dépendances : P4C-07, P5-06 et données suffisantes. Validation : requêtes, pages d’entrée et qualité des demandes permettent de confirmer les frontières ; aucune page supplémentaire n’est créée par défaut.
 - [x] **P4C-09 — Réaliser la revue approfondie 7A.** Dépendances : P4C-03 à P4C-06. Validation : sept routes relues selon 14 critères métier/SEO/conversion, corrections ciblées appliquées, cinq livrables créés et statut explicite attribué à chaque route.
-- [ ] **P4C-10 — Valider le périmètre Création/reprise.** Dépendances : P4C-09 et réponses PB-01/PB-02. Validation : le dirigeant et le courtier entreprises confirment ou réduisent les blocs réellement accompagnés ; la décision est reportée dans le document de préproduction.
+- [x] **P4C-10 — Valider le périmètre Création/reprise.** Dépendances : P4C-09 et réponses PB-01/PB-02. Validation : Assuromieux confirme le 22 juillet 2026 l’accompagnement prudent des créations et reprises, le processus d’examen et l’absence de transfert ou de placement garanti ; la décision est reportée dans le document de préproduction.
 
 **Sortie de phase :** parcours lisibles et mesurés prêts pour validation globale, sans indexation ni déploiement autonome.
 
@@ -114,6 +114,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Obtenir les réponses prioritaires PB-01 et PB-02 sur le périmètre Création/reprise, puis statuer sur cette route sans créer de nouveau parcours.
+1. Faire répondre les interlocuteurs compétents aux questions métier encore ouvertes des parcours, en priorité PB-05, PB-07, PB-09 et PB-10, sans durcir les formulations publiques avant réponse.
 2. Faire répondre les interlocuteurs compétents aux seules questions prioritaires de `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` et compléter les validations produits/guides.
 3. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel avant la recette globale.

@@ -4,58 +4,89 @@ Date : 21 juillet 2026
 
 Route : `/secteurs/convoyage-vehicules/`
 
-Statut : **bloquée avant production**.
+Statut : **validée sous réserve mineure pour préproduction**.
 
-## Motif du blocage
+## Motif de la décision
 
-L’expression « assurance convoyage » ne correspond pas à un montage universel. La réponse peut dépendre simultanément du contrat automobile du véhicule, de l’identité du souscripteur et du propriétaire, de l’autorisation et du statut du conducteur, du rôle contractuel de l’entreprise, de la nature du dommage et d’éventuelles garanties propres au convoyeur.
+La page ne présente plus l’« assurance convoyage » comme un contrat uniforme. Elle fait dépendre l’analyse du rôle de l’entreprise, du véhicule, du conducteur, du territoire, de la mission, du dommage et des contrats concernés. Toute garantie non confirmée est formulée comme éventuelle ou variable.
 
-La page est désormais prudente et techniquement cohérente, mais aucun agent ne peut confirmer sans pièces réelles quels contrats, extensions ou attestations sont utilisés par Assuromieux et ses marchés partenaires.
+La réserve est mineure pour la préproduction parce que les réponses propres aux porteurs de risque ne changent pas le sens prudent de la page. Elles deviendraient bloquantes si une offre, une acceptation, une garantie, un territoire ou un véhicule éligible était affirmé précisément.
 
-## Les quatre questions désormais visibles
+## Les quatre questions publiques validées
 
 1. Qui possède et assure le véhicule ?
 2. Qui le conduit, et dans quel cadre ?
-3. Quels dommages doivent être examinés ?
+3. Quels dommages et frais doivent être couverts ?
 4. Quel est le rôle contractuel exact de l’entreprise ?
 
-## Distinctions obligatoires contrôlées
+La conclusion visible précise que les réponses déterminent les contrats à analyser et les garanties qu’il peut être utile de rechercher, sans conduire à une solution systématique.
 
-| Objet | Formulation retenue | Validation humaine attendue |
+## Rôles distingués
+
+- propriétaire du véhicule ;
+- détenteur ou gardien pendant la mission ;
+- donneur d’ordre ;
+- entreprise de convoyage ;
+- convoyeur salarié ou indépendant ;
+- sous-traitant ;
+- souscripteur du contrat automobile ;
+- conducteur autorisé ;
+- bénéficiaire éventuel d’une garantie.
+
+Décision : **FORMULATION CORRIGÉE**. La page ne présume pas que ces rôles coïncident.
+
+## Circulation et automobile
+
+| Point | Décision | Formulation retenue |
 |---|---|---|
-| RC circulation | Dommages causés aux tiers par le véhicule ; contrat, souscripteur, propriétaire, conducteur et usage à vérifier | Confirmer les contrôles documentaires pratiqués avant mission |
-| Garanties automobiles | Dommages au véhicule, vol, incendie et bris seulement selon les garanties souscrites | Confirmer les montages rencontrés ; aucune formule « tous risques » ne vaut réponse générale |
-| Véhicule confié | Responsabilité liée à la garde/mission et éventuelle garantie du convoyeur séparées | Identifier les clauses, exclusions, plafonds et franchises réellement proposés |
-| RC professionnelle | Erreur ou manquement lié à la prestation selon faits et clauses | Confirmer les activités déclarées et scénarios représentatifs |
-| RC exploitation | Événement de vie courante, sans substitution à la circulation | Confirmer le vocabulaire des contrats distribués |
-| Frais annexes | Immobilisation, rapatriement, perte d’usage et autres coûts uniquement si leur fondement est identifié | Valider la liste de frais citables et leurs limites |
-| Sous-traitance | Aucun transfert automatique de tous les engagements | Confirmer attestations, autorisations et recours demandés |
+| Obligation de RC circulation | **CONFIRMÉE PAR SOURCE OFFICIELLE** | Le contrat automobile doit être identifié ; le socle concerne les dommages causés aux tiers. |
+| Conducteur autorisé | **FORMULATION CORRIGÉE** | Une autorisation de conduire ne prouve pas qu’une garantie donnée est acquise. |
+| Usage, prêt ou mise à disposition, mission professionnelle | **VARIABLE SELON LE CONTRAT** | Ces paramètres sont rapprochés des déclarations et clauses. |
+| Véhicule non détenu par l’entreprise | **VARIABLE SELON LE CONTRAT** | Parc propre et véhicule confié sont explicitement séparés. |
+| Existence du contrat automobile | **FORMULATION CORRIGÉE** | Elle ne prouve pas que le convoyage, le conducteur ou les dommages au véhicule sont correctement couverts. |
 
-## Périmètres explicitement couverts par la recette
+## Dommages et frais
 
-- propriétaire, souscripteur, conducteur, client, donneur d’ordre, intermédiaire et mandataire éventuel ;
-- conducteurs salariés, indépendants et sous-traitants ;
-- véhicules légers, utilitaires, poids lourds, autobus, autocars et véhicules spéciaux ;
-- missions en France ou à l’international ;
-- accident, dommages causés par le véhicule, dommages subis par le véhicule, vol, incendie, bris, erreur de carburant, immobilisation, rapatriement et pertes financières annexes.
+La page distingue : dommages causés à un tiers, dommages subis par le véhicule, dommage pendant la garde, faute professionnelle, vol, incendie, bris, vandalisme, événement naturel, panne, erreur de carburant, remorquage, immobilisation, perte d’usage, remplacement, location et rapatriement.
 
-Cette liste décrit les questions à poser ; elle n’annonce ni acceptation, ni garantie, ni indemnisation.
+Décision : **VARIABLE SELON LE CONTRAT**. Aucun de ces postes n’est annoncé couvert. Chaque poste suppose un fondement de responsabilité ou une garantie, avec ses assurés, événements, exclusions, franchises, plafonds et conditions.
 
-## Validation humaine à consigner
+## Contrats et garanties distingués
 
-Avant toute production, un référent métier nommé doit renseigner :
+1. contrat automobile du véhicule ;
+2. éventuel contrat automobile ou flotte de l’entreprise ;
+3. RC circulation ;
+4. RC professionnelle ;
+5. RC exploitation ;
+6. dommages aux biens ou véhicules confiés ;
+7. garantie contractuelle spécifique éventuelle ;
+8. frais annexes ;
+9. protection juridique ;
+10. assistance.
 
-- les modèles d’exploitation réellement accompagnés ;
-- les catégories de véhicules et territoires réellement acceptés ;
-- les documents exigés pour le véhicule, le conducteur et la mission ;
-- le traitement contractuel des dommages au véhicule confié ;
-- les garanties éventuellement proposées par le convoyeur ;
-- les frais annexes pouvant être cités ;
-- les contrôles applicables aux indépendants et sous-traitants ;
-- la date de revue, son nom et sa décision.
+Décision : **FORMULATION CORRIGÉE**. « Assurance convoyage » est uniquement une expression descriptive du besoin.
 
-Une revue juridique séparée est requise dès qu’une formulation prétend qualifier un contrat, une responsabilité, une obligation ou une indemnisation.
+## Véhicules et territoires
+
+- VL, VUL, poids lourds, tracteurs, autobus, autocars et véhicules spéciaux ;
+- véhicules neufs ou d’occasion ;
+- immatriculation définitive ou temporaire ;
+- France métropolitaine, outre-mer, Union européenne et autres pays.
+
+Décisions : **VALIDATION COURTIER OU ASSUREUR NÉCESSAIRE** pour l’acceptation des véhicules, notamment lourds et spéciaux ; **VARIABLE SELON LE CONTRAT** pour les territoires. Une mission internationale n’est jamais présentée comme une garantie.
+
+## Sous-traitance
+
+Décision : **FORMULATION CORRIGÉE**. La page exige de rapprocher statut, mission, autorisations, couverture, attestations, documents, traçabilité et recours. Elle n’annonce aucun transfert automatique de responsabilité ou de garantie.
+
+## CTA
+
+Décision : **FORMULATION CORRIGÉE**. Le CTA principal devient « Faire analyser une mission ». Le texte demande rôles, véhicules, conducteurs, territoires, sous-traitants et contrats sans promettre une acceptation, une assurance immédiate ou un résultat.
+
+## Réserves externes restantes
+
+Les questions encore ouvertes concernent uniquement les contrats et pratiques réels : véhicules acceptés, zones, traitement du bien confié, frais, indépendants et documents. Elles sont formulées dans `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` et doivent être renseignées par le type d’interlocuteur indiqué.
 
 ## Décision de sortie
 
-La route ne pourra passer à « validée pour préproduction » qu’après validation nominative des points ci-dessus et mise à jour de `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md`. Le `noindex` global et le blocage `robots.txt` restent inchangés.
+La route peut entrer en préproduction sous `noindex`. Elle ne peut être indexée ou enrichie d’affirmations contractuelles précises sans validation humaine documentée. Aucun déploiement de production n’est autorisé par ce document.

@@ -1,7 +1,7 @@
 # Réalisation — Secteurs Transport, lot 01
 
 Date : 21 juillet 2026
-Statut : réalisation technique terminée en prévisualisation ; validation métier et autorisation de production non acquises.
+Statut : réalisation technique terminée ; réserves éditoriales levées sous réserve mineure pour préproduction ; autorisation de production non acquise.
 
 ## Pages créées
 
@@ -10,7 +10,7 @@ Statut : réalisation technique terminée en prévisualisation ; validation mét
 | `/secteurs/` | Hub court des expertises publiées | Intro, approche, liste éditoriale des trois verticales, deux expertises générales, CTA Audit |
 | `/secteurs/transport-routier-marchandises/` | Coordonner flux, responsabilités, biens, flotte, sous-traitance et sites | Parcours linéaire, carte de six expositions, coordination de cinq familles, audit des interfaces |
 | `/secteurs/convoyage-vehicules/` | Analyser une mission où le véhicule circule et reste confié | Chaîne de garde en diamant, lecture par interfaces, distinction circulation/prestation/véhicule, procédure de mission |
-| `/secteurs/demenagement/` | Suivre biens et responsabilités de la préparation à la restitution | Schéma de chaîne descendante, six risques d’exploitation, coordination des protections, lecture par étape |
+| `/secteurs/demenagement/` | Suivre biens et responsabilités de la préparation à la restitution | Schéma de chaîne descendante, sept familles de risques, coordination des protections, lecture par étape |
 
 ## Différences éditoriales
 
@@ -50,7 +50,7 @@ Les formulations ont été cadrées avec des sources officielles : ministère ch
 2. Aucun secteur futur n’est teasé.
 3. La navigation principale n’a pas reçu de sous-menu ni de nouvelle entrée.
 4. Les schémas sont en HTML/CSS, sans photographie, dépendance, script ou animation.
-5. Le terme TPM n’est pas utilisé comme nom de couverture ; il apparaît seulement dans un avertissement sur la confusion terminologique.
+5. Le terme TPM est absent des pages publiques auditées et conservé uniquement dans la documentation de contrôle terminologique.
 6. Le convoyage n’est pas assimilé au transport sur porte-voitures ni à une flotte propre.
 7. La page Déménagement ne fournit aucun délai, plafond ou conseil juridique définitif.
 8. Les FAQ sont visibles et correspondent exactement aux données `FAQPage`.
@@ -82,7 +82,7 @@ Les formulations ont été cadrées avec des sources officielles : ministère ch
 | Dépendance ajoutée | Aucune |
 | Noindex / robots | Maintenus |
 | Production | Aucun déploiement, aucune redirection |
-| Densité des verticales | TRM 1 247 mots ; Convoyage 1 251 mots ; Déménagement 1 208 mots dans `<main>` |
+| Densité des verticales | Contenu métier structuré, sans nouvelle section SEO ni allongement artificiel lors de la levée 6B |
 | Responsive | Hub, trois verticales et hub Transport contrôlés à 320, 375, 768, 1024, 1280 et 1440 px |
 | Débordement horizontal | Aucun aux 30 combinaisons route/largeur contrôlées |
 | Schémas | Lisibles et contenus dans le viewport de 320 à 1440 px ; libellé accessible présent |
@@ -95,14 +95,7 @@ Une première capture tablette a nécessité une réinitialisation de l’outil 
 
 ## Points à valider
 
-- périmètre exact des rôles de transport accompagnés ;
-- terminologie employée par le cabinet pour la responsabilité transporteur et l’assurance des marchandises ;
-- montages réellement étudiés en convoyage ;
-- catégories de véhicules et territoires acceptés ;
-- documents et procédures de remise/restitution attendus ;
-- documents de déménagement réellement utilisés ;
-- traitement du stockage, des valeurs et des équipements de manutention ;
-- formulations relatives aux responsabilités, contrats types, réclamations et pertes d’exploitation.
+Les formulations publiques ont reçu une décision. Les seules validations externes encore utiles portent sur les contrats et pratiques réels : montages Convoyage, catégories de véhicules, territoires, dommages au véhicule, frais, indépendants, pratiques documentaires du déménagement et vocabulaire commercial du cabinet. Les questions directement exploitables figurent dans `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md`.
 
 ## Recette approfondie complémentaire
 
@@ -116,3 +109,13 @@ Le 21 juillet 2026, une seconde recette a resserré les formulations sans refond
 - correction de la coquille `disponibilités`/`dispositions` dans la mention réglementaire commune du footer, sans lever son statut de validation requise.
 
 Les résultats détaillés figurent dans `RECETTE-SECTEURS-TRANSPORT-LOT-01.md`, `VALIDATION-FINALE-CONVOYAGE.md`, `COHERENCE-COUVERTURES-TRANSPORT.md` et `RECETTE-CONVERSION-SECTEURS-TRANSPORT.md`.
+
+## Levée des réserves 6B
+
+Corrections publiques limitées au périmètre autorisé :
+
+- Convoyage : rôles complétés, quatre questions alignées, autorisation séparée de la garantie, contrats et dommages clarifiés, véhicules/territoires/sous-traitance rendus explicitement variables, CTA non promissif ;
+- TRM : formulation des six objets alignée sur entreprise, véhicule, circulation, responsabilité, marchandises, sites et continuité ;
+- Déménagement : passage de six à sept familles, séparation du stockage/garde-meubles et précision de l’effet non automatique des réserves ;
+- Assurance transport et quatre guides : aucune modification nécessaire ;
+- routes, composants, dépendances, Formspree, Cal.com, `noindex` et `robots.txt` : inchangés.

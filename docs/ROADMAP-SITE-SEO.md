@@ -94,7 +94,7 @@ Construire une autorité thématique progressive et approfondir les parcours sec
 ### Développement sectoriel
 
 - conserver `/assurance-transport/` comme hub Transport et logistique et `/assurance-btp-decennale/` comme hub BTP, sans créer de doublon généraliste ;
-- les trois verticales classées priorité 1 — Transport routier de marchandises, Convoyage de véhicules et Déménagement — sont réalisées en prévisualisation et restent bloquées à l’indexation jusqu’à validation métier documentée ;
+- les trois verticales classées priorité 1 — Transport routier de marchandises, Convoyage de véhicules et Déménagement — sont réalisées et validées sous réserve mineure pour préproduction ; elles restent bloquées à l’indexation jusqu’à la décision globale de production ;
 - relier chaque verticale à son hub, aux pages produits utiles et à un guide réellement complémentaire ;
 - évaluer Logistique et entrepôts ainsi qu'Entreprises générales BTP seulement après la mise en place du centre de ressources et l'observation de demandes réelles ;
 - ne pas créer de pages sectorielles génériques « PME », « entreprises de services », « entreprises avec flotte », « entreprises avec salariés » ou « dirigeants et TNS ».
@@ -127,9 +127,11 @@ Le périmètre, les intentions, les risques de cannibalisation et les validation
 - `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` ;
 - `REALISATION-SECTEURS-TRANSPORT-LOT-01.md`.
 
-La réalisation technique ne vaut pas validation métier. Aucun nouveau secteur ne doit être ajouté tant que ce lot n’a pas été relu et que les opportunités de priorité 2 ne disposent pas de données réelles.
+La réalisation technique et la levée des réserves publiques ne valent pas validation d’un contrat réel. Aucun nouveau secteur ne doit être ajouté tant que les opportunités de priorité 2 ne disposent pas de données réelles.
 
-La recette approfondie 6A est terminée. Elle maintient TRM et Déménagement en validation métier requise et bloque Convoyage avant production. La prochaine action SEO n’est pas de créer une nouvelle page : elle consiste à obtenir les validations nominatives, puis à réévaluer les formulations et le maillage à partir de données réelles après lancement.
+La recette approfondie 6A et la levée des réserves 6B sont terminées. TRM, Convoyage et Déménagement sont validées sous réserve mineure pour préproduction. La prochaine action SEO n’est pas de créer une nouvelle page : il faut conserver les frontières actuelles, obtenir les réponses externes uniquement pour les pratiques contractuelles qui devront être précisées, puis réévaluer le maillage à partir de données réelles après lancement.
+
+La décision détaillée figure dans `DECISION-PREPRODUCTION-SECTEURS-TRANSPORT.md`. Les réponses externes sont suivies séparément dans `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` afin de ne pas confondre sécurité éditoriale et validation d’un montage d’assurance.
 
 ### Arbitrage de référence
 

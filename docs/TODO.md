@@ -51,7 +51,7 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 ## Phase 3B — Architecture sectorielle future
 
 - [x] **P3B-01 — Auditer les opportunités sectorielles.** Dépendances : P3-03, P3-04 et P3-09. Validation : 21 secteurs et sujets analysés, dix chevauchements arbitrés, architecture et maillage documentés dans `AUDIT-OPPORTUNITE-PAGES-SECTORIELLES.md` et `MATRICE-OPPORTUNITE-SECTORIELLE.md`.
-- [ ] **P3B-02 — Valider les fiches métier des trois verticales prioritaires Transport.** Dépendances : P3B-01 et validation métier Transport. Validation : la grille `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` reçoit pour chaque ligne sensible ou bloquante un valideur, une décision et une date. **Préparation documentaire terminée ; validation humaine en attente.**
+- [x] **P3B-02 — Clôturer les décisions éditoriales des trois verticales prioritaires Transport.** Dépendances : P3B-01 et sources officielles. Validation : chaque ligne ouverte de `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` possède une décision explicite, une justification et une date ; aucune validation humaine n’est simulée.
 - [x] **P3B-03 — Préparer le hub Secteurs.** Dépendances : P3B-01 et première verticale prête. Validation : le hub reste court, relie Transport et BTP, ne surcharge pas le menu et n'est jamais publié vide.
 - [x] **P3B-04 — Produire Transport routier de marchandises en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : intention propre, distinction Flotte/RC/marchandises, trois ressources, maillage et points métier consignés ; `noindex` maintenu.
 - [x] **P3B-05 — Produire Convoyage de véhicules en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : mode d'exploitation, véhicules confiés, conducteurs, chaîne de garde, trois ressources et points de territorialité documentés ; `noindex` maintenu.
@@ -59,7 +59,9 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 - [ ] **P3B-07 — Réévaluer les deux opportunités de priorité 2.** Dépendances : centre de ressources actif et données réelles après lancement. Validation : Logistique/entrepôts et Entreprises générales BTP ne sont créées que si expertise, demande et contenu distinct sont démontrés.
 - [x] **P3B-08 — Documenter le lot Secteurs Transport 01.** Dépendances : P3B-03 à P3B-06. Validation : matrice SEO, validation métier et réalisation décrivent routes, frontières, sources, risques, maillage et contrôles.
 - [x] **P3B-09 — Réaliser la recette approfondie métier, éditoriale et conversion.** Dépendances : P3B-04 à P3B-08. Validation : cinq routes et quatre guides relus, distinctions TRM/Convoyage/Déménagement explicites, CTA et préremplissage contrôlés, quatre livrables de recette créés.
-- [ ] **P3B-10 — Lever ou confirmer le blocage Convoyage.** Dépendances : P3B-09 et référent métier nommé. Validation : montages, contrats, véhicule confié, conducteurs, territoires, frais annexes et sous-traitance disposent d’une décision datée ; aucune publication tant que `VALIDATION-FINALE-CONVOYAGE.md` reste bloquée.
+- [x] **P3B-10 — Lever le blocage éditorial Convoyage pour la préproduction.** Dépendances : P3B-09 et revue 6B. Validation : rôles, circulation, dommages, contrats, véhicules, territoires, sous-traitance, quatre questions et CTA sont prudents ; `VALIDATION-FINALE-CONVOYAGE.md` porte la décision « validée sous réserve mineure pour préproduction ».
+- [x] **P3B-11 — Aligner TRM et Déménagement et documenter la levée 6B.** Dépendances : P3B-09. Validation : six objets TRM, sept objets Déménagement, réserves documentaires et terminologie harmonisés ; trois livrables 6B créés et les documents de suivi mis à jour.
+- [ ] **P3B-12 — Obtenir les validations contractuelles externes utiles.** Dépendances : P3B-10 et P3B-11. Validation : les seules questions nécessaires de `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` reçoivent une réponse datée du type d’interlocuteur indiqué avant toute affirmation publique plus précise. **Non bloquant pour la préproduction prudente ; bloquant pour toute promesse contractuelle.**
 
 **Sortie de phase :** une profondeur sectorielle limitée aux intentions réellement distinctes, sans doublon des pages produits ou des hubs existants.
 
@@ -97,6 +99,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Faire statuer le référent Transport sur `VALIDATION-FINALE-CONVOYAGE.md`, puis compléter nominativement `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` pour TRM et Déménagement.
+1. Faire répondre les interlocuteurs compétents aux seules questions prioritaires de `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` avant d’ajouter une affirmation contractuelle précise.
 2. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md` et compléter les champs de revue des guides.
 3. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel avant la recette globale.

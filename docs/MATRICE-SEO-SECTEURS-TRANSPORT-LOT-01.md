@@ -1,7 +1,7 @@
 # Matrice SEO — Secteurs Transport, lot 01
 
 Date : 21 juillet 2026
-Statut global : prévisualisation technique, `noindex` maintenu, validation métier requise avant toute publication.
+Statut global : prévisualisation technique, `noindex` maintenu ; réserves éditoriales levées, autorisation de production et d’indexation non acquise.
 
 ## Frontières du lot
 
@@ -16,9 +16,9 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 | URL | Intention principale | Risque de cannibalisation | Statut |
 |---|---|---|---|
 | `/secteurs/` | Choisir une expertise d’assurance selon l’activité | Faible si le hub reste synthétique | Prévisualisation |
-| `/secteurs/transport-routier-marchandises/` | Comprendre et auditer les assurances d’une entreprise de transport routier | Moyen avec `/assurance-transport/` et le guide transport ; frontière explicitée | Prévisualisation, validation métier requise |
-| `/secteurs/convoyage-vehicules/` | Comprendre la coordination assurance d’une mission de convoyage | Moyen avec Flotte et Transport ; frontière explicitée | Prévisualisation, validation métier requise |
-| `/secteurs/demenagement/` | Comprendre les assurances d’une entreprise de déménagement sur toute la mission | Moyen avec Transport et Multirisque ; frontière explicitée | Prévisualisation, validation métier requise |
+| `/secteurs/transport-routier-marchandises/` | Comprendre et auditer les assurances d’une entreprise de transport routier | Moyen avec `/assurance-transport/` et le guide transport ; frontière explicitée | Validée sous réserve mineure pour préproduction |
+| `/secteurs/convoyage-vehicules/` | Comprendre la coordination assurance d’une mission de convoyage | Moyen avec Flotte et Transport ; frontière explicitée | Validée sous réserve mineure pour préproduction |
+| `/secteurs/demenagement/` | Comprendre les assurances d’une entreprise de déménagement sur toute la mission | Moyen avec Transport et Multirisque ; frontière explicitée | Validée sous réserve mineure pour préproduction |
 
 ## `/secteurs/`
 
@@ -54,7 +54,7 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 | Canonical / OG | Canonical absolue propre ; `og:type=website`, title/description propres |
 | Risque de cannibalisation | Page Transport générale : évité par l’entrée « exploitation TRM ». Guide : évité par l’intention de coordination complète plutôt que définition de notions. Flotte : véhicule traité comme une composante seulement. |
 | Validations | Rôles ; activités déclarées ; portée des contrats types ; responsabilité transporteur ; sous-traitance ; valeurs ; marchandises exclues ; pertes d’exploitation |
-| Statut | Prévisualisation, validation métier requise |
+| Statut | Validée sous réserve mineure pour préproduction |
 
 ## `/secteurs/convoyage-vehicules/`
 
@@ -67,12 +67,12 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 | H2 | Chaîne de mission ; interfaces ; circulation/prestation/dommage ; contrôles ; confusions ; méthode ; ressources ; FAQ |
 | Produits liés | Transport, Flotte, RC professionnelle, Audit |
 | Guides liés | Flotte ; RC Pro/Exploitation ; Audit |
-| CTA | Analyse des contrats clients, missions, véhicules, conducteurs, remise/restitution et sinistralité |
+| CTA | Analyse d’une mission à partir des rôles, véhicules, conducteurs, territoires, sous-traitants et contrats, sans promesse d’acceptation |
 | Données structurées | `Organization`, `BreadcrumbList`, `Service`, `FAQPage` visible |
 | Canonical / OG | Canonical absolue propre ; OG title/description propres |
 | Risque de cannibalisation | Flotte : le véhicule confié n’est pas traité comme parc propre. Transport : le mode d’exécution et la chaîne de garde sont centraux. RC : la page ne définit pas la garantie mais coordonne les interfaces. |
 | Validations | Qualification des rôles ; assurance automobile du véhicule ; véhicule confié ; conducteurs ; catégories acceptées ; frais annexes ; sous-traitance ; territorialité |
-| Statut | Prévisualisation, validation métier requise |
+| Statut | Validée sous réserve mineure pour préproduction |
 
 ## `/secteurs/demenagement/`
 
@@ -90,7 +90,7 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 | Canonical / OG | Canonical absolue propre ; OG title/description propres |
 | Risque de cannibalisation | Transport : la manutention et la continuité de la mission structurent la page. Multirisque : les locaux ne sont qu’une composante. Guide : la page reste orientée métier et décision. |
 | Validations | Périmètre client professionnel/particulier ; documents utilisés ; valeurs ; responsabilité ; manutention ; monte-meubles ; stockage ; sous-traitance ; réserves/réclamations |
-| Statut | Prévisualisation, validation métier requise |
+| Statut | Validée sous réserve mineure pour préproduction |
 
 ## Ancres et maillage
 
@@ -103,7 +103,7 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 
 ## Contrôles avant indexation
 
-1. obtenir une validation métier nominative sur chaque ligne sensible de la grille dédiée ;
+1. conserver les décisions explicites de la grille et obtenir les réponses externes avant toute affirmation contractuelle plus précise ;
 2. confirmer les activités réellement accompagnées par le cabinet ;
 3. revalider les sources officielles et leur date ;
 4. contrôler les titles et descriptions dans les résultats de recherche réels après autorisation ;
@@ -117,3 +117,11 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 - le convoyage renforce son intention de cadrage par les quatre questions préalables ;
 - les CTA transport utilisent un préremplissage léger, sans nouvelle route ni formulaire sectoriel ;
 - le risque de cannibalisation reste maîtrisé par les frontières documentées dans `RECETTE-CONVERSION-SECTEURS-TRANSPORT.md`.
+
+## Mise à jour — levée des réserves 6B
+
+- aucune URL, intention, title, H1, meta description ou frontière SEO n’a changé ;
+- les corrections Convoyage renforcent l’intention de cadrage sans créer de nouvelle sous-intention ;
+- TRM et Déménagement conservent leur intention métier avec des listes pédagogiques désormais alignées ;
+- aucune nouvelle route ni aucun guide supplémentaire n’a été créé ;
+- les trois verticales passent à « validée sous réserve mineure pour préproduction » ; `noindex` et `robots.txt` restent bloquants.

@@ -1,0 +1,15 @@
+---
+interface Props { title?: string; text?: string; }
+const { title = 'Besoin de rapprocher ce guide de vos contrats ?', text = 'Un audit part de votre activité et de vos documents pour identifier les vérifications prioritaires.' } = Astro.props;
+---
+<aside class="resource-cta">
+  <p class="eyebrow">Passer à l’analyse</p>
+  <h2>{title}</h2><p>{text}</p>
+  <a class="button button--gold" href="/audit-assurances-entreprise/">Découvrir l’audit <span aria-hidden="true">→</span></a>
+</aside>
+<style>
+  .resource-cta { margin-top: var(--space-12); padding: clamp(1.75rem, 5vw, 3.5rem); color: var(--color-text-on-dark-soft); background: var(--color-brand-ink); border-radius: var(--radius-panel); }
+  :global(.resource-cta .eyebrow) { color: var(--color-gold-soft); }
+  h2 { margin: 0; color: var(--color-surface); font-size: clamp(1.65rem, 1.4rem + 1vw, 2.4rem); line-height: 1.12; }
+  h2 + p { margin: var(--space-4) 0 var(--space-6); }
+</style>

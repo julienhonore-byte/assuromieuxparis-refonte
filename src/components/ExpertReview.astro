@@ -1,0 +1,13 @@
+---
+interface Props { reviewedBy?: string; reviewDate?: Date; }
+const { reviewedBy, reviewDate } = Astro.props;
+---
+<aside class="expert-review" aria-label="Statut de la relecture métier">
+  <strong>{reviewedBy ? `Relecture métier : ${reviewedBy}` : 'Relecture métier à finaliser'}</strong>
+  <p>{reviewedBy && reviewDate ? `Relecture documentée le ${new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(reviewDate)}.` : 'Le contenu est disponible en prévisualisation. Il doit être rapproché des pratiques du cabinet et des textes applicables avant indexation.'}</p>
+</aside>
+<style>
+  .expert-review { margin-top: var(--space-8); padding: var(--space-5) var(--space-6); background: var(--color-gold-wash); border-left: 3px solid var(--color-gold); border-radius: var(--radius-control); }
+  strong { color: var(--color-brand-deep); }
+  p { margin: var(--space-2) 0 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+</style>

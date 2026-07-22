@@ -1,0 +1,30 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CategoryNavigation from '../../components/CategoryNavigation.astro';
+import LexiconEntry from '../../components/LexiconEntry.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { lexiconEntries } from '../../data/lexicon';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../data/seo';
+const path = '/lexique/';
+const description = 'Lexique des assurances d’entreprise : définitions prudentes des garanties, franchises, responsabilités, exclusions, territorialité et risques professionnels.';
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Ressources', path: '/ressources/' }, { name: 'Lexique', path }]), { '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Lexique des assurances d’entreprise Assuromieux Paris', url: pageUrl(path), hasDefinedTerm: lexiconEntries.map(([name, description]) => ({ '@type': 'DefinedTerm', name, description })) }];
+---
+<SiteLayout title="Lexique des assurances d’entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath="/ressources/" {structuredData}>
+  <main id="contenu-principal">
+    <header class="lexicon-hero"><div class="container-wide"><Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { href: '/ressources/', label: 'Ressources' }, { label: 'Lexique' }]} /><div><p class="eyebrow">Lexique</p><h1>Des mots précis, des réponses qui restent contractuelles.</h1><p>Ces définitions donnent un premier repère. Elles ne remplacent ni les définitions de votre contrat, ni les textes applicables, ni une analyse de votre situation.</p></div><CategoryNavigation current="lexique" /></div></header>
+    <section class="section"><div class="container-wide lexicon-layout"><aside><p class="eyebrow">17 notions</p><h2>Lire avec prudence.</h2><p>Un même terme peut avoir une portée différente selon le contrat, l’activité et le contexte.</p></aside><div>{lexiconEntries.map(([term, definition]) => <LexiconEntry {term} {definition} />)}</div></div></section>
+    <PageCTA title="Un terme modifie la lecture de votre contrat ?" text="L’audit replace les définitions dans les conditions particulières, les garanties et la réalité de l’entreprise." />
+  </main>
+</SiteLayout>
+<style>
+  .lexicon-hero { padding-bottom: clamp(3rem, 7vw, 5rem); background: linear-gradient(135deg, var(--color-surface), var(--color-page)); border-bottom: 1px solid var(--color-border); }
+  .lexicon-hero .container-wide > div { max-width: 55rem; margin: var(--space-8) 0 var(--space-10); }
+  h1 { margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h1); line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-display); }
+  h1 + p { max-width: 45rem; margin-top: var(--space-6); color: var(--color-text-soft); font-size: var(--font-size-lead); }
+  .lexicon-layout { display: grid; grid-template-columns: minmax(14rem, .45fr) minmax(0, 1.55fr); gap: clamp(3rem, 9vw, 8rem); }
+  aside { position: sticky; top: var(--space-6); align-self: start; }
+  aside h2 { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h2); }
+  aside p:last-child { color: var(--color-text-soft); }
+  @media (max-width: 768px) { .lexicon-layout { grid-template-columns: 1fr; } aside { position: static; } }
+</style>

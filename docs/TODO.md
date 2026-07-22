@@ -70,6 +70,18 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 **Sortie de phase :** photographie réelle intégrée sans risque de droits ni régression de performance.
 
+## Phase 4B — Centre de ressources
+
+- [x] **P4B-01 — Définir l’architecture éditoriale.** Dépendances : matrices SEO et audit sectoriel. Validation : sept routes structurelles, frontières et maillage documentés dans `ARCHITECTURE-CENTRE-DE-RESSOURCES.md`.
+- [x] **P4B-02 — Créer la collection Astro typée.** Dépendances : P4B-01. Validation : schéma complet, statuts contrôlés, brouillons et archives exclus des routes publiques.
+- [x] **P4B-03 — Produire les six guides initiaux.** Dépendances : P4B-02 et sources officielles. Validation : six contenus exactement, 800–1 300 mots visés, auteurs/dates/limites/sources/liens présents, statut `review-required`.
+- [x] **P4B-04 — Créer hubs et lexique.** Dépendances : P4B-02. Validation : hub principal, guides, quatre parcours et 17 définitions accessibles sans page sectorielle nouvelle.
+- [x] **P4B-05 — Mettre en place le maillage.** Dépendances : P4B-03. Validation : accueil relié, menu et footer cohérents, pages Assurances entreprises/Transport/BTP enrichies sans surcharge.
+- [ ] **P4B-06 — Valider les contenus métier.** Dépendances : P4B-03 et référents compétents. Validation : chaque guide reçoit une décision, un `reviewedBy`, une `reviewDate` et un statut de publication cohérent.
+- [ ] **P4B-07 — Autoriser l’indexation éditoriale.** Dépendances : P4B-06 et validation générale de production. Validation : retrait coordonné du blocage uniquement avec l’ensemble du site. **Interdit dans la mission actuelle.**
+
+**Sortie de phase :** centre éditorial limité, structuré et prêt pour validation métier, sans indexation ni déploiement.
+
 ## Phase 5 — Contenus, conformité et mise en ligne future
 
 - [ ] **P5-01 — Valider les formulations métier.** Dépendances : pages MVP et P3-09. Validation : RC, multirisque, flotte, santé/prévoyance, dirigeant, cyber, TPM, transport, BTP et décennale relus ; toutes les lignes sensibles et bloquantes disposent d'une décision et d'un valideur.

@@ -1,0 +1,15 @@
+---
+import { resourceCategories } from '../data/resources';
+interface Props { current?: string; }
+const { current } = Astro.props;
+---
+<nav class="category-navigation" aria-label="Catégories de ressources">
+  <a href="/ressources/guides/" aria-current={current === 'guides' ? 'page' : undefined}>Tous les guides</a>
+  {Object.entries(resourceCategories).map(([key, category]) => <a href={category.href} aria-current={current === key ? 'page' : undefined}>{category.name}</a>)}
+  <a href="/lexique/" aria-current={current === 'lexique' ? 'page' : undefined}>Lexique</a>
+</nav>
+<style>
+  .category-navigation { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  a { min-height: 2.75rem; display: inline-flex; align-items: center; padding-inline: var(--space-4); color: var(--color-brand-deep); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-pill); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); text-decoration: none; }
+  a:hover, a[aria-current='page'] { color: var(--color-surface); background: var(--color-brand); border-color: var(--color-brand); }
+</style>

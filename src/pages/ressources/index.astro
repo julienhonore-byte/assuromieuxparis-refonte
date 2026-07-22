@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CategoryNavigation from '../../components/CategoryNavigation.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../data/seo';
+import { resourceCategories, resourcePath } from '../../data/resources';
+const path = '/ressources/';
+const description = 'Guides et lexique Assuromieux Paris pour comprendre, auditer et décider en matière d’assurances d’entreprise, de transport et de BTP.';
+const entries = (await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived')).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const featured = [
+  'comment-auditer-assurances-entreprise',
+  'responsabilite-transporteur-assurance-marchandises-differences',
+  'assurance-decennale-coherence-activites-attestation',
+].map((slug) => entries.find((entry) => entry.data.slug === slug)).filter(Boolean);
+const categoryCount = (key: string) => key === 'dirigeants'
+  ? entries.filter((entry) => entry.data.category === 'dirigeants' || entry.data.tags.includes('dirigeant') || entry.data.tags.includes('PME')).length
+  : entries.filter((entry) => entry.data.category === key).length;
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Ressources', path }]), { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Centre de ressources Assuromieux Paris', description, url: pageUrl(path) }];
+---
+<SiteLayout title="Centre de ressources assurance entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <header class="resources-hero"><div class="container-wide">
+      <Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { label: 'Ressources' }]} />
+      <div class="resources-hero__grid"><div><p class="eyebrow">Centre de ressources</p><h1>Comprendre avant de décider.</h1></div><div><p>Des guides pour préparer un audit, lire les contrats et distinguer les risques sans transformer l’assurance en catalogue.</p><a class="link-arrow" href="/audit-assurances-entreprise/">Découvrir la méthode d’audit <span aria-hidden="true">→</span></a></div></div>
+      <CategoryNavigation />
+    </div></header>
+
+    <section class="section" aria-labelledby="featured-title"><div class="container-wide featured-layout">
+      <header><p class="eyebrow">À lire en priorité</p><h2 id="featured-title">Trois décisions qui méritent une méthode.</h2><p>Chaque guide répond d’abord à une question, indique ses limites puis renvoie vers les contrats concernés.</p></header>
+      <div>{featured.slice(0, 3).map((entry) => <ResourceCard href={resourcePath(entry.data.slug)} title={entry.data.title} description={entry.data.description} category={resourceCategories[entry.data.category].name} readingTime={entry.data.readingTime} featured />)}</div>
+    </div></section>
+
+    <section class="section section--surface" aria-labelledby="needs-title"><div class="container-wide needs-layout">
+      <div><p class="eyebrow">Choisir par besoin</p><h2 id="needs-title">Votre question détermine le point d’entrée.</h2></div>
+      <div class="needs-list">
+        <a href="/ressources/guides/comment-auditer-assurances-entreprise/"><span>01</span><strong>Je veux auditer mes contrats</strong><p>Inventaire, activité, garanties, écarts et calendrier.</p></a>
+        <a href="/ressources/guides/quelles-assurances-prevoir-pme/"><span>02</span><strong>Je veux structurer un programme PME</strong><p>Responsabilités, actifs, équipes, dirigeant et continuité.</p></a>
+        <a href="/ressources/guides/flotte-automobile-points-analyser-avant-comparer/"><span>03</span><strong>Je dois comparer une flotte</strong><p>Parc, conducteurs, sinistralité, franchises et gestion.</p></a>
+        <a href="/ressources/guides/assurance-decennale-coherence-activites-attestation/"><span>04</span><strong>Je vérifie une attestation BTP</strong><p>Activités, travaux, périodes, procédés et sous-traitance.</p></a>
+      </div>
+    </div></section>
+
+    <section class="section" aria-labelledby="categories-title"><div class="container-wide"><p class="eyebrow">Parcours éditoriaux</p><h2 class="section-heading" id="categories-title">Quatre angles, une même exigence de clarté.</h2><div class="category-ledger">{Object.entries(resourceCategories).map(([key, category]) => <a href={category.href}><small>{categoryCount(key)} guide{categoryCount(key) > 1 ? 's' : ''}</small><h3>{category.name}</h3><p>{category.description}</p><span aria-hidden="true">→</span></a>)}</div></div></section>
+
+    <section class="section section--gold-wash" aria-labelledby="recent-title"><div class="container-wide recent-layout"><div><p class="eyebrow">Publication raisonnée</p><h2 id="recent-title">Les six guides disponibles.</h2><p>La base est volontairement limitée. Les prochaines publications seront ajoutées selon l’intention de recherche, la valeur métier et la capacité de mise à jour.</p><a class="button button--secondary" href="/ressources/guides/">Voir tous les guides</a></div><ol>{entries.map((entry) => <li><a href={resourcePath(entry.data.slug)}>{entry.data.title}</a><span>{entry.data.readingTime} min</span></li>)}</ol></div></section>
+
+    <section class="section section--surface lexicon-callout"><div class="container-wide"><div><p class="eyebrow">Lexique</p><h2>Un même mot peut changer de portée selon le contrat.</h2></div><p>Franchise, plafond, dommage immatériel, territorialité ou marchandises transportées : retrouvez des définitions courtes et volontairement prudentes.</p><a class="button button--primary" href="/lexique/">Consulter le lexique</a></div></section>
+    <PageCTA title="Ces repères soulèvent une question sur vos contrats ?" text="Un audit permet de rapprocher les informations générales de votre activité, de vos déclarations et de vos échéances." />
+  </main>
+</SiteLayout>
+<style>
+  .resources-hero { padding-bottom: clamp(3.5rem, 8vw, 6rem); color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 80% 0, rgba(201,154,70,.22), transparent 28%), var(--color-brand-ink); }
+  :global(.resources-hero .breadcrumbs), :global(.resources-hero .breadcrumbs a) { color: var(--color-text-on-dark-soft); }
+  .resources-hero__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .55fr); gap: clamp(3rem, 9vw, 9rem); align-items: end; margin: var(--space-10) 0; }
+  .resources-hero h1 { max-width: 10ch; margin: 0; color: var(--color-surface); font-size: var(--font-size-h1); line-height: .98; letter-spacing: var(--letter-spacing-display); }
+  .resources-hero__grid > div:last-child > p { margin: 0; font-size: var(--font-size-lead); }
+  .resources-hero :global(.link-arrow) { color: var(--color-gold-soft); }
+  :global(.resources-hero .category-navigation a) { color: var(--color-surface); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+  .featured-layout { display: grid; grid-template-columns: minmax(15rem, .45fr) minmax(0, 1.55fr); gap: clamp(3rem, 8vw, 7rem); }
+  .featured-layout header { position: sticky; top: var(--space-6); align-self: start; }
+  .featured-layout h2, .needs-layout h2, .recent-layout h2, .lexicon-callout h2 { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
+  .featured-layout header > p:last-child, .recent-layout div > p { color: var(--color-text-soft); }
+  .featured-layout > div { display: grid; gap: var(--space-5); }
+  .needs-layout { display: grid; grid-template-columns: minmax(15rem, .5fr) minmax(0, 1.5fr); gap: clamp(3rem, 8vw, 7rem); }
+  .needs-list { display: grid; }
+  .needs-list a { display: grid; grid-template-columns: 3rem minmax(12rem, .75fr) minmax(0, 1fr); gap: var(--space-5); align-items: baseline; padding-block: var(--space-5); border-top: 1px solid var(--color-border); text-decoration: none; }
+  .needs-list span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .needs-list strong { color: var(--color-brand-deep); }
+  .needs-list p { margin: 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .category-ledger { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; margin-top: var(--space-8); background: var(--color-border); border: 1px solid var(--color-border); }
+  .category-ledger a { position: relative; padding: clamp(1.5rem, 4vw, 3rem); background: var(--color-page); text-decoration: none; }
+  .category-ledger small { color: var(--color-gold-dark); text-transform: uppercase; }
+  .category-ledger h3 { margin: var(--space-6) 0 var(--space-3); color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .category-ledger p { max-width: 30rem; margin: 0; color: var(--color-text-soft); }
+  .category-ledger span { position: absolute; right: var(--space-6); top: var(--space-6); color: var(--color-gold-dark); }
+  .recent-layout { display: grid; grid-template-columns: minmax(16rem, .55fr) minmax(0, 1.45fr); gap: clamp(3rem, 8vw, 7rem); }
+  .recent-layout .button { margin-top: var(--space-6); }
+  .recent-layout ol { margin: 0; padding: 0; list-style: none; }
+  .recent-layout li { display: flex; justify-content: space-between; gap: var(--space-5); padding: var(--space-4) 0; border-top: 1px solid rgba(138,98,34,.22); }
+  .recent-layout a { color: var(--color-brand-deep); font-weight: var(--font-weight-strong); }
+  .recent-layout li span { color: var(--color-text-muted); font-size: var(--font-size-sm); white-space: nowrap; }
+  .lexicon-callout .container-wide { display: grid; grid-template-columns: minmax(15rem, 1fr) minmax(15rem, .75fr) auto; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .lexicon-callout p { color: var(--color-text-soft); }
+  @media (max-width: 980px) { .resources-hero__grid, .featured-layout, .needs-layout, .recent-layout, .lexicon-callout .container-wide { grid-template-columns: 1fr; } .featured-layout header { position: static; } }
+  @media (max-width: 640px) { .category-ledger { grid-template-columns: 1fr; } .needs-list a { grid-template-columns: 2rem 1fr; } .needs-list p { grid-column: 2; } }
+</style>

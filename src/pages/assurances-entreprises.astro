@@ -5,6 +5,7 @@ import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import ProductSelector from '../components/ProductSelector.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -91,6 +92,12 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Mettre les contrats en regard de l’activité.' },
       { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Approfondir les risques de véhicules et de flux.' },
       { href: '/assurance-btp-decennale/', label: 'BTP et décennale', text: 'Relier activités, chantiers et attestations.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Une méthode ordonnée pour rapprocher activité, contrats et échéances.' },
+      { href: '/ressources/guides/quelles-assurances-prevoir-pme/', title: 'Quelles assurances prévoir pour une PME ?', description: 'Une grille de décision sans liste universelle.' },
+      { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'RC professionnelle et RC exploitation', description: 'Les différences à vérifier avant de conclure.' },
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Assurance flotte : les points à analyser', description: 'Parc, conducteurs, usages, sinistralité et franchises.' },
     ]} />
     <PageCTA title="Votre programme mérite une lecture d’ensemble." text="Un premier échange permet de définir les contrats prioritaires et l’échéance utile pour commencer." secondaryHref="/cabinet/" secondaryLabel="Découvrir le cabinet" />
   </main>

@@ -13,6 +13,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   ctaHref?: string;
   image?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
@@ -23,10 +24,11 @@ const {
   structuredData,
   ctaHref = '/#contact',
   image = `${site.canonicalUrl}og-homepage-03.jpg`,
+  ogType = 'website',
 } = Astro.props;
 ---
 
-<BaseLayout {title} {description} {canonical} {image} {structuredData}>
+<BaseLayout {title} {description} {canonical} {image} {structuredData} {ogType}>
   <Header
     items={mainNavigation}
     phoneDisplay={site.phoneDisplay}

@@ -4,6 +4,7 @@ import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -98,6 +99,9 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Découvrir le déroulement de l’analyse.' },
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer responsabilité décennale, professionnelle et exploitation.' },
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier locaux, matériels et continuité d’activité.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/assurance-decennale-coherence-activites-attestation/', title: 'Décennale : vérifier activités et attestation', description: 'Une méthode prudente pour rapprocher travaux, périodes, procédés et sous-traitance.' },
     ]} />
     <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." />
   </main>

@@ -4,9 +4,10 @@ interface Props {
   title: string;
   summary: string;
   status?: string;
+  href?: string;
 }
 
-const { type, title, summary, status = 'À venir' } = Astro.props;
+const { type, title, summary, status = 'Guide', href } = Astro.props;
 ---
 
 <article class="article-card card">
@@ -14,16 +15,22 @@ const { type, title, summary, status = 'À venir' } = Astro.props;
     <span>{type}</span>
     <strong>{status}</strong>
   </div>
-  <h3>{title}</h3>
+  <h3>{href ? <a href={href}>{title}</a> : title}</h3>
   <p>{summary}</p>
+  {href && <a class="article-card__link" href={href}>Lire le guide <span aria-hidden="true">→</span></a>}
 </article>
 
 <style>
   .article-card {
+    position: relative;
     min-height: 18rem;
     display: flex;
     flex-direction: column;
   }
+
+  h3 a { color: inherit; text-decoration: none; }
+  h3 a::after { position: absolute; inset: 0; content: ''; }
+  .article-card__link { margin-top: var(--space-5); color: var(--color-brand); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); text-decoration: none; }
 
   .article-card__meta {
     display: flex;

@@ -4,6 +4,7 @@ import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -98,6 +99,9 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Comprendre la méthode commune à tous les secteurs.' },
       { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Distinguer l’usage des véhicules des responsabilités de transport.' },
       { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Relier le transport aux autres protections.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité du transporteur et assurance des marchandises', description: 'Distinguer la responsabilité, les biens, la flotte et les contrats.' },
     ]} />
     <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." />
   </main>

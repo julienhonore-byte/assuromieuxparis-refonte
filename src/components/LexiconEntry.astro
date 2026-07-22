@@ -1,0 +1,12 @@
+---
+interface Props { term: string; definition: string; }
+const { term, definition } = Astro.props;
+---
+<article class="lexicon-entry" id={term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}>
+  <h2>{term}</h2><p>{definition}</p>
+</article>
+<style>
+  .lexicon-entry { padding-block: var(--space-6); border-top: 1px solid var(--color-border); }
+  h2 { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  p { max-width: 48rem; margin: var(--space-2) 0 0; color: var(--color-text-soft); }
+</style>

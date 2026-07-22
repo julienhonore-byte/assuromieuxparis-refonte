@@ -9,6 +9,7 @@ interface Props {
   image?: string;
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: 'website' | 'article';
 }
 
 const {
@@ -18,13 +19,14 @@ const {
   image,
   noindex = true,
   structuredData,
+  ogType = 'website',
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <SEOHead {title} {description} {canonical} {image} {noindex} {structuredData} />
+    <SEOHead {title} {description} {canonical} {image} {noindex} {structuredData} {ogType} />
   </head>
   <body>
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>

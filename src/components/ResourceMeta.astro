@@ -1,0 +1,17 @@
+---
+import { formatDate } from '../data/resources';
+interface Props { author: string; publishDate: Date; updatedDate: Date; readingTime: number; }
+const { author, publishDate, updatedDate, readingTime } = Astro.props;
+---
+<dl class="resource-meta">
+  <div><dt>Par</dt><dd>{author}</dd></div>
+  <div><dt>Publié le</dt><dd><time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time></dd></div>
+  <div><dt>Mis à jour le</dt><dd><time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></dd></div>
+  <div><dt>Lecture</dt><dd>{readingTime} min</dd></div>
+</dl>
+<style>
+  .resource-meta { display: flex; gap: var(--space-5); flex-wrap: wrap; margin: var(--space-8) 0 0; padding: var(--space-5) 0 0; border-top: 1px solid var(--color-border); }
+  .resource-meta div { display: grid; gap: .1rem; }
+  dt { color: var(--color-text-muted); font-size: var(--font-size-xs); }
+  dd { margin: 0; color: var(--color-text-strong); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+</style>

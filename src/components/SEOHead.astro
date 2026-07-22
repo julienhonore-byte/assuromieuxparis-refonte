@@ -6,6 +6,7 @@ interface Props {
   image?: string;
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: 'website' | 'article';
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   image,
   noindex = true,
   structuredData = [],
+  ogType = 'website',
 } = Astro.props;
 
 const schemas = Array.isArray(structuredData) ? structuredData : [structuredData];
@@ -29,7 +31,7 @@ const schemas = Array.isArray(structuredData) ? structuredData : [structuredData
 <meta name="theme-color" content="#12365f" />
 
 <meta property="og:locale" content="fr_FR" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:site_name" content="Assuromieux Paris" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

@@ -1,0 +1,60 @@
+---
+import CategoryNavigation from './CategoryNavigation.astro';
+import ResourceCard from './ResourceCard.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import PageCTA from './PageCTA.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { pageUrl, breadcrumbSchema, baseSchemas } from '../data/seo';
+import { resourceCategories, resourcePath } from '../data/resources';
+
+interface EntryItem { data: { title: string; description: string; slug: string; category: keyof typeof resourceCategories; readingTime: number; featured: boolean; }; }
+interface LinkItem { href: string; label: string; text: string; }
+interface Props {
+  path: string; title: string; metaTitle: string; description: string; eyebrow: string; lead: string;
+  current: string; entries: EntryItem[]; selectionTitle: string; selectionText: string; links: LinkItem[];
+}
+const props = Astro.props;
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Ressources', path: '/ressources/' }, { name: props.title, path: props.path }]),
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: props.title, description: props.description, url: pageUrl(props.path) },
+];
+---
+<SiteLayout title={props.metaTitle} description={props.description} canonical={pageUrl(props.path)} currentPath="/ressources/" {structuredData}>
+  <main id="contenu-principal">
+    <header class="hub-hero">
+      <div class="container-wide">
+        <Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { href: '/ressources/', label: 'Ressources' }, { label: props.title }]} />
+        <div class="hub-hero__grid"><div><p class="eyebrow">{props.eyebrow}</p><h1>{props.title}</h1></div><p>{props.lead}</p></div>
+        <CategoryNavigation current={props.current} />
+      </div>
+    </header>
+    <section class="section" aria-labelledby="selection-title"><div class="container-wide hub-selection">
+      <div><p class="eyebrow">Sélection éditoriale</p><h2 id="selection-title">{props.selectionTitle}</h2><p>{props.selectionText}</p></div>
+      <div class="hub-selection__links">{props.links.map((item) => <a href={item.href}><strong>{item.label}</strong><span>{item.text}</span><i aria-hidden="true">→</i></a>)}</div>
+    </div></section>
+    <section class="section section--surface" aria-labelledby="guides-title"><div class="container-wide">
+      <p class="eyebrow">Guides disponibles</p><h2 class="hub-title" id="guides-title">Les ressources à lire maintenant.</h2>
+      {props.entries.length > 0 ? <div class="hub-cards">{props.entries.map((entry) => <ResourceCard href={resourcePath(entry.data.slug)} title={entry.data.title} description={entry.data.description} category={resourceCategories[entry.data.category].name} readingTime={entry.data.readingTime} featured={entry.data.featured} />)}</div> : <p class="hub-empty">Cette rubrique sert d’orientation. Les guides sont publiés uniquement lorsqu’ils apportent une réponse distincte et validable.</p>}
+    </div></section>
+    <PageCTA title="Une question concerne directement vos contrats ?" text="Le centre de ressources aide à préparer l’analyse. L’audit permet de rapprocher ces repères de l’activité et des documents de votre entreprise." />
+  </main>
+</SiteLayout>
+<style>
+  .hub-hero { padding-bottom: clamp(3rem, 7vw, 5rem); background: linear-gradient(135deg, var(--color-surface), var(--color-page)); border-bottom: 1px solid var(--color-border); }
+  .hub-hero__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .65fr); gap: clamp(2rem, 8vw, 8rem); align-items: end; margin: var(--space-8) 0 var(--space-10); }
+  h1 { max-width: 14ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h1); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-display); line-height: var(--line-height-tight); }
+  .hub-hero__grid > p { margin: 0; color: var(--color-text-soft); font-size: var(--font-size-lead); }
+  .hub-selection { display: grid; grid-template-columns: minmax(15rem, .62fr) minmax(0, 1.38fr); gap: clamp(2.5rem, 8vw, 7rem); }
+  .hub-selection h2, .hub-title { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
+  .hub-selection h2 + p { margin-top: var(--space-5); color: var(--color-text-soft); }
+  .hub-selection__links { display: grid; }
+  .hub-selection__links a { display: grid; grid-template-columns: minmax(10rem, .6fr) minmax(0, 1fr) auto; gap: var(--space-5); align-items: center; padding-block: var(--space-5); border-top: 1px solid var(--color-border); text-decoration: none; }
+  .hub-selection__links strong { color: var(--color-brand-deep); }
+  .hub-selection__links span { color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .hub-selection__links i { color: var(--color-gold-dark); font-style: normal; }
+  .hub-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-8); }
+  .hub-empty { max-width: 46rem; margin-top: var(--space-8); padding: var(--space-6); background: var(--color-gold-wash); border-radius: var(--radius-control); }
+  @media (max-width: 768px) { .hub-hero__grid, .hub-selection { grid-template-columns: 1fr; } .hub-selection__links a { grid-template-columns: 1fr auto; } .hub-selection__links span { grid-column: 1 / -1; } }
+  @media (max-width: 640px) { .hub-cards { grid-template-columns: 1fr; } }
+</style>

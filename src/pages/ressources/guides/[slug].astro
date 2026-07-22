@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import ResourceLayout from '../../../layouts/ResourceLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../../data/seo';
+import { resourceCategories, resourcePath } from '../../../data/resources';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived');
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const allEntries = await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived');
+const relatedItems = entry.data.relatedArticles.map((slug) => allEntries.find((item) => item.data.slug === slug)).filter(Boolean).map((item) => ({
+  href: resourcePath(item!.data.slug), title: item!.data.title, description: item!.data.description,
+}));
+const category = resourceCategories[entry.data.category];
+const articleSchema = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: entry.data.title,
+  description: entry.data.description, datePublished: entry.data.publishDate.toISOString(),
+  dateModified: entry.data.updatedDate.toISOString(), author: { '@type': 'Organization', name: entry.data.author },
+  publisher: { '@id': `${pageUrl('/')}#organization` }, mainEntityOfPage: entry.data.canonical,
+};
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Ressources', path: '/ressources/' }, { name: category.name, path: category.href }, { name: entry.data.title, path: resourcePath(entry.data.slug) }]),
+  articleSchema,
+  ...(entry.data.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: entry.data.faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) }] : []),
+];
+---
+<ResourceLayout {...entry.data} headings={headings} {relatedItems} {structuredData}>
+  <Content />
+</ResourceLayout>

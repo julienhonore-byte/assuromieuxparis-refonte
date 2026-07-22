@@ -62,13 +62,13 @@ const structuredData = [
       intro="Les priorités varient selon les marchandises, les zones, le parc, les clients et l’organisation. Cette carte sert à identifier les interfaces, pas à annoncer des garanties acquises."
       items={[
         { title: 'Marchandises confiées', text: 'Perte, avarie, vol, température, emballage, valeur et cumuls peuvent modifier l’exposition et les preuves attendues.' },
-        { title: 'Responsabilités de transport', text: 'Le rôle de transporteur, d’affréteur, de commissionnaire ou de donneur d’ordre doit être identifié sans être déduit du seul intitulé commercial.' },
+        { title: 'Rôles et responsabilités de transport', text: 'Transport pour compte propre, transport public pour compte d’autrui, commission de transport, affrètement et sous-traitance ne décrivent pas le même rôle. La qualification ne doit pas être déduite du seul intitulé commercial.' },
         { title: 'Véhicules et circulation', text: 'Tracteurs, porteurs, remorques, conducteurs, usages et zones relèvent d’une lecture automobile propre, distincte des marchandises.' },
         { title: 'Sous-traitance', text: 'Le choix d’un exécutant, les attestations, les engagements conservés et les recours nécessitent une chaîne documentaire cohérente.' },
         { title: 'Sites et matériels', text: 'Dépôts, quais, entrepôts, bureaux, équipements et marchandises en attente peuvent mobiliser d’autres garanties et responsabilités.' },
         { title: 'Continuité et systèmes', text: 'Immobilisation, interruption d’un site, indisponibilité d’un outil d’exploitation ou incident cyber peuvent perturber les tournées.' },
       ]}
-      distinction="Transporteur, véhicule, marchandise et site correspondent à des objets de risque différents. Une même cause peut les affecter simultanément sans qu’un contrat unique réponde à l’ensemble."
+      distinction="Le véhicule, la circulation, la responsabilité du transporteur, la marchandise, le client ou donneur d’ordre, et les locaux ou outils d’exploitation sont six objets distincts. Un même événement peut en affecter plusieurs sans qu’un contrat unique réponde à l’ensemble."
       variant="columns"
     />
 
@@ -79,7 +79,7 @@ const structuredData = [
       coverages={[
         { title: 'Responsabilité du transporteur', text: 'Elle dépend notamment du rôle, du contrat de transport, des faits, des documents et des règles applicables. Son assurance possède ensuite ses propres conditions.' },
         { title: 'Assurance automobile et flotte', text: 'La responsabilité liée à la circulation constitue un socle distinct. Dommages aux véhicules, assistance, conducteurs et usages sont étudiés selon le parc.' },
-        { title: 'Marchandises et assurance pour compte', text: 'Une assurance portant sur les biens peut protéger un intérêt défini sans se confondre avec la responsabilité du transporteur.' },
+        { title: 'Marchandises et assurance pour compte', text: 'Lorsqu’un tel montage est prévu, une assurance portant sur les biens peut protéger un intérêt défini sans se confondre avec la responsabilité du transporteur.' },
         { title: 'RC professionnelle et exploitation', text: 'Les prestations, incidents d’exploitation et dommages aux tiers doivent être rattachés aux activités et définitions prévues au contrat.' },
         { title: 'Multirisque et pertes d’exploitation', text: 'Locaux, équipements, stocks et conséquences d’un arrêt peuvent relever d’un contrat de site, selon les événements et bases prévus.' },
       ]}
@@ -91,7 +91,7 @@ const structuredData = [
       checksIntro="Un dossier utile documente les pics et les exceptions, pas seulement une moyenne annuelle ou une liste de véhicules."
       checks={[
         'Les activités principales et accessoires décrivent les opérations réellement vendues et exécutées.',
-        'Les marchandises habituelles, sensibles ou exclues, ainsi que les valeurs maximales par véhicule et par site, sont identifiées.',
+        'Les marchandises habituelles, particulières, sensibles ou exclues, ainsi que les valeurs maximales par véhicule et par site, sont identifiées.',
         'Les zones, trajets, arrêts, stationnements et éventuelles contraintes de température ou de sûreté sont décrits.',
         'Le parc, les conducteurs autorisés, les remorques, les usages et les procédures d’entrée ou de sortie sont à jour.',
         'Les contrats clients, ordres de transport, lettres de voiture, réserves et déclarations de valeur utiles sont disponibles.',
@@ -102,7 +102,7 @@ const structuredData = [
       mistakesTitle="Quatre raccourcis qui fragilisent la coordination."
       mistakesIntro="Ils naissent souvent d’un vocabulaire trop général ou d’une consultation construite contrat par contrat."
       mistakes={[
-        { title: 'Confondre TPM et toutes marchandises transportées', text: 'Un sigle commercial ne suffit pas. Il faut identifier l’objet garanti : responsabilité, biens, assurance pour compte ou autre montage, puis lire les limites.' },
+        { title: 'Réduire les marchandises à un sigle', text: 'L’expression « transport de marchandises » ne dit pas si le contrat porte sur la responsabilité du transporteur, les biens, une assurance pour compte ou un autre montage. L’objet garanti et ses limites doivent être identifiés.' },
         { title: 'Considérer la flotte comme le programme transport', text: 'La circulation et les dommages aux véhicules ne traitent pas automatiquement la responsabilité de transport, les biens confiés ou les sites.' },
         { title: 'Décrire la sous-traitance comme un simple transfert', text: 'L’entreprise peut conserver des engagements envers son client. Les rôles, attestations, plafonds et recours doivent rester lisibles.' },
         { title: 'Comparer seulement la prime annuelle', text: 'Une différence de périmètre, de franchise, d’exclusion ou de valeur maximale peut rendre deux propositions incomparables.' },

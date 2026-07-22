@@ -58,6 +58,8 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 - [x] **P3B-06 — Produire Déménagement en prévisualisation.** Dépendances : P3B-01 et P3B-03. Validation : biens confiés, manutention, valeurs, stockage, flotte et équipements traités sans promesse de garantie ; `noindex` maintenu.
 - [ ] **P3B-07 — Réévaluer les deux opportunités de priorité 2.** Dépendances : centre de ressources actif et données réelles après lancement. Validation : Logistique/entrepôts et Entreprises générales BTP ne sont créées que si expertise, demande et contenu distinct sont démontrés.
 - [x] **P3B-08 — Documenter le lot Secteurs Transport 01.** Dépendances : P3B-03 à P3B-06. Validation : matrice SEO, validation métier et réalisation décrivent routes, frontières, sources, risques, maillage et contrôles.
+- [x] **P3B-09 — Réaliser la recette approfondie métier, éditoriale et conversion.** Dépendances : P3B-04 à P3B-08. Validation : cinq routes et quatre guides relus, distinctions TRM/Convoyage/Déménagement explicites, CTA et préremplissage contrôlés, quatre livrables de recette créés.
+- [ ] **P3B-10 — Lever ou confirmer le blocage Convoyage.** Dépendances : P3B-09 et référent métier nommé. Validation : montages, contrats, véhicule confié, conducteurs, territoires, frais annexes et sous-traitance disposent d’une décision datée ; aucune publication tant que `VALIDATION-FINALE-CONVOYAGE.md` reste bloquée.
 
 **Sortie de phase :** une profondeur sectorielle limitée aux intentions réellement distinctes, sans doublon des pages produits ou des hubs existants.
 
@@ -95,6 +97,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Faire statuer le référent Transport sur `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md`, en priorité sur les lignes bloquantes Convoyage et Déménagement.
+1. Faire statuer le référent Transport sur `VALIDATION-FINALE-CONVOYAGE.md`, puis compléter nominativement `VALIDATION-METIER-SECTEURS-TRANSPORT-LOT-01.md` pour TRM et Déménagement.
 2. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md` et compléter les champs de revue des guides.
 3. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel avant la recette globale.

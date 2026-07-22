@@ -12,6 +12,7 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 
 const path = '/assurance-transport/';
 const description = 'Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.';
+const contactHref = '/?besoin=assurance-transport#contact';
 const faqItems = [
   { question: 'Quels métiers sont concernés ?', answer: 'Le transport routier de marchandises, la commission de transport, la logistique, l’exploitation d’entrepôts, le déménagement, le convoyage et les entreprises disposant d’une flotte significative peuvent être concernés.' },
   { question: 'La flotte suffit-elle à couvrir une activité de transport ?', answer: 'Non. Les véhicules ne traitent pas à eux seuls les responsabilités du transporteur, les marchandises confiées, le stockage, la sous-traitance ou l’interruption d’activité.' },
@@ -29,11 +30,11 @@ const structuredData = [
   <main id="contenu-principal">
     <PageHero
       eyebrow="Expertise sectorielle"
-      title="Assurer l’ensemble de la chaîne transport et logistique."
+      title="Analyser l’ensemble de la chaîne transport et logistique."
       lead="Nous rapprochons véhicules, marchandises, responsabilités, stockage et sous-traitance pour construire une lecture cohérente de l’exploitation."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance transport' }]}
     >
-      <CTA href="/#contact" label="Demander un audit transport" size="large" />
+      <CTA href={contactHref} label="Demander un audit transport" size="large" />
       <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
     </PageHero>
 
@@ -71,12 +72,12 @@ const structuredData = [
 
     <section id="risques" class="section section--surface" aria-labelledby="risks-title">
       <div class="container-wide">
-        <SectionHeader kicker="Risques couverts" title="Quatre ensembles à relier." id="risks-title" />
+        <SectionHeader kicker="Risques à coordonner" title="Quatre ensembles à relier." id="risks-title" />
         <div class="feature-grid feature-grid--2">
           {[
             ['Responsabilités', 'Prestations, engagements contractuels, donneurs d’ordre et recours.'],
             ['Flotte et conducteurs', 'Parc, usages, véhicules, franchises et sinistralité.'],
-            ['Marchandises et flux', 'TPM, valeurs confiées, zones, ruptures de charge et stockage temporaire.'],
+            ['Marchandises et flux', 'Responsabilité sur les marchandises, assurance des biens, valeurs confiées, zones, ruptures de charge et stockage temporaire.'],
             ['Sites et continuité', 'Entrepôts, matériels, sous-traitance et interruption d’activité.'],
           ].map(([title, text]) => <article class="feature-item"><h3>{title}</h3><p>{text}</p></article>)}
         </div>
@@ -123,7 +124,7 @@ const structuredData = [
     <RelatedResources items={[
       { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité du transporteur et assurance des marchandises', description: 'Distinguer la responsabilité, les biens, la flotte et les contrats.' },
     ]} />
-    <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." />
+    <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." primaryHref={contactHref} primaryLabel="Demander un audit transport" />
   </main>
 </SiteLayout>
 

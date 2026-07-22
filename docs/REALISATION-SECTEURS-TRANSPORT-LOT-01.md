@@ -103,3 +103,16 @@ Une première capture tablette a nécessité une réinitialisation de l’outil 
 - documents de déménagement réellement utilisés ;
 - traitement du stockage, des valeurs et des équipements de manutention ;
 - formulations relatives aux responsabilités, contrats types, réclamations et pertes d’exploitation.
+
+## Recette approfondie complémentaire
+
+Le 21 juillet 2026, une seconde recette a resserré les formulations sans refondre les pages :
+
+- suppression du sigle `TPM` dans les pages publiques ;
+- séparation explicite des six objets TRM et des sept objets Déménagement ;
+- ajout du bloc visible « Les quatre questions à vérifier avant toute proposition » sur Convoyage ;
+- séparation des sept lectures Convoyage, dont RC circulation, RC Pro, RC exploitation et véhicule confié ;
+- harmonisation prudente des CTA et du préremplissage Transport.
+- correction de la coquille `disponibilités`/`dispositions` dans la mention réglementaire commune du footer, sans lever son statut de validation requise.
+
+Les résultats détaillés figurent dans `RECETTE-SECTEURS-TRANSPORT-LOT-01.md`, `VALIDATION-FINALE-CONVOYAGE.md`, `COHERENCE-COUVERTURES-TRANSPORT.md` et `RECETTE-CONVERSION-SECTEURS-TRANSPORT.md`.

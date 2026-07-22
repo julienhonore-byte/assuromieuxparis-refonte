@@ -109,3 +109,11 @@ Statut global : prévisualisation technique, `noindex` maintenu, validation mét
 4. contrôler les titles et descriptions dans les résultats de recherche réels après autorisation ;
 5. vérifier l’absence de cannibalisation avec des données Search Console suffisantes ;
 6. ne retirer `noindex` et le blocage `robots.txt` que dans une décision globale de mise en production.
+
+## Mise à jour — recette 6A
+
+- les URL, titles, H1, descriptions et intentions restent inchangés ;
+- la page Transport générale a été rendue moins promissive sans déplacer son intention ;
+- le convoyage renforce son intention de cadrage par les quatre questions préalables ;
+- les CTA transport utilisent un préremplissage léger, sans nouvelle route ni formulaire sectoriel ;
+- le risque de cannibalisation reste maîtrisé par les frontières documentées dans `RECETTE-CONVERSION-SECTEURS-TRANSPORT.md`.

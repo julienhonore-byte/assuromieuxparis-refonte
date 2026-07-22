@@ -69,3 +69,13 @@ Ces sources encadrent des principes généraux. Elles ne remplacent ni les texte
 ## Décision globale
 
 Les quatre routes peuvent rester en prévisualisation technique. Leur indexation est bloquée tant que les lignes `bloquant` et `sensible` n’ont pas reçu un valideur, une décision datée et, lorsque nécessaire, une revue juridique distincte.
+
+## Mise à jour — recette approfondie du 21 juillet 2026
+
+- le sigle public `TPM` a été retiré des pages ;
+- TRM distingue désormais compte propre, transport public, commission, affrètement et sous-traitance, ainsi que six objets de risque ;
+- Convoyage expose les quatre questions préalables et sépare sept lectures de couverture ;
+- Déménagement distingue sept objets et précise que la déclaration de valeur n’est pas une assurance autonome ;
+- le formulaire conserve son option générique Transport et reconnaît les paramètres des trois verticales.
+
+Décisions maintenues : TRM et Déménagement exigent une validation métier ; Convoyage est **bloquée avant production**. Voir `RECETTE-SECTEURS-TRANSPORT-LOT-01.md` et `VALIDATION-FINALE-CONVOYAGE.md`.

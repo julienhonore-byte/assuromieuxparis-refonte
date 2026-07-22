@@ -129,6 +129,8 @@ Le périmètre, les intentions, les risques de cannibalisation et les validation
 
 La réalisation technique ne vaut pas validation métier. Aucun nouveau secteur ne doit être ajouté tant que ce lot n’a pas été relu et que les opportunités de priorité 2 ne disposent pas de données réelles.
 
+La recette approfondie 6A est terminée. Elle maintient TRM et Déménagement en validation métier requise et bloque Convoyage avant production. La prochaine action SEO n’est pas de créer une nouvelle page : elle consiste à obtenir les validations nominatives, puis à réévaluer les formulations et le maillage à partir de données réelles après lancement.
+
 ### Arbitrage de référence
 
 Les décisions détaillées, les pages à fusionner et les sujets à traiter sous forme de guides sont consignés dans `AUDIT-OPPORTUNITE-PAGES-SECTORIELLES.md` et `MATRICE-OPPORTUNITE-SECTORIELLE.md`. Une idée reportée ne peut être réactivée qu'avec une intention distincte, une expertise démontrée, un propriétaire métier et des données réelles.

@@ -38,10 +38,10 @@ const structuredData = [
     <PageHero
       eyebrow="Secteur · Convoyage"
       title="Comprendre une mission où le véhicule circule et reste confié."
-      lead="Le convoyage combine conduite, garde temporaire, exécution d’une prestation et restitution. La réponse d’assurance dépend du rôle exact de l’entreprise et des conditions de chaque mission."
+      lead="L’expression « assurance convoyage » ne désigne pas un montage universel. La réponse dépend du rôle exact de l’entreprise, du véhicule, du conducteur et des conditions de chaque mission."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/secteurs/', label: 'Secteurs' }, { label: 'Convoyage de véhicules' }]}
     >
-      <CTA href={contactHref} label="Analyser mon activité" size="large" />
+      <CTA href={contactHref} label="Faire vérifier mon montage" size="large" />
       <CTA href="#risques" label="Voir les interfaces" variant="secondary" size="large" />
       <SectorHeroDiagram slot="visual" label="Une chaîne de garde mobile" nodes={['Remise', 'Conduite', 'Incident', 'Restitution']} variant="convoy" />
     </PageHero>
@@ -58,15 +58,31 @@ const structuredData = [
       variant="staggered"
     />
 
+    <section class="section convoyage-questions" aria-labelledby="convoyage-questions-title">
+      <div class="container-wide convoyage-questions__layout">
+        <header>
+          <p class="eyebrow">Cadrage préalable</p>
+          <h2 id="convoyage-questions-title">Les quatre questions à vérifier avant toute proposition.</h2>
+          <p>Aucun intitulé commercial ne permet d’y répondre seul. Les réponses doivent être rapprochées des contrats, de l’ordre de mission et des procédures de l’entreprise.</p>
+        </header>
+        <ol>
+          <li><span>01</span><p><strong>Qui possède et assure le véhicule ?</strong> Identifier le propriétaire, le souscripteur du contrat automobile et les garanties effectivement souscrites.</p></li>
+          <li><span>02</span><p><strong>Qui le conduit, et dans quel cadre ?</strong> Préciser conducteur salarié ou indépendant, autorisation, catégorie de permis, mission et usage.</p></li>
+          <li><span>03</span><p><strong>Quels dommages doivent être examinés ?</strong> Distinguer ceux causés par le véhicule, ceux subis par le véhicule confié et les frais ou pertes financières annexes.</p></li>
+          <li><span>04</span><p><strong>Quel est le rôle contractuel exact de l’entreprise ?</strong> Entreprise de convoyage, client, donneur d’ordre, intermédiaire, mandataire éventuel ou sous-traitant n’assument pas nécessairement les mêmes engagements.</p></li>
+        </ol>
+      </div>
+    </section>
+
     <ProductRiskOverview
       title="Cinq interfaces à documenter avant de parler de couverture."
       intro="Le convoyage ne doit être assimilé ni à une simple livraison, ni à la gestion d’une flotte appartenant à l’entreprise. Le véhicule confié est à la fois l’objet de la mission et un véhicule en circulation."
       items={[
-        { title: 'Le rôle de l’entreprise', text: 'Convoyeur direct, intermédiaire, sous-traitant ou donneur d’ordre n’assument pas nécessairement les mêmes engagements envers le client.' },
-        { title: 'Le véhicule confié', text: 'Véhicule léger, utilitaire, poids lourd, autocar ou véhicule spécial peut présenter des valeurs, usages, équipements et procédures distincts.' },
-        { title: 'La circulation', text: 'Le conducteur, l’autorisation de conduire, le trajet, les zones et l’assurance automobile du véhicule doivent être identifiés.' },
-        { title: 'Les dommages et frais annexes', text: 'Accident, vol, erreur de carburant, immobilisation, rapatriement ou autres frais ne relèvent pas automatiquement d’une même garantie.' },
-        { title: 'Les partenaires', text: 'Plateforme, client, propriétaire, conducteur salarié ou indépendant et sous-traitant doivent former une chaîne contractuelle lisible.' },
+        { title: 'Le rôle de l’entreprise', text: 'Entreprise de convoyage, client, donneur d’ordre, propriétaire, souscripteur du contrat automobile, intermédiaire, mandataire éventuel ou sous-traitant n’assument pas nécessairement les mêmes engagements.' },
+        { title: 'Le véhicule confié', text: 'Véhicule léger, utilitaire, poids lourd, autobus, autocar ou véhicule spécial peut présenter des valeurs, usages, équipements et procédures distincts.' },
+        { title: 'La circulation', text: 'Le conducteur, l’autorisation de conduire, le trajet en France ou à l’international, les zones et l’assurance automobile du véhicule doivent être identifiés.' },
+        { title: 'Les dommages et frais annexes', text: 'Accident, vol, incendie, bris, erreur de carburant, immobilisation, rapatriement ou pertes financières ne relèvent pas automatiquement d’une même garantie.' },
+        { title: 'Les partenaires et conducteurs', text: 'Plateforme, client, propriétaire, conducteur salarié ou indépendant et sous-traitant doivent former une chaîne contractuelle lisible.' },
       ]}
       distinction="Conduire un véhicule confié, transporter un véhicule sur un camion et livrer une marchandise ne décrivent pas le même mode d’exploitation. Le dossier doit nommer l’opération réelle."
       variant="ledger"
@@ -74,27 +90,30 @@ const structuredData = [
 
     <SectorCoverageCoordination
       title="Distinguer circulation, prestation et dommage au véhicule."
-      intro="Une mission peut mettre en jeu l’assurance automobile attachée au véhicule, la responsabilité du conducteur, la responsabilité professionnelle du convoyeur et une garantie éventuelle concernant les véhicules confiés. Leur articulation n’est jamais déduite d’un intitulé seul."
+      intro="Une mission peut mettre en jeu le contrat automobile attaché au véhicule, plusieurs responsabilités du convoyeur et une garantie éventuelle portant sur les véhicules confiés. Leur articulation n’est jamais déduite d’un intitulé seul."
       statement="Convoyer un véhicule n’est pas seulement déplacer un bien : le véhicule circule et reste confié."
       coverages={[
-        { title: 'Responsabilité liée à la circulation', text: 'Le socle automobile concerne les dommages causés par le véhicule. Le contrat, le véhicule, le propriétaire, le conducteur et l’usage doivent être vérifiés.' },
-        { title: 'Dommages au véhicule confié', text: 'Une garantie spécifique peut être nécessaire selon le montage. Valeur, événements, franchises, exclusions et conditions de prise en charge doivent être lus.' },
-        { title: 'Responsabilité professionnelle', text: 'Erreur dans l’exécution, manquement aux consignes ou restitution peuvent soulever d’autres responsabilités selon les faits et les clauses.' },
+        { title: 'RC circulation', text: 'Elle concerne les dommages causés à des tiers par le véhicule impliqué. Le contrat automobile, le souscripteur, le propriétaire, le conducteur autorisé et l’usage doivent être vérifiés.' },
+        { title: 'Garanties automobiles éventuellement souscrites', text: 'Dommages au véhicule, vol, incendie ou bris dépendent des garanties, événements, franchises, exclusions et conditions du contrat. Aucune formule « tous risques » ne doit être présumée.' },
+        { title: 'Dommages au véhicule confié', text: 'La responsabilité liée à la garde ou à la mission et une éventuelle garantie souscrite par le convoyeur doivent être distinguées. Leur présence et leur portée restent à vérifier.' },
+        { title: 'RC professionnelle', text: 'Erreur dans l’exécution, manquement aux consignes ou restitution peuvent soulever une responsabilité liée à la prestation, selon les faits et les clauses.' },
+        { title: 'RC exploitation', text: 'Un événement de la vie courante de l’entreprise peut relever d’une autre lecture. Cette garantie ne se substitue pas à la responsabilité liée à la circulation.' },
+        { title: 'Frais annexes et pertes financières', text: 'Immobilisation, rapatriement, perte d’usage ou autres coûts ne sont examinés que si une garantie, une responsabilité et des conditions applicables sont identifiées.' },
         { title: 'Sous-traitance et chaîne de mission', text: 'Le recours à un autre convoyeur ne transfère pas automatiquement tous les engagements. Contrats, attestations et recours doivent être cohérents.' },
       ]}
       note="Le montage de couverture dépend notamment du rôle exact de l’entreprise, du véhicule, de la mission et des conditions contractuelles."
     />
 
     <ProductReview
-      checksTitle="Les contrôles qui rendent une mission assurable et défendable."
+      checksTitle="Les contrôles qui rendent une mission plus lisible."
       checksIntro="La qualité des procédures opérationnelles compte autant que la liste des garanties. Elle permet de comprendre le risque et de documenter un éventuel sinistre."
       checks={[
         'Le contrat client décrit la prestation, la prise en charge, la restitution, les responsabilités, les limites et les frais éventuels.',
         'L’ordre de mission identifie sans ambiguïté le véhicule, le conducteur, les lieux, les dates, l’usage et les consignes.',
-        'L’état du véhicule à la remise et à la restitution est documenté par un processus constant et contradictoire lorsque cela est prévu.',
+        'L’état du véhicule à la remise et à la restitution est documenté par un processus constant, signé ou contradictoire lorsque la procédure le prévoit.',
         'Les catégories de véhicules acceptées correspondent aux déclarations et à l’expérience des conducteurs mobilisés.',
-        'Les zones, itinéraires, temps de mission, stationnements et conditions de garde sont décrits.',
-        'Le rôle du propriétaire et les conditions de l’assurance automobile du véhicule sont clarifiés avant la mission.',
+        'Les zones en France ou à l’international, itinéraires, temps de mission, stationnements et conditions de garde sont décrits.',
+        'Le rôle du propriétaire, du souscripteur du contrat automobile et les conditions d’assurance du véhicule sont clarifiés avant la mission.',
         'Sous-traitants et conducteurs disposent des autorisations, documents et attestations demandés par le montage retenu.',
         'Plafonds, franchises, exclusions, frais annexes et procédure de déclaration sont rapprochés des incidents déjà rencontrés ou redoutés.',
       ]}
@@ -127,8 +146,20 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Coordonner l’ensemble des contrats concernés.' },
     ]} />
 
-    <PageCTA title="Vos contrats suivent-ils le déroulement réel d’une mission ?" text="Préparez vos contrats clients, ordres de mission, catégories de véhicules, conducteurs, procédures de remise et sinistralité pour identifier les interfaces à vérifier." primaryHref={contactHref} primaryLabel="Analyser mon activité" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Vos contrats suivent-ils le déroulement réel d’une mission ?" text="Préparez vos contrats clients, ordres de mission, catégories de véhicules, conducteurs, procédures de remise et sinistralité pour identifier les interfaces à vérifier." primaryHref={contactHref} primaryLabel="Faire vérifier mon montage" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>
 </SiteLayout>
 
-<style>.faq-layout { max-width: 58rem; }</style>
+<style>
+  .faq-layout { max-width: 58rem; }
+  .convoyage-questions { border-block: 1px solid var(--color-border); }
+  .convoyage-questions__layout { display: grid; grid-template-columns: minmax(17rem, .65fr) minmax(0, 1.35fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+  .convoyage-questions h2 { max-width: 17ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .convoyage-questions header > p:not(.eyebrow) { max-width: 35rem; margin: var(--space-5) 0 0; color: var(--color-text-soft); }
+  .convoyage-questions ol { margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
+  .convoyage-questions li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--space-4); padding: var(--space-5) 0; border-bottom: 1px solid var(--color-border); }
+  .convoyage-questions li span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .convoyage-questions li p { margin: 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  .convoyage-questions li strong { color: var(--color-brand-deep); }
+  @media (max-width: 860px) { .convoyage-questions__layout { grid-template-columns: 1fr; } }
+</style>

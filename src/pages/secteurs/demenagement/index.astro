@@ -22,7 +22,7 @@ const contactHref = '/?besoin=demenagement#contact';
 const faqItems = [
   { question: 'Le risque commence-t-il uniquement lorsque le camion roule ?', answer: 'Non. Préparation, emballage, démontage, manutention, portage, chargement, utilisation d’un monte-meubles, stockage et restitution peuvent créer des dommages ou des responsabilités distincts.' },
   { question: 'L’assurance du véhicule couvre-t-elle le mobilier confié ?', answer: 'Pas automatiquement. La circulation, les dommages au véhicule, la responsabilité du déménageur et une assurance portant sur les biens confiés ou transportés répondent à des objets différents.' },
-  { question: 'La déclaration de valeur suffit-elle à déterminer une indemnisation ?', answer: 'Elle constitue une information importante, mais il faut aussi examiner le contrat, les circonstances, les responsabilités, les limites, les exclusions et les éventuelles garanties portant sur les biens.' },
+  { question: 'La déclaration de valeur est-elle une assurance ?', answer: 'Non. Elle renseigne les valeurs déclarées pour l’opération, mais ne constitue pas une assurance autonome. Le contrat, les circonstances, les responsabilités, les limites, les exclusions et les éventuelles garanties portant sur les biens doivent être examinés.' },
   { question: 'Le stockage temporaire est-il compris dans le transport ?', answer: 'Il ne faut pas le présumer. Le lieu, la durée, la garde, les valeurs, les conditions de sécurité et les contrats applicables doivent être décrits et vérifiés.' },
 ];
 const structuredData = [
@@ -68,7 +68,7 @@ const structuredData = [
         { title: 'Équipements spécialisés', text: 'Monte-meubles, hayon, chariots et matériels loués ou prêtés peuvent nécessiter des vérifications propres.' },
         { title: 'Continuité de l’activité', text: 'Indisponibilité d’un véhicule, d’un site ou d’un équipement peut perturber plusieurs opérations et générer des frais.' },
       ]}
-      distinction="Le mobilier confié, le véhicule, le matériel de manutention, les locaux et la responsabilité envers le client ne constituent pas un objet d’assurance unique."
+      distinction="La responsabilité contractuelle, les biens confiés, les véhicules, les locaux et le stockage, la responsabilité civile générale, les matériels et les pertes d’exploitation correspondent à sept lectures distinctes. Elles ne forment pas un objet d’assurance unique."
       variant="columns"
     />
 
@@ -77,11 +77,13 @@ const structuredData = [
       intro="L’analyse part de la prestation vendue et des documents utilisés. Elle rapproche ensuite la responsabilité du déménageur, les biens confiés, la flotte, les locaux, le stockage et les équipements sans annoncer de réponse automatique."
       statement="Le risque commence avant le transport et se poursuit jusqu’à la restitution."
       coverages={[
-        { title: 'Responsabilité du déménageur', text: 'Son appréciation dépend des faits, du contrat, des documents, des réserves et des règles applicables à l’opération concernée.' },
-        { title: 'Biens confiés et assurance dommages', text: 'Une assurance portant sur les biens peut compléter un montage sans se confondre avec la responsabilité de l’entreprise.' },
+        { title: 'Responsabilité contractuelle du déménageur', text: 'Son appréciation dépend des faits, du contrat, des documents, des réserves et des règles applicables à l’opération concernée.' },
+        { title: 'Biens confiés et assurance dommages', text: 'La déclaration de valeur ne constitue pas une assurance autonome. Une assurance portant sur les biens peut compléter un montage sans se confondre avec la responsabilité de l’entreprise.' },
         { title: 'Assurance automobile', text: 'La responsabilité liée à la circulation et les dommages au véhicule sont distingués du contenu transporté et des gestes de manutention.' },
-        { title: 'RC professionnelle et exploitation', text: 'Dommages aux tiers, aux bâtiments ou liés à une prestation doivent être rapprochés des activités et définitions contractuelles.' },
-        { title: 'Multirisque, stockage et pertes d’exploitation', text: 'Locaux, équipements, valeurs gardées et conséquences d’un arrêt dépendent des événements, plafonds et durées prévus.' },
+        { title: 'Responsabilité civile générale', text: 'Responsabilité professionnelle, exploitation et dommages aux tiers ou aux bâtiments doivent être rapprochés des activités et définitions contractuelles.' },
+        { title: 'Locaux et stockage', text: 'Dépôts, garde-meubles et valeurs gardées dépendent des sites déclarés, événements, plafonds et conditions prévus. Le stockage n’est pas présumé inclus dans le transport.' },
+        { title: 'Matériels et équipements', text: 'Monte-meubles, hayons, chariots et matériels loués ou prêtés doivent être rattachés à leurs propriétaires, usages et garanties éventuelles.' },
+        { title: 'Pertes d’exploitation', text: 'Les conséquences financières d’un arrêt dépendent des événements garantis, bases, plafonds et durées prévus au contrat.' },
       ]}
       note="Les responsabilités, plafonds et modalités de réclamation varient selon le client, la prestation et les textes applicables. Une page générale ne remplace pas la lecture du dossier."
     />
@@ -92,11 +94,11 @@ const structuredData = [
       checks={[
         'La prestation distingue ce que le client prépare de ce que l’entreprise emballe, démonte, manutentionne, transporte, stocke et remonte.',
         'Les accès, volumes, difficultés, équipements nécessaires et conditions de stationnement sont évalués avant l’opération.',
-        'Les valeurs globales, objets de valeur particulière et éventuels pics ou cumuls en garde-meubles sont documentés.',
+        'Les valeurs globales, valeurs unitaires ou particulières et éventuels pics ou cumuls en garde-meubles sont documentés.',
         'Les devis, conditions, déclarations de valeur, lettres de voiture, bulletins de livraison et réserves utilisés correspondent à la mission.',
         'Le parc, les conducteurs, les usages, l’assistance et les procédures de mouvement des véhicules sont à jour.',
         'Les locaux et zones de stockage sont décrits avec leur construction, prévention, protections, occupation et valeurs maximales.',
-        'Sous-traitants, loueurs de matériel et partenaires sont identifiés avec leurs rôles, attestations et engagements.',
+        'Sous-traitants, loueurs de matériel et partenaires sont identifiés avec leurs rôles, attestations et engagements ; leur intervention n’est pas considérée comme neutre.',
         'Sinistres et réclamations sont analysés par étape, type de dommage, valeur, cause, franchise et action corrective.',
       ]}
       mistakesTitle="Quatre angles morts fréquents."

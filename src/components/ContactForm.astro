@@ -45,7 +45,7 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
         <option data-product-slug="multirisque">Multirisque professionnelle</option>
         <option data-product-slug="flotte">Flotte automobile</option>
         <option data-product-slug="assurance-btp-decennale">Assurance décennale / BTP</option>
-        <option data-product-slug="assurance-transport">Transport / marchandises</option>
+        <option data-product-slug="assurance-transport" data-product-aliases="transport transport-routier convoyage demenagement">Transport / marchandises</option>
         <option data-product-slug="sante-prevoyance">Santé et prévoyance</option>
         <option data-product-slug="protection-dirigeant">Protection du dirigeant</option>
         <option data-product-slug="cyber">Cyberassurance</option>
@@ -106,9 +106,10 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
         }
       }
 
-      const matchingOption = Array.from(priority.options).find(
-        (option) => option.dataset.productSlug === requestedProduct,
-      );
+      const matchingOption = Array.from(priority.options).find((option) => {
+        const aliases = option.dataset.productAliases?.split(' ') ?? [];
+        return option.dataset.productSlug === requestedProduct || aliases.includes(requestedProduct ?? '');
+      });
       if (matchingOption) priority.value = matchingOption.value;
     }
 

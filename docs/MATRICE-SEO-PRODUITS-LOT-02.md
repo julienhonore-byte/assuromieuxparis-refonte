@@ -115,6 +115,19 @@ La page `/assurances-entreprises/` reste le pilier transversal : elle présente 
 - **Données structurées :** `BreadcrumbList`, `Service`, `FAQPage` visible.
 - **Cannibalisation à éviter :** cette page doit rester centrée sur l'assurance et l'analyse des clauses, sans devenir un guide généraliste de cybersécurité.
 
+## Statut de la recette approfondie
+
+| Page | Intention préservée | Ajustement éditorial principal | Différenciation visuelle | Validation avant production |
+|---|---|---|---|---|
+| RC professionnelle | Oui | Responsabilités exposées, immatériels, sous-traitance et territorialité conditionnés | Orbite et lecture en registre | Validation métier des définitions et juridictions |
+| Multirisque professionnelle | Oui | Valeurs rapprochées des bases d'indemnisation ; perte d'exploitation liée à l'événement garanti | Axe et composition inversée | Validation des méthodes de valorisation et de calcul |
+| Flotte automobile | Oui | Socle RC circulation séparé des garanties optionnelles et du transport | Parcours et flux | Validation des usages, conducteurs et territoires |
+| Santé et prévoyance | Oui | Convention, acte, catégories objectives et régime applicable explicités | Schéma collectif | Validation sociale et juridique obligatoire |
+| Protection du dirigeant | Oui | Statut et séparation personne/entreprise renforcés | Foyer dirigeant | Validation sociale, fiscale, juridique et patrimoniale |
+| Cyberassurance | Oui | Prévention, services de crise, pertes et obligations rendus conditionnels | Étapes de crise | Validation des questionnaires, exigences et services réels |
+
+La recette détaillée est consignée dans `RECETTE-PRODUITS-LOT-02.md`. Les formulations sensibles et bloquantes avant production sont inventoriées dans `VALIDATION-METIER-PRODUITS-LOT-02.md`.
+
 ## Règles communes de validation
 
 1. Conserver un seul H1 visible et une hiérarchie H2/H3 logique par page.
@@ -123,4 +136,4 @@ La page `/assurances-entreprises/` reste le pilier transversal : elle présente 
 4. Maintenir les FAQ visibles identiques aux questions déclarées en `FAQPage`.
 5. Vérifier les formulations techniques et réglementaires avec les métiers avant indexation.
 6. Ouvrir l'indexation seulement après validation globale, pages légales, sitemap et contrôles de production.
-
+7. Ne pas transformer les exemples de risques en promesses de prise en charge : les activités, personnes assurées, définitions, limites, exclusions, territoires et textes applicables restent déterminants.

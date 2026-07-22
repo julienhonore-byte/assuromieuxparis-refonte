@@ -19,7 +19,7 @@ const description = 'Assurance flotte automobile : analyse du parc, des conducte
 const contactHref = '/?besoin=flotte#contact';
 const faqItems = [
   { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Les pratiques varient selon les assureurs et la composition du parc. Une analyse est nécessaire pour déterminer si un contrat flotte ou une autre organisation est pertinente pour l’entreprise.' },
-  { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. Le véhicule, la responsabilité circulation, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
+  { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. La responsabilité civile automobile liée à la circulation, les dommages au véhicule, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
   { question: 'Pourquoi le relevé de sinistralité est-il important ?', answer: 'Il aide à comprendre la fréquence, la nature et le coût des événements. Associé aux usages et à la prévention, il permet de présenter le risque et d’étudier les franchises avec davantage de cohérence.' },
   { question: 'Comment gérer les entrées et sorties de véhicules ?', answer: 'Les modalités dépendent du contrat et des outils retenus. Il faut organiser la transmission des immatriculations, usages, conducteurs et dates afin d’éviter qu’un véhicule ne soit ajouté ou retiré trop tard.' },
 ];
@@ -41,7 +41,7 @@ const structuredData = [
     >
       <CTA href={contactHref} label="Échanger sur ma flotte" size="large" />
       <CTA href="#points-verifier" label="Préparer les informations" variant="secondary" size="large" />
-      <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="steps" />
+      <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="route" />
     </PageHero>
 
     <ProductAudience
@@ -58,12 +58,12 @@ const structuredData = [
       title="Quatre lectures pour comprendre la flotte."
       intro="Les garanties dommages ne suffisent pas à expliquer le risque. Le parc doit être lu comme un outil d’exploitation avec ses conducteurs, ses déplacements et ses procédures de gestion."
       items={[
-        { title: 'Le véhicule', text: 'Valeur, âge, mode de financement et équipements orientent l’étude du dommage, du vol, de l’incendie et du bris de glace.' },
+        { title: 'Le véhicule', text: 'Le socle de responsabilité civile automobile et, selon les garanties retenues, la valeur, l’âge, le financement et les équipements orientent l’étude des dommages, du vol, de l’incendie et du bris de glace.' },
         { title: 'Le conducteur', text: 'Profils autorisés, affectation, prêt, nouveaux conducteurs et règles internes doivent correspondre aux conditions du contrat.' },
         { title: 'L’usage', text: 'Déplacements professionnels, tournées, kilométrage, stationnement, zones de circulation et transport de matériel décrivent l’exposition réelle.' },
         { title: 'La continuité', text: 'Assistance, véhicule de remplacement, délais de réparation et franchises prennent leur sens au regard des conséquences d’une immobilisation.' },
       ]}
-      distinction="Assurance du véhicule, responsabilité circulation, matériel ou marchandises transportées et responsabilité professionnelle ne doivent pas être confondus. Ils peuvent relever de garanties ou contrats distincts."
+      distinction="Responsabilité civile automobile liée à la circulation, dommages au véhicule, matériel ou marchandises transportées et responsabilité professionnelle ne doivent pas être confondus. Ils peuvent relever de garanties ou contrats distincts."
       variant="flow"
     />
 
@@ -74,7 +74,7 @@ const structuredData = [
         'Le parc distingue véhicules légers, utilitaires, véhicules de fonction et poids lourds lorsque cela est pertinent.',
         'Les usages, tournées, kilométrages et zones de circulation correspondent à l’exploitation actuelle.',
         'Les conducteurs autorisés, restrictions éventuelles et modalités de prêt sont compris.',
-        'Dommages, vol, incendie, bris de glace, assistance et véhicule de remplacement sont comparés séparément.',
+        'Le socle obligatoire de responsabilité civile et les garanties de dommages, vol, incendie, bris de glace, assistance ou véhicule de remplacement sont distingués.',
         'Les franchises sont rapprochées de la fréquence des sinistres et de la capacité de l’entreprise à les absorber.',
         'Le relevé de sinistralité est analysé par nature, véhicule, conducteur et coût lorsque les données le permettent.',
         'Une procédure existe pour déclarer rapidement les entrées, sorties et changements d’usage.',

@@ -22,7 +22,7 @@ const faqItems = [
   { question: 'Que peut couvrir une multirisque professionnelle ?', answer: 'Selon le contrat, elle peut regrouper des garanties portant sur les locaux, le mobilier, le matériel, les stocks, certains dommages et des responsabilités liées à l’occupation. Chaque garantie, exclusion et franchise doit être vérifiée.' },
   { question: 'La perte d’exploitation est-elle toujours incluse ?', answer: 'Non. Sa présence, sa période d’indemnisation, sa franchise, les événements déclencheurs et le mode de calcul doivent être lus dans les conditions particulières et générales.' },
   { question: 'Comment déclarer la valeur des biens ?', answer: 'L’inventaire doit tenir compte du mobilier, du matériel, des aménagements, des stocks et, selon l’activité, des biens confiés. Les méthodes d’évaluation et les éventuelles limites par catégorie doivent être confirmées.' },
-  { question: 'Un entrepôt ou une dépendance est-il automatiquement couvert ?', answer: 'Non. Chaque adresse, bâtiment, dépendance ou zone de stockage doit être identifié. L’usage, les protections, les valeurs et les activités exercées peuvent modifier l’analyse du risque.' },
+  { question: 'Un entrepôt ou une dépendance est-il automatiquement couvert ?', answer: 'Pas nécessairement. Chaque adresse, bâtiment, dépendance ou zone de stockage doit être identifié. L’usage, les protections, les valeurs et les activités exercées peuvent modifier l’analyse du risque et la portée du contrat.' },
 ];
 
 const structuredData = [
@@ -38,7 +38,7 @@ const structuredData = [
     <PageHero
       eyebrow="Multirisque professionnelle"
       title="Protéger les lieux, les biens et la capacité à poursuivre l’activité."
-      lead="Nous mettons en regard les locaux, les valeurs déclarées, les événements couverts et les conséquences d’une interruption pour construire une lecture utile."
+      lead="Nous mettons en regard les locaux, les valeurs déclarées, les événements prévus au contrat et les conséquences possibles d’une interruption pour construire une lecture utile."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Multirisque professionnelle' }]}
     >
       <CTA href={contactHref} label="Échanger sur ma multirisque" size="large" />
@@ -60,10 +60,10 @@ const structuredData = [
       title="Les biens ne sont qu’une partie du sujet."
       intro="Incendie, dégât des eaux, vol ou dommage électrique n’ont pas les mêmes conditions de garantie. La prévention, les valeurs et la continuité doivent être étudiées ensemble."
       items={[
-        { title: 'Bâtiments et occupation', text: 'Les adresses, surfaces, usages, qualités de locataire ou propriétaire, dépendances et responsabilités d’occupation sont décrits avec précision.' },
+        { title: 'Bâtiments et occupation', text: 'Les adresses, surfaces, usages, qualités de locataire ou propriétaire, dépendances, responsabilités locatives et autres responsabilités d’occupation sont décrits avec précision.' },
         { title: 'Contenu professionnel', text: 'Mobilier, matériels, machines, aménagements et stocks sont inventoriés. Le bris de machine ou les biens confiés demandent, selon l’activité, une vérification distincte.' },
         { title: 'Événements et prévention', text: 'Incendie, dégât des eaux, vol, vandalisme et dommages électriques sont rapprochés des protections demandées : alarme, fermeture, maintenance ou stockage.' },
-        { title: 'Pertes d’exploitation', text: 'La marge, les charges permanentes, les délais de reprise et les solutions temporaires permettent d’étudier les conséquences financières d’un arrêt couvert.' },
+        { title: 'Pertes d’exploitation', text: 'La base de calcul prévue au contrat, les charges, les délais de reprise et les solutions temporaires servent à étudier les conséquences financières d’un arrêt consécutif à un événement garanti.' },
       ]}
       variant="columns"
     />
@@ -74,7 +74,7 @@ const structuredData = [
       checks={[
         'Toutes les adresses, dépendances et zones de stockage sont mentionnées avec leur usage réel.',
         'Les locaux loués ou détenus et les responsabilités d’occupation sont correctement distingués.',
-        'Les valeurs du mobilier, du matériel, des aménagements et des stocks reposent sur un inventaire récent.',
+        'Les valeurs du mobilier, du matériel, des aménagements et des stocks reposent sur un inventaire récent et sont rapprochées des bases d’indemnisation prévues au contrat.',
         'Les plafonds, franchises et exclusions sont vérifiés événement par événement.',
         'Les mesures de prévention déclarées correspondent aux équipements réellement installés et entretenus.',
         'Le bris de machine, les biens confiés et les dommages électriques sont examinés selon l’activité.',

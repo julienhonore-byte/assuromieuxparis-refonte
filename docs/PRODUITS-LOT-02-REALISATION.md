@@ -2,7 +2,7 @@
 
 Date : 21 juillet 2026
 
-Statut : réalisation technique terminée en prévisualisation, sous réserve de validation métier et éditoriale. Aucun déploiement n'a été effectué.
+Statut : réalisation et recette approfondie terminées en prévisualisation, sous réserve des validations humaines recensées dans `VALIDATION-METIER-PRODUITS-LOT-02.md`. Aucun déploiement n'a été effectué.
 
 ## Périmètre réalisé
 
@@ -15,13 +15,22 @@ Six routes statiques ont été ajoutées :
 - `/protection-dirigeant/` ;
 - `/cyberassurance/`.
 
-Chaque page comporte un hero, un bloc de public concerné, une lecture des risques, les points à vérifier, les erreurs fréquentes, la méthode Assuromieux, une FAQ courte, des liens connexes et un CTA. La longueur visible du contenu principal se situe entre 838 et 952 mots, dans la cible de 800 à 1 300 mots utiles.
+Chaque page comporte un hero, un bloc de public concerné, une lecture des risques, les points à vérifier, les erreurs fréquentes, la méthode Assuromieux, une FAQ courte, des liens connexes et un CTA. La densité reste volontairement comprise entre 914 et 1 024 mots visibles dans `main`, dans la cible de 800 à 1 200 mots utiles ; aucun paragraphe n'a été ajouté pour allonger artificiellement une page.
+
+| Page | Mots visibles dans `main` après recette |
+|---|---:|
+| RC professionnelle | 1 024 |
+| Multirisque professionnelle | 914 |
+| Flotte automobile | 957 |
+| Santé et prévoyance | 938 |
+| Protection du dirigeant | 934 |
+| Cyberassurance | 940 |
 
 ## Système de composants
 
 Quatre composants partagés ont été créés uniquement pour les répétitions réelles :
 
-- `ProductHeroDiagram.astro` : illustration CSS accessible, sans image décorative distante ni JavaScript ;
+- `ProductHeroDiagram.astro` : illustration CSS accessible, sans image décorative distante ni JavaScript, avec six variantes (`orbit`, `axis`, `route`, `collective`, `focus`, `steps`) ;
 - `ProductAudience.astro` : public concerné, avec variantes `split`, `aside` et `band` ;
 - `ProductRiskOverview.astro` : lecture des risques, avec variantes `ledger`, `columns` et `flow` ;
 - `ProductReview.astro` : points à vérifier, erreurs et encadré de distinction, avec variantes `split`, `reverse` et `stacked`.
@@ -35,6 +44,8 @@ Ces variantes changent la composition sans modifier l'ordre sémantique. Elles l
 - Les formulations restent conditionnelles : aucun tarif, résultat, partenaire, délai ou niveau de garantie n'est affirmé.
 - Les différences structurantes sont rendues visibles : RC Pro/RC exploitation, biens/pertes d'exploitation, véhicule/transport, santé/prévoyance, personne/entreprise, prévention/assurance cyber.
 - Les sujets réglementaires, juridiques, fiscaux ou techniques qui dépassent le courtage sont explicitement signalés comme devant être validés.
+- La relecture approfondie conditionne désormais les formulations aux définitions, garanties, limites, exclusions, activités, personnes, territoires et textes applicables.
+- Les sujets santé/prévoyance, dirigeant et notification de données restent bloquants avant production jusqu'à validation des professionnels compétents.
 
 ## Navigation et maillage
 
@@ -69,11 +80,13 @@ La carte sociale partagée du lot est enregistrée dans `public/og-produits-lot-
 - Fichiers protégés : aucun changement prévu ; les empreintes sont contrôlées avant commit.
 - Indexation : `noindex` et blocage de `robots.txt` maintenus.
 - JavaScript : aucun nouveau script fonctionnel ajouté aux pages produits ; illustrations et mises en page en CSS.
-- Responsive : vue large contrôlée dans le navigateur à 1280 px sans débordement ; bascules auditées à 1180, 980, 860, 768, 760, 640, 540 et 420 px, avec repli en une colonne jusqu'à 320 px.
+- Responsive : RC, Flotte et Dirigeant contrôlés dans un moteur WebKit réel aux largeurs exactes 320, 375, 768, 1024, 1280 et 1440 px ; Multirisque et Cyber contrôlées à 375 et 1440 px ; Santé contrôlée à 320, 375 et 1440 px. Aucun débordement horizontal constaté.
 - Accessibilité : un H1 par page, hiérarchie H2/H3 cohérente, repères sémantiques, figures labellisées, liens explicites, styles `:focus-visible` et préférence `prefers-reduced-motion` conservés.
 - SEO : canonical, Open Graph, description, H1 et schémas contrôlés dans le navigateur pour les six routes.
 - Console : aucune erreur ni alerte applicative observée ; seuls les messages de connexion du serveur de développement sont présents.
 - Contraste : bouton principal blanc sur bleu profond mesuré à 12,22:1.
+
+La recette complète, les défauts corrigés et le statut de chaque page sont consignés dans `RECETTE-PRODUITS-LOT-02.md`.
 
 ## Points à faire valider avant publication
 
@@ -84,6 +97,7 @@ La carte sociale partagée du lot est enregistrée dans `public/og-produits-lot-
 5. Les sujets sociaux, fiscaux, juridiques et patrimoniaux liés au dirigeant.
 6. Les exigences techniques, questionnaires, exclusions et services des contrats cyber réellement consultés.
 7. Les titres, descriptions et CTA avant ouverture à l'indexation.
+8. Les lignes `bloquant avant production` de `VALIDATION-METIER-PRODUITS-LOT-02.md`, avec décision et nom du valideur.
 
 ## Hors périmètre volontaire
 

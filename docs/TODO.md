@@ -42,6 +42,9 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 - [x] **P3-04 — Standardiser Assurance BTP et décennale.** Dépendances : P1-02. Validation : quatre ensembles de risques et limite juridique conservée.
 - [x] **P3-05 — Refaire Cabinet sans portrait.** Dépendances : P2-07. Validation : méthode, engagements, ancrage parisien, relation directe et coordonnées uniquement.
 - [x] **P3-06 — Conserver le socle SEO.** Dépendances : P3-01 à P3-05. Validation : title, description, canonical, H1, breadcrumbs, Service/AboutPage et FAQPage selon le cas.
+- [x] **P3-07 — Réaliser la recette approfondie des six pages produits du lot 02.** Dépendances : P3-02 et matrice SEO du lot. Validation : relecture phrase par phrase, diversité des compositions, densité utile et CTA contrôlés ; résultats documentés dans `RECETTE-PRODUITS-LOT-02.md`.
+- [x] **P3-08 — Contrôler le responsive réel du lot 02.** Dépendances : P3-07. Validation : RC, Flotte et Dirigeant testés à 320, 375, 768, 1024, 1280 et 1440 px ; les trois autres pages testées au minimum en mobile et desktop ; aucun débordement horizontal.
+- [x] **P3-09 — Préparer la validation métier du lot 02.** Dépendances : P3-07. Validation : chaque formulation sensible est classée avec risque, motif, question, décision et statut dans `VALIDATION-METIER-PRODUITS-LOT-02.md`.
 
 **Sortie de phase :** six pages compréhensibles rapidement, avec une structure cohérente et sans longues grilles.
 
@@ -57,7 +60,7 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Phase 5 — Contenus, conformité et mise en ligne future
 
-- [ ] **P5-01 — Valider les formulations métier.** Dépendances : pages MVP. Validation : RC, TPM, transport, BTP et décennale relus par l'expert métier.
+- [ ] **P5-01 — Valider les formulations métier.** Dépendances : pages MVP et P3-09. Validation : RC, multirisque, flotte, santé/prévoyance, dirigeant, cyber, TPM, transport, BTP et décennale relus ; toutes les lignes sensibles et bloquantes disposent d'une décision et d'un valideur.
 - [ ] **P5-02 — Valider les informations réglementaires.** Dépendances : sources officielles. Validation : raison sociale, ORIAS, RCS, adresse et rôle de l'interlocuteur confirmés.
 - [ ] **P5-03 — Finaliser mentions légales et confidentialité.** Dépendances : P5-02 et validation juridique. Validation : textes approuvés et reliés depuis toutes les pages.
 - [ ] **P5-04 — Tester une soumission Formspree réelle.** Dépendances : accord du destinataire. Validation : réception, confirmation, erreurs réseau, anti-spam et données de test supprimées.
@@ -67,6 +70,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel.
-2. Faire relire les formulations métier et réglementaires.
-3. Intégrer le visuel final puis exécuter la recette complète avant toute décision de mise en production.
+1. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md`.
+2. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel.
+3. Intégrer le visuel final puis exécuter la recette globale avant toute décision de mise en production.

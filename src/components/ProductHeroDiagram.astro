@@ -2,7 +2,7 @@
 interface Props {
   label: string;
   items: [string, string, string, string];
-  variant?: 'orbit' | 'axis' | 'steps';
+  variant?: 'orbit' | 'axis' | 'steps' | 'route' | 'collective' | 'focus';
 }
 
 const { label, items, variant = 'orbit' } = Astro.props;
@@ -141,6 +141,74 @@ const { label, items, variant = 'orbit' } = Astro.props;
     transform: rotate(8deg);
   }
 
+  .product-diagram--route figcaption {
+    top: 50%;
+    left: 50%;
+  }
+
+  .product-diagram--route li:nth-child(1) { top: 9%; left: 6%; }
+  .product-diagram--route li:nth-child(2) { top: 29%; right: 8%; }
+  .product-diagram--route li:nth-child(3) { bottom: 27%; left: 9%; }
+  .product-diagram--route li:nth-child(4) { right: 6%; bottom: 8%; }
+
+  .product-diagram--route::before {
+    top: 17%;
+    right: 18%;
+    bottom: 17%;
+    left: 18%;
+    border: 1px solid rgba(201, 154, 70, 0.5);
+    border-width: 1px 1px 1px 0;
+    transform: skewY(18deg);
+  }
+
+  .product-diagram--route::after {
+    inset: 24% 28%;
+    border: 1px solid rgba(18, 54, 95, 0.16);
+    transform: rotate(36deg);
+  }
+
+  .product-diagram--collective li:nth-child(1) { top: 7%; left: 50%; transform: translateX(-50%); }
+  .product-diagram--collective li:nth-child(2) { top: 46%; right: 5%; }
+  .product-diagram--collective li:nth-child(3) { bottom: 7%; left: 50%; transform: translateX(-50%); }
+  .product-diagram--collective li:nth-child(4) { top: 46%; right: auto; bottom: auto; left: 5%; }
+
+  .product-diagram--collective::before {
+    inset: 17% 25%;
+    border: 1px solid rgba(201, 154, 70, 0.48);
+    transform: rotate(45deg);
+  }
+
+  .product-diagram--collective::after {
+    inset: 30%;
+    border: 1px solid rgba(18, 54, 95, 0.17);
+    border-radius: 50%;
+  }
+
+  .product-diagram--focus figcaption {
+    top: 15%;
+  }
+
+  .product-diagram--focus li:nth-child(1) { top: 38%; left: 7%; }
+  .product-diagram--focus li:nth-child(2) { top: 38%; right: 7%; }
+  .product-diagram--focus li:nth-child(3) { right: 7%; bottom: 9%; left: auto; }
+  .product-diagram--focus li:nth-child(4) { right: auto; bottom: 9%; left: 7%; }
+
+  .product-diagram--focus::before {
+    top: 22%;
+    bottom: 18%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(var(--color-gold), var(--color-border));
+  }
+
+  .product-diagram--focus::after {
+    top: 54%;
+    right: 18%;
+    left: 18%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-border), var(--color-gold), var(--color-border));
+  }
+
   @media (max-width: 640px) {
     .product-diagram {
       min-height: 19rem;
@@ -150,5 +218,18 @@ const { label, items, variant = 'orbit' } = Astro.props;
       max-width: 9.5rem;
       font-size: var(--font-size-xs);
     }
+
+    .product-diagram--route li,
+    .product-diagram--focus li {
+      max-width: 8.25rem;
+      padding-inline: var(--space-3);
+    }
+
+    .product-diagram--focus li {
+      padding-inline: var(--space-2);
+    }
+
+    .product-diagram--collective li:nth-child(2) { right: 2%; }
+    .product-diagram--collective li:nth-child(4) { left: 2%; }
   }
 </style>

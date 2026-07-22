@@ -29,7 +29,7 @@ const audience = {
 
 const risks = [
   { title: 'Prestations et conseils', text: 'Une erreur, une omission, un retard ou une prestation contestée peut conduire un client à demander réparation. La réponse dépend de l’activité déclarée, du fait générateur, des exclusions et des garanties souscrites.' },
-  { title: 'Dommages causés à des tiers', text: 'Les réclamations peuvent porter sur des dommages corporels, matériels ou immatériels. Leur définition et leur prise en charge ne sont pas identiques d’un contrat à l’autre.' },
+  { title: 'Dommages causés à des tiers', text: 'Les réclamations peuvent porter sur des dommages corporels, matériels ou immatériels, consécutifs ou non consécutifs selon les définitions du contrat. Leur prise en charge, leurs plafonds et leurs exclusions varient.' },
   { title: 'Vie courante de l’exploitation', text: 'Un dommage peut survenir en dehors de la prestation elle-même : accueil d’un visiteur, intervention dans des locaux, événement ou manipulation d’un bien. Cette exposition relève souvent d’une lecture distincte de la RC exploitation.' },
   { title: 'Responsabilités propres au métier', text: 'Certaines activités appellent des extensions, des obligations ou des contrats spécifiques. Défense, recours, responsabilité après livraison ou atteinte aux données doivent être vérifiés selon le contrat.' },
 ];
@@ -38,10 +38,10 @@ const checks = [
   'Les activités, prestations et zones d’intervention sont décrites sans approximation dans les conditions particulières.',
   'Les dommages corporels, matériels et immatériels sont définis et articulés avec des plafonds adaptés au risque étudié.',
   'Les franchises, sous-limites et exclusions sont lues pour chaque type de réclamation important.',
-  'La territorialité correspond aux pays dans lesquels l’entreprise travaille, livre ou peut être mise en cause.',
+  'La territorialité de la garantie et les juridictions admises sont rapprochées des pays dans lesquels l’entreprise travaille, livre ou peut être mise en cause.',
   'Le recours à la sous-traitance et la responsabilité qui en découle sont déclarés et compris.',
   'La période de garantie, les modalités de réclamation et les contrats antérieurs sont rapprochés.',
-  'La défense et le recours sont identifiés sans présumer qu’ils sont inclus dans toutes les situations.',
+  'Les frais ou garanties de défense et le recours sont identifiés sans présumer qu’ils interviennent dans toutes les situations.',
 ];
 
 const mistakes = [
@@ -54,7 +54,7 @@ const mistakes = [
 const faqItems = [
   { question: 'La RC professionnelle est-elle obligatoire pour toutes les entreprises ?', answer: 'Non, pas dans tous les métiers. Certaines professions ou activités sont soumises à des obligations spécifiques. La situation doit être vérifiée selon l’activité, la réglementation applicable et les engagements pris par l’entreprise.' },
   { question: 'Quelle différence entre dommage matériel et dommage immatériel ?', answer: 'Le dommage matériel atteint un bien ; le dommage immatériel correspond notamment à une conséquence financière. Les contrats distinguent souvent le dommage immatériel consécutif d’un dommage immatériel non consécutif, avec des conditions et plafonds différents.' },
-  { question: 'La RC Pro couvre-t-elle automatiquement les sous-traitants ?', answer: 'Non. Le recours à la sous-traitance, la responsabilité conservée par l’entreprise et les assurances des intervenants doivent être examinés. La réponse dépend des garanties souscrites et des exclusions.' },
+  { question: 'La RC Pro couvre-t-elle automatiquement les sous-traitants ?', answer: 'Pas nécessairement. Le recours à la sous-traitance, la responsabilité conservée par l’entreprise et les assurances des intervenants doivent être examinés. La réponse dépend des personnes assurées, des garanties souscrites et des exclusions.' },
   { question: 'Que faut-il préparer pour analyser la RC professionnelle ?', answer: 'Une description précise des prestations, les contrats clients significatifs, les zones d’intervention, la part sous-traitée, les attestations et les informations de sinistralité disponibles constituent une base utile.' },
 ];
 
@@ -71,7 +71,7 @@ const structuredData = [
     <PageHero
       eyebrow="Responsabilité civile professionnelle"
       title="Comprendre ce que votre responsabilité professionnelle doit réellement couvrir."
-      lead="Nous rapprochons vos prestations, vos engagements et les réclamations possibles pour vérifier la cohérence des responsabilités assurées."
+      lead="Nous rapprochons vos prestations, vos engagements et les réclamations possibles pour vérifier la cohérence entre les responsabilités exposées et les garanties du contrat."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'RC professionnelle' }]}
     >
       <CTA href={contactHref} label="Échanger sur ma RC professionnelle" size="large" />
@@ -98,7 +98,7 @@ const structuredData = [
       variant="split"
     />
 
-    <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation précise les limites et arbitrages à conserver." />
+    <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation présente les limites identifiées et les arbitrages envisageables." />
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir votre RC professionnelle." id="faq-title" /><FAQ items={faqItems} /></div>

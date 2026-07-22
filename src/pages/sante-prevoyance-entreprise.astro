@@ -19,7 +19,7 @@ const description = 'Santé et prévoyance entreprise : analyse des catégories,
 const contactHref = '/?besoin=sante-prevoyance#contact';
 const faqItems = [
   { question: 'Santé collective et prévoyance couvrent-elles les mêmes événements ?', answer: 'Non. La complémentaire santé intervient sur des frais de soins selon ses niveaux de remboursement. La prévoyance traite notamment, selon le contrat, l’incapacité, l’invalidité ou le décès. Leur articulation doit être vérifiée.' },
-  { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Les catégories et régimes doivent être étudiés selon la situation de l’entreprise, la convention collective, les accords applicables et les règles en vigueur. Une validation métier ou juridique peut être nécessaire.' },
+  { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Le caractère collectif et, le cas échéant, les catégories objectives de salariés doivent être vérifiés selon la situation de l’entreprise, l’acte de mise en place, la convention collective et les textes en vigueur. Une validation métier ou juridique peut être nécessaire.' },
   { question: 'Que faut-il vérifier lors d’un changement de contrat ?', answer: 'Les niveaux de couverture, la participation employeur, les catégories, dispenses, services, délais de gestion, situations en cours, modalités de maintien et information des salariés doivent être préparés avec prudence.' },
   { question: 'La protection du dirigeant est-elle incluse ?', answer: 'Pas nécessairement. Son statut social, son affiliation et ses besoins personnels doivent être examinés. La protection du dirigeant peut nécessiter une analyse distincte de celle des salariés.' },
 ];
@@ -41,7 +41,7 @@ const structuredData = [
     >
       <CTA href={contactHref} label="Échanger sur la protection collective" size="large" />
       <CTA href="#risques" label="Comprendre les deux volets" variant="secondary" size="large" />
-      <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="orbit" />
+      <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="collective" />
     </PageHero>
 
     <ProductAudience
@@ -71,9 +71,9 @@ const structuredData = [
       checksTitle="Vérifier le cadre avant de comparer les niveaux."
       checksIntro="Toute conclusion réglementaire dépend du contexte. Les documents de l’entreprise et les textes applicables doivent être rapprochés."
       checks={[
-        'La convention collective, les accords et décisions applicables sont identifiés dans leur version pertinente.',
-        'Les catégories de personnel et les conditions d’affiliation sont définies avec précision.',
-        'La participation de l’employeur et les modalités de financement sont vérifiées selon la situation.',
+        'La convention collective, les accords et l’acte de mise en place du régime sont identifiés dans leur version pertinente.',
+        'Le caractère collectif, les catégories objectives éventuelles et les conditions d’affiliation sont vérifiés avec précision.',
+        'La participation de l’employeur et les modalités de financement sont vérifiées selon le régime et les règles applicables.',
         'Les dispenses sont documentées et administrées selon les règles applicables.',
         'Les garanties santé sont comparées par poste et les garanties prévoyance par événement et définition.',
         'Portabilité, maintien de garanties et situations en cours sont préparés avant un changement.',

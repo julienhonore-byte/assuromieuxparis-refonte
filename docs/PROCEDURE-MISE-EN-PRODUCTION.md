@@ -31,18 +31,19 @@ pnpm verify
 pnpm build
 ```
 
-3. Vérifier 37 pages, 404, liens, canonicals, schémas, formulaire et headers.
+3. Vérifier 39 pages, 404, liens, canonicals, schémas, formulaire et headers.
 4. Créer le sitemap filtré et la configuration robots de production dans un commit dédié.
 5. Faire relire le diff supprimant les blocages d'indexation.
 6. Confirmer la fenêtre, les contacts et le seuil de rollback.
 
 ## Jour J — avant bascule
 
-1. Déployer le commit approuvé sur Netlify sans changer le domaine.
-2. Tester l'URL Netlify : HTTPS, 37 routes, formulaire réel autorisé, 404, redirections, sitemap et robots.
-3. Vérifier que seules les routes prévues sont indexables.
-4. Prendre une capture/empreinte des réponses critiques.
-5. Obtenir le GO final métier, conformité et technique.
+1. Vérifier dans l'interface Netlify que Team login ou Password Protection est actif avant le premier déploiement de préproduction.
+2. Déployer le commit approuvé sur Netlify sans changer le domaine et sans rendre l'URL accessible sans authentification.
+3. Tester l'URL Netlify : contrôle d'accès, HTTPS, 39 pages, formulaire réel autorisé, 404, redirections, sitemap futur et robots.
+4. Vérifier que toutes les routes restent non indexables pendant la préproduction.
+5. Prendre une capture/empreinte des réponses critiques.
+6. Obtenir le GO final métier, conformité et technique.
 
 ## Bascule
 

@@ -1,4 +1,4 @@
-# Plan de redirections — préparation RC1
+# Plan de redirections — préparation préproduction RC2
 
 Ce plan ne crée et n'active aucune redirection. Une redirection ne sera ajoutée qu'après validation de l'ancienne URL par un crawl de production, les journaux ou Search Console.
 
@@ -32,7 +32,7 @@ Le fichier immuable `source/index-production-reference.html` contient des candid
 
 ## Format Netlify futur
 
-Les règles pourront être ajoutées à `netlify.toml` ou `_redirects` après validation humaine. Aucune règle n'est activée dans RC1.
+Les règles pourront être ajoutées à `netlify.toml` après validation humaine. Aucune règle n'est activée dans RC2 ni dans la préproduction initiale. Le commentaire de garde présent dans `netlify.toml` rend cette absence intentionnelle et vérifiable.
 
 ## Recette
 

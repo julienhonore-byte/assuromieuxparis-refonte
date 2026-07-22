@@ -31,7 +31,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
 
     <NeedPath title="Un parcours à caler sur le calendrier du projet." intro="L’assurance intervient parmi d’autres décisions de création ou de reprise. La traiter dans le bon ordre évite de demander des attestations avant d’avoir décrit précisément le risque." items={[
       { title: 'Définir le projet assuré', text: 'Création ou reprise, structure juridique, date d’effet, activité principale et activités annexes forment le premier cadre de travail.' },
-      { title: 'Identifier les exigences', text: 'Les règles applicables, le bail, les contrats clients, le financeur ou le donneur d’ordre peuvent demander des justificatifs différents.' },
+      { title: 'Qualifier les exigences', text: 'Une obligation légale ou professionnelle éventuelle, une clause contractuelle ou la demande d’un client, bailleur ou financeur ne se traitent pas de la même manière.' },
       { title: 'Cartographier les moyens', text: 'Locaux, matériels, stocks, données, véhicules, salariés, sous-traitants et territoires d’intervention sont rapprochés de l’exploitation prévue.' },
       { title: 'Arbitrer le programme', text: 'Les garanties sont hiérarchisées selon leur caractère nécessaire au projet, leur utilité et la capacité de l’entreprise à conserver une part du risque.' },
       { title: 'Organiser la mise en place', text: 'Les dates d’effet, attestations et démarches sont suivies jusqu’au démarrage, sans présumer de l’acceptation d’un assureur.' },
@@ -44,14 +44,14 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
       { title: 'Équipes et sous-traitance', text: 'Effectif prévu, fonctions exposées, recours à des prestataires et partage des responsabilités dans la réalisation.' },
       { title: 'Mobilité et territoires', text: 'Véhicules, déplacements, livraisons, interventions chez les clients et pays dans lesquels l’activité sera exercée.' },
       { title: 'Données et continuité', text: 'Systèmes essentiels, données traitées, dépendance à des fournisseurs et conséquences d’une interruption.' },
-    ]} note="La qualification distingue les exigences à vérifier, les demandes contractuelles et les protections facultatives potentiellement utiles. Leur statut dépend toujours du contexte précis." />
+    ]} note="La qualification distingue obligation légale, exigence professionnelle ou contractuelle, demande d’un tiers et protection facultative potentiellement utile. Aucun statut n’est présumé sans examiner l’activité et les documents applicables." />
 
-    <NeedChecklist id="informations" kicker="À préparer" title="Réunir les informations qui rendent la consultation exploitable." intro="Un dossier clair permet de présenter le projet sans masquer ses particularités. Il peut être complété progressivement à mesure que les décisions se stabilisent." items={[
+    <NeedChecklist id="informations" kicker="À préparer" title="Réunir les informations qui rendent l’analyse exploitable." intro="Au premier échange, une présentation de l’activité, du calendrier et des priorités suffit. Les documents ci-dessous peuvent être utiles ensuite, selon le périmètre retenu et l’avancement du projet." items={[
       { title: 'Présentation du projet', text: 'Calendrier, prévision d’activité, expérience des dirigeants et organisation opérationnelle envisagée.' },
       { title: 'Documents constitutifs', text: 'Projet de statuts ou éléments d’identification disponibles, sans transmettre de données sensibles non nécessaires au premier échange.' },
       { title: 'Accords structurants', text: 'Projet de bail, cahier des charges, contrat client, franchise ou financement lorsqu’ils contiennent des demandes d’assurance.' },
       { title: 'Inventaire des moyens', text: 'Valeurs estimées des locaux, équipements, stocks et véhicules à intégrer au périmètre.' },
-      { title: 'Éléments de reprise', text: 'Contrats existants, historique de sinistres disponible et description des activités réellement poursuivies.' },
+      { title: 'Éléments de reprise', text: 'Contrats existants, sinistralité disponible, activités déclarées, actifs, salariés, véhicules, locaux et engagements repris servent à vérifier la continuité, jamais à la présumer.' },
       { title: 'Priorités de démarrage', text: 'Date d’ouverture, attestations attendues et points encore incertains pour séquencer les décisions.' },
     ]} tone="light" />
 

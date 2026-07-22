@@ -1,0 +1,53 @@
+# Validation métier — Parcours par besoin
+
+Date : 22 juillet 2026
+Lot : Mission 7A
+
+## Référentiel de décision
+
+Les seules décisions utilisées sont : `CONFIRMÉE`, `CONSERVÉE AVEC PRUDENCE`, `CORRIGÉE`, `SUPPRIMÉE`, `VARIABLE CONTRACTUELLE` et `VALIDATION HUMAINE REQUISE`. Une formulation publique prudente peut être retenue pour la préproduction sans valider un contrat, une obligation ou une pratique commerciale réelle.
+
+## Grille consolidée
+
+| Route | Sujet | Formulation examinée | Risque | Décision | Justification | Source éventuelle | Validation humaine requise | Statut |
+|---|---|---|---|---|---|---|---|---|
+| `/votre-besoin/` | Rôle du hub | Partir d’une situation avant la solution | Faible | **CONFIRMÉE** | Le hub oriente vers six événements et sépare les accès produits, BTP, dirigeant et ressources. | Positionnement ; Principes UX | Non | Validée pour préproduction |
+| `/votre-besoin/` | CTA du hero et CTA globaux | Demander une analyse avant de choisir | Moyen : concurrence les six parcours et préqualifie à tort en Audit | **CORRIGÉE** | Le hero, le header et la barre fixe mobile utilisent `Choisir ma situation` vers le bloc des six parcours. | Principes UX, § CTA | Non | Validée pour préproduction |
+| `/votre-besoin/` | Besoin hors parcours | Préremplissage Audit par défaut | Moyen : mauvaise qualification | **SUPPRIMÉE** | Le CTA final devient `Décrire mon besoin` vers le formulaire sans paramètre. | Matrice conversion | Non | Validée pour préproduction |
+| Audit | Nature de l’audit | Rapprocher activité, déclarations et contrats pour éclairer une décision | Moyen si compris comme certification ou expertise juridique | **CONSERVÉE AVEC PRUDENCE** | Aucun certificat, avis juridique, conformité absolue ou résultat garanti n’est annoncé. | Positionnement ; Charte SEO | Confirmation du processus réel par un courtier entreprises, priorité basse | Validée sous réserve mineure |
+| Audit | Objets analysés | Activités, garanties, franchises, limites, exclusions, territorialité, sous-traitance, obligations déclaratives et sinistralité | Faible à moyen | **CONFIRMÉE** | Les objets sont distingués et restent soumis aux documents. | Architecture ; page Audit existante | Non pour la formulation publique | Validée sous réserve mineure |
+| Audit | Issues possibles | Maintien, clarification, avenant, ajustement, marché, coordination | Faible | **CORRIGÉE** | La clarification a été ajoutée ; la consultation n’est ni automatique ni présentée comme préférable. | Positionnement, hiérarchie Audit/Courtage | Non | Validée sous réserve mineure |
+| Audit | Documents | Contrats, attestations, relevés, activité, parc, équipes, échéances | Moyen si perçus comme obligatoires au premier échange | **CONSERVÉE AVEC PRUDENCE** | Le texte précise que le périmètre précède la collecte et que les pièces dépendent des sujets retenus. | Charte SEO | Non | Validée sous réserve mineure |
+| Comparaison | Sens de comparer | Comparer la protection avant la prime | Faible | **CONFIRMÉE** | Prix, activités, garanties, franchises, exclusions, territorialité, services et obligations sont distingués. | Positionnement | Non | Validée sous réserve mineure |
+| Comparaison | Marché | Consultation lorsque la mise en concurrence est utile | Moyen : pourrait laisser présumer une offre disponible | **VARIABLE CONTRACTUELLE** | Le contrat actuel peut être conservé ; l’acceptation et les conditions finales restent externes. | Positionnement, hiérarchie Courtage | Confirmation de la pratique commerciale par le dirigeant, priorité moyenne | Validée sous réserve mineure |
+| Comparaison | Prix inférieur | Un tarif plus bas n’est pas nécessairement équivalent | Faible | **CONSERVÉE AVEC PRUDENCE** | Le bloc explique calmement les critères associés sans annoncer de perte de garantie ni créer d’urgence. | Principes éditoriaux | Non | Validée sous réserve mineure |
+| Comparaison | CTA | `Faire comparer ma situation` | Faible | **CONFIRMÉE** | Le libellé porte sur la situation, pas sur un devis ou une meilleure offre. | Mission 7A | Non | Validée sous réserve mineure |
+| Création/reprise | Nature des exigences | Obligation légale ou professionnelle éventuelle, clause contractuelle, demande d’un tiers et protection facultative | Élevé si toutes sont présentées comme obligatoires | **CORRIGÉE** | Les catégories sont désormais distinctes et aucune obligation précise n’est attribuée sans contexte. | Charte SEO | Juriste ou conformité uniquement avant toute future obligation nommée | Validation métier requise |
+| Création/reprise | Différence reprise/création | La continuité des contrats ne doit pas être supposée | Moyen | **CORRIGÉE** | La reprise cite contrats, sinistralité, activités déclarées, actifs, salariés, véhicules, locaux et engagements repris. | Principes UX | Courtier entreprises pour confirmer le périmètre réel d’accompagnement, priorité haute | Validation métier requise |
+| Création/reprise | Étendue de l’offre | Responsabilités, biens, véhicules, équipes, dirigeant, données et continuité | Moyen : offre très large | **VALIDATION HUMAINE REQUISE** | Le texte reste une grille de qualification, mais la capacité réelle du cabinet à accompagner tout ce périmètre doit être confirmée. | Positionnement | Dirigeant Assuromieux et courtier entreprises | Validation métier requise |
+| Création/reprise | Documents | Informations générales au premier échange, pièces détaillées ensuite | Faible | **CORRIGÉE** | La distinction temporelle est maintenant explicite et limite la collecte précoce. | Principes UX | Non | Validation métier requise |
+| Évolution | Événements | CA en hausse ou baisse, activité, clientèle, contrat, équipes, dirigeants, statut, acquisition/fusion, locaux, matériels, territoires, données, sous-traitance et véhicules | Faible | **CORRIGÉE** | Les situations demandées sont regroupées sans liste encyclopédique. | Mission 7A | Non | Validée sous réserve mineure |
+| Évolution | Réponse possible | Absence de modification, information/déclaration, avenant, ajustement, nouveau contrat, marché | Moyen si tout changement semblait exiger un contrat | **CORRIGÉE** | L’absence de modification et l’information selon le contrat sont explicites. | Charte SEO | Non | Validée sous réserve mineure |
+| Évolution | Délais | Aucun délai universel | Élevé si un délai non sourcé était publié | **VARIABLE CONTRACTUELLE** | Le calendrier dépend des clauses et de la situation ; aucun nombre n’est donné. | Charte SEO | Courtier ou juriste seulement pour une future précision | Validée sous réserve mineure |
+| Flotte | Seuil et regroupement | Aucun seuil universel ni contrat unique présumé | Moyen | **CORRIGÉE** | La FAQ sépare le seuil commercial de la possibilité de regrouper le parc. | Cohérence Transport | Spécialiste Flotte pour toute future règle d’éligibilité | Validée sous réserve mineure |
+| Flotte | Véhicules, conducteurs, territoires | Acceptation et autorisation non présumées | Élevé si automatiques | **CORRIGÉE** | Les catégories, conducteurs et zones sont rapprochés de chaque contrat. | Cohérence Transport | Spécialiste Flotte ou souscripteur pour les pratiques réelles | Validée sous réserve mineure |
+| Flotte | Objets distincts | Circulation, dommages, marchandises, matériels, biens confiés, convoyage, assistance, protection juridique et continuité | Moyen | **CORRIGÉE** | Les interfaces sont rendues visibles sans faire de la page une seconde page produit. | Cohérence Transport | Non pour la séparation éditoriale | Validée sous réserve mineure |
+| Transport | Rôle de la page | Orientation et qualification avant lecture des contrats | Faible | **CONFIRMÉE** | La page part d’une opération type et renvoie vers le hub produit et les trois verticales existantes. | Décision préproduction Transport | Non | Validée sous réserve mineure |
+| Transport | Activités | Compte propre/autrui, marchandises, convoyage, déménagement, logistique, stockage, international et sous-traitance | Moyen si assimilés à une solution unique | **CORRIGÉE** | Les opérations sont distinguées ; aucune « assurance transport » universelle n’est annoncée. | Cohérence Transport | Courtier Transport pour confirmer les activités réellement accompagnées | Validée sous réserve mineure |
+| Transport | Objets contractuels | Entreprise, véhicules, circulation, responsabilités, biens, sites, frais, continuité, territorialité et sous-traitance | Moyen | **CORRIGÉE** | Les frais annexes et la territorialité sont ajoutés comme variables, jamais comme garanties acquises. | Cohérence Transport ; décision 6B | Non pour la formulation prudente | Validée sous réserve mineure |
+| Toutes | Préremplissage | Six libellés visibles et modifiables | Faible | **CONFIRMÉE** | Le paramètre est non sensible et ne remplace pas le message libre ni le cadrage humain. | Matrice conversion | Non | Conforme |
+| Toutes | Bouton du formulaire | `Demander mon audit gratuit` quel que soit le besoin | Moyen : efface les différences entre parcours | **CORRIGÉE** | Le bouton devient `Envoyer ma demande` ; l’action Formspree et les données collectées ne changent pas. | Recette conversion 7A | Non | Conforme |
+
+## Décisions finales par route
+
+| Route | Décision |
+|---|---|
+| `/votre-besoin/` | **Validée pour préproduction** |
+| `/votre-besoin/auditer-mes-assurances/` | **Validée sous réserve mineure** |
+| `/votre-besoin/comparer-mes-assurances/` | **Validée sous réserve mineure** |
+| `/votre-besoin/creer-reprendre-entreprise/` | **Validation métier requise** |
+| `/votre-besoin/entreprise-evolue/` | **Validée sous réserve mineure** |
+| `/votre-besoin/assurer-flotte-vehicules/` | **Validée sous réserve mineure** |
+| `/votre-besoin/assurer-activite-transport/` | **Validée sous réserve mineure** |
+
+Aucune route n’est bloquée par une promesse excessive dans sa rédaction actuelle. La décision ne vaut ni validation contractuelle, ni autorisation d’indexation, ni mise en production.

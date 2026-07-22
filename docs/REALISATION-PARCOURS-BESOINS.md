@@ -59,3 +59,31 @@ Les contenus enfants comportent entre 840 et 936 mots visibles dans leur éléme
 - aucun analytics, cookie, visuel externe ou formulaire supplémentaire ;
 - aucun déploiement ;
 - `index.html` et `source/index-production-reference.html` restent protégés.
+
+## Mission 7A — Corrections ciblées
+
+La revue métier et conversion n’a créé aucune route et n’a pas refait le design. Elle a modifié les sept pages existantes, `NeedNavigation.astro`, `RelatedLinks.astro`, `ContactForm.astro` et l’API légère de `SiteLayout.astro` pour :
+
+- recentrer le hub sur le choix ;
+- rendre uniques les identifiants de ses deux navigations et des deux blocs de liens Transport ;
+- contextualiser les CTA globaux du hub sans changer les libellés par défaut des autres pages ;
+- rendre le bouton d’envoi du formulaire compatible avec les six parcours, sans forcer l’intention Audit ;
+- compléter les issues possibles d’un audit et d’une évolution ;
+- préciser les critères de comparaison ;
+- mieux distinguer création et reprise ;
+- renforcer les séparations Flotte et Transport ;
+- maintenir tous les CTA et préremplissages à un niveau d’engagement proportionné.
+
+Cinq livrables 7A ont été ajoutés : validation métier, recette conversion approfondie, cohérence éditoriale, décision de préproduction et questions externes. Les cinq documents initiaux ainsi que la roadmap et le TODO ont été actualisés.
+
+Après les corrections 7A, les six contenus enfants comportent entre 843 et 963 mots statiques dans `main`, toujours sans ajout de section de remplissage.
+
+### Formulations retirées ou remplacées
+
+- le CTA précoce `Demander une analyse` du hub a été remplacé par `Choisir ma situation` ;
+- le préremplissage Audit imposé au besoin générique a été supprimé ;
+- `Consulter les assurances concernées`, qui ne décrivait pas son ancre, a été remplacé par `Voir les critères de comparaison` ;
+- `La meilleure décision n’est pas toujours de changer` a été simplifié en `La décision n’est pas toujours de changer`.
+- `Demander mon audit gratuit` dans le formulaire générique a été remplacé par `Envoyer ma demande`.
+
+Aucune promesse interdite n’a dû être supprimée : économie, couverture, acceptation, devis et changement n’étaient pas présentés comme garantis.

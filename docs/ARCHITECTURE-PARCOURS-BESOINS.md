@@ -1,7 +1,7 @@
 # Architecture des parcours par besoin
 
 Date : 22 juillet 2026
-Statut : réalisé en prévisualisation, indexation bloquée
+Statut : revu en Mission 7A, prévisualisation et indexation bloquée
 
 ## Rôle dans le site
 
@@ -64,3 +64,18 @@ Chaque page enfant contient :
 - aucune page locale, BTP ou sectorielle supplémentaire ;
 - aucune modification de Formspree, Cal.com, `robots.txt`, du blocage `noindex` ou des références de production ;
 - aucun déploiement dans ce lot.
+
+## Revue 7A
+
+- le hero du hub oriente désormais vers les six situations avant toute conversion ;
+- le besoin libre conduit au formulaire sans imposer le préremplissage Audit ;
+- les deux instances de navigation du hub et les deux blocs de liens Transport utilisent des identifiants accessibles distincts ;
+- le CTA global du header et le CTA fixe mobile du hub reprennent `Choisir ma situation` au lieu de concurrencer l’orientation ;
+- Audit ajoute la clarification d’un contrat parmi les résultats possibles ;
+- Comparaison explicite les obligations et conserve le maintien du contrat comme issue ;
+- Création/reprise sépare les catégories d’exigences et distingue les informations initiales des pièces ultérieures ;
+- Évolution inclut explicitement l’absence de modification et exclut tout délai universel ;
+- Flotte sépare regroupement, conducteurs, véhicules, territoires et objets transportés ;
+- Transport conserve son rôle d’orientation et reprend les objets validés en 6A/6B.
+
+Les statuts détaillés figurent dans `DECISION-PREPRODUCTION-PARCOURS-BESOINS.md`. Aucune route n’a été ajoutée.

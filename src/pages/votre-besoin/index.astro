@@ -23,21 +23,20 @@ const otherAccess = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref="/?besoin=audit-contrats#contact" {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref="#parcours" ctaLabel="Choisir ma situation" {structuredData}>
   <main id="contenu-principal">
     <NeedHero
       title="Partir de votre situation, puis vérifier les bons contrats."
       lead="Un dirigeant ne cherche pas toujours un produit précis. Il peut vouloir comprendre un programme existant, comparer une proposition, accompagner une évolution ou présenter une activité nouvelle. Choisissez le point de départ qui décrit le mieux votre besoin actuel."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Votre besoin' }]}
-      primaryHref="/?besoin=audit-contrats#contact"
-      primaryLabel="Demander une analyse"
-      secondaryHref="#parcours"
-      secondaryLabel="Choisir ma situation"
+      primaryHref="#parcours"
+      primaryLabel="Choisir ma situation"
       visualLabel="S’orienter sans présumer la solution"
     />
 
     <div id="parcours">
       <NeedNavigation
+        id="parcours-besoins"
         title="Quelle est votre situation aujourd’hui ?"
         intro="Chaque parcours vous aide à identifier ce qu’il faut vérifier, les informations à préparer et l’étape suivante. Il ne remplace ni une page produit ni l’analyse de vos contrats."
         items={needNavigation}
@@ -54,9 +53,9 @@ const otherAccess = [
       </div>
     </section>
 
-    <NeedNavigation title="Vous connaissez déjà le sujet à approfondir ?" intro="Accédez directement aux pages produits, à l’expertise BTP ou aux guides. Le BTP reste relié à son expertise existante et ne reçoit pas de parcours séparé dans ce lot." items={otherAccess} />
+    <NeedNavigation id="acces-complementaires" title="Vous connaissez déjà le sujet à approfondir ?" intro="Accédez directement aux pages produits, à l’expertise BTP ou aux guides. Le BTP reste relié à son expertise existante et ne reçoit pas de parcours séparé dans ce lot." items={otherAccess} />
 
-    <PageCTA title="Votre situation ne correspond pas exactement à ces parcours ?" text="Décrivez votre activité, les contrats concernés et la décision que vous devez préparer. Le cabinet cadrera avec vous le point de départ utile." primaryHref="/?besoin=audit-contrats#contact" primaryLabel="Demander une analyse" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Comprendre la méthode" />
+    <PageCTA title="Votre situation ne correspond pas exactement à ces parcours ?" text="Décrivez votre activité, les contrats concernés et la décision que vous devez préparer. Le cabinet cadrera avec vous le point de départ utile." primaryHref="/#contact" primaryLabel="Décrire mon besoin" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Comprendre la méthode" />
   </main>
 </SiteLayout>
 

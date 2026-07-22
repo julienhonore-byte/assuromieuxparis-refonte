@@ -1,7 +1,7 @@
 # Matrice SEO — Parcours par besoin
 
 Date : 22 juillet 2026
-Statut : prévisualisation technique, `noindex` maintenu
+Statut : revue 7A terminée, `noindex` maintenu
 
 ## Intentions et métadonnées
 
@@ -53,3 +53,17 @@ Chaque route possède un canonical absolu propre, `og:title`, `og:description` e
 - maintien d’un seul H1 et de FAQ visibles ;
 - contrôle des pages orphelines et du maillage après ajout du sitemap final ;
 - retrait de `noindex` et du blocage `robots.txt` uniquement lors de la décision globale de production.
+
+## Revue des frontières — Mission 7A
+
+| Route | Mots et H2 structurants | Liens entrants contrôlés | Liens sortants structurants | Contenu réservé aux autres pages | Statut |
+|---|---|---|---|---|---|
+| Hub | situation, choix, approche | Accueil, footer, pilier et ressources | six parcours, produits, BTP, dirigeant, ressources | aucune explication contractuelle détaillée | Validée pour préproduction |
+| Audit | signaux, vérifications, documents, décisions | pilier Audit et maillage global | pilier Audit, pilier entreprises, RC, guides | méthode de prestation détaillée réservée au pilier Audit | Validée sous réserve mineure |
+| Comparaison | base homogène, prix, garanties, obligations, décision | hub et parcours voisins | quatre produits, Audit, guide | définitions longues réservées aux produits/guides | Validée sous réserve mineure |
+| Création/reprise | projet, exigences, moyens, informations, blocs | hub et parcours voisins | pilier, trois produits, guides | obligations précises réservées à des contenus sourcés | Validation métier requise |
+| Évolution | changement, avant/après, options | hub et parcours voisins | Audit, pilier, multirisque, flotte, guides | détails contractuels réservés aux produits | Validée sous réserve mineure |
+| Flotte | parc, usages, conducteurs, mouvements, décision | page Flotte, hub et parcours | produit Flotte, Audit, RC, multirisque, guides | garanties détaillées réservées à `/flotte-automobile/` | Validée sous réserve mineure |
+| Transport | opération, rôle, biens, moyens, contrats | hub Transport, verticales et parcours | Transport, Flotte, RC, Audit, trois verticales, guides | chaînes métier détaillées réservées aux verticales | Validée sous réserve mineure |
+
+Aucun title, H1, slug, canonical ou intention principale n’a été changé. Les corrections renforcent les frontières sans créer de variante de mot-clé ni de contenu redondant.

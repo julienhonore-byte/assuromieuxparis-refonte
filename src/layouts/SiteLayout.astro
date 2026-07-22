@@ -12,6 +12,7 @@ interface Props {
   currentPath: string;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   ctaHref?: string;
+  ctaLabel?: string;
   image?: string;
   ogType?: 'website' | 'article';
 }
@@ -23,6 +24,7 @@ const {
   currentPath,
   structuredData,
   ctaHref = '/#contact',
+  ctaLabel,
   image = `${site.canonicalUrl}og-homepage-03.jpg`,
   ogType = 'website',
 } = Astro.props;
@@ -37,6 +39,7 @@ const {
     orias={site.orias}
     {currentPath}
     {ctaHref}
+    {ctaLabel}
   />
   <slot />
   <Footer
@@ -51,5 +54,5 @@ const {
     productLinks={footerProductLinks}
     adviceLinks={footerAdviceLinks}
   />
-  <StickyMobileCTA href={ctaHref} />
+  <StickyMobileCTA href={ctaHref} label={ctaLabel} />
 </BaseLayout>

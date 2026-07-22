@@ -1,11 +1,11 @@
 ---
 interface Item { href: string; title: string; text: string; }
-interface Props { title?: string; intro?: string; items: Item[]; currentPath?: string; }
-const { title = 'Quelle est votre situation aujourd’hui ?', intro, items, currentPath } = Astro.props;
+interface Props { id?: string; title?: string; intro?: string; items: Item[]; currentPath?: string; }
+const { id = 'need-navigation', title = 'Quelle est votre situation aujourd’hui ?', intro, items, currentPath } = Astro.props;
 ---
-<section class="section section--surface need-navigation" aria-labelledby="need-navigation-title">
+<section class="section section--surface need-navigation" aria-labelledby={`${id}-title`}>
   <div class="container-wide need-navigation__layout">
-    <header><p class="eyebrow">Choisir un parcours</p><h2 id="need-navigation-title">{title}</h2>{intro && <p>{intro}</p>}</header>
+    <header><p class="eyebrow">Choisir un parcours</p><h2 id={`${id}-title`}>{title}</h2>{intro && <p>{intro}</p>}</header>
     <ol>
       {items.filter((item) => item.href !== currentPath).map((item, index) => <li><span>{String(index + 1).padStart(2,'0')}</span><div><h3><a href={item.href}>{item.title}</a></h3><p>{item.text}</p></div><a href={item.href} aria-label={`Ouvrir le parcours ${item.title}`}>Choisir <i aria-hidden="true">→</i></a></li>)}
     </ol>

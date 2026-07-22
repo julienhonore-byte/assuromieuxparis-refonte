@@ -6,16 +6,17 @@ interface RelatedItem {
 }
 
 interface Props {
+  id?: string;
   title?: string;
   items: RelatedItem[];
 }
 
-const { title = 'Poursuivre votre lecture', items } = Astro.props;
+const { id = 'related', title = 'Poursuivre votre lecture', items } = Astro.props;
 ---
 
-<aside class="related" aria-labelledby="related-title">
+<aside class="related" aria-labelledby={`${id}-title`}>
   <div class="container-wide">
-    <h2 id="related-title">{title}</h2>
+    <h2 id={`${id}-title`}>{title}</h2>
     <div class="related__grid">
       {items.map((item) => (
         <a href={item.href}>

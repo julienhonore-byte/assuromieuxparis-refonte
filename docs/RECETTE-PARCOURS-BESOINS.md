@@ -13,7 +13,7 @@ La recette couvre les sept routes, les six préremplissages, le maillage ajouté
 |---|---|
 | Build Astro statique | Conforme — 37 pages générées |
 | Nombre de nouvelles routes | Conforme — 7 exactement |
-| Contenu des six pages enfants | Conforme — 840 à 936 mots visibles dans `main` |
+| Contenu des six pages enfants | Conforme après 7A — 843 à 963 mots statiques visibles dans `main` |
 | Liens internes et ancres | Conforme — 37 pages contrôlées, aucun lien cassé |
 | H1, title, description, canonical et Open Graph | Conforme sur les 7 routes |
 | JSON-LD, breadcrumbs et FAQ visibles | Conforme — JSON valide ; 3 FAQ visibles sur chaque page enfant |
@@ -69,3 +69,9 @@ Les journaux du serveur local montrent des réponses HTTP 200 pour toutes les ro
 Sont bloquants avant commit : erreur de build, route manquante, lien interne cassé, débordement horizontal, H1 multiple, métadonnée manquante, préremplissage erroné, modification d’une référence protégée ou perte du blocage d’indexation.
 
 Les validations métier globales, le test d’envoi Formspree réel et l’autorisation d’indexation restent des tâches externes à ce lot.
+
+## Mise à jour — Mission 7A
+
+La recette approfondie reprend les sept routes après correction. Elle ajoute le contrôle des identifiants du hub, des CTA génériques sans préremplissage forcé, des nouvelles issues de décision et des distinctions Flotte/Transport. Le verdict métier devient : hub validé pour préproduction ; cinq parcours validés sous réserve mineure ; Création/reprise en validation métier requise. Aucun parcours n’est bloqué pour promesse excessive.
+
+Les résultats détaillés de conversion sont consignés dans `RECETTE-CONVERSION-PARCOURS-BESOINS-APPROFONDIE.md`. Les contrôles techniques 7A reproduisent les mêmes 37 pages et les 49 combinaisons responsive sans nouvelle route, débordement ni identifiant dupliqué.

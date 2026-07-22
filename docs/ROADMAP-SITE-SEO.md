@@ -52,7 +52,9 @@ Renforcer les intentions commerciales prioritaires et commencer une bibliothèqu
 
 Les sept routes `/votre-besoin/` sont réalisées en prévisualisation. Elles structurent six intentions de décision — audit, comparaison, création/reprise, évolution, flotte et activité de transport — sans créer de nouveau produit ni de nouvelle verticale sectorielle.
 
-Avant indexation, ce lot doit recevoir la validation métier globale du site. Après lancement, sa contribution doit être appréciée à partir de la qualité réelle des demandes et des requêtes observées. Les pages doivent être consolidées ou rapprochées si les données montrent une confusion avec une page produit ; aucune variante supplémentaire ne doit être créée sans intention distincte.
+La revue 7A est terminée : le hub est validé pour préproduction, Audit, Comparaison, Évolution, Flotte et Transport sont validés sous réserve mineure, et Création/reprise reste en validation métier requise jusqu’à confirmation du périmètre réellement accompagné. Aucun nouveau parcours ne doit être créé pour répondre à cette réserve.
+
+Avant indexation, la réserve Création/reprise et la validation métier globale du site doivent être traitées. Après lancement, la contribution du lot doit être appréciée à partir de la qualité réelle des demandes et des requêtes observées. Les pages doivent être consolidées ou rapprochées si les données montrent une confusion avec une page produit ; aucune variante supplémentaire ne doit être créée sans intention distincte.
 
 ### Pages produits prioritaires
 

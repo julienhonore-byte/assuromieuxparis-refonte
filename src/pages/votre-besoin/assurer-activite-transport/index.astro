@@ -30,7 +30,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
     <NeedHero eyebrow="Votre besoin · Transport" title="Qualifier l’activité avant d’articuler les contrats" lead="Transporter des marchandises, déménager des biens ou convoyer un véhicule ne crée pas les mêmes responsabilités. Le parcours décrit les opérations réelles, les flux et les engagements avant d’examiner les contrats qui peuvent intervenir." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Assurer une activité de transport' }]} primaryHref={contactHref} primaryLabel="Décrire mon activité de transport" secondaryHref="#qualification" secondaryLabel="Qualifier les opérations" visualLabel="Des opérations aux contrats" />
 
     <NeedPath title="Ne pas confondre secteur et solution d’assurance." intro="Le mot transport recouvre des métiers distincts. Le diagnostic commence par le rôle de l’entreprise et le déroulement concret d’une mission, pas par le nom d’un produit." items={[
-      { title: 'Décrire les opérations', text: 'Transport pour compte d’autrui, déménagement, convoyage, manutention, stockage ou prestation accessoire sont distingués.' },
+      { title: 'Décrire les opérations', text: 'Compte propre ou compte d’autrui, transport de marchandises, déménagement, convoyage, logistique, stockage et prestations accessoires sont distingués.' },
       { title: 'Identifier les biens pris en charge', text: 'Marchandises, mobilier, véhicules confiés, matériels et emballages n’exposent pas l’entreprise aux mêmes situations.' },
       { title: 'Clarifier le rôle contractuel', text: 'Donneur d’ordre, transporteur, sous-traitant, organisateur ou prestataire : la place de l’entreprise est rapprochée de ses engagements.' },
       { title: 'Cartographier les moyens', text: 'Véhicules, conducteurs, sites, équipements, sous-traitants et territoires complètent la lecture des flux.' },
@@ -48,25 +48,26 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
 
     <NeedChecklist id="contrats" kicker="Programme à coordonner" title="Plusieurs contrats peuvent répondre à des événements différents." intro="Le véhicule, le bien transporté et la prestation ne se confondent pas. Leur articulation doit être expliquée avant de comparer limites, franchises et exclusions." items={[
       { title: 'Responsabilité professionnelle', text: 'Le rôle de l’entreprise, ses obligations contractuelles et les dommages imputés à la prestation sont qualifiés.' },
-      { title: 'Véhicules et flotte', text: 'Circulation, dommages aux véhicules, assistance, immobilisation et gestion du parc forment un bloc spécifique.' },
+      { title: 'Véhicules et circulation', text: 'Parc, usages, conducteurs, circulation, dommages aux véhicules, assistance et immobilisation forment un bloc spécifique.' },
       { title: 'Marchandises ou biens confiés', text: 'Nature des biens, période de prise en charge, valeurs, événements et limites sont rapprochés des opérations.' },
       { title: 'Locaux et équipements', text: 'Dépôts, bureaux, matériels de manutention, stocks et moyens de protection peuvent relever d’autres garanties.' },
       { title: 'Équipes', text: 'Conducteurs, manutentionnaires, personnel administratif et dirigeant appellent une lecture adaptée à l’organisation.' },
-      { title: 'Continuité', text: 'Immobilisation, perte d’un site, indisponibilité d’un système ou dépendance à un prestataire sont étudiées séparément.' },
+      { title: 'Frais annexes et continuité', text: 'Frais éventuels, immobilisation, perte d’un site, indisponibilité d’un système ou dépendance à un prestataire sont étudiés selon leur fondement propre.' },
+      { title: 'Territorialité et sous-traitance', text: 'Pays, zones, rôles, attestations, engagements et recours sont rapprochés de chaque contrat sans extension automatique.' },
     ]} tone="light" />
 
-    <NeedDecision title="La décision porte sur un programme, pas sur une étiquette." intro="Le travail peut confirmer certains contrats et conduire à ajuster seulement une interface. Une consultation éventuelle est limitée au périmètre utile." outcomes={['Clarifier les activités déclarées','Coordonner responsabilités et biens confiés','Adapter le parc à ses usages','Revoir limites, franchises ou exclusions','Consulter un marché sur un bloc identifié']} note="L’analyse ne garantit ni couverture de tout événement, ni acceptation, ni résultat tarifaire. Les conditions dépendent des informations, des documents et de l’étude des assureurs." />
+    <NeedDecision title="La décision porte sur un programme, pas sur une étiquette." intro="Le travail peut confirmer l’organisation existante ou conduire à ajuster seulement une interface. Une consultation éventuelle est limitée au périmètre utile." outcomes={['Confirmer l’organisation existante','Clarifier les activités déclarées','Coordonner responsabilités et biens confiés','Adapter le parc à ses usages','Revoir limites, franchises ou exclusions','Consulter un marché sur un bloc identifié']} note="L’analyse ne garantit ni couverture de tout événement, ni acceptation, ni résultat tarifaire. Les conditions dépendent des informations, des documents et de l’étude des assureurs." />
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une activité de transport." id="faq-title" /><FAQ items={faqItems} /></div></section>
 
-    <RelatedLinks title="Approfondir le programme transport" items={[
+    <RelatedLinks id="programme-transport" title="Approfondir le programme transport" items={[
       { href: '/assurance-transport/', label: 'Assurance transport', text: 'Comprendre l’articulation générale des flux, responsabilités et moyens.' },
       { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Étudier les véhicules et leur gestion.' },
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Situer les responsabilités liées aux prestations.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relire un programme transport déjà en place.' },
     ]} />
 
-    <RelatedLinks title="Choisir l’expertise sectorielle correspondante" items={[
+    <RelatedLinks id="expertises-transport" title="Choisir l’expertise sectorielle correspondante" items={[
       { href: '/secteurs/transport-routier-marchandises/', label: 'Transport routier de marchandises', text: 'Pour les opérations de transport et leurs interfaces.' },
       { href: '/secteurs/convoyage-vehicules/', label: 'Convoyage de véhicules', text: 'Pour la conduite et la prise en charge de véhicules confiés.' },
       { href: '/secteurs/demenagement/', label: 'Déménagement', text: 'Pour les biens confiés, la manutention et les opérations associées.' },

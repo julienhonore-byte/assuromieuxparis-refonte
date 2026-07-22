@@ -38,12 +38,12 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
     ]} />
 
     <NeedChecklist id="changements" kicker="Situations à signaler" title="Un changement opérationnel peut produire plusieurs effets assurantiels." intro="La liste sert de repère, pas de diagnostic automatique. Chaque évolution est replacée dans l’activité, le calendrier et les engagements de l’entreprise." items={[
-      { title: 'Activité ou clientèle', text: 'Nouvelle prestation, nouveau type de client, hausse ou répartition différente du chiffre d’affaires et engagements élargis.' },
+      { title: 'Activité ou clientèle', text: 'Hausse ou baisse du chiffre d’affaires, nouvelle prestation, nouvelle clientèle ou contrat important peuvent modifier les données de référence.' },
       { title: 'Locaux ou implantation', text: 'Déménagement, site supplémentaire, travaux, stockage, nouveaux équipements ou modification des mesures de protection.' },
-      { title: 'Équipes et organisation', text: 'Recrutements, nouvelles fonctions, sous-traitance, réorganisation juridique ou évolution de la gouvernance.' },
+      { title: 'Équipes et organisation', text: 'Recrutements, nouveaux dirigeants, sous-traitance, changement de statut, acquisition, fusion ou réorganisation juridique.' },
       { title: 'Véhicules et mobilité', text: 'Entrées et sorties de véhicules, changement d’usage, nouveaux conducteurs ou nouvelles zones de circulation.' },
-      { title: 'Territoires et contrats', text: 'Export, interventions hors de France, donneur d’ordre exigeant ou contrat comportant de nouvelles responsabilités.' },
-      { title: 'Systèmes et dépendances', text: 'Nouvel outil critique, volume de données accru, prestataire essentiel ou interruption potentiellement plus coûteuse.' },
+      { title: 'Territoires et contrats', text: 'Extension géographique, développement international, donneur d’ordre exigeant ou contrat comportant de nouvelles responsabilités.' },
+      { title: 'Systèmes et dépendances', text: 'Nouveaux matériels ou nouvelles données, outil critique, prestataire essentiel ou interruption potentiellement plus coûteuse.' },
     ]} note="Signaler un changement ne préjuge pas de la réponse contractuelle. L’analyse des documents permet de distinguer une simple actualisation d’une modification plus structurante." />
 
     <NeedChecklist id="documents" kicker="Éléments de comparaison" title="Documenter l’avant et l’après." intro="Une description précise réduit les allers-retours et permet de vérifier ce qui est déjà prévu par les contrats." items={[
@@ -55,7 +55,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
       { title: 'Calendrier', text: 'Date de prise d’effet du changement, échéances contractuelles et décisions urgentes à isoler.' },
     ]} tone="light" />
 
-    <NeedDecision title="La réponse dépend de l’ampleur du changement." intro="Certaines évolutions se traitent dans le contrat existant ; d’autres obligent à revoir une interface ou à comparer le marché sur un périmètre précis." outcomes={['Actualiser une information déclarée','Demander un avenant ciblé','Ajuster une limite ou une franchise','Créer ou coordonner un autre contrat','Consulter le marché sur un besoin défini']} note="La mise en œuvre dépend des clauses, des délais, des documents disponibles et de l’acceptation des assureurs. Aucune continuité ou condition n’est présumée." />
+    <NeedDecision title="La réponse dépend de l’ampleur du changement." intro="Certaines évolutions ne nécessitent aucune modification ; d’autres conduisent à informer un interlocuteur, effectuer une déclaration prévue, revoir une interface ou comparer le marché sur un périmètre précis." outcomes={['Ne rien modifier après vérification','Informer ou déclarer selon le contrat','Demander un avenant ciblé','Ajuster une limite ou une franchise','Créer ou coordonner un autre contrat','Consulter le marché sur un besoin défini']} note="La mise en œuvre et son calendrier dépendent des clauses, des documents disponibles et de l’acceptation des assureurs. Aucun délai universel, aucune continuité ou condition ne sont présumés." />
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Réagir au bon moment." id="faq-title" /><FAQ items={faqItems} /></div></section>
 

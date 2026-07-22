@@ -27,7 +27,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
 
 <SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
   <main id="contenu-principal">
-    <NeedHero eyebrow="Votre besoin · Comparaison" title="Comparer la protection avant de comparer la prime." lead="Un renouvellement, une proposition concurrente ou une hausse tarifaire peut justifier une comparaison. Pour être utile, elle doit remettre les offres sur une base comparable et vérifier leur cohérence avec l’activité réelle." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Comparer mes assurances' }]} primaryHref={contactHref} primaryLabel="Faire comparer ma situation" secondaryHref="#comparaison" secondaryLabel="Consulter les assurances concernées" visualLabel="Comparer sur une base homogène" />
+    <NeedHero eyebrow="Votre besoin · Comparaison" title="Comparer la protection avant de comparer la prime." lead="Un renouvellement, une proposition concurrente ou une hausse tarifaire peut justifier une comparaison. Pour être utile, elle doit remettre les offres sur une base comparable et vérifier leur cohérence avec l’activité réelle." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Comparer mes assurances' }]} primaryHref={contactHref} primaryLabel="Faire comparer ma situation" secondaryHref="#comparaison" secondaryLabel="Voir les critères de comparaison" visualLabel="Comparer sur une base homogène" />
 
     <NeedPath title="Quand la comparaison devient utile." intro="Le besoin ne naît pas toujours d’un prix. Il peut venir d’une évolution du contrat, d’une proposition nouvelle ou de la difficulté à comprendre ce qui change." items={[
       { title: 'Renouvellement à préparer', text: 'L’échéance permet de revoir les déclarations, les garanties et les conditions avant de décider si le contrat doit être conservé.' },
@@ -42,7 +42,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
       { title: 'Franchises', text: 'Le coût conservé par l’entreprise et son mode d’application sont analysés au regard des sinistres possibles.' },
       { title: 'Exclusions', text: 'Une formulation plus courte ou plus longue ne suffit pas : sa portée est lue dans l’ensemble des conditions contractuelles.' },
       { title: 'Territorialité et sous-traitance', text: 'Zones, pays, partenaires, obligations documentaires et recours peuvent créer des différences déterminantes.' },
-      { title: 'Prévention et déclarations', text: 'Mesures attendues, informations à transmettre et conséquences d’une évolution sont intégrées dans la comparaison.' },
+      { title: 'Prévention et obligations', text: 'Mesures attendues, informations à déclarer, justificatifs et procédures prévus par chaque contrat sont intégrés dans la comparaison.' },
       { title: 'Services et assistance', text: 'Gestion, accompagnement, assistance, délais annoncés lorsqu’ils sont documentés et procédures de sinistre complètent la lecture.' },
       { title: 'Montage global', text: 'Une offre apparemment avantageuse peut déplacer une exposition vers un autre contrat ou créer une interface nouvelle.' },
     ]} note="Un tarif plus bas ne signifie pas nécessairement un contrat équivalent. La prime n’est interprétable qu’avec le périmètre, les limites et les conditions associées." />
@@ -54,7 +54,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
       { title: 'Sinistralité disponible', text: 'La fréquence, la nature et le coût des événements éclairent les franchises et la présentation du risque.' },
     ]} tone="light" />
 
-    <NeedDecision title="La meilleure décision n’est pas toujours de changer." intro="La comparaison doit rendre les écarts lisibles et permettre un arbitrage explicite, sans dévaloriser l’assureur ou le courtier en place." outcomes={['Conserver le contrat actuel','Négocier ou demander un avenant','Corriger les bases de comparaison','Retenir une proposition plus cohérente','Consulter le marché sur un périmètre précis']} note="L’acceptation, les conditions finales et la date d’effet restent soumises aux pièces, aux contrats et aux décisions des assureurs concernés." />
+    <NeedDecision title="La décision n’est pas toujours de changer." intro="La comparaison doit rendre les écarts lisibles et permettre un arbitrage explicite, sans dévaloriser l’assureur ou le courtier en place." outcomes={['Conserver le contrat actuel','Négocier ou demander un avenant','Corriger les bases de comparaison','Retenir une proposition plus cohérente','Consulter le marché sur un périmètre précis']} note="L’acceptation, les conditions finales et la date d’effet restent soumises aux pièces, aux contrats et aux décisions des assureurs concernés." />
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Comparer sans réduire la décision au prix." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks title="Assurances fréquemment comparées" items={[

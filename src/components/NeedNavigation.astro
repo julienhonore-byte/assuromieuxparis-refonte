@@ -1,0 +1,28 @@
+---
+interface Item { href: string; title: string; text: string; }
+interface Props { title?: string; intro?: string; items: Item[]; currentPath?: string; }
+const { title = 'Quelle est votre situation aujourd’hui ?', intro, items, currentPath } = Astro.props;
+---
+<section class="section section--surface need-navigation" aria-labelledby="need-navigation-title">
+  <div class="container-wide need-navigation__layout">
+    <header><p class="eyebrow">Choisir un parcours</p><h2 id="need-navigation-title">{title}</h2>{intro && <p>{intro}</p>}</header>
+    <ol>
+      {items.filter((item) => item.href !== currentPath).map((item, index) => <li><span>{String(index + 1).padStart(2,'0')}</span><div><h3><a href={item.href}>{item.title}</a></h3><p>{item.text}</p></div><a href={item.href} aria-label={`Ouvrir le parcours ${item.title}`}>Choisir <i aria-hidden="true">→</i></a></li>)}
+    </ol>
+  </div>
+</section>
+<style>
+  .need-navigation__layout { display: grid; grid-template-columns: minmax(16rem,.52fr) minmax(0,1.48fr); gap: clamp(3rem,8vw,8rem); align-items: start; }
+  h2 { max-width: 14ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  header > p:last-child { margin: var(--space-5) 0 0; color: var(--color-text-soft); }
+  ol { margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
+  li { display: grid; grid-template-columns: 2.5rem minmax(0,1fr) auto; gap: var(--space-4); align-items: baseline; padding: var(--space-5) 0; border-bottom: 1px solid var(--color-border); }
+  li > span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  h3 { margin: 0; font-size: var(--font-size-h4); }
+  h3 a, li > a { color: var(--color-brand-deep); }
+  li p { margin: var(--space-2) 0 0; color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  li > a { min-height: 2.75rem; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+  li i { color: var(--color-gold-dark); font-style: normal; }
+  @media (max-width: 860px) { .need-navigation__layout { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { li { grid-template-columns: 2rem minmax(0,1fr); } li > a { grid-column: 2; } }
+</style>

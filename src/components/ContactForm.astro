@@ -41,15 +41,19 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
       <label for="contact-priority">Besoin principal</label>
       <select id="contact-priority" name="contrat_prioritaire">
         <option value="">Je souhaite être conseillé</option>
+        <option data-product-slug="comparaison-assurances">Comparaison d’assurances</option>
+        <option data-product-slug="creation-reprise">Création ou reprise d’entreprise</option>
+        <option data-product-slug="evolution-entreprise">Évolution d’entreprise</option>
         <option data-product-slug="rc-professionnelle">RC professionnelle</option>
         <option data-product-slug="multirisque">Multirisque professionnelle</option>
-        <option data-product-slug="flotte">Flotte automobile</option>
+        <option data-product-slug="flotte" data-product-aliases="assurer-flotte-vehicules">Flotte automobile</option>
         <option data-product-slug="assurance-btp-decennale">Assurance décennale / BTP</option>
+        <option data-product-slug="activite-transport">Activité de transport</option>
         <option data-product-slug="assurance-transport" data-product-aliases="transport transport-routier convoyage demenagement">Transport / marchandises</option>
         <option data-product-slug="sante-prevoyance">Santé et prévoyance</option>
         <option data-product-slug="protection-dirigeant">Protection du dirigeant</option>
         <option data-product-slug="cyber">Cyberassurance</option>
-        <option data-product-slug="audit-assurances-entreprise">Audit des contrats</option>
+        <option data-product-slug="audit-assurances-entreprise" data-product-aliases="audit audit-contrats auditer-mes-assurances">Audit de contrats</option>
         <option>Autre besoin</option>
       </select>
     </div>

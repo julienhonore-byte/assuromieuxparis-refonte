@@ -48,7 +48,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
     <section class="section section--gold-wash" aria-labelledby="recent-title"><div class="container-wide recent-layout"><div><p class="eyebrow">Publication raisonnée</p><h2 id="recent-title">Les six guides disponibles.</h2><p>La base est volontairement limitée. Les prochaines publications seront ajoutées selon l’intention de recherche, la valeur métier et la capacité de mise à jour.</p><a class="button button--secondary" href="/ressources/guides/">Voir tous les guides</a></div><ol>{entries.map((entry) => <li><a href={resourcePath(entry.data.slug)}>{entry.data.title}</a><span>{entry.data.readingTime} min</span></li>)}</ol></div></section>
 
     <section class="section section--surface lexicon-callout"><div class="container-wide"><div><p class="eyebrow">Lexique</p><h2>Un même mot peut changer de portée selon le contrat.</h2></div><p>Franchise, plafond, dommage immatériel, territorialité ou marchandises transportées : retrouvez des définitions courtes et volontairement prudentes.</p><a class="button button--primary" href="/lexique/">Consulter le lexique</a></div></section>
-    <PageCTA title="Ces repères soulèvent une question sur vos contrats ?" text="Un audit permet de rapprocher les informations générales de votre activité, de vos déclarations et de vos échéances." />
+    <PageCTA title="Ces repères soulèvent une question sur vos contrats ?" text="Un audit permet de rapprocher les informations générales de votre activité, de vos déclarations et de vos échéances." secondaryHref="/votre-besoin/" secondaryLabel="Choisir mon parcours" />
   </main>
 </SiteLayout>
 <style>

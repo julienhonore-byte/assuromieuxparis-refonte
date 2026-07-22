@@ -1,0 +1,77 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/creer-reprendre-entreprise/';
+const title = 'Assurances pour créer ou reprendre une entreprise | Assuromieux Paris';
+const description = 'Structurez les assurances d’une création ou reprise d’entreprise à partir de l’activité, des contrats, des locaux, des équipes et du calendrier réel.';
+const contactHref = '/?besoin=creation-reprise#contact';
+const faqItems = [
+  { question: 'Existe-t-il une liste universelle d’assurances pour créer une entreprise ?', answer: 'Non. Les besoins dépendent notamment de l’activité, du statut, des engagements contractuels, des locaux, des véhicules, des équipes et des risques que l’entreprise souhaite transférer. Le cadrage sert précisément à éviter une liste générique.' },
+  { question: 'Quand faut-il commencer la revue ?', answer: 'Le plus tôt possible lorsque des attestations, un bail, un financement, un véhicule ou un contrat client conditionnent le démarrage. Le calendrier doit laisser le temps de qualifier l’activité et d’étudier les conditions proposées.' },
+  { question: 'Une reprise permet-elle de conserver les contrats existants ?', answer: 'Cela doit être vérifié contrat par contrat. La structure juridique, l’activité reprise, les déclarations, les actifs et les conditions d’acceptation peuvent changer. La continuité ne doit pas être supposée.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Créer ou reprendre une entreprise', path }]), webPageSchema('Assurances pour créer ou reprendre une entreprise', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Projet" title="Structurer les assurances autour du projet réel" lead="Création, acquisition d’un fonds ou reprise d’une société ne produisent pas le même programme d’assurance. Le point de départ est l’activité qui sera effectivement exercée, les moyens engagés et les exigences à satisfaire avant l’ouverture." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Créer ou reprendre une entreprise' }]} primaryHref={contactHref} primaryLabel="Présenter mon projet" secondaryHref="#informations" secondaryLabel="Préparer les informations" visualLabel="Qualifier avant de souscrire" />
+
+    <NeedPath title="Un parcours à caler sur le calendrier du projet." intro="L’assurance intervient parmi d’autres décisions de création ou de reprise. La traiter dans le bon ordre évite de demander des attestations avant d’avoir décrit précisément le risque." items={[
+      { title: 'Définir le projet assuré', text: 'Création ou reprise, structure juridique, date d’effet, activité principale et activités annexes forment le premier cadre de travail.' },
+      { title: 'Identifier les exigences', text: 'Les règles applicables, le bail, les contrats clients, le financeur ou le donneur d’ordre peuvent demander des justificatifs différents.' },
+      { title: 'Cartographier les moyens', text: 'Locaux, matériels, stocks, données, véhicules, salariés, sous-traitants et territoires d’intervention sont rapprochés de l’exploitation prévue.' },
+      { title: 'Arbitrer le programme', text: 'Les garanties sont hiérarchisées selon leur caractère nécessaire au projet, leur utilité et la capacité de l’entreprise à conserver une part du risque.' },
+      { title: 'Organiser la mise en place', text: 'Les dates d’effet, attestations et démarches sont suivies jusqu’au démarrage, sans présumer de l’acceptation d’un assureur.' },
+    ]} />
+
+    <NeedChecklist id="qualification" kicker="Qualification du projet" title="Décrire l’entreprise avant de parler de produits." intro="Deux entreprises portant le même code d’activité peuvent avoir des expositions très différentes. Les éléments opérationnels donnent leur sens aux garanties." items={[
+      { title: 'Activités et clients', text: 'Prestations exactes, répartition du chiffre d’affaires prévu, typologie de clients, livrables et engagements contractuels.' },
+      { title: 'Organisation juridique', text: 'Entité à assurer, dirigeants, filiales éventuelles, opération de reprise et périmètre des actifs ou engagements transférés.' },
+      { title: 'Locaux et équipements', text: 'Statut d’occupation, surfaces, aménagements, matériels, stocks, mesures de protection et dépendances critiques.' },
+      { title: 'Équipes et sous-traitance', text: 'Effectif prévu, fonctions exposées, recours à des prestataires et partage des responsabilités dans la réalisation.' },
+      { title: 'Mobilité et territoires', text: 'Véhicules, déplacements, livraisons, interventions chez les clients et pays dans lesquels l’activité sera exercée.' },
+      { title: 'Données et continuité', text: 'Systèmes essentiels, données traitées, dépendance à des fournisseurs et conséquences d’une interruption.' },
+    ]} note="La qualification distingue les exigences à vérifier, les demandes contractuelles et les protections facultatives potentiellement utiles. Leur statut dépend toujours du contexte précis." />
+
+    <NeedChecklist id="informations" kicker="À préparer" title="Réunir les informations qui rendent la consultation exploitable." intro="Un dossier clair permet de présenter le projet sans masquer ses particularités. Il peut être complété progressivement à mesure que les décisions se stabilisent." items={[
+      { title: 'Présentation du projet', text: 'Calendrier, prévision d’activité, expérience des dirigeants et organisation opérationnelle envisagée.' },
+      { title: 'Documents constitutifs', text: 'Projet de statuts ou éléments d’identification disponibles, sans transmettre de données sensibles non nécessaires au premier échange.' },
+      { title: 'Accords structurants', text: 'Projet de bail, cahier des charges, contrat client, franchise ou financement lorsqu’ils contiennent des demandes d’assurance.' },
+      { title: 'Inventaire des moyens', text: 'Valeurs estimées des locaux, équipements, stocks et véhicules à intégrer au périmètre.' },
+      { title: 'Éléments de reprise', text: 'Contrats existants, historique de sinistres disponible et description des activités réellement poursuivies.' },
+      { title: 'Priorités de démarrage', text: 'Date d’ouverture, attestations attendues et points encore incertains pour séquencer les décisions.' },
+    ]} tone="light" />
+
+    <NeedDecision title="Le programme se construit par blocs cohérents." intro="La réponse peut associer plusieurs contrats, ou commencer par un périmètre prioritaire avant d’évoluer. L’objectif est de rendre visibles les interfaces et les échéances." outcomes={['Responsabilités liées aux activités','Locaux, matériels et continuité','Véhicules et déplacements','Équipes et protection du dirigeant','Risques numériques et dépendances']} note="Une recommandation reste conditionnée par les informations communiquées et par les conditions qu’un assureur accepte d’étudier. Aucun contrat n’est présenté comme universel." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant le démarrage ou la reprise." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Contrats à situer dans le projet" items={[
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Voir les principaux blocs d’un programme professionnel.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Relier les responsabilités aux prestations réellement délivrées.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Examiner locaux, équipements et continuité.' },
+      { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Situer les besoins personnels et la continuité de décision.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/quelles-assurances-prevoir-pme/', title: 'Quelles assurances prévoir pour une PME ?', description: 'Une méthode pour raisonner à partir de l’activité plutôt que d’une liste.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Utile pour reprendre et relire un programme existant.' },
+    ]} />
+    <NeedNavigation title="Un autre point de départ ?" items={needNavigation.filter((item) => ['/votre-besoin/auditer-mes-assurances/','/votre-besoin/entreprise-evolue/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Présentez le projet, son calendrier et ses points d’incertitude." text="Le premier échange sert à qualifier l’activité et à ordonner les informations utiles. Les pièces détaillées sont demandées ensuite selon le périmètre." primaryHref={contactHref} primaryLabel="Présenter mon projet" secondaryHref="#informations" secondaryLabel="Préparer les informations" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

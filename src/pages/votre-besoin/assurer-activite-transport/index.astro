@@ -1,0 +1,83 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/assurer-activite-transport/';
+const title = 'Assurer une activité de transport | Assuromieux Paris';
+const description = 'Qualifiez une activité de transport, déménagement ou convoyage pour articuler responsabilités, véhicules, marchandises, biens confiés et continuité.';
+const contactHref = '/?besoin=activite-transport#contact';
+const faqItems = [
+  { question: 'Une assurance transport suffit-elle pour toute l’activité ?', answer: 'Non. Une activité peut mobiliser plusieurs contrats autour des responsabilités professionnelles, des véhicules, des marchandises ou biens confiés, des locaux, des équipes et de la continuité. Leur articulation dépend des opérations réalisées.' },
+  { question: 'Pourquoi distinguer transport routier, déménagement et convoyage ?', answer: 'Les biens pris en charge, la conduite des véhicules, les opérations accessoires, les contrats clients et les événements possibles diffèrent. Une qualification précise évite de raisonner à partir du seul mot « transport ».' },
+  { question: 'Quelles informations transmettre en premier ?', answer: 'Commencez par les opérations réellement réalisées, le rôle contractuel, les véhicules, les biens pris en charge, les territoires, la sous-traitance et la sinistralité disponible. Les documents détaillés sont demandés après cadrage.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Assurer une activité de transport', path }]), webPageSchema('Assurer une activité de transport', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Transport" title="Qualifier l’activité avant d’articuler les contrats" lead="Transporter des marchandises, déménager des biens ou convoyer un véhicule ne crée pas les mêmes responsabilités. Le parcours décrit les opérations réelles, les flux et les engagements avant d’examiner les contrats qui peuvent intervenir." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Assurer une activité de transport' }]} primaryHref={contactHref} primaryLabel="Décrire mon activité de transport" secondaryHref="#qualification" secondaryLabel="Qualifier les opérations" visualLabel="Des opérations aux contrats" />
+
+    <NeedPath title="Ne pas confondre secteur et solution d’assurance." intro="Le mot transport recouvre des métiers distincts. Le diagnostic commence par le rôle de l’entreprise et le déroulement concret d’une mission, pas par le nom d’un produit." items={[
+      { title: 'Décrire les opérations', text: 'Transport pour compte d’autrui, déménagement, convoyage, manutention, stockage ou prestation accessoire sont distingués.' },
+      { title: 'Identifier les biens pris en charge', text: 'Marchandises, mobilier, véhicules confiés, matériels et emballages n’exposent pas l’entreprise aux mêmes situations.' },
+      { title: 'Clarifier le rôle contractuel', text: 'Donneur d’ordre, transporteur, sous-traitant, organisateur ou prestataire : la place de l’entreprise est rapprochée de ses engagements.' },
+      { title: 'Cartographier les moyens', text: 'Véhicules, conducteurs, sites, équipements, sous-traitants et territoires complètent la lecture des flux.' },
+      { title: 'Articuler les contrats', text: 'Responsabilités, parc, biens transportés ou confiés, locaux, équipes et continuité sont examinés ensemble.' },
+    ]} />
+
+    <NeedChecklist id="qualification" kicker="Activité réelle" title="Décrire un flux de bout en bout." intro="Une opération type permet de repérer qui fait quoi, à quel moment et avec quels moyens. Elle révèle les interfaces que les intitulés commerciaux masquent souvent." items={[
+      { title: 'Nature de la prestation', text: 'Type de mission, opérations accessoires, conditions d’intervention et part des différentes activités dans le chiffre d’affaires.' },
+      { title: 'Biens et valeurs', text: 'Nature, valeur habituelle ou maximale, sensibilité, propriété et modalités de prise en charge des biens.' },
+      { title: 'Clients et contrats', text: 'Typologie de donneurs d’ordre, conditions négociées, documents de transport et engagements particuliers.' },
+      { title: 'Véhicules et conducteurs', text: 'Parc propre, loué ou confié, usages, profils de conduite, déplacements et organisation des mouvements.' },
+      { title: 'Territoires et sous-traitance', text: 'Zones d’intervention, flux internationaux éventuels, recours à d’autres opérateurs et méthode de sélection.' },
+      { title: 'Sinistres et prévention', text: 'Vol, casse, accident, retard, erreur de livraison ou immobilisation sont classés avec les mesures déjà mises en œuvre.' },
+    ]} note="Cette qualification ne remplace pas la lecture des contrats et documents applicables. Elle donne le périmètre à présenter aux assureurs et les interfaces à vérifier." />
+
+    <NeedChecklist id="contrats" kicker="Programme à coordonner" title="Plusieurs contrats peuvent répondre à des événements différents." intro="Le véhicule, le bien transporté et la prestation ne se confondent pas. Leur articulation doit être expliquée avant de comparer limites, franchises et exclusions." items={[
+      { title: 'Responsabilité professionnelle', text: 'Le rôle de l’entreprise, ses obligations contractuelles et les dommages imputés à la prestation sont qualifiés.' },
+      { title: 'Véhicules et flotte', text: 'Circulation, dommages aux véhicules, assistance, immobilisation et gestion du parc forment un bloc spécifique.' },
+      { title: 'Marchandises ou biens confiés', text: 'Nature des biens, période de prise en charge, valeurs, événements et limites sont rapprochés des opérations.' },
+      { title: 'Locaux et équipements', text: 'Dépôts, bureaux, matériels de manutention, stocks et moyens de protection peuvent relever d’autres garanties.' },
+      { title: 'Équipes', text: 'Conducteurs, manutentionnaires, personnel administratif et dirigeant appellent une lecture adaptée à l’organisation.' },
+      { title: 'Continuité', text: 'Immobilisation, perte d’un site, indisponibilité d’un système ou dépendance à un prestataire sont étudiées séparément.' },
+    ]} tone="light" />
+
+    <NeedDecision title="La décision porte sur un programme, pas sur une étiquette." intro="Le travail peut confirmer certains contrats et conduire à ajuster seulement une interface. Une consultation éventuelle est limitée au périmètre utile." outcomes={['Clarifier les activités déclarées','Coordonner responsabilités et biens confiés','Adapter le parc à ses usages','Revoir limites, franchises ou exclusions','Consulter un marché sur un bloc identifié']} note="L’analyse ne garantit ni couverture de tout événement, ni acceptation, ni résultat tarifaire. Les conditions dépendent des informations, des documents et de l’étude des assureurs." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une activité de transport." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Approfondir le programme transport" items={[
+      { href: '/assurance-transport/', label: 'Assurance transport', text: 'Comprendre l’articulation générale des flux, responsabilités et moyens.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Étudier les véhicules et leur gestion.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Situer les responsabilités liées aux prestations.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relire un programme transport déjà en place.' },
+    ]} />
+
+    <RelatedLinks title="Choisir l’expertise sectorielle correspondante" items={[
+      { href: '/secteurs/transport-routier-marchandises/', label: 'Transport routier de marchandises', text: 'Pour les opérations de transport et leurs interfaces.' },
+      { href: '/secteurs/convoyage-vehicules/', label: 'Convoyage de véhicules', text: 'Pour la conduite et la prise en charge de véhicules confiés.' },
+      { href: '/secteurs/demenagement/', label: 'Déménagement', text: 'Pour les biens confiés, la manutention et les opérations associées.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité du transporteur routier de marchandises', description: 'Repères pour distinguer responsabilité, biens et contrats.' },
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Assurance flotte automobile : points à vérifier', description: 'Véhicules, conducteurs, franchises et administration.' },
+    ]} />
+    <NeedNavigation title="Parcours associés" items={needNavigation.filter((item) => ['/votre-besoin/auditer-mes-assurances/','/votre-besoin/assurer-flotte-vehicules/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Décrivez une opération type et les moyens engagés." text="Le premier échange qualifie le rôle de l’entreprise, les biens pris en charge, les véhicules et les contrats déjà en place avant toute recommandation." primaryHref={contactHref} primaryLabel="Décrire mon activité de transport" secondaryHref="#contrats" secondaryLabel="Voir les contrats à articuler" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

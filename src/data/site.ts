@@ -39,6 +39,7 @@ export const footerProductLinks: NavigationItem[] = [
 ];
 
 export const footerAdviceLinks: NavigationItem[] = [
+  { href: '/votre-besoin/', label: 'Votre besoin' },
   { href: '/audit-assurances-entreprise/', label: 'Audit des assurances' },
   { href: '/assurances-entreprises/', label: 'Assurances entreprises' },
   { href: '/secteurs/', label: 'Secteurs' },

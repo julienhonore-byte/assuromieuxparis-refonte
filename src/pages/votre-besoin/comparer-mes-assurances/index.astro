@@ -1,0 +1,72 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/comparer-mes-assurances/';
+const title = 'Comparer ses assurances professionnelles | Assuromieux Paris';
+const description = 'Comparez vos assurances professionnelles au-delà du prix : activités, garanties, franchises, exclusions, territoires, services et cohérence globale.';
+const contactHref = '/?besoin=comparaison-assurances#contact';
+const faqItems = [
+  { question: 'Peut-on comparer deux contrats uniquement avec leurs tarifs ?', answer: 'Non. La prime doit être rapprochée des activités déclarées, garanties, limites, franchises, exclusions, services et obligations. Deux montants proches peuvent correspondre à des protections différentes.' },
+  { question: 'Faut-il résilier avant de demander une comparaison ?', answer: 'Il ne faut pas anticiper une résiliation sans avoir vérifié les échéances, conditions contractuelles et solutions réellement disponibles. La comparaison prépare une décision ; elle ne la remplace pas.' },
+  { question: 'Assuromieux interroge-t-il toujours le marché ?', answer: 'Non. Une lecture préalable peut montrer que le contrat actuel reste pertinent ou qu’un avenant suffit. La consultation intervient lorsque la mise en concurrence apporte une comparaison utile.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Comparer mes assurances', path }]), webPageSchema('Comparer ses assurances professionnelles', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Comparaison" title="Comparer la protection avant de comparer la prime." lead="Un renouvellement, une proposition concurrente ou une hausse tarifaire peut justifier une comparaison. Pour être utile, elle doit remettre les offres sur une base comparable et vérifier leur cohérence avec l’activité réelle." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Comparer mes assurances' }]} primaryHref={contactHref} primaryLabel="Faire comparer ma situation" secondaryHref="#comparaison" secondaryLabel="Consulter les assurances concernées" visualLabel="Comparer sur une base homogène" />
+
+    <NeedPath title="Quand la comparaison devient utile." intro="Le besoin ne naît pas toujours d’un prix. Il peut venir d’une évolution du contrat, d’une proposition nouvelle ou de la difficulté à comprendre ce qui change." items={[
+      { title: 'Renouvellement à préparer', text: 'L’échéance permet de revoir les déclarations, les garanties et les conditions avant de décider si le contrat doit être conservé.' },
+      { title: 'Proposition concurrente à décoder', text: 'Les différences de présentation peuvent masquer des écarts de périmètre, de limites, de franchises ou de services.' },
+      { title: 'Augmentation tarifaire à comprendre', text: 'Le prix est replacé dans la sinistralité, les évolutions de l’entreprise et les conditions du marché, sans promettre une baisse.' },
+      { title: 'Programme devenu difficile à lire', text: 'Plusieurs contrats ou intermédiaires peuvent nécessiter une comparaison globale plutôt qu’une mise en concurrence police par police.' },
+    ]} />
+
+    <NeedChecklist id="comparaison" kicker="Base de comparaison" title="Mettre les offres au même niveau de lecture." intro="Une comparaison fiable commence par vérifier que les offres décrivent la même entreprise, les mêmes activités et les mêmes scénarios." items={[
+      { title: 'Activités déclarées', text: 'Les prestations, chiffres, clientèles, sous-traitants et territoires doivent être comparables avant toute lecture du tarif.' },
+      { title: 'Garanties et limites', text: 'Objet, assurés, événements, plafonds, sous-limites et conditions d’intervention sont rapprochés ligne par ligne.' },
+      { title: 'Franchises', text: 'Le coût conservé par l’entreprise et son mode d’application sont analysés au regard des sinistres possibles.' },
+      { title: 'Exclusions', text: 'Une formulation plus courte ou plus longue ne suffit pas : sa portée est lue dans l’ensemble des conditions contractuelles.' },
+      { title: 'Territorialité et sous-traitance', text: 'Zones, pays, partenaires, obligations documentaires et recours peuvent créer des différences déterminantes.' },
+      { title: 'Prévention et déclarations', text: 'Mesures attendues, informations à transmettre et conséquences d’une évolution sont intégrées dans la comparaison.' },
+      { title: 'Services et assistance', text: 'Gestion, accompagnement, assistance, délais annoncés lorsqu’ils sont documentés et procédures de sinistre complètent la lecture.' },
+      { title: 'Montage global', text: 'Une offre apparemment avantageuse peut déplacer une exposition vers un autre contrat ou créer une interface nouvelle.' },
+    ]} note="Un tarif plus bas ne signifie pas nécessairement un contrat équivalent. La prime n’est interprétable qu’avec le périmètre, les limites et les conditions associées." />
+
+    <NeedChecklist id="documents" kicker="Documents utiles" title="Réunir les éléments des deux côtés de la comparaison." intro="Les documents servent à vérifier ce qui est réellement proposé et ce qui est actuellement en vigueur. Une synthèse commerciale seule ne suffit pas toujours." items={[
+      { title: 'Contrat actuel', text: 'Conditions particulières, avenants, tableau de garanties et dernier avis d’échéance donnent la base existante.' },
+      { title: 'Proposition à comparer', text: 'Devis, conditions, franchises, exclusions et éventuelles exigences doivent être disponibles dans leur version complète.' },
+      { title: 'Données d’activité', text: 'Chiffres, effectifs, sites, parc, zones et sous-traitance permettent de contrôler l’homogénéité des déclarations.' },
+      { title: 'Sinistralité disponible', text: 'La fréquence, la nature et le coût des événements éclairent les franchises et la présentation du risque.' },
+    ]} tone="light" />
+
+    <NeedDecision title="La meilleure décision n’est pas toujours de changer." intro="La comparaison doit rendre les écarts lisibles et permettre un arbitrage explicite, sans dévaloriser l’assureur ou le courtier en place." outcomes={['Conserver le contrat actuel','Négocier ou demander un avenant','Corriger les bases de comparaison','Retenir une proposition plus cohérente','Consulter le marché sur un périmètre précis']} note="L’acceptation, les conditions finales et la date d’effet restent soumises aux pièces, aux contrats et aux décisions des assureurs concernés." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Comparer sans réduire la décision au prix." id="faq-title" /><FAQ items={faqItems} /></div></section>
+    <RelatedLinks title="Assurances fréquemment comparées" items={[
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Comparer activités, dommages, limites et exclusions.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Rapprocher parc, usages, conducteurs et franchises.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Comparer sites, biens, événements et continuité.' },
+      { href: '/sante-prevoyance-entreprise/', label: 'Santé et prévoyance', text: 'Lire garanties collectives, catégories et services.' },
+    ]} />
+    <RelatedResources items={[{ href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Préparer une comparaison à partir d’un inventaire fiable.' }]} />
+    <NeedNavigation title="Un autre point de départ ?" items={needNavigation.filter((item) => ['/votre-besoin/auditer-mes-assurances/','/votre-besoin/entreprise-evolue/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Comparons votre situation sur une base homogène." text="Indiquez le contrat concerné, l’échéance et la raison de la comparaison. Les offres complètes pourront être étudiées après le cadrage initial." primaryHref={contactHref} primaryLabel="Faire comparer ma situation" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Comprendre la méthode" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

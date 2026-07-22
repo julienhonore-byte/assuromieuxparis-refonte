@@ -28,4 +28,23 @@ export const serviceSchema = (name: string, description: string, path: string) =
   areaServed: { '@type': 'Country', name: 'France' },
 });
 
+export const webPageSchema = (name: string, description: string, path: string) => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name,
+  description,
+  url: pageUrl(path),
+  publisher: { '@id': `${site.canonicalUrl}#organization` },
+});
+
+export const faqSchema = (items: { question: string; answer: string }[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+});
+
 export const baseSchemas = [organizationSchema];

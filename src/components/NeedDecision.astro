@@ -1,0 +1,22 @@
+---
+interface Props { title: string; intro: string; outcomes: string[]; note: string; }
+const { title, intro, outcomes, note } = Astro.props;
+---
+<section class="section need-decision" aria-labelledby="need-decision-title">
+  <div class="container-wide need-decision__layout">
+    <div><p class="eyebrow">Décision possible</p><h2 id="need-decision-title">{title}</h2><p>{intro}</p></div>
+    <div><ul>{outcomes.map((outcome) => <li>{outcome}</li>)}</ul><p class="need-decision__note">{note}</p></div>
+  </div>
+</section>
+<style>
+  .need-decision { color: var(--color-text-on-dark-soft); background: radial-gradient(circle at 12% 15%,rgba(201,154,70,.17),transparent 24%), var(--color-brand-ink); }
+  .need-decision__layout { display: grid; grid-template-columns: minmax(16rem,.72fr) minmax(0,1.28fr); gap: clamp(3rem,8vw,8rem); }
+  :global(.need-decision .eyebrow) { color: var(--color-gold-soft); }
+  h2 { max-width: 14ch; margin: 0; color: var(--color-surface); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .need-decision__layout > div:first-child > p:last-child { max-width: 34rem; margin: var(--space-5) 0 0; }
+  ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.15); list-style: none; }
+  li { min-height: 5.5rem; display: flex; align-items: center; padding: var(--space-5); color: var(--color-surface); background: rgba(11,39,71,.96); font-weight: var(--font-weight-strong); }
+  .need-decision__note { margin: var(--space-5) 0 0; padding-left: var(--space-5); border-left: 3px solid var(--color-gold); font-size: var(--font-size-sm); }
+  @media (max-width: 860px) { .need-decision__layout { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { ul { grid-template-columns: 1fr; } li { min-height: 0; } }
+</style>

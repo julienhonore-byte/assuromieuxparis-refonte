@@ -1,0 +1,78 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SolutionMethod from '../../../components/SolutionMethod.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/auditer-mes-assurances/';
+const title = 'Auditer ses assurances professionnelles | Assuromieux Paris';
+const description = 'Faites le point sur vos assurances professionnelles : activités déclarées, garanties, franchises, plafonds, exclusions et articulation des contrats.';
+const contactHref = '/?besoin=audit-contrats#contact';
+const faqItems = [
+  { question: 'Un audit oblige-t-il à changer de contrat ?', answer: 'Non. Selon les constats, la décision peut être de maintenir le contrat, de demander un avenant, d’ajuster une garantie ou de consulter le marché. Le changement n’est pas un objectif en soi.' },
+  { question: 'Faut-il transmettre tous les documents dès le premier échange ?', answer: 'Non. Le premier échange sert à définir le périmètre. Les documents utiles sont ensuite réunis selon les contrats et les sujets retenus, sans envoyer de données confidentielles inutilement.' },
+  { question: 'L’audit garantit-il une baisse de cotisation ?', answer: 'Non. Il vise d’abord la cohérence des déclarations, garanties, limites et contrats. Une consultation peut faire apparaître différentes conditions, mais aucune économie ou acceptation ne peut être garantie.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Auditer mes assurances', path }]), webPageSchema('Auditer ses assurances professionnelles', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Audit" title="Faire le point sur vos assurances professionnelles" lead="Vos contrats peuvent avoir été souscrits à des dates différentes, alors que l’activité, les équipes, le parc ou les locaux ont évolué. L’audit rapproche la situation actuelle de ce qui est déclaré et garanti avant toute décision de renouvellement." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Auditer mes assurances' }]} primaryHref={contactHref} primaryLabel="Demander une analyse de mes contrats" secondaryHref="#documents" secondaryLabel="Voir les documents utiles" visualLabel="Auditer avant d’arbitrer" />
+
+    <NeedPath title="Les signaux qui justifient une revue." intro="Un contrat peut rester pertinent pendant plusieurs années, mais une accumulation de changements ou une échéance sensible mérite une lecture consolidée." items={[
+      { title: 'Les contrats ont vieilli', text: 'Des avenants se sont ajoutés, les interlocuteurs ont changé ou les conditions ne sont plus faciles à rapprocher de l’activité actuelle.' },
+      { title: 'L’entreprise a évolué', text: 'Chiffre d’affaires, salariés, véhicules, locaux, zones d’intervention, sous-traitance ou prestations nouvelles peuvent modifier les informations utiles.' },
+      { title: 'Un événement appelle une explication', text: 'Sinistre, refus, difficulté de gestion, hausse de cotisation ou franchise devenue lourde peuvent révéler un point à comprendre.' },
+      { title: 'Une échéance approche', text: 'Le temps disponible permet de réunir les pièces, hiérarchiser les écarts et décider si une consultation du marché est réellement utile.' },
+    ]} />
+
+    <NeedChecklist id="verification" kicker="Ce que l’audit examine" title="Lire les contrats comme un programme." intro="L’analyse ne consiste pas à cocher une liste de garanties. Elle rapproche les documents, les faits et les interactions entre contrats." items={[
+      { title: 'Activités déclarées', text: 'Prestations, clients, chiffre d’affaires, zones, sous-traitance et engagements sont comparés à l’exploitation réelle.' },
+      { title: 'Garanties et limites', text: 'Objet, assurés, événements, territorialité, plafonds, sous-limites et exclusions sont remis dans leur contexte.' },
+      { title: 'Franchises', text: 'Le montant conservé par l’entreprise est rapproché de la fréquence des événements et de sa capacité à l’absorber.' },
+      { title: 'Articulation des contrats', text: 'Les doublons apparents, interfaces et absences possibles sont examinés sans conclure à partir des seuls intitulés.' },
+      { title: 'Obligations déclaratives', text: 'Les informations à actualiser et les procédures prévues par les contrats sont repérées pour éviter les écarts administratifs.' },
+      { title: 'Sinistralité et prévention', text: 'Les événements disponibles sont classés pour comprendre leurs causes, leur coût et les actions de prévention pertinentes.' },
+    ]} note="L’audit décrit les écarts et les décisions possibles. Il ne garantit ni couverture universelle, ni économie, ni absence de sinistre." />
+
+    <NeedChecklist id="documents" kicker="Documents utiles" title="Préparer les pièces qui éclairent réellement la situation." intro="Le périmètre est défini avant la collecte. Une revue ciblée peut commencer avec un nombre limité de documents, puis s’élargir si une interface le justifie." items={[
+      { title: 'Contrats et conditions particulières', text: 'Polices, avenants, tableaux de garanties et appels de cotisation disponibles constituent le socle de lecture.' },
+      { title: 'Attestations et relevés', text: 'Attestations en cours, relevés d’information et documents de sinistralité aident à reconstituer la situation.' },
+      { title: 'Description de l’activité', text: 'Prestations, chiffres, clients, sites, territoires et changements récents donnent du sens aux clauses.' },
+      { title: 'Parc automobile', text: 'Liste des véhicules, usages, conducteurs et mouvements est utile lorsque la flotte entre dans le périmètre.' },
+      { title: 'Équipes', text: 'Effectifs et masse salariale sont préparés lorsque santé, prévoyance ou responsabilités employeur sont examinées.' },
+      { title: 'Échéances et priorités', text: 'Dates utiles, difficultés rencontrées et contrat prioritaire permettent d’ordonner la revue.' },
+    ]} tone="light" />
+
+    <SolutionMethod title="Comprendre, analyser, consulter si nécessaire, puis recommander." text="Assuromieux cadre le périmètre, rapproche les contrats de l’activité et classe les écarts. Le marché n’est interrogé que si la comparaison apporte une réponse utile à la situation." />
+
+    <NeedDecision title="Plusieurs conclusions sont possibles." intro="L’audit n’est pas conçu pour provoquer un changement systématique. Il fournit une base de décision et distingue ce qui doit être corrigé maintenant de ce qui peut être suivi." outcomes={['Maintenir un contrat cohérent','Demander un ajustement ou un avenant','Revoir une franchise ou une limite','Consulter le marché sur un périmètre défini','Coordonner plusieurs contrats et échéances']} note="La décision dépend des documents disponibles, des priorités du dirigeant et des conditions que les assureurs acceptent d’étudier." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de demander un audit." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Assurances et méthode concernées" items={[
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Comprendre le déroulement détaillé et la méthode du cabinet.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Situer les contrats dans le programme global.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Approfondir les responsabilités liées aux activités déclarées.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Une méthode ordonnée pour préparer les pièces et les décisions.' },
+      { href: '/ressources/guides/quelles-assurances-prevoir-pme/', title: 'Quelles assurances prévoir pour une PME ?', description: 'Une grille de lecture sans liste universelle.' },
+    ]} />
+    <NeedNavigation title="Votre besoin est plus ciblé ?" items={needNavigation.filter((item) => ['/votre-besoin/comparer-mes-assurances/','/votre-besoin/entreprise-evolue/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Commençons par les contrats et l’échéance prioritaires." text="Décrivez votre activité, les changements récents et le point qui motive la revue. Les documents seront demandés après cadrage du périmètre." primaryHref={contactHref} primaryLabel="Demander une analyse de mes contrats" secondaryHref="#documents" secondaryLabel="Voir les documents utiles" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

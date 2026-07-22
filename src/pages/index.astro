@@ -97,6 +97,7 @@ const structuredData = [
         </div>
         <ProductSelector products={insuranceProducts} variant="editorial" />
         <ProductIssueLinks />
+        <p class="products__need-link"><a href="/votre-besoin/">Choisir un parcours selon ma situation <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
 
@@ -604,6 +605,9 @@ const structuredData = [
     font-size: var(--font-size-body-lg);
     text-decoration: none;
   }
+
+  .products__need-link { margin: var(--space-6) 0 0; text-align: right; }
+  .products__need-link a { color: var(--color-brand-deep); font-weight: var(--font-weight-strong); text-underline-offset: .25em; }
 
   @media (max-width: 980px) {
     .products__heading,

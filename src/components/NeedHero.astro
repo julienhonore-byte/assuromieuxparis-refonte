@@ -1,0 +1,71 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+import CTA from './CTA.astro';
+
+interface BreadcrumbItem { href?: string; label: string; }
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  breadcrumbs: BreadcrumbItem[];
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  visualLabel?: string;
+}
+
+const {
+  eyebrow = 'Votre besoin',
+  title,
+  lead,
+  breadcrumbs,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+  visualLabel = 'Du besoin à la décision',
+} = Astro.props;
+
+const steps = ['Point de départ', 'Situation', 'Vérifications', 'Décision', 'Accompagnement'];
+---
+
+<section class="need-hero">
+  <div class="container-wide">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="need-hero__grid">
+      <div class="need-hero__copy">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p class="need-hero__lead">{lead}</p>
+        <div class="need-hero__actions">
+          <CTA href={primaryHref} label={primaryLabel} size="large" />
+          {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
+        </div>
+      </div>
+      <figure class="need-hero__visual" role="img" aria-label={`${visualLabel} : ${steps.join(', ')}`}>
+        <figcaption>{visualLabel}</figcaption>
+        <ol aria-hidden="true">
+          {steps.map((step, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}
+        </ol>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .need-hero { padding-bottom: clamp(3.75rem, 7vw, 6rem); background: radial-gradient(circle at 82% 18%, rgba(201,154,70,.2), transparent 24%), linear-gradient(145deg, var(--color-surface), var(--color-page)); border-bottom: 1px solid var(--color-border); }
+  .need-hero__grid { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(20rem,.72fr); gap: clamp(2.5rem,7vw,6.5rem); align-items: center; padding-top: clamp(1.75rem,4vw,3.5rem); }
+  .need-hero__copy { max-width: 48rem; }
+  h1 { max-width: 13ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h1); line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-display); }
+  .need-hero__lead { max-width: 42rem; margin: var(--space-7) 0 0; color: var(--color-text-soft); font-size: var(--font-size-lead); }
+  .need-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8); }
+  .need-hero__visual { position: relative; min-height: 24rem; margin: 0; overflow: hidden; background: linear-gradient(rgba(18,54,95,.07) 1px,transparent 1px), linear-gradient(90deg,rgba(18,54,95,.07) 1px,transparent 1px), rgba(255,255,255,.78); background-size: 3rem 3rem; border: 1px solid rgba(18,54,95,.14); border-radius: var(--radius-panel); box-shadow: var(--shadow-panel); }
+  .need-hero__visual::before { position: absolute; top: 2.6rem; bottom: 2.6rem; left: 2.3rem; width: 1px; content: ''; background: linear-gradient(var(--color-gold), var(--color-border)); }
+  figcaption { position: absolute; z-index: 2; right: var(--space-5); bottom: var(--space-5); padding: var(--space-3) var(--space-4); color: var(--color-surface); background: var(--color-brand-deep); border-radius: var(--radius-pill); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .06em; text-transform: uppercase; }
+  ol { display: grid; gap: var(--space-3); margin: 0; padding: var(--space-8) var(--space-6); list-style: none; }
+  li { position: relative; z-index: 1; min-height: 3rem; display: flex; align-items: center; gap: var(--space-4); padding: var(--space-2) var(--space-4); color: var(--color-brand-deep); background: rgba(255,255,255,.94); border: 1px solid var(--color-border); border-radius: var(--radius-pill); box-shadow: var(--shadow-card); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+  li span { color: var(--color-gold-dark); font-size: var(--font-size-xs); }
+  @media (max-width: 980px) { .need-hero__grid { grid-template-columns: 1fr; } .need-hero__visual { max-width: 42rem; min-height: 22rem; } }
+  @media (max-width: 640px) { h1 { max-width: none; } .need-hero__actions { flex-direction: column; } .need-hero__actions :global(.button) { width: 100%; } .need-hero__visual { min-height: 21rem; } }
+</style>

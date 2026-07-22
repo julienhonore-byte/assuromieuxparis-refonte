@@ -1,0 +1,71 @@
+---
+import NeedHero from '../../components/NeedHero.astro';
+import NeedNavigation from '../../components/NeedNavigation.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../data/needs';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../data/seo';
+
+const path = '/votre-besoin/';
+const title = 'Choisir son parcours d’assurance entreprise | Assuromieux Paris';
+const description = 'Orientez votre demande selon votre situation : audit, comparaison, création, évolution, flotte automobile ou activité de transport.';
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path }]),
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Parcours par besoin en assurance entreprise', description, url: pageUrl(path) },
+];
+
+const otherAccess = [
+  { href: '/assurances-entreprises/', title: 'Voir les assurances entreprises', text: 'Comprendre comment responsabilités, actifs, équipes et continuité s’articulent.' },
+  { href: '/assurance-btp-decennale/', title: 'BTP et décennale', text: 'Relier activités déclarées, attestations, chantiers et autres contrats.' },
+  { href: '/protection-dirigeant/', title: 'Protection du dirigeant', text: 'Examiner la prévoyance, la santé et les conséquences d’une indisponibilité.' },
+  { href: '/ressources/', title: 'Consulter les ressources', text: 'Approfondir une question avant de préparer un échange.' },
+];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref="/?besoin=audit-contrats#contact" {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero
+      title="Partir de votre situation, puis vérifier les bons contrats."
+      lead="Un dirigeant ne cherche pas toujours un produit précis. Il peut vouloir comprendre un programme existant, comparer une proposition, accompagner une évolution ou présenter une activité nouvelle. Choisissez le point de départ qui décrit le mieux votre besoin actuel."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Votre besoin' }]}
+      primaryHref="/?besoin=audit-contrats#contact"
+      primaryLabel="Demander une analyse"
+      secondaryHref="#parcours"
+      secondaryLabel="Choisir ma situation"
+      visualLabel="S’orienter sans présumer la solution"
+    />
+
+    <div id="parcours">
+      <NeedNavigation
+        title="Quelle est votre situation aujourd’hui ?"
+        intro="Chaque parcours vous aide à identifier ce qu’il faut vérifier, les informations à préparer et l’étape suivante. Il ne remplace ni une page produit ni l’analyse de vos contrats."
+        items={needNavigation}
+      />
+    </div>
+
+    <section class="section need-principle" aria-labelledby="need-principle-title">
+      <div class="container-wide need-principle__layout">
+        <div><p class="eyebrow">Notre approche</p><h2 id="need-principle-title">La situation vient avant la solution.</h2></div>
+        <div>
+          <p>Assuromieux Paris intervient comme courtier et conseil. Le premier échange sert à comprendre l’activité, les contrats existants, les obligations éventuelles, les contraintes et la décision à préparer.</p>
+          <p>Cette analyse peut conduire à maintenir un contrat, demander un ajustement, coordonner plusieurs assurances ou consulter le marché. Elle ne suppose ni changement systématique, ni économie garantie, ni acceptation automatique par un assureur.</p>
+        </div>
+      </div>
+    </section>
+
+    <NeedNavigation title="Vous connaissez déjà le sujet à approfondir ?" intro="Accédez directement aux pages produits, à l’expertise BTP ou aux guides. Le BTP reste relié à son expertise existante et ne reçoit pas de parcours séparé dans ce lot." items={otherAccess} />
+
+    <PageCTA title="Votre situation ne correspond pas exactement à ces parcours ?" text="Décrivez votre activité, les contrats concernés et la décision que vous devez préparer. Le cabinet cadrera avec vous le point de départ utile." primaryHref="/?besoin=audit-contrats#contact" primaryLabel="Demander une analyse" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Comprendre la méthode" />
+  </main>
+</SiteLayout>
+
+<style>
+  .need-principle { background: var(--color-gold-wash); }
+  .need-principle__layout { display: grid; grid-template-columns: minmax(16rem,.68fr) minmax(0,1.32fr); gap: clamp(3rem,8vw,8rem); }
+  .need-principle h2 { max-width: 14ch; margin: 0; color: var(--color-brand-ink); font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
+  .need-principle__layout > div:last-child { max-width: var(--container-reading); }
+  .need-principle__layout > div:last-child p { margin: 0; color: var(--color-text-soft); font-size: var(--font-size-body-lg); }
+  .need-principle__layout > div:last-child p + p { margin-top: var(--space-5); }
+  @media (max-width: 820px) { .need-principle__layout { grid-template-columns: 1fr; } }
+</style>

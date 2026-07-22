@@ -1,6 +1,6 @@
 # Roadmap site et SEO — Assuromieux Paris
 
-Date : 21 juillet 2026
+Date : 22 juillet 2026
 
 ## Principes de pilotage
 
@@ -47,6 +47,12 @@ Toutes les pages MVP sont utiles, validées, sans lien cassé et prêtes pour un
 ### Objectif
 
 Renforcer les intentions commerciales prioritaires et commencer une bibliothèque de ressources limitée mais utile.
+
+### Parcours par situation
+
+Les sept routes `/votre-besoin/` sont réalisées en prévisualisation. Elles structurent six intentions de décision — audit, comparaison, création/reprise, évolution, flotte et activité de transport — sans créer de nouveau produit ni de nouvelle verticale sectorielle.
+
+Avant indexation, ce lot doit recevoir la validation métier globale du site. Après lancement, sa contribution doit être appréciée à partir de la qualité réelle des demandes et des requêtes observées. Les pages doivent être consolidées ou rapprochées si les données montrent une confusion avec une page produit ; aucune variante supplémentaire ne doit être créée sans intention distincte.
 
 ### Pages produits prioritaires
 

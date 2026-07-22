@@ -1,6 +1,6 @@
 # TODO — Refonte Assuromieux Paris
 
-Date de mise à jour : 21 juillet 2026
+Date de mise à jour : 22 juillet 2026
 Convention : chaque tâche indique ses dépendances et son critère de validation. `[x]` signifie contrôlé dans la prévisualisation locale ; `[ ]` exige encore une décision ou une action.
 
 ## Phase 0 — Socle et protections
@@ -87,6 +87,19 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 **Sortie de phase :** centre éditorial limité, structuré et prêt pour validation métier, sans indexation ni déploiement.
 
+## Phase 4C — Parcours de conversion par situation
+
+- [x] **P4C-01 — Définir l’architecture des parcours.** Dépendances : P1-02, P2-03 et P4B-05. Validation : un hub et six situations possèdent une intention propre, une frontière avec produits/secteurs/guides et une structure documentée dans `ARCHITECTURE-PARCOURS-BESOINS.md`.
+- [x] **P4C-02 — Créer le socle de composants.** Dépendances : P4C-01. Validation : hero, séquence, vérifications, décision et navigation partagent les tokens existants, restent statiques et n’ajoutent aucune dépendance.
+- [x] **P4C-03 — Produire les sept routes.** Dépendances : P4C-02. Validation : sept routes exactement ; six pages enfants entre 700 et 1 200 mots visibles ; aucun nouveau secteur ou produit.
+- [x] **P4C-04 — Relier le formulaire existant.** Dépendances : P4C-03. Validation : six paramètres non sensibles sélectionnent les libellés visibles exacts ; l’option reste modifiable ; Formspree n’est pas changé.
+- [x] **P4C-05 — Mettre en place le maillage.** Dépendances : P4C-03 et P4B-05. Validation : footer, accueil, produits, ressources et verticales pertinentes conduisent vers le bon niveau sans surcharger le menu principal.
+- [x] **P4C-06 — Documenter SEO et conversion.** Dépendances : P4C-03 à P4C-05. Validation : intentions, métadonnées, ancres, risques de cannibalisation, CTA et préremplissages sont consignés dans les matrices dédiées.
+- [ ] **P4C-07 — Obtenir la validation métier des parcours.** Dépendances : P4C-03 et référent compétent. Validation : activité réellement accompagnée, limites des formulations et décisions proposées sont approuvées sans créer de promesse contractuelle.
+- [ ] **P4C-08 — Mesurer après lancement.** Dépendances : P4C-07, P5-06 et données suffisantes. Validation : requêtes, pages d’entrée et qualité des demandes permettent de confirmer les frontières ; aucune page supplémentaire n’est créée par défaut.
+
+**Sortie de phase :** parcours lisibles et mesurés prêts pour validation globale, sans indexation ni déploiement autonome.
+
 ## Phase 5 — Contenus, conformité et mise en ligne future
 
 - [ ] **P5-01 — Valider les formulations métier.** Dépendances : pages MVP et P3-09. Validation : RC, multirisque, flotte, santé/prévoyance, dirigeant, cyber, TPM, transport, BTP et décennale relus ; toutes les lignes sensibles et bloquantes disposent d'une décision et d'un valideur.
@@ -99,6 +112,6 @@ Convention : chaque tâche indique ses dépendances et son critère de validatio
 
 ## Prochaines actions recommandées
 
-1. Faire répondre les interlocuteurs compétents aux seules questions prioritaires de `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` avant d’ajouter une affirmation contractuelle précise.
-2. Faire statuer les référents métier, social et juridique sur `VALIDATION-METIER-PRODUITS-LOT-02.md` et compléter les champs de revue des guides.
+1. Faire valider par le référent métier les six parcours et leur capacité réelle d’accompagnement, sans modifier les promesses prudentes.
+2. Faire répondre les interlocuteurs compétents aux seules questions prioritaires de `QUESTIONS-VALIDATION-EXTERNE-TRANSPORT.md` et compléter les validations produits/guides.
 3. Sélectionner et documenter la licence de la photographie Paris/Tour Eiffel avant la recette globale.

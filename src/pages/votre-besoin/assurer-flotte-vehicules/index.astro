@@ -1,0 +1,77 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/assurer-flotte-vehicules/';
+const title = 'Assurer une flotte de véhicules d’entreprise | Assuromieux Paris';
+const description = 'Analysez un parc automobile professionnel selon ses véhicules, usages, conducteurs, territoires, mouvements, sinistres et besoins de continuité.';
+const contactHref = '/?besoin=flotte#contact';
+const faqItems = [
+  { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Il n’existe pas de seuil universel applicable à toutes les offres. Les conditions dépendent des assureurs, de la composition du parc, des usages, des conducteurs et de la sinistralité. Le parc doit être présenté avant de retenir une organisation.' },
+  { question: 'Le contrat flotte couvre-t-il les marchandises transportées ?', answer: 'Pas nécessairement. Le véhicule, la responsabilité liée à l’activité, les biens ou marchandises transportés et les objets confiés relèvent de questions distinctes qui doivent être articulées.' },
+  { question: 'Comment gérer les entrées et sorties de véhicules ?', answer: 'Le processus dépend du contrat et de l’organisation convenue. Il faut définir les informations à transmettre, les délais, les justificatifs et la tenue d’un état de parc fiable.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Assurer une flotte de véhicules', path }]), webPageSchema('Assurer une flotte de véhicules d’entreprise', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Parc automobile" title="Assurer un parc selon ses usages réels" lead="Une flotte ne se résume ni au nombre de véhicules ni à un tarif moyen. Sa composition, ses conducteurs, ses déplacements, sa sinistralité et son rythme de renouvellement déterminent les points à présenter et à arbitrer." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Assurer une flotte de véhicules' }]} primaryHref={contactHref} primaryLabel="Faire analyser mon parc automobile" secondaryHref="#parc" secondaryLabel="Préparer l’état du parc" visualLabel="Du parc à son organisation" />
+
+    <NeedPath title="Partir du parc, puis organiser le contrat." intro="Une lecture opérationnelle rend visibles les usages atypiques, les mouvements fréquents et les dépendances que la seule liste d’immatriculations ne montre pas." items={[
+      { title: 'Décrire le parc', text: 'Véhicules légers, utilitaires, poids lourds, remorques ou engins sont classés avec leur valeur, leur financement et leur affectation.' },
+      { title: 'Qualifier les usages', text: 'Tournées, chantiers, livraisons, visites, transport, prêt ou mise à disposition déterminent les situations à examiner.' },
+      { title: 'Comprendre les conducteurs', text: 'Profils, règles d’attribution, nouveaux entrants, déplacements et organisation de la prévention sont documentés.' },
+      { title: 'Lire la sinistralité', text: 'Fréquence, gravité, circonstances et traitement des événements servent à distinguer les causes et les leviers possibles.' },
+      { title: 'Arbitrer et administrer', text: 'Garanties, franchises, assistance, immobilisation et procédure d’entrée ou de sortie sont organisées ensemble.' },
+    ]} />
+
+    <NeedChecklist id="parc" kicker="État du parc" title="Présenter une photographie exploitable des véhicules." intro="La qualité de l’inventaire conditionne la comparaison. Il doit être actualisable et accompagné des informations qui expliquent les usages." items={[
+      { title: 'Composition', text: 'Immatriculation, catégorie, date de mise en circulation, valeur, mode de financement et équipements particuliers.' },
+      { title: 'Usages professionnels', text: 'Fonction du véhicule, kilométrage, tournées, chantiers, livraisons et éventuel transport de personnes ou de biens.' },
+      { title: 'Conducteurs', text: 'Règles d’affectation, profils habituels, conducteurs occasionnels et modalités de contrôle ou d’accueil.' },
+      { title: 'Territoires et stationnement', text: 'Zones de circulation, déplacements hors de France, lieux de garage et mesures de protection.' },
+      { title: 'Mouvements', text: 'Fréquence des acquisitions, cessions, locations, véhicules de remplacement et méthode de tenue de l’état de parc.' },
+      { title: 'Sinistres', text: 'Historique disponible, typologie des événements, responsabilités, coûts et actions de prévention engagées.' },
+    ]} note="Un contrat flotte peut convenir à certains parcs, mais aucun seuil, format ou niveau de garantie n’est universel. La présentation précède la décision." />
+
+    <NeedChecklist id="articulation" kicker="Points de couverture" title="Distinguer le véhicule de ce qu’il permet de faire." intro="Plusieurs contrats peuvent intervenir autour d’un déplacement. Les intitulés ne suffisent pas à conclure que tous les dommages ou toutes les responsabilités sont traités." items={[
+      { title: 'Responsabilité et dommages', text: 'Responsabilité liée à la circulation, dommages au véhicule et événements prévus sont lus avec leurs limites et exclusions.' },
+      { title: 'Franchises', text: 'Le montant conservé par l’entreprise est rapproché de la fréquence des événements et de sa capacité à l’absorber.' },
+      { title: 'Assistance et immobilisation', text: 'Dépannage, remorquage, remplacement et continuité d’activité sont examinés selon les contraintes d’exploitation.' },
+      { title: 'Valeur et financement', text: 'Modalités d’indemnisation, perte financière éventuelle et obligations du financeur doivent être coordonnées.' },
+      { title: 'Biens transportés', text: 'Matériels, marchandises, objets confiés ou effets déplacés appellent une vérification distincte du véhicule.' },
+      { title: 'Responsabilité professionnelle', text: 'L’erreur de prestation ou le dommage lié à l’activité ne se confond pas avec la seule circulation automobile.' },
+    ]} tone="light" />
+
+    <NeedDecision title="Le résultat doit rester administrable." intro="La comparaison ne porte pas uniquement sur les garanties. Elle tient compte de la capacité de l’entreprise à suivre ses mouvements et à déclarer les informations au bon moment." outcomes={['Maintenir l’organisation actuelle','Regrouper ou segmenter le parc','Ajuster garanties et franchises','Formaliser la gestion des mouvements','Renforcer prévention et suivi des sinistres']} note="Les conditions proposées dépendent de l’étude du parc et du marché. Le cabinet ne garantit ni acceptation, ni niveau de cotisation, ni résultat de prévention." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de consulter pour une flotte." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Contrats à articuler" items={[
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Approfondir les garanties et la gestion du parc.' },
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier la flotte au programme existant.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer circulation et responsabilité liée à la prestation.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Situer matériels, locaux et interruption.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', title: 'Assurance flotte automobile : points à vérifier', description: 'Garanties, franchises, conducteurs et gestion du parc.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Une méthode pour vérifier les interfaces contractuelles.' },
+    ]} />
+    <NeedNavigation title="Parcours associés" items={needNavigation.filter((item) => ['/votre-besoin/auditer-mes-assurances/','/votre-besoin/entreprise-evolue/','/votre-besoin/assurer-activite-transport/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Commencez par un état de parc à jour." text="Décrivez les véhicules, leurs usages, les conducteurs, les mouvements et les événements récents. Le périmètre d’analyse sera cadré avant la collecte détaillée." primaryHref={contactHref} primaryLabel="Faire analyser mon parc automobile" secondaryHref="#parc" secondaryLabel="Préparer l’état du parc" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

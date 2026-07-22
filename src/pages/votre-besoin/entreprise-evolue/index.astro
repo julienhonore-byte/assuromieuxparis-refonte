@@ -1,0 +1,77 @@
+---
+import FAQ from '../../../components/FAQ.astro';
+import NeedChecklist from '../../../components/NeedChecklist.astro';
+import NeedDecision from '../../../components/NeedDecision.astro';
+import NeedHero from '../../../components/NeedHero.astro';
+import NeedNavigation from '../../../components/NeedNavigation.astro';
+import NeedPath from '../../../components/NeedPath.astro';
+import PageCTA from '../../../components/PageCTA.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import RelatedResources from '../../../components/RelatedResources.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { needNavigation } from '../../../data/needs';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, webPageSchema } from '../../../data/seo';
+
+const path = '/votre-besoin/entreprise-evolue/';
+const title = 'Adapter ses assurances quand l’entreprise évolue | Assuromieux Paris';
+const description = 'Vérifiez les contrats concernés par une évolution d’activité, d’équipe, de locaux, de véhicules, de chiffre d’affaires ou de territoire.';
+const contactHref = '/?besoin=evolution-entreprise#contact';
+const faqItems = [
+  { question: 'Tout changement doit-il entraîner un nouveau contrat ?', answer: 'Non. Selon le changement et les clauses existantes, une actualisation, un avenant, un autre contrat ou une consultation peuvent être envisagés. La première étape consiste à identifier les contrats réellement concernés.' },
+  { question: 'Faut-il attendre l’échéance annuelle ?', answer: 'Pas nécessairement. Certaines informations peuvent devoir être examinées sans attendre, en particulier lorsqu’elles modifient l’activité ou les moyens déclarés. Le calendrier dépend du contrat et de la situation.' },
+  { question: 'Comment éviter d’oublier un contrat indirectement concerné ?', answer: 'Une cartographie transversale relie le changement aux responsabilités, aux biens, aux véhicules, aux équipes, aux données et à la continuité. Elle révèle les interfaces au-delà du contrat qui paraît le plus évident.' },
+];
+const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Votre besoin', path: '/votre-besoin/' }, { name: 'Mon entreprise évolue', path }]), webPageSchema('Adapter ses assurances quand l’entreprise évolue', description, path), faqSchema(faqItems)];
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+  <main id="contenu-principal">
+    <NeedHero eyebrow="Votre besoin · Évolution" title="Faire suivre les contrats quand l’entreprise change" lead="Une nouvelle activité, un site supplémentaire ou une flotte qui grandit ne concernent pas toujours un seul contrat. La revue part du changement réel, identifie ses effets et organise les déclarations avant de choisir une solution." breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/votre-besoin/', label: 'Votre besoin' }, { label: 'Mon entreprise évolue' }]} primaryHref={contactHref} primaryLabel="Faire vérifier l’évolution de mon entreprise" secondaryHref="#changements" secondaryLabel="Identifier les changements" visualLabel="Du changement à la décision" />
+
+    <NeedPath title="Traiter l’évolution dans un ordre lisible." intro="Le bon réflexe n’est pas d’ajouter immédiatement une garantie. Il faut d’abord comprendre ce qui a changé et où cette évolution rencontre les contrats existants." items={[
+      { title: 'Décrire le changement', text: 'Nouvelle prestation, croissance, acquisition, déménagement, recrutement ou développement géographique : les faits sont datés et quantifiés.' },
+      { title: 'Repérer les contrats concernés', text: 'Responsabilités, biens, véhicules, équipes, dirigeant, cyber et continuité sont examinés sans se limiter au contrat le plus visible.' },
+      { title: 'Vérifier les déclarations', text: 'Les informations actuellement connues de chaque assureur sont rapprochées de la nouvelle situation et des clauses applicables.' },
+      { title: 'Mesurer les écarts', text: 'Garanties, limites, franchises, exclusions, territorialité et articulation sont relues à la lumière de l’évolution.' },
+      { title: 'Décider et suivre', text: 'Maintien, avenant, ajustement, nouveau contrat ou consultation sont ordonnés selon l’urgence et les échéances.' },
+    ]} />
+
+    <NeedChecklist id="changements" kicker="Situations à signaler" title="Un changement opérationnel peut produire plusieurs effets assurantiels." intro="La liste sert de repère, pas de diagnostic automatique. Chaque évolution est replacée dans l’activité, le calendrier et les engagements de l’entreprise." items={[
+      { title: 'Activité ou clientèle', text: 'Nouvelle prestation, nouveau type de client, hausse ou répartition différente du chiffre d’affaires et engagements élargis.' },
+      { title: 'Locaux ou implantation', text: 'Déménagement, site supplémentaire, travaux, stockage, nouveaux équipements ou modification des mesures de protection.' },
+      { title: 'Équipes et organisation', text: 'Recrutements, nouvelles fonctions, sous-traitance, réorganisation juridique ou évolution de la gouvernance.' },
+      { title: 'Véhicules et mobilité', text: 'Entrées et sorties de véhicules, changement d’usage, nouveaux conducteurs ou nouvelles zones de circulation.' },
+      { title: 'Territoires et contrats', text: 'Export, interventions hors de France, donneur d’ordre exigeant ou contrat comportant de nouvelles responsabilités.' },
+      { title: 'Systèmes et dépendances', text: 'Nouvel outil critique, volume de données accru, prestataire essentiel ou interruption potentiellement plus coûteuse.' },
+    ]} note="Signaler un changement ne préjuge pas de la réponse contractuelle. L’analyse des documents permet de distinguer une simple actualisation d’une modification plus structurante." />
+
+    <NeedChecklist id="documents" kicker="Éléments de comparaison" title="Documenter l’avant et l’après." intro="Une description précise réduit les allers-retours et permet de vérifier ce qui est déjà prévu par les contrats." items={[
+      { title: 'Contrats en cours', text: 'Conditions particulières, avenants, tableaux de garanties et dernières informations déclarées.' },
+      { title: 'Description de l’évolution', text: 'Date, périmètre, chiffres disponibles et conséquences attendues sur l’organisation.' },
+      { title: 'Nouveaux engagements', text: 'Contrats clients, baux, financements ou cahiers des charges contenant des exigences utiles à la revue.' },
+      { title: 'Inventaires actualisés', text: 'Locaux, matériels, stocks, véhicules, effectifs et autres éléments concernés par le changement.' },
+      { title: 'Historique disponible', text: 'Événements, difficultés de gestion et sinistres permettant de comprendre les points sensibles.' },
+      { title: 'Calendrier', text: 'Date de prise d’effet du changement, échéances contractuelles et décisions urgentes à isoler.' },
+    ]} tone="light" />
+
+    <NeedDecision title="La réponse dépend de l’ampleur du changement." intro="Certaines évolutions se traitent dans le contrat existant ; d’autres obligent à revoir une interface ou à comparer le marché sur un périmètre précis." outcomes={['Actualiser une information déclarée','Demander un avenant ciblé','Ajuster une limite ou une franchise','Créer ou coordonner un autre contrat','Consulter le marché sur un besoin défini']} note="La mise en œuvre dépend des clauses, des délais, des documents disponibles et de l’acceptation des assureurs. Aucune continuité ou condition n’est présumée." />
+
+    <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Réagir au bon moment." id="faq-title" /><FAQ items={faqItems} /></div></section>
+
+    <RelatedLinks title="Points d’entrée concernés" items={[
+      { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relire le programme lorsqu’une évolution touche plusieurs contrats.' },
+      { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Replacer le changement dans la protection globale.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Examiner locaux, matériels et continuité.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Adapter le contrat aux mouvements et usages du parc.' },
+    ]} />
+    <RelatedResources items={[
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Comment auditer les assurances de son entreprise ?', description: 'Une méthode pour rapprocher activité et contrats.' },
+      { href: '/ressources/guides/quelles-assurances-prevoir-pme/', title: 'Quelles assurances prévoir pour une PME ?', description: 'Des repères pour hiérarchiser les besoins.' },
+    ]} />
+    <NeedNavigation title="Un parcours proche" items={needNavigation.filter((item) => ['/votre-besoin/auditer-mes-assurances/','/votre-besoin/comparer-mes-assurances/','/votre-besoin/creer-reprendre-entreprise/'].includes(item.href))} currentPath={path} />
+    <PageCTA title="Commencez par décrire ce qui change et à quelle date." text="Le cabinet identifie les contrats concernés, les informations à vérifier et l’ordre des décisions avant toute éventuelle consultation." primaryHref={contactHref} primaryLabel="Faire vérifier l’évolution de mon entreprise" secondaryHref="#documents" secondaryLabel="Voir les éléments utiles" />
+  </main>
+</SiteLayout>
+
+<style>.faq-layout{max-width:58rem}</style>

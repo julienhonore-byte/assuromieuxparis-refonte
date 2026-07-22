@@ -9,7 +9,7 @@ import ProductSelector from '../components/ProductSelector.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { insuranceProducts } from '../data/products';
-import { organizationSchema, site } from '../data/site';
+import { organizationSchema, personSchema, site } from '../data/site';
 
 const faqItems = [
   {
@@ -32,6 +32,7 @@ const faqItems = [
 
 const structuredData = [
   organizationSchema,
+  personSchema,
   {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'InsuranceAgency'],
@@ -552,10 +553,6 @@ const structuredData = [
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-5);
-  }
-
-  .faq-layout {
-    max-width: 58rem;
   }
 
   .contact {

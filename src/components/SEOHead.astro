@@ -20,6 +20,7 @@ const {
 } = Astro.props;
 
 const schemas = Array.isArray(structuredData) ? structuredData : [structuredData];
+const imageAlt = `${title} — Assuromieux Paris`;
 ---
 
 <meta charset="UTF-8" />
@@ -27,7 +28,7 @@ const schemas = Array.isArray(structuredData) ? structuredData : [structuredData
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <meta name="theme-color" content="#12365f" />
 
 <meta property="og:locale" content="fr_FR" />
@@ -37,10 +38,14 @@ const schemas = Array.isArray(structuredData) ? structuredData : [structuredData
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 {image && <meta property="og:image" content={image} />}
+{image && <meta property="og:image:width" content="1200" />}
+{image && <meta property="og:image:height" content="630" />}
+{image && <meta property="og:image:alt" content={imageAlt} />}
 
 <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 {image && <meta name="twitter:image" content={image} />}
+{image && <meta name="twitter:image:alt" content={imageAlt} />}
 
-{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+{schemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}

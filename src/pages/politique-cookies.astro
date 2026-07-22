@@ -1,0 +1,74 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+
+const path = '/politique-cookies/';
+const title = 'Politique Cookies | Assuromieux Paris';
+const description = 'Information sur les cookies, traceurs et stockages utilisés sur le site Assuromieux Paris.';
+const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Politique Cookies', path }]);
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Cookies et traceurs"
+      title="Politique Cookies"
+      lead="Cette page décrit les cookies, traceurs et stockages utilisés par le site Assuromieux Paris."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Politique Cookies' }]}
+    />
+
+    <article class="section legal-content">
+      <div class="container legal-content__inner">
+        <section aria-labelledby="scope-title">
+          <h2 id="scope-title">Périmètre</h2>
+          <p>Le site n’intègre actuellement aucun outil de mesure d’audience, aucune régie publicitaire et aucun traceur destiné à établir un profil publicitaire. Aucun bandeau de consentement n’est affiché en l’absence de traceur soumis au consentement déposé directement par le site.</p>
+        </section>
+
+        <section aria-labelledby="storage-title">
+          <h2 id="storage-title">Stockage de session fonctionnel</h2>
+          <p>Lorsqu’un utilisateur choisit un besoin avant d’accéder au formulaire, le site peut enregistrer temporairement cette sélection dans le stockage de session du navigateur sous la clé <code>assuromieux:selected-product</code>.</p>
+          <dl>
+            <div><dt>Finalité</dt><dd>Préremplir le besoin principal dans le formulaire de contact.</dd></div>
+            <div><dt>Nature</dt><dd>Stockage strictement fonctionnel, non utilisé à des fins publicitaires ou de mesure d’audience.</dd></div>
+            <div><dt>Durée</dt><dd>Jusqu’à la fin de la session de navigation ou jusqu’à l’envoi réussi du formulaire.</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="third-party-title">
+          <h2 id="third-party-title">Services tiers</h2>
+          <h3>Formspree</h3>
+          <p>Les données du formulaire sont envoyées à Formspree uniquement lorsque l’utilisateur valide volontairement son envoi. Aucun contenu Formspree n’est intégré à la page avant cette action.</p>
+          <h3>Cal.com</h3>
+          <p>Cal.com est accessible par un lien externe proposé après l’envoi réussi du formulaire. Le service n’est pas intégré dans les pages du site. En suivant ce lien, l’utilisateur accède à un domaine tiers susceptible d’utiliser ses propres cookies conformément à sa <a href="https://cal.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>.</p>
+          <h3>Netlify</h3>
+          <p>Netlify assure l’hébergement et la diffusion technique du site. Les données techniques éventuellement traitées par cet hébergeur sont décrites dans sa <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>.</p>
+        </section>
+
+        <section aria-labelledby="settings-title">
+          <h2 id="settings-title">Réglages du navigateur</h2>
+          <p>L’utilisateur peut supprimer le stockage de session depuis les réglages de son navigateur. Le formulaire reste accessible ; seule la fonction de préremplissage du besoin peut être perdue.</p>
+        </section>
+
+        <section aria-labelledby="updates-title">
+          <h2 id="updates-title">Évolution de cette politique</h2>
+          <p>Si un outil de mesure d’audience, un contenu embarqué ou un autre traceur est ajouté, cette politique et le dispositif de recueil du consentement seront adaptés avant son activation.</p>
+          <p>Politique en vigueur à compter du 22 juillet 2026.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style>
+  .legal-content__inner { max-width: 52rem; }
+  .legal-content section + section { margin-top: var(--space-12); }
+  .legal-content h2 { color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .legal-content h3 { margin-top: var(--space-6); color: var(--color-brand); font-size: 1.15rem; }
+  dl { display: grid; gap: 1px; margin: var(--space-6) 0; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+  dl div { display: grid; grid-template-columns: minmax(12rem, .9fr) 1.1fr; gap: var(--space-5); padding: var(--space-5); background: var(--color-surface); }
+  dt { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }
+  dd { margin: 0; }
+  code { overflow-wrap: anywhere; }
+  @media (max-width: 640px) { dl div { grid-template-columns: 1fr; gap: var(--space-2); } }
+</style>

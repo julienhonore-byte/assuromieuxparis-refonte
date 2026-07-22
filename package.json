@@ -7,17 +7,23 @@
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "dev:demo": "ASTRO_TELEMETRY_DISABLED=1 astro dev --config astro.demo.config.mjs",
-    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "lint": "node scripts/lint-project.mjs",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/prepare-release-output.mjs",
     "build:demo": "ASTRO_TELEMETRY_DISABLED=1 astro build --config astro.demo.config.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "check:links": "node scripts/check-links.mjs",
-    "verify": "pnpm build && pnpm check:links"
+    "check:release": "node scripts/check-release-output.mjs",
+    "verify": "pnpm lint && pnpm check && pnpm build && pnpm check:links && pnpm check:release"
   },
   "engines": {
     "node": ">=22.12.0",
     "pnpm": ">=7.1.0"
   },
   "devDependencies": {
-    "astro": "7.1.3"
+    "@astrojs/check": "0.9.9",
+    "@types/node": "^26.1.1",
+    "astro": "7.1.3",
+    "typescript": "6.0.3"
   }
 }

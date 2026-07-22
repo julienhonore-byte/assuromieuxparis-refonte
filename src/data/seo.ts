@@ -1,4 +1,4 @@
-import { organizationSchema, site } from './site';
+import { organizationSchema, personSchema, site } from './site';
 
 interface Crumb {
   name: string;
@@ -47,4 +47,4 @@ export const faqSchema = (items: { question: string; answer: string }[]) => ({
   })),
 });
 
-export const baseSchemas = [organizationSchema];
+export const baseSchemas = [organizationSchema, personSchema];

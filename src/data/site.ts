@@ -4,8 +4,9 @@ export interface NavigationItem {
 }
 
 export const site = {
-  name: 'Assuromieux Paris',
-  legalName: 'ASSUROMIEUX PARIS',
+  name: 'ASSUROMIEUX PARIS',
+  legalName: 'Jules HONORE',
+  personName: 'Jules HONORE',
   canonicalUrl: 'https://www.assuromieuxparis.com/',
   phoneDisplay: '06 95 69 96 74',
   phoneHref: 'tel:+33695699674',
@@ -14,6 +15,9 @@ export const site = {
   addressLocality: '75008 Paris',
   addressCountry: 'France',
   orias: '26003798',
+  oriasCategory: 'COA',
+  siren: '489181032',
+  siret: '48918103200033',
   rcs: '489181032',
   formspreeUrl: 'https://formspree.io/f/mnjlwzlp',
   calUrl: 'https://cal.com/juleshonore/rdv-assuromieux',
@@ -55,10 +59,19 @@ export const organizationSchema = {
   '@id': `${site.canonicalUrl}#organization`,
   name: site.name,
   legalName: site.legalName,
+  description: `Cabinet de conseil et de courtage en assurances d’entreprise, inscrit à l’ORIAS en catégorie ${site.oriasCategory}.`,
   url: site.canonicalUrl,
   logo: `${site.canonicalUrl}logo/assuromieux-paris.jpeg`,
   email: site.email,
   telephone: '+33695699674',
+  identifier: [
+    { '@type': 'PropertyValue', propertyID: 'SIREN', value: site.siren },
+    { '@type': 'PropertyValue', propertyID: 'SIRET', value: site.siret },
+    { '@type': 'PropertyValue', propertyID: 'RCS', value: `Paris ${site.rcs}` },
+    { '@type': 'PropertyValue', propertyID: 'ORIAS', value: site.orias },
+  ],
+  founder: { '@id': `${site.canonicalUrl}#jules-honore` },
+  sameAs: [`https://orias.fr/home/showIntermediaire/${site.siren}`],
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.addressStreet,
@@ -66,4 +79,16 @@ export const organizationSchema = {
     addressLocality: 'Paris',
     addressCountry: 'FR',
   },
+};
+
+export const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site.canonicalUrl}#jules-honore`,
+  name: site.personName,
+  jobTitle: 'Courtier en assurance',
+  email: site.email,
+  telephone: '+33695699674',
+  address: organizationSchema.address,
+  worksFor: { '@id': `${site.canonicalUrl}#organization` },
 };

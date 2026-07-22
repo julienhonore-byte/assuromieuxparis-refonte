@@ -1,5 +1,6 @@
 ---
 import SEOHead from '../components/SEOHead.astro';
+import { firstWaveIndexablePaths, isPublicIndexingEnabled } from '../data/indexing.mjs';
 import '../styles/global.css';
 
 interface Props {
@@ -17,16 +18,24 @@ const {
   description,
   canonical = 'https://www.assuromieuxparis.com/',
   image,
-  noindex = true,
+  noindex = false,
   structuredData,
   ogType = 'website',
 } = Astro.props;
+
+const canonicalPath = new URL(canonical).pathname;
+const releaseIndexingEnabled = isPublicIndexingEnabled(
+  import.meta.env.PUBLIC_SITE_INDEXABLE,
+  process.env.CONTEXT,
+);
+const routeIsApproved = firstWaveIndexablePaths.includes(canonicalPath);
+const effectiveNoindex = noindex || !releaseIndexingEnabled || !routeIsApproved;
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <SEOHead {title} {description} {canonical} {image} {noindex} {structuredData} {ogType} />
+    <SEOHead {title} {description} {canonical} {image} noindex={effectiveNoindex} {structuredData} {ogType} />
   </head>
   <body>
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>

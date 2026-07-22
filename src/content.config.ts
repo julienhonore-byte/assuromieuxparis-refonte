@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const faqItem = z.object({
   question: z.string().min(8),
@@ -20,7 +21,7 @@ const resources = defineCollection({
     keywords: z.array(z.string()).min(1),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    canonical: z.string().url(),
+    canonical: z.url(),
     status: z.enum(['published', 'review-required', 'archived']),
     featured: z.boolean().default(false),
     readingTime: z.number().int().positive(),

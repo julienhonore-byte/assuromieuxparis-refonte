@@ -14,50 +14,57 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
     <PageHero
       eyebrow="Informations légales"
       title="Mentions légales"
-      lead="Cette page rassemble les informations d’identification et de publication du site. Les éléments non attestés sont explicitement signalés avant toute mise en production."
+      lead="Cette page rassemble les informations d’identification, de publication et d’hébergement du site Assuromieux Paris."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Mentions légales' }]}
     />
 
     <article class="section legal-content">
       <div class="container legal-content__inner">
-        <p class="legal-alert"><strong>Statut de préproduction :</strong> les mentions marquées « A fournir par Assuromieux » interdisent la publication de cette page en l’état.</p>
-
         <section aria-labelledby="editor-title">
           <h2 id="editor-title">Éditeur du site</h2>
           <dl>
-            <div><dt>Dénomination ou nom complet</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Forme juridique et capital social, si applicable</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Adresse du siège</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>SIREN, SIRET et RCS</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Numéro de TVA intracommunautaire, si applicable</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Téléphone et adresse électronique de contact</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Éditeur</dt><dd>Jules HONORE, entrepreneur individuel, exploitant le site sous le nom commercial ASSUROMIEUX PARIS</dd></div>
+            <div><dt>Adresse de l’établissement principal</dt><dd>60 rue François-Ier, 75008 Paris, France</dd></div>
+            <div><dt>Immatriculation</dt><dd>SIREN 489 181 032 — SIRET 489 181 032 00033 — RCS Paris — inscrit au Registre national des entreprises</dd></div>
+            <div><dt>Activité principale</dt><dd>Activités des agents et courtiers d’assurances — code APE 66.22Z</dd></div>
+            <div><dt>TVA intracommunautaire</dt><dd>Le statut TVA doit être confirmé par l’éditeur avant publication d’un numéro.</dd></div>
+            <div><dt>Contact</dt><dd><a href="tel:+33695699674">06 95 69 96 74</a> — <a href="mailto:jules@assuromieuxparis.com">jules@assuromieuxparis.com</a></dd></div>
           </dl>
+          <p>Les données d’immatriculation peuvent être vérifiées dans <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/489181032" target="_blank" rel="noopener noreferrer">l’Annuaire des Entreprises</a>.</p>
         </section>
 
         <section aria-labelledby="publication-title">
           <h2 id="publication-title">Direction de la publication</h2>
-          <p>A fournir par Assuromieux</p>
+          <p>Directeur de la publication : Jules HONORE, en qualité d’éditeur du site.</p>
         </section>
 
         <section aria-labelledby="regulation-title">
           <h2 id="regulation-title">Activité réglementée</h2>
           <dl>
-            <div><dt>Qualité et catégorie d’intermédiaire</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Numéro ORIAS attesté</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Autorité de contrôle et informations réglementaires applicables</dt><dd>A fournir par Assuromieux</dd></div>
-            <div><dt>Procédure de réclamation et médiateur compétent</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Qualité</dt><dd>Courtier d’assurance ou de réassurance (COA)</dd></div>
+            <div><dt>ORIAS</dt><dd>Immatriculation n° 26003798, vérifiable sur <a href="https://orias.fr/home/showIntermediaire/489181032" target="_blank" rel="noopener noreferrer">orias.fr</a></dd></div>
+            <div><dt>Autorité de contrôle</dt><dd>Autorité de contrôle prudentiel et de résolution (ACPR), 4 place de Budapest, CS 92459, 75436 Paris Cedex 09</dd></div>
+            <div><dt>Responsabilité civile professionnelle</dt><dd>Contrat souscrit auprès d’ORUS</dd></div>
+            <div><dt>Encaissement de fonds</dt><dd>Non autorisé selon le registre ORIAS</dd></div>
+            <div><dt>Garantie financière</dt><dd>Non applicable en l’absence d’encaissement de fonds, conformément à l’article L. 512-7 du Code des assurances</dd></div>
           </dl>
+          <p>Assuromieux Paris exerce une activité de courtage et de conseil. Les informations du site ne valent ni accord d’un assureur, ni garantie de souscription, de couverture ou d’indemnisation.</p>
+        </section>
+
+        <section aria-labelledby="complaints-title">
+          <h2 id="complaints-title">Réclamations</h2>
+          <p>Toute réclamation peut être adressée par courrier à Assuromieux Paris, 60 rue François-Ier, 75008 Paris, France, ou par courriel à <a href="mailto:jules@assuromieuxparis.com">jules@assuromieuxparis.com</a>, avec l’objet « Réclamation ».</p>
+          <p>Un accusé de réception est adressé dans un délai maximal de dix jours ouvrables à compter de la réception de la réclamation, sauf si une réponse est apportée dans ce délai. Une réponse est apportée au plus tard dans les deux mois suivant la réception de la réclamation, hors circonstance particulière dûment justifiée.</p>
         </section>
 
         <section aria-labelledby="hosting-title">
           <h2 id="hosting-title">Hébergement</h2>
-          <p>Raison sociale, adresse et coordonnées de l’hébergeur : A fournir par Assuromieux</p>
+          <p>Le site est hébergé par Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis — <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">www.netlify.com</a>.</p>
         </section>
 
         <section aria-labelledby="rights-title">
           <h2 id="rights-title">Propriété intellectuelle</h2>
-          <p>Les conditions d’utilisation des textes, visuels, marques et éléments graphiques du site doivent être confirmées par leur titulaire avant publication.</p>
-          <p>Titulaire et périmètre des droits : A fournir par Assuromieux</p>
+          <p>La structure du site ainsi que ses textes, éléments graphiques, logos et contenus sont protégés par les règles applicables à la propriété intellectuelle. Toute reproduction, représentation, adaptation ou exploitation, totale ou partielle, sans autorisation préalable écrite de leur titulaire est interdite, sauf exception prévue par la loi.</p>
         </section>
 
         <section aria-labelledby="liability-title">
@@ -73,7 +80,6 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
   .legal-content__inner { max-width: 52rem; }
   .legal-content section + section { margin-top: var(--space-12); }
   .legal-content h2 { color: var(--color-brand-deep); font-size: var(--font-size-h3); }
-  .legal-alert { padding: var(--space-5); border-left: 4px solid var(--color-gold); background: var(--color-surface-soft); }
   dl { display: grid; gap: 1px; margin: var(--space-6) 0 0; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
   dl div { display: grid; grid-template-columns: minmax(12rem, .9fr) 1.1fr; gap: var(--space-5); padding: var(--space-5); background: var(--color-surface); }
   dt { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }

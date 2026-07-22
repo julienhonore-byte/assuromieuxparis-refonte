@@ -8,18 +8,19 @@ import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { organizationSchema, site } from '../data/site';
+import { organizationSchema, personSchema, site } from '../data/site';
 import { breadcrumbSchema, pageUrl } from '../data/seo';
 
 const path = '/cabinet/';
 const description = 'Découvrez Assuromieux Paris, cabinet de conseil et de courtage dédié à l’audit, l’optimisation et la sécurisation des assurances des entreprises.';
 const faqItems = [
-  { question: 'Avec qui échange-t-on au cabinet ?', answer: `Jules Honoré est l’interlocuteur direct du cabinet. Il est joignable au ${site.phoneDisplay} et à l’adresse ${site.email}.` },
+  { question: 'Avec qui échange-t-on au cabinet ?', answer: `Jules HONORE est l’interlocuteur direct du cabinet. Il est joignable au ${site.phoneDisplay} et à l’adresse ${site.email}.` },
   { question: 'Le cabinet intervient-il uniquement à Paris ?', answer: 'Non. L’implantation est parisienne, dans le 8e arrondissement, mais l’accompagnement concerne aussi des entreprises franciliennes et situées ailleurs en France.' },
   { question: 'L’approche est-elle réservée à un secteur ?', answer: 'Non. Le cabinet adopte une vision transversale des assurances professionnelles, complétée par des expertises sectorielles en transport, logistique, BTP et décennale.' },
 ];
 const structuredData = [
   organizationSchema,
+  personSchema,
   breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Le cabinet', path }]),
   { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'Le cabinet Assuromieux Paris', description, url: pageUrl(path), about: { '@id': `${site.canonicalUrl}#organization` } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
@@ -69,7 +70,7 @@ const structuredData = [
         <div class="content-copy">
           <p class="eyebrow">Relation directe</p>
           <h2>Un interlocuteur identifié, sans parcours impersonnel.</h2>
-          <p>Jules Honoré est l’interlocuteur du cabinet pour cadrer le besoin, organiser l’analyse et restituer les options de manière accessible. Cette présentation reste volontairement factuelle.</p>
+          <p>Jules HONORE est l’interlocuteur du cabinet pour cadrer le besoin, organiser l’analyse et restituer les options de manière accessible. Cette présentation reste volontairement factuelle.</p>
           <p class="cabinet-direct"><strong>Téléphone :</strong> <a href={site.phoneHref}>{site.phoneDisplay}</a><br /><strong>Email :</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
         </div>
       </div>
@@ -108,7 +109,6 @@ const structuredData = [
 </SiteLayout>
 
 <style>
-  .faq-layout { max-width: 58rem; }
   .cabinet-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-panel); overflow: hidden; }
   .cabinet-facts p { display: grid; gap: var(--space-2); margin: 0; padding: var(--space-6); background: white; }
   .cabinet-facts span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .08em; text-transform: uppercase; }

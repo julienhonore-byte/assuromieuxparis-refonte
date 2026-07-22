@@ -11,7 +11,6 @@
   for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    X-Robots-Tag = "noindex, nofollow, noarchive"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
@@ -24,5 +23,9 @@
 
 # La confidentialité de la préproduction doit être activée dans l'interface
 # Netlify avant tout déploiement : Team login ou Password Protection.
+# Le build génère dist/_headers avec X-Robots-Tag en mode privé. Il ne l'omet
+# que si PUBLIC_SITE_INDEXABLE=true ET CONTEXT=production, en complément de la
+# sélection par route. Netlify fournit CONTEXT automatiquement ; une Deploy
+# Preview ou un branch deploy reste bloqué même si la variable publique vaut true.
 # Aucune redirection candidate n'est activée sans validation du crawl historique
 # et de docs/PLAN-REDIRECTIONS.md.

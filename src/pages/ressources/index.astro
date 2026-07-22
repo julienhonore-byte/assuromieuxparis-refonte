@@ -14,7 +14,7 @@ const featured = [
   'comment-auditer-assurances-entreprise',
   'responsabilite-transporteur-assurance-marchandises-differences',
   'assurance-decennale-coherence-activites-attestation',
-].map((slug) => entries.find((entry) => entry.data.slug === slug)).filter(Boolean);
+].map((slug) => entries.find((entry) => entry.data.slug === slug)).filter((entry): entry is (typeof entries)[number] => entry !== undefined);
 const categoryCount = (key: string) => key === 'dirigeants'
   ? entries.filter((entry) => entry.data.category === 'dirigeants' || entry.data.tags.includes('dirigeant') || entry.data.tags.includes('PME')).length
   : entries.filter((entry) => entry.data.category === key).length;

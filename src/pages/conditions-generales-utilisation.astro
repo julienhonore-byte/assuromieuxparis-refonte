@@ -1,0 +1,81 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+
+const path = '/conditions-generales-utilisation/';
+const title = 'Conditions générales d’utilisation | Assuromieux Paris';
+const description = 'Conditions générales d’utilisation du site Assuromieux Paris et portée des informations publiées.';
+const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Conditions générales d’utilisation', path }]);
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Utilisation du site"
+      title="Conditions générales d’utilisation"
+      lead="Les présentes conditions encadrent l’accès au site Assuromieux Paris et l’utilisation de ses contenus."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Conditions générales d’utilisation' }]}
+    />
+
+    <article class="section legal-content">
+      <div class="container legal-content__inner">
+        <section aria-labelledby="publisher-title">
+          <h2 id="publisher-title">Éditeur et objet du site</h2>
+          <p>Le site Assuromieux Paris est édité par Jules HONORE, entrepreneur individuel, sous le nom commercial ASSUROMIEUX PARIS. Ses informations d’identification complètes figurent dans les <a href="/mentions-legales/">mentions légales</a>.</p>
+          <p>Le site présente une activité de conseil et de courtage en assurances professionnelles et permet aux visiteurs de prendre contact pour exposer leur situation.</p>
+        </section>
+
+        <section aria-labelledby="acceptance-title">
+          <h2 id="acceptance-title">Acceptation</h2>
+          <p>L’accès au site et son utilisation impliquent l’acceptation des présentes conditions. L’utilisateur s’engage à utiliser le site conformément aux lois applicables, à sa destination et aux droits des tiers.</p>
+        </section>
+
+        <section aria-labelledby="information-title">
+          <h2 id="information-title">Portée des informations</h2>
+          <p>Les contenus sont fournis à titre général et informatif. Ils ne constituent ni une étude personnalisée, ni un conseil juridique ou comptable, ni une proposition d’assurance, ni un engagement contractuel d’Assuromieux Paris ou d’un assureur.</p>
+          <p>Une solution d’assurance, ses garanties, ses exclusions, son tarif et sa date d’effet dépendent notamment de l’activité réelle, des informations et justificatifs communiqués, de l’analyse du risque, des contrats existants et des décisions des assureurs consultés. Aucun transfert automatique de contrat ou de garantie n’est affirmé.</p>
+        </section>
+
+        <section aria-labelledby="contact-title">
+          <h2 id="contact-title">Formulaire de contact</h2>
+          <p>L’utilisateur s’engage à transmettre des informations exactes et utiles au traitement de sa demande. Aucun document confidentiel ni aucune donnée sensible ne doit être envoyé dans le formulaire. L’envoi du formulaire ne crée pas de relation contractuelle et ne garantit ni rappel immédiat, ni proposition, ni couverture.</p>
+          <p>Le traitement des données personnelles est décrit dans la <a href="/politique-confidentialite/">politique de confidentialité</a>.</p>
+        </section>
+
+        <section aria-labelledby="availability-title">
+          <h2 id="availability-title">Accès et disponibilité</h2>
+          <p>Assuromieux Paris s’efforce de maintenir le site accessible et ses informations à jour. L’accès peut toutefois être interrompu pour maintenance, sécurité, incident technique ou cause extérieure. Aucune disponibilité permanente du site n’est garantie.</p>
+        </section>
+
+        <section aria-labelledby="links-title">
+          <h2 id="links-title">Liens externes</h2>
+          <p>Le site peut contenir des liens vers des services ou sources externes. Assuromieux Paris ne contrôle pas leur disponibilité, leurs contenus ni leurs pratiques. L’utilisateur est invité à consulter les conditions et politiques propres à ces services avant de les utiliser.</p>
+        </section>
+
+        <section aria-labelledby="rights-title">
+          <h2 id="rights-title">Propriété intellectuelle</h2>
+          <p>Les contenus, éléments graphiques, logos et composants du site sont protégés par les règles applicables à la propriété intellectuelle. Toute reproduction, adaptation, représentation ou exploitation non autorisée, totale ou partielle, est interdite, sauf exception prévue par la loi.</p>
+        </section>
+
+        <section aria-labelledby="liability-title">
+          <h2 id="liability-title">Responsabilité</h2>
+          <p>L’utilisateur demeure responsable de son équipement, de sa connexion et de l’usage qu’il fait des informations accessibles. Assuromieux Paris ne saurait être tenu responsable d’une décision prise sur le seul fondement d’un contenu général du site, sans analyse individualisée.</p>
+        </section>
+
+        <section aria-labelledby="law-title">
+          <h2 id="law-title">Droit applicable et contact</h2>
+          <p>Les présentes conditions sont soumises au droit français. Tout différend relève des juridictions compétentes selon les règles de droit commun applicables.</p>
+          <p>Pour toute question : <a href="mailto:jules@assuromieuxparis.com">jules@assuromieuxparis.com</a>.</p>
+          <p>Conditions en vigueur à compter du 22 juillet 2026.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style>
+  .legal-content__inner { max-width: 52rem; }
+  .legal-content section + section { margin-top: var(--space-12); }
+  .legal-content h2 { color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+</style>

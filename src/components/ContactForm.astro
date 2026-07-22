@@ -5,7 +5,7 @@ interface Props {
   privacyHref?: string;
 }
 
-const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
+const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.props;
 ---
 
 <div class="contact-form-shell">
@@ -73,7 +73,7 @@ const { action, calUrl, privacyHref = '#confidentialite' } = Astro.props;
     <input type="hidden" name="campagne" value="Audit assurances entreprise" />
 
     <p class="form-note form-field--full" id="contact-required">Les champs signalés par un astérisque sont obligatoires.</p>
-    <p class="form-note form-field--full">Les informations transmises servent uniquement à répondre à votre demande. Consultez notre <a href={privacyHref}>information provisoire sur la confidentialité</a>.</p>
+    <p class="form-note form-field--full">Les informations transmises servent à traiter votre demande. Consultez notre <a href={privacyHref}>politique de confidentialité</a> avant l’envoi.</p>
 
     <p class="form-status" role="status" aria-live="polite" data-form-status hidden></p>
     <button class="button button--primary button--large form-field--full" type="submit" data-form-submit>Envoyer ma demande <span aria-hidden="true">→</span></button>

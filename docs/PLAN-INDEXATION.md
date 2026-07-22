@@ -1,10 +1,10 @@
-# Plan d'indexation — RC1
+# Plan d’indexation — RC2
 
-Le site reste intégralement bloqué en préproduction. Cette classification indique l'ordre futur ; elle n'autorise pas la levée actuelle de `noindex` ou du blocage `robots.txt`.
+Date : 22 juillet 2026
 
-## Indexation immédiate après GO
+Le site reste intégralement `noindex, nofollow` et `robots.txt` bloque tout. Cette classification prépare la bascule ; elle ne l’autorise pas.
 
-Ces dix routes constituent le noyau marque, conseil et expertises déjà validées sous formulations prudentes :
+## Première vague — GO après conditions RC2
 
 - `/`
 - `/audit-assurances-entreprise/`
@@ -17,60 +17,36 @@ Ces dix routes constituent le noyau marque, conseil et expertises déjà validé
 - `/secteurs/convoyage-vehicules/`
 - `/secteurs/demenagement/`
 
-Condition commune : données réglementaires, pages légales, formulaire réel, sitemap et checklist GO validés.
+Conditions communes : données réglementaires et pages légales validées, formulaire réel validé, préproduction privée contrôlée et GO signé.
 
-## Indexation différée
+## GO différé
 
-### Produits — après validation métier
+### Produits
 
-- `/rc-professionnelle/`
-- `/multirisque-professionnelle/`
-- `/flotte-automobile/`
-- `/sante-prevoyance-entreprise/`
-- `/protection-dirigeant/`
-- `/cyberassurance/`
+`/rc-professionnelle/`, `/multirisque-professionnelle/`, `/flotte-automobile/`, `/sante-prevoyance-entreprise/`, `/protection-dirigeant/`, `/cyberassurance/`.
 
-### Parcours besoins — deuxième vague
+Condition : validation métier humaine documentée ; la santé/prévoyance et les sujets juridiques associés exigent une relecture spécialisée.
 
-- `/votre-besoin/`
-- `/votre-besoin/auditer-mes-assurances/`
-- `/votre-besoin/comparer-mes-assurances/`
-- `/votre-besoin/creer-reprendre-entreprise/`
-- `/votre-besoin/entreprise-evolue/`
-- `/votre-besoin/assurer-flotte-vehicules/`
-- `/votre-besoin/assurer-activite-transport/`
+### Parcours besoins
 
-### Ressources — après revue éditoriale
+Le hub `/votre-besoin/` et ses six routes détaillées restent en deuxième vague malgré leurs validations sous réserve.
 
-- `/ressources/`
-- `/ressources/guides/`
-- `/ressources/assurance-entreprise/`
-- `/ressources/transport-logistique/`
-- `/ressources/btp/`
-- `/ressources/dirigeants/`
-- les six routes sous `/ressources/guides/`
-- `/lexique/`
+### Ressources
 
-## Toujours non indexée
+Le hub `/ressources/`, ses quatre catégories, `/ressources/guides/`, les six guides et `/lexique/` restent différés. Le passage de `review-required` à un statut publié exige un relecteur identifié.
 
-- `/404.html` avec `noindex, nofollow`.
+## Accessibles mais non indexées
 
-## Sitemap
+- `/mentions-legales/` et `/politique-confidentialite/` : nécessaires à la navigation, non indexées tant que les données ne sont pas finalisées ;
+- `/404.html` : toujours `noindex, nofollow` et exclue du sitemap.
 
-1. Générer un sitemap contenant uniquement les routes autorisées à l'indexation.
-2. Exclure la 404 et toute route restant en validation métier.
-3. Utiliser les canonicals HTTPS définitifs.
-4. Déclarer le sitemap dans `robots.txt` seulement au GO.
-5. Soumettre le sitemap à Search Console et surveiller les exclusions.
+## Sitemap de production
 
-## Séquence de levée
+1. le générer uniquement dans la mission d’ouverture ;
+2. inclure exclusivement les dix routes de première vague ;
+3. exclure 404, pages légales incomplètes et toutes les routes différées ;
+4. vérifier domaine/canonicals sur Netlify ;
+5. déclarer le sitemap dans `robots.txt` au même moment que l’ouverture ;
+6. contrôler les réponses HTTP avant soumission Search Console.
 
-1. Valider le domaine et les canonicals sur Netlify.
-2. Vérifier les dix routes du noyau en préproduction.
-3. Générer le sitemap noyau.
-4. Retirer leur `noindex` dans une modification dédiée et revue.
-5. Ouvrir `robots.txt` lors du même release contrôlé.
-6. Vérifier les réponses HTTP et le HTML déployé avant soumission.
-7. Ajouter les vagues différées seulement après leur validation documentaire.
-
-Toute levée globale non sélective est interdite tant que les 26 routes différées n'ont pas toutes été validées.
+Toute levée globale est interdite. Les vagues ultérieures nécessitent chacune une validation documentaire et un ajout explicite au sitemap.

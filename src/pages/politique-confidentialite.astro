@@ -1,0 +1,85 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+
+const path = '/politique-confidentialite/';
+const title = 'Politique de confidentialité | Assuromieux Paris';
+const description = 'Information sur les données personnelles collectées par Assuromieux Paris, notamment au moyen du formulaire de contact.';
+const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Politique de confidentialité', path }]);
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Données personnelles"
+      title="Politique de confidentialité"
+      lead="Cette page décrit les traitements visibles dans la version actuelle du site et identifie les informations qui doivent encore être validées avant publication."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Politique de confidentialité' }]}
+    />
+
+    <article class="section legal-content">
+      <div class="container legal-content__inner">
+        <p class="legal-alert"><strong>Statut de préproduction :</strong> les mentions marquées « A fournir par Assuromieux » interdisent la publication de cette page en l’état.</p>
+
+        <section aria-labelledby="controller-title">
+          <h2 id="controller-title">Responsable du traitement</h2>
+          <p>Identité et coordonnées complètes : A fournir par Assuromieux</p>
+          <p>Délégué à la protection des données, si applicable : A fournir par Assuromieux</p>
+        </section>
+
+        <section aria-labelledby="form-title">
+          <h2 id="form-title">Formulaire de contact</h2>
+          <p>Le formulaire collecte les prénom, nom, entreprise, adresse électronique professionnelle et numéro de téléphone. Le besoin principal et le message sont facultatifs. Ces informations servent à analyser et traiter la demande de contact.</p>
+          <dl>
+            <div><dt>Base juridique</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Destinataires internes</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Durée de conservation</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Conséquence de l’absence des champs obligatoires</dt><dd>La demande ne peut pas être envoyée depuis le formulaire.</dd></div>
+          </dl>
+          <p>Le message ne doit contenir aucun document confidentiel ni aucune donnée sensible à ce stade.</p>
+        </section>
+
+        <section aria-labelledby="providers-title">
+          <h2 id="providers-title">Prestataires externes</h2>
+          <h3>Formspree</h3>
+          <p>Le formulaire transmet les données au service Formspree après l’action d’envoi. Compte propriétaire, sous-traitance, localisation, transferts éventuels, durée de conservation, suppression et garanties contractuelles : A fournir par Assuromieux</p>
+          <h3>Cal.com</h3>
+          <p>Un lien vers Cal.com est proposé après un envoi réussi. Le service n’est chargé qu’après une action volontaire de l’utilisateur. Paramétrage du compte, données collectées, sous-traitance, localisation, transferts éventuels et conservation : A fournir par Assuromieux</p>
+          <h3>Netlify</h3>
+          <p>Le site est préparé pour un hébergement Netlify. Journaux techniques, durées de conservation, localisation et garanties contractuelles : A fournir par Assuromieux</p>
+        </section>
+
+        <section aria-labelledby="storage-title">
+          <h2 id="storage-title">Traceurs et stockage local</h2>
+          <p>La version contrôlée n’intègre ni outil d’analytics, ni régie publicitaire, ni cookie publicitaire ou de mesure d’audience, ni gestionnaire de consentement. Un stockage de session strictement fonctionnel peut mémoriser temporairement le besoin choisi afin de préremplir le formulaire ; il disparaît à la fin de la session ou après un envoi réussi.</p>
+        </section>
+
+        <section aria-labelledby="rights-title">
+          <h2 id="rights-title">Vos droits</h2>
+          <p>Selon la base juridique et la situation, les personnes peuvent notamment demander l’accès, la rectification, l’effacement ou la limitation de leurs données, et exercer les autres droits applicables.</p>
+          <p>Adresse d’exercice des droits et délai interne de traitement : A fournir par Assuromieux</p>
+          <p>Une réclamation peut être adressée à la <a href="https://www.cnil.fr/" target="_blank" rel="noopener noreferrer">Commission nationale de l’informatique et des libertés (CNIL)</a>.</p>
+        </section>
+
+        <section aria-labelledby="updates-title">
+          <h2 id="updates-title">Mise à jour</h2>
+          <p>Date d’entrée en vigueur et responsable de validation : A fournir par Assuromieux</p>
+        </section>
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style>
+  .legal-content__inner { max-width: 52rem; }
+  .legal-content section + section { margin-top: var(--space-12); }
+  .legal-content h2 { color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .legal-content h3 { margin-top: var(--space-6); color: var(--color-brand); font-size: 1.15rem; }
+  .legal-alert { padding: var(--space-5); border-left: 4px solid var(--color-gold); background: var(--color-surface-soft); }
+  dl { display: grid; gap: 1px; margin: var(--space-6) 0; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+  dl div { display: grid; grid-template-columns: minmax(12rem, .9fr) 1.1fr; gap: var(--space-5); padding: var(--space-5); background: var(--color-surface); }
+  dt { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }
+  dd { margin: 0; }
+  @media (max-width: 640px) { dl div { grid-template-columns: 1fr; gap: var(--space-2); } }
+</style>

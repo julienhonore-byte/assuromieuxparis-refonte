@@ -1,0 +1,82 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+
+const path = '/mentions-legales/';
+const title = 'Mentions légales | Assuromieux Paris';
+const description = 'Mentions légales du site Assuromieux Paris : éditeur, publication, hébergement et informations réglementaires.';
+const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Mentions légales', path }]);
+---
+
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Informations légales"
+      title="Mentions légales"
+      lead="Cette page rassemble les informations d’identification et de publication du site. Les éléments non attestés sont explicitement signalés avant toute mise en production."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Mentions légales' }]}
+    />
+
+    <article class="section legal-content">
+      <div class="container legal-content__inner">
+        <p class="legal-alert"><strong>Statut de préproduction :</strong> les mentions marquées « A fournir par Assuromieux » interdisent la publication de cette page en l’état.</p>
+
+        <section aria-labelledby="editor-title">
+          <h2 id="editor-title">Éditeur du site</h2>
+          <dl>
+            <div><dt>Dénomination ou nom complet</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Forme juridique et capital social, si applicable</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Adresse du siège</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>SIREN, SIRET et RCS</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Numéro de TVA intracommunautaire, si applicable</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Téléphone et adresse électronique de contact</dt><dd>A fournir par Assuromieux</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="publication-title">
+          <h2 id="publication-title">Direction de la publication</h2>
+          <p>A fournir par Assuromieux</p>
+        </section>
+
+        <section aria-labelledby="regulation-title">
+          <h2 id="regulation-title">Activité réglementée</h2>
+          <dl>
+            <div><dt>Qualité et catégorie d’intermédiaire</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Numéro ORIAS attesté</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Autorité de contrôle et informations réglementaires applicables</dt><dd>A fournir par Assuromieux</dd></div>
+            <div><dt>Procédure de réclamation et médiateur compétent</dt><dd>A fournir par Assuromieux</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="hosting-title">
+          <h2 id="hosting-title">Hébergement</h2>
+          <p>Raison sociale, adresse et coordonnées de l’hébergeur : A fournir par Assuromieux</p>
+        </section>
+
+        <section aria-labelledby="rights-title">
+          <h2 id="rights-title">Propriété intellectuelle</h2>
+          <p>Les conditions d’utilisation des textes, visuels, marques et éléments graphiques du site doivent être confirmées par leur titulaire avant publication.</p>
+          <p>Titulaire et périmètre des droits : A fournir par Assuromieux</p>
+        </section>
+
+        <section aria-labelledby="liability-title">
+          <h2 id="liability-title">Portée des informations</h2>
+          <p>Les contenus du site présentent une démarche générale d’analyse et de courtage. Ils ne constituent pas une garantie de souscription, de couverture ou d’indemnisation. Toute conclusion dépend de l’activité, des informations communiquées, des contrats, des assureurs consultés et des textes applicables.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style>
+  .legal-content__inner { max-width: 52rem; }
+  .legal-content section + section { margin-top: var(--space-12); }
+  .legal-content h2 { color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .legal-alert { padding: var(--space-5); border-left: 4px solid var(--color-gold); background: var(--color-surface-soft); }
+  dl { display: grid; gap: 1px; margin: var(--space-6) 0 0; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+  dl div { display: grid; grid-template-columns: minmax(12rem, .9fr) 1.1fr; gap: var(--space-5); padding: var(--space-5); background: var(--color-surface); }
+  dt { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }
+  dd { margin: 0; }
+  @media (max-width: 640px) { dl div { grid-template-columns: 1fr; gap: var(--space-2); } }
+</style>

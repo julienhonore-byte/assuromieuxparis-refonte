@@ -1,96 +1,65 @@
-# Checklist GO / NO GO — RC1
+# Checklist GO / NO GO — RC2
 
-Date de décision : 22 juillet 2026.
+Date : 22 juillet 2026
 
-Statuts : ✅ validé · ⚠️ réserve/non exécuté · ❌ bloquant.
+Statuts autorisés : **Validé** · **Validé sous réserve** · **A fournir** · **Bloquant**.
 
 ## Technique
 
-- ✅ `pnpm install --frozen-lockfile` réussit.
-- ✅ `pnpm verify` réussit.
-- ✅ `pnpm build` réussit : 37 pages.
-- ✅ `pnpm check:links` : aucun lien interne cassé.
-- ✅ Aucun title, description ou canonical dupliqué.
-- ✅ Un H1 unique et un main sur chaque page.
-- ✅ JSON-LD syntaxiquement valide.
-- ✅ Références protégées intactes.
+- **Validé** — installation figée, vérification et build.
+- **Validé** — 39 pages attendues après ajout des deux pages légales.
+- **Validé** — liens internes, anchors, titles, descriptions, canonicals, H1 et JSON-LD contrôlés.
+- **Validé** — références protégées intactes.
 
 ## Interface et accessibilité
 
-- ✅ 56 contrôles responsive sur huit gabarits et sept largeurs, sans débordement.
-- ✅ Menu mobile clavier, Échap et retour de focus.
-- ✅ Formulaire étiqueté et états annoncés.
-- ✅ Aucun avertissement console lors de la recette.
-- ⚠️ Recette manuelle à 200 % non effectuée.
-- ⚠️ Recette lecteur d'écran non effectuée.
+- **Validé** — responsive, menu clavier, labels, focus et `aria-live` selon les contrôles locaux.
+- **Validé sous réserve** — zoom 200 % et lecteur d’écran à confirmer sur préproduction privée.
 
-## Contenus et métier
+## Contenus métier
 
-- ✅ Positionnement global préservé ; transport traité comme expertise.
-- ✅ Secteurs transport validés sous réserve mineure.
-- ✅ Parcours création/reprise validé sous réserve mineure.
-- ❌ Six pages produit ont encore des validations métier bloquantes.
-- ❌ Six guides sont encore en statut `review-required`.
-- ⚠️ Les autres questions externes doivent rester documentées avant toute précision contractuelle supplémentaire.
+- **Validé sous réserve** — cinq pages produits relues, indexation différée.
+- **Bloquant pour sa route** — santé/prévoyance exige une validation humaine spécialisée avant indexation.
+- **Validé sous réserve** — six guides techniquement/éditorialement cohérents.
+- **Bloquant pour leurs routes** — signature humaine et changement de `review-required` avant indexation.
 
 ## Légal et réglementaire
 
-- ❌ Identité juridique, forme, SIREN/SIRET/RCS, adresse et ORIAS non attestés dans le dépôt.
-- ❌ Statut d'intermédiation et formulation L521-2.II.b non validés.
-- ❌ Mentions légales autonomes absentes.
-- ❌ Politique de confidentialité autonome absente.
-- ❌ Directeur de publication, hébergeur, médiation/réclamations et autres mentions applicables à fournir.
-- ❌ Conditions Formspree/Cal.com et durées de conservation non documentées.
+- **Validé sous réserve** — pages Mentions légales et Politique de confidentialité créées et reliées.
+- **À fournir** — identité, forme, capital, SIREN/SIRET/RCS, TVA, siège et directeur de publication.
+- **À fournir** — ORIAS attesté, catégorie, autorité, réclamations et médiation.
+- **À fournir** — hébergeur et titulaire des droits.
+- **Bloquant** — aucune publication tant que les placeholders et valeurs globales ne sont pas validés.
 
-## Formulaire
+## Formulaire et données
 
-- ✅ Endpoint, champs, préremplissage, honeypot et états techniques contrôlés.
-- ❌ Propriétaire, destinataire et quota Formspree non confirmés.
-- ❌ Aucune soumission réelle de test effectuée.
-- ❌ Information RGPD complète absente.
+- **Validé** — structure, POST, préremplissage, erreurs, honeypot et lien confidentialité.
+- **À fournir** — propriétaire/destinataire/quota Formspree et paramètres Cal.com.
+- **À fournir** — base juridique, destinataires, conservation, transferts et contact droits.
+- **Bloquant** — envoi réel autorisé non exécuté.
 
 ## SEO et indexation
 
-- ✅ Blocage `noindex, nofollow` présent sur 37 pages.
-- ✅ `robots.txt` bloque toute exploration de préproduction.
-- ✅ Maillage interne sans page éditoriale orpheline.
-- ❌ Sitemap de production absent.
-- ✅ Plan d'indexation sélective documenté.
-- ⚠️ Canonical/réponse de la 404 à tester sur Netlify.
-
-## Sécurité et performances
-
-- ✅ Site statique, dépendance minimale, aucun secret requis.
-- ✅ En-têtes nosniff, SAMEORIGIN et Referrer-Policy.
-- ⚠️ CSP Report-Only, Permissions-Policy, HSTS et cache à tester.
-- ⚠️ Lighthouse/Core Web Vitals non mesurés sur une URL Netlify.
+- **Validé** — `noindex, nofollow` et `Disallow: /` conservés.
+- **Validé** — première vague de dix routes définie.
+- **Validé sous réserve** — sitemap filtré différé à la mission d’ouverture.
+- **Bloquant** — aucune levée sans GO signé et contrôle Netlify.
 
 ## Hébergement et exploitation
 
-- ✅ Configuration Netlify cohérente avec Astro statique.
-- ✅ Procédures de production et rollback documentées.
-- ❌ Compte, branche, responsables, domaine/DNS et déploiement précédent non renseignés.
-- ⚠️ Aucun déploiement de préproduction réalisé dans cette mission.
-
-## Conditions minimales pour requalifier le NO GO
-
-1. Valider et archiver toutes les informations légales/réglementaires.
-2. Créer et valider les pages Mentions légales et Politique de confidentialité.
-3. Clore les six validations produit et les six revues de guides, ou maintenir leurs routes en noindex avec décision explicite.
-4. Confirmer Formspree et réussir une soumission réelle de test.
-5. Déployer une préproduction privée, tester headers, 404, Lighthouse, zoom 200 % et lecteur d'écran.
-6. Créer le sitemap filtré et tester la levée sélective de l'indexation.
-7. Renseigner les responsables, accès Netlify/DNS et la cible de rollback.
+- **Validé** — configuration Astro/Netlify et procédures documentées.
+- **À fournir** — compte, branche, responsables, domaine/DNS et cible de rollback.
+- **Bloquant** — recette privée Netlify non exécutée.
 
 ## Décision
 
-# NO GO
+# GO SOUS CONDITIONS
 
-Le RC1 est **techniquement stable mais non autorisé pour une mise en production**. Les blocages juridiques, réglementaires, métier et opérationnels sont explicites et vérifiables. Le noindex et le blocage robots doivent rester inchangés.
+La RC2 peut passer à une préproduction privée. Elle ne peut pas être publiée publiquement tant que les éléments marqués **Bloquant** et **A fournir** ne sont pas clos. Les produits/guides différés ne bloquent pas le noyau si leur `noindex` est maintenu.
 
 | Rôle | Nom | Décision | Date |
 |---|---|---|---|
-| Métier | À fournir par Assuromieux | — | — |
-| Conformité/juridique | À fournir par Assuromieux | — | — |
-| Technique | À fournir par Assuromieux | — | — |
-| Décideur final | À fournir par Assuromieux | — | — |
+| Métier | A fournir par Assuromieux | — | — |
+| Conformité/juridique | A fournir par Assuromieux | — | — |
+| Technique | A fournir par Assuromieux | — | — |
+| Décideur final | A fournir par Assuromieux | — | — |

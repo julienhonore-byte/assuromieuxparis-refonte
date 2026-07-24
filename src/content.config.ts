@@ -11,6 +11,7 @@ const resources = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/resources' }),
   schema: z.object({
     title: z.string().min(20),
+    seoTitle: z.string().min(20).max(65).optional(),
     description: z.string().min(80).max(190),
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     publishDate: z.coerce.date(),

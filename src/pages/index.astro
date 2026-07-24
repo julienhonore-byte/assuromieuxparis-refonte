@@ -4,12 +4,11 @@ import ContactForm from '../components/ContactForm.astro';
 import FAQ from '../components/FAQ.astro';
 import HomeHero from '../components/HomeHero.astro';
 import HomeMethodTimeline from '../components/HomeMethodTimeline.astro';
-import ProductIssueLinks from '../components/ProductIssueLinks.astro';
 import ProductSelector from '../components/ProductSelector.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { insuranceProducts } from '../data/products';
-import { organizationSchema, personSchema, site } from '../data/site';
+import { organizationSchema, personSchema, site, websiteSchema } from '../data/site';
 
 const faqItems = [
   {
@@ -33,18 +32,19 @@ const faqItems = [
 const structuredData = [
   organizationSchema,
   personSchema,
+  websiteSchema,
   {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'InsuranceAgency'],
     '@id': `${site.canonicalUrl}#insurance-agency`,
     name: site.name,
-    url: 'https://assuromieuxparis.com/',
-    logo: 'https://assuromieuxparis.com/favicon-512x512.png',
-    image: 'https://assuromieuxparis.com/og-assuromieux-paris.png',
+    url: site.canonicalUrl,
+    logo: site.logoUrl,
+    image: site.ogImageUrl,
     brand: {
       '@type': 'Brand',
       name: 'Assuromieux Paris',
-      logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+      logo: site.logoUrl,
     },
     telephone: '+33695699674',
     email: site.email,
@@ -83,7 +83,6 @@ const structuredData = [
   title="Courtier en assurance entreprise à Paris | Assuromieux Paris"
   description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles."
   canonical={site.canonicalUrl}
-  image="https://assuromieuxparis.com/og-assuromieux-paris.png"
   currentPath="/"
   ctaHref="#contact"
   {structuredData}
@@ -103,8 +102,10 @@ const structuredData = [
           <p>Neuf points d’entrée, une même exigence : relier chaque contrat à l’activité réelle de l’entreprise.</p>
         </div>
         <ProductSelector products={insuranceProducts} variant="editorial" />
-        <ProductIssueLinks />
-        <p class="products__need-link"><a href="/votre-besoin/">Choisir un parcours selon ma situation <span aria-hidden="true">→</span></a></p>
+        <p class="products__need-link">
+          <span>Vous ne savez pas par quel contrat commencer ?</span>
+          <a href="/votre-besoin/">Choisir un parcours selon ma situation <span aria-hidden="true">→</span></a>
+        </p>
       </div>
     </section>
 
@@ -609,7 +610,7 @@ const structuredData = [
     text-decoration: none;
   }
 
-  .products__need-link { margin: var(--space-6) 0 0; text-align: right; }
+  .products__need-link { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2) var(--space-4); margin: var(--space-6) 0 0; color: var(--color-text-muted); text-align: right; }
   .products__need-link a { color: var(--color-brand-deep); font-weight: var(--font-weight-strong); text-underline-offset: .25em; }
 
   @media (max-width: 980px) {
@@ -623,6 +624,11 @@ const structuredData = [
 
     .products__heading > p {
       display: none;
+    }
+
+    .products__need-link {
+      justify-content: flex-start;
+      text-align: left;
     }
 
     .program__intro,

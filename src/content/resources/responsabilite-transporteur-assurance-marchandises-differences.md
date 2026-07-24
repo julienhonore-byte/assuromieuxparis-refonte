@@ -1,5 +1,6 @@
 ---
 title: "Responsabilité du transporteur et assurance des marchandises : les notions à distinguer"
+seoTitle: "Assurance transporteur et marchandises"
 description: "Responsabilité, assurance de responsabilité, marchandises transportées et assurance pour compte : une méthode pour éviter les confusions contractuelles."
 slug: "responsabilite-transporteur-assurance-marchandises-differences"
 publishDate: 2026-07-21

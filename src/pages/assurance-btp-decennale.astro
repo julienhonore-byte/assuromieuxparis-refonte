@@ -12,6 +12,7 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 
 const path = '/assurance-btp-decennale/';
 const description = 'Assurance BTP et décennale : analyse des activités déclarées, attestations, procédés, sous-traitance, véhicules et multirisque.';
+const contactHref = '/?besoin=assurance-btp-decennale#contact';
 const faqItems = [
   { question: 'La décennale suffit-elle à couvrir une entreprise du BTP ?', answer: 'Non. Selon l’activité, il faut aussi examiner la RC professionnelle, les locaux, matériels, véhicules, salariés, sous-traitants et conséquences d’une interruption d’activité.' },
   { question: 'Pourquoi vérifier les activités déclarées ?', answer: 'L’attestation et le contrat doivent rester cohérents avec les travaux réellement réalisés. Les libellés, procédés et évolutions d’activité méritent donc une lecture attentive.' },
@@ -25,7 +26,7 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout title="Assurance BTP et décennale | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+<SiteLayout title="Assurance BTP et décennale | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} ctaLabel="Demander un audit BTP" {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Expertise sectorielle"
@@ -33,7 +34,7 @@ const structuredData = [
       lead="Nous examinons les activités, attestations, procédés, chantiers et autres contrats pour améliorer la cohérence du programme BTP."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance BTP et décennale' }]}
     >
-      <CTA href="/#contact" label="Demander un audit BTP" size="large" />
+      <CTA href={contactHref} label="Demander un audit BTP" size="large" />
       <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
     </PageHero>
 
@@ -45,6 +46,7 @@ const structuredData = [
         </div>
         <div class="content-copy">
           <p>L’approche concerne les professionnels du bâtiment, les entreprises intervenant sur plusieurs corps d’état et les structures qui font évoluer leurs techniques, leurs marchés ou leur recours à la sous-traitance.</p>
+          <p>Une attention particulière est nécessaire lorsque plusieurs activités sont regroupées sous un intitulé général, qu’une prestation accessoire devient régulière ou que les travaux réels ne correspondent plus exactement aux déclarations disponibles.</p>
           <p>Le point de départ reste simple : rapprocher ce qui est déclaré de ce qui est réellement réalisé.</p>
         </div>
       </div>
@@ -86,6 +88,20 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--surface" aria-labelledby="mistakes-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Erreurs fréquentes" title="Quatre écarts à repérer avant une attestation ou une échéance." id="mistakes-title" />
+        <div class="feature-grid feature-grid--2">
+          {[
+            ['Décrire seulement le métier principal', 'Un intitulé général peut masquer plusieurs travaux, procédés ou rôles. Les activités principales, accessoires et nouvelles doivent être détaillées.'],
+            ['Laisser évoluer les travaux sans mise à jour', 'Un nouveau lot, un procédé différent ou une part croissante de sous-traitance peut nécessiter une nouvelle présentation du risque et une validation par l’assureur.'],
+            ['Lire l’attestation comme une garantie automatique', 'L’attestation doit être rapprochée du contrat, des périodes, des activités déclarées, des procédés et du chantier concerné.'],
+            ['Présumer que la sous-traitance transfère tout le risque', 'Les rôles, engagements contractuels, attestations et recours doivent être examinés au cas par cas, sans conclure à un transfert automatique.'],
+          ].map(([title, text]) => <article class="feature-item"><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+
     <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise." />
 
     <section class="section section--surface" aria-labelledby="faq-title">
@@ -99,10 +115,12 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Découvrir le déroulement de l’analyse.' },
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer responsabilité décennale, professionnelle et exploitation.' },
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier locaux, matériels et continuité d’activité.' },
+      { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Examiner les véhicules, conducteurs et usages liés aux chantiers.' },
+      { href: '/ressources/btp/', label: 'Ressources BTP', text: 'Préparer les activités, attestations, procédés et dates à vérifier.' },
     ]} />
     <RelatedResources items={[
       { href: '/ressources/guides/assurance-decennale-coherence-activites-attestation/', title: 'Décennale : vérifier activités et attestation', description: 'Une méthode prudente pour rapprocher travaux, périodes, procédés et sous-traitance.' },
     ]} />
-    <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." />
+    <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." primaryHref={contactHref} primaryLabel="Demander un audit BTP" />
   </main>
 </SiteLayout>

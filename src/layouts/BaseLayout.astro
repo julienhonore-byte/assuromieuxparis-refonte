@@ -1,6 +1,7 @@
 ---
 import SEOHead from '../components/SEOHead.astro';
 import { firstWaveIndexablePaths, isPublicIndexingEnabled } from '../data/indexing.mjs';
+import { site } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
@@ -16,8 +17,8 @@ interface Props {
 const {
   title,
   description,
-  canonical = 'https://www.assuromieuxparis.com/',
-  image = 'https://assuromieuxparis.com/og-assuromieux-paris.png',
+  canonical = site.canonicalUrl,
+  image = site.ogImageUrl,
   noindex = false,
   structuredData,
   ogType = 'website',

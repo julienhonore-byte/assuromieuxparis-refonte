@@ -11,6 +11,7 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 
 const path = '/audit-assurances-entreprise/';
 const description = 'Audit des assurances d’entreprise : analyse des contrats, risques, garanties et conditions pour éclairer les arbitrages du dirigeant.';
+const contactHref = '/?besoin=audit-assurances-entreprise#contact';
 const faqItems = [
   { question: 'Quand demander un audit de ses assurances ?', answer: 'Avant une échéance importante, après une évolution d’activité, une hausse sensible de cotisation ou lorsque plusieurs contrats ont été ajoutés sans vision consolidée.' },
   { question: 'Quels documents faut-il préparer ?', answer: 'Les contrats et avenants disponibles, les appels de cotisation, une description de l’activité et, selon le périmètre, les éléments de sinistralité, de flotte, de locaux ou d’obligations clients.' },
@@ -25,7 +26,7 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout title="Audit des assurances entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+<SiteLayout title="Audit des assurances entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} ctaLabel="Demander mon audit" {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Audit assurance entreprise"
@@ -33,7 +34,7 @@ const structuredData = [
       lead="Nous rapprochons votre activité, vos risques et vos assurances pour faire apparaître les priorités et les arbitrages utiles."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Audit des assurances entreprise' }]}
     >
-      <CTA href="/#contact" label="Demander mon audit" size="large" />
+      <CTA href={contactHref} label="Demander mon audit" size="large" />
       <CTA href="#besoins" label="Voir le périmètre" variant="secondary" size="large" />
     </PageHero>
 
@@ -85,7 +86,7 @@ const structuredData = [
       </div>
     </section>
 
-    <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="Le livrable est calibré selon la complexité du programme et les documents disponibles. Les décisions et prochaines échéances sont ensuite suivies avec l’entreprise." />
+    <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="À l’issue de l’analyse, une synthèse adaptée au périmètre présente les contrats étudiés, les points cohérents, les vigilances, les priorités et les scénarios à arbitrer. Son niveau de détail dépend de la complexité du programme et des documents disponibles." />
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">
@@ -96,9 +97,12 @@ const structuredData = [
 
     <RelatedLinks items={[
       { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Comprendre le programme dans son ensemble.' },
-      { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Découvrir l’audit adapté aux risques de flux.' },
-      { href: '/votre-besoin/auditer-mes-assurances/', label: 'Auditer mes assurances', text: 'Suivre le parcours depuis les premiers signaux jusqu’à la décision.' },
+      { href: '/assurance-btp-decennale/', label: 'BTP et décennale', text: 'Relier activités, attestations et autres contrats du programme.' },
+      { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Vérifier les activités, responsabilités, limites et exclusions.' },
+      { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Examiner les sites, les biens et les conséquences d’un arrêt.' },
+      { href: '/cyberassurance/', label: 'Cyberassurance', text: 'Intégrer les dépendances numériques au programme global.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', label: 'Guide de l’audit', text: 'Préparer les documents et les questions avant l’analyse.' },
     ]} />
-    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." />
+    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel="Demander mon audit" />
   </main>
 </SiteLayout>

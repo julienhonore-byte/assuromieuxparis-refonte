@@ -1,5 +1,6 @@
 ---
 title: "Assurance décennale : vérifier la cohérence entre les activités et l’attestation"
+seoTitle: "Décennale : activités et attestation"
 description: "Une méthode de lecture prudente pour rapprocher travaux réalisés, activités déclarées, attestation décennale, périodes, procédés et sous-traitance."
 slug: "assurance-decennale-coherence-activites-attestation"
 publishDate: 2026-07-21

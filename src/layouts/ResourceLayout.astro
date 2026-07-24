@@ -11,7 +11,7 @@ import SiteLayout from './SiteLayout.astro';
 interface Heading { depth: number; slug: string; text: string; }
 interface RelatedItem { href: string; title: string; description: string; }
 interface Props {
-  title: string; description: string; canonical: string; category: keyof typeof resourceCategories;
+  title: string; seoTitle?: string; description: string; canonical: string; category: keyof typeof resourceCategories;
   author: string; publishDate: Date; updatedDate: Date; readingTime: number;
   relatedProducts: string[]; faq: { question: string; answer: string }[];
   headings: Heading[]; relatedItems: RelatedItem[]; structuredData: Record<string, unknown>[];
@@ -21,7 +21,7 @@ const props = Astro.props;
 const category = resourceCategories[props.category];
 const products = props.relatedProducts.map((key) => productLinks[key]).filter(Boolean);
 ---
-<SiteLayout title={`${props.title} | Assuromieux Paris`} description={props.description} canonical={props.canonical} currentPath="/ressources/" structuredData={props.structuredData} ogType="article">
+<SiteLayout title={`${props.seoTitle ?? props.title} | Assuromieux Paris`} description={props.description} canonical={props.canonical} currentPath="/ressources/" structuredData={props.structuredData} ogType="article">
   <main id="contenu-principal">
     <ResourceHeader title={props.title} description={props.description} category={category.name} categoryHref={category.href}>
       <ResourceMeta author={props.author} publishDate={props.publishDate} updatedDate={props.updatedDate} readingTime={props.readingTime} />

@@ -3,11 +3,17 @@ export interface NavigationItem {
   label: string;
 }
 
+const canonicalOrigin = 'https://www.assuromieuxparis.com';
+const absoluteSiteUrl = (path: string) => new URL(path, `${canonicalOrigin}/`).toString();
+
 export const site = {
   name: 'Assuromieux Paris',
   legalName: 'Jules HONORE',
   personName: 'Jules HONORE',
-  canonicalUrl: 'https://www.assuromieuxparis.com/',
+  canonicalOrigin,
+  canonicalUrl: absoluteSiteUrl('/'),
+  logoUrl: absoluteSiteUrl('/favicon-512x512.png'),
+  ogImageUrl: absoluteSiteUrl('/og-assuromieux-paris.png'),
   phoneDisplay: '06 95 69 96 74',
   phoneHref: 'tel:+33695699674',
   email: 'jules@assuromieuxparis.com',
@@ -60,13 +66,13 @@ export const organizationSchema = {
   name: site.name,
   legalName: site.legalName,
   description: `Cabinet de conseil et de courtage en assurances d’entreprise, inscrit à l’ORIAS en catégorie ${site.oriasCategory}.`,
-  url: 'https://assuromieuxparis.com/',
-  logo: 'https://assuromieuxparis.com/favicon-512x512.png',
-  image: 'https://assuromieuxparis.com/og-assuromieux-paris.png',
+  url: site.canonicalUrl,
+  logo: site.logoUrl,
+  image: site.ogImageUrl,
   brand: {
     '@type': 'Brand',
     name: 'Assuromieux Paris',
-    logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+    logo: site.logoUrl,
   },
   email: site.email,
   telephone: '+33695699674',
@@ -97,4 +103,14 @@ export const personSchema = {
   telephone: '+33695699674',
   address: organizationSchema.address,
   worksFor: { '@id': `${site.canonicalUrl}#organization` },
+};
+
+export const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site.canonicalUrl}#website`,
+  url: site.canonicalUrl,
+  name: site.name,
+  inLanguage: 'fr-FR',
+  publisher: { '@id': `${site.canonicalUrl}#organization` },
 };

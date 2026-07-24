@@ -13,7 +13,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
 <SiteLayout title="Lexique des assurances d’entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath="/ressources/" {structuredData}>
   <main id="contenu-principal">
     <header class="lexicon-hero"><div class="container-wide"><Breadcrumbs items={[{ href: '/', label: 'Accueil' }, { href: '/ressources/', label: 'Ressources' }, { label: 'Lexique' }]} /><div><p class="eyebrow">Lexique</p><h1>Des mots précis, des réponses qui restent contractuelles.</h1><p>Ces définitions donnent un premier repère. Elles ne remplacent ni les définitions de votre contrat, ni les textes applicables, ni une analyse de votre situation.</p></div><CategoryNavigation current="lexique" /></div></header>
-    <section class="section"><div class="container-wide lexicon-layout"><aside><p class="eyebrow">17 notions</p><h2>Lire avec prudence.</h2><p>Un même terme peut avoir une portée différente selon le contrat, l’activité et le contexte.</p></aside><div>{lexiconEntries.map(([term, definition]) => <LexiconEntry {term} {definition} />)}</div></div></section>
+    <section class="section"><div class="container-wide lexicon-layout"><aside><p class="eyebrow">{lexiconEntries.length} notions</p><h2>Lire avec prudence.</h2><p>Un même terme peut avoir une portée différente selon le contrat, l’activité et le contexte.</p></aside><div>{lexiconEntries.map(([term, definition]) => <LexiconEntry {term} {definition} />)}</div></div></section>
     <PageCTA title="Un terme modifie la lecture de votre contrat ?" text="L’audit replace les définitions dans les conditions particulières, les garanties et la réalité de l’entreprise." />
   </main>
 </SiteLayout>

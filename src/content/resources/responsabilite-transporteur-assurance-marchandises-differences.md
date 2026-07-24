@@ -4,7 +4,7 @@ seoTitle: "Assurance transporteur et marchandises"
 description: "Responsabilité, assurance de responsabilité, marchandises transportées et assurance pour compte : une méthode pour éviter les confusions contractuelles."
 slug: "responsabilite-transporteur-assurance-marchandises-differences"
 publishDate: 2026-07-21
-updatedDate: 2026-07-21
+updatedDate: 2026-07-24
 author: "Cabinet Assuromieux Paris"
 category: "transport-logistique"
 tags: ["transport", "marchandises", "responsabilité transporteur", "flotte"]
@@ -35,6 +35,8 @@ Pour analyser un dossier, il faut identifier le rôle de l’entreprise, le cont
 ## 1. Identifier le rôle de chaque acteur
 
 Commencez par préciser qui commande, qui organise, qui exécute et qui possède la marchandise. Transporteur public, commissionnaire, donneur d’ordre, sous-traitant et entreprise transportant pour son propre compte n’occupent pas la même place.
+
+Le commissionnaire de transport ne doit pas être assimilé automatiquement au transporteur qui exécute matériellement le déplacement. Il organise le transport en son nom et sous sa responsabilité, selon le cadre applicable à la mission. La qualification du rôle contractuel doit être vérifiée à partir des opérations réalisées, des documents et des engagements pris ; cette présentation générale ne remplace pas une analyse juridique individualisée.
 
 Le [ministère chargé des Transports](https://www.ecologie.gouv.fr/politiques-publiques/acces-exercice-profession-transporteur-marchandises) documente l’accès et l’exercice de la profession de transporteur public routier de marchandises. Cette qualification ne doit pas être déduite du seul usage d’un véhicule.
 

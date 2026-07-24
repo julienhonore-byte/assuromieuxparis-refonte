@@ -54,6 +54,17 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
       { title: 'Sinistralité disponible', text: 'La fréquence, la nature et le coût des événements éclairent les franchises et la présentation du risque.' },
     ]} tone="light" />
 
+    <NeedChecklist id="cout" kicker="Maîtrise du coût" title="Comment agir sur le coût sans dégrader la protection ?" intro="Une recherche de maîtrise budgétaire commence par fiabiliser le risque présenté et vérifier ce que l’entreprise souhaite réellement transférer." items={[
+      { title: 'Fiabiliser les informations', text: 'Améliorer la qualité et l’exactitude des activités, chiffres, valeurs, effectifs, usages et autres données transmis.' },
+      { title: 'Revoir les garanties utiles', text: 'Vérifier que les garanties correspondent réellement aux risques et supprimer les doublons uniquement lorsqu’ils sont démontrés.' },
+      { title: 'Adapter les franchises', text: 'Rapprocher les franchises de la capacité financière de l’entreprise et des conséquences qu’elle peut raisonnablement conserver.' },
+      { title: 'Analyser la sinistralité', text: 'Comprendre la fréquence, les causes et le coût des événements, puis documenter les mesures de prévention mises en place.' },
+      { title: 'Repenser l’organisation des contrats', text: 'Regrouper ou séparer certains contrats seulement lorsque cela améliore la cohérence du programme et sa gestion.' },
+      { title: 'Comparer au-delà de la prime', text: 'Rapprocher les plafonds, exclusions, services et conditions de gestion avant de conclure sur le coût d’une proposition.' },
+      { title: 'Anticiper le renouvellement', text: 'Disposer du temps nécessaire pour actualiser les données, analyser les contrats et, si cela est pertinent, consulter le marché.' },
+      { title: 'Mesurer le coût réellement conservé', text: 'Lire ensemble prime, franchises, limites, exclusions et conséquences susceptibles de rester à la charge de l’entreprise.' },
+    ]} note="Une prime moins élevée n’est pas toujours une économie. Une franchise plus importante, un plafond plus faible, une exclusion supplémentaire ou une gestion moins adaptée peuvent augmenter le coût réel supporté par l’entreprise au moment d’un sinistre." />
+
     <NeedDecision title="La décision n’est pas toujours de changer." intro="La comparaison doit rendre les écarts lisibles et permettre un arbitrage explicite, sans dévaloriser l’assureur ou le courtier en place." outcomes={['Conserver le contrat actuel','Négocier ou demander un avenant','Corriger les bases de comparaison','Retenir une proposition plus cohérente','Consulter le marché sur un périmètre précis']} note="L’acceptation, les conditions finales et la date d’effet restent soumises aux pièces, aux contrats et aux décisions des assureurs concernés." />
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Comparer sans réduire la décision au prix." id="faq-title" /><FAQ items={faqItems} /></div></section>

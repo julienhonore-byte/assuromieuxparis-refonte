@@ -3,7 +3,7 @@ title: "Quelles assurances prévoir pour une PME ?"
 description: "Une grille de décision pour relier activité, locaux, véhicules, équipes, dirigeant, données et continuité sans appliquer une liste universelle."
 slug: "quelles-assurances-prevoir-pme"
 publishDate: 2026-07-21
-updatedDate: 2026-07-21
+updatedDate: 2026-07-24
 author: "Cabinet Assuromieux Paris"
 category: "assurance-entreprise"
 tags: ["PME", "programme d’assurances", "continuité", "dirigeant"]
@@ -84,6 +84,25 @@ La perte d’exploitation dépend généralement d’un événement, d’une pé
 Classez les risques selon leurs conséquences possibles, la capacité de l’entreprise à les prévenir et la part qu’elle peut conserver. Vérifiez ensuite l’articulation des contrats, les échéances et les responsabilités de mise à jour.
 
 Une PME peut ainsi décider de conserver certains risques, d’ajuster un contrat ou de consulter le marché. Le programme reste évolutif : acquisition, recrutement, nouveau site ou nouveau client doivent déclencher une revue ciblée.
+
+## Comment savoir si votre entreprise est correctement assurée ?
+
+Cette grille d’auto-évaluation aide à repérer les informations ou documents qui méritent une vérification :
+
+- Les activités décrites dans les contrats correspondent-elles à toutes les activités réellement exercées ?
+- Les nouveaux services, marchés ou zones géographiques ont-ils été déclarés ?
+- Les chiffres d’affaires, effectifs, surfaces, valeurs et équipements sont-ils à jour ?
+- Les plafonds de garantie correspondent-ils aux conséquences financières possibles d’un sinistre ?
+- Les franchises sont-elles compatibles avec la trésorerie de l’entreprise ?
+- Les exclusions importantes ont-elles été identifiées et comprises ?
+- Les véhicules, marchandises, locaux et équipements sont-ils protégés selon leurs usages réels ?
+- Les risques numériques et l’interruption d’activité ont-ils été examinés ?
+- Les obligations imposées par les clients, bailleurs, banques ou donneurs d’ordre sont-elles prises en compte ?
+- Les contrats ont-ils été revus depuis la dernière évolution importante de l’entreprise ?
+
+Une réponse négative ou incertaine ne signifie pas nécessairement que le contrat est inadapté. Elle indique qu’un point mérite d’être vérifié dans les conditions particulières, les conditions générales, les attestations ou les échanges avec l’assureur.
+
+[Demander un audit des assurances de l’entreprise](/audit-assurances-entreprise/)
 
 ### Point de vigilance
 

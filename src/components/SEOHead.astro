@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const schemas = Array.isArray(structuredData) ? structuredData : [structuredData];
-const imageAlt = `${title} — Assuromieux Paris`;
+const imageAlt = 'Assuromieux Paris – Audit et optimisation des assurances professionnelles';
 ---
 
 <meta charset="UTF-8" />
@@ -28,9 +28,16 @@ const imageAlt = `${title} — Assuromieux Paris`;
 <meta name="google-site-verification" content="5xYVOzuFko4e25GHcZOfDe9HFcrS2E8TFy3sobPorU0" />
 <title>{title}</title>
 <meta name="description" content={description} />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="canonical" href={canonical} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-<meta name="theme-color" content="#12365f" />
+<meta name="theme-color" content="#071c33" />
 
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:type" content={ogType} />
@@ -39,6 +46,8 @@ const imageAlt = `${title} — Assuromieux Paris`;
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 {image && <meta property="og:image" content={image} />}
+{image && <meta property="og:image:secure_url" content={image} />}
+{image && <meta property="og:image:type" content="image/png" />}
 {image && <meta property="og:image:width" content="1200" />}
 {image && <meta property="og:image:height" content="630" />}
 {image && <meta property="og:image:alt" content={imageAlt} />}

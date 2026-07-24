@@ -38,8 +38,14 @@ const structuredData = [
     '@type': ['LocalBusiness', 'InsuranceAgency'],
     '@id': `${site.canonicalUrl}#insurance-agency`,
     name: site.name,
-    url: site.canonicalUrl,
-    image: `${site.canonicalUrl}og-homepage-04.jpg`,
+    url: 'https://assuromieuxparis.com/',
+    logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+    image: 'https://assuromieuxparis.com/og-assuromieux-paris.png',
+    brand: {
+      '@type': 'Brand',
+      name: 'Assuromieux Paris',
+      logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+    },
     telephone: '+33695699674',
     email: site.email,
     address: organizationSchema.address,
@@ -77,7 +83,7 @@ const structuredData = [
   title="Courtier en assurance entreprise à Paris | Assuromieux Paris"
   description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles."
   canonical={site.canonicalUrl}
-  image={`${site.canonicalUrl}og-homepage-04.jpg`}
+  image="https://assuromieuxparis.com/og-assuromieux-paris.png"
   currentPath="/"
   ctaHref="#contact"
   {structuredData}

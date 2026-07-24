@@ -4,7 +4,7 @@ export interface NavigationItem {
 }
 
 export const site = {
-  name: 'ASSUROMIEUX PARIS',
+  name: 'Assuromieux Paris',
   legalName: 'Jules HONORE',
   personName: 'Jules HONORE',
   canonicalUrl: 'https://www.assuromieuxparis.com/',
@@ -60,8 +60,14 @@ export const organizationSchema = {
   name: site.name,
   legalName: site.legalName,
   description: `Cabinet de conseil et de courtage en assurances d’entreprise, inscrit à l’ORIAS en catégorie ${site.oriasCategory}.`,
-  url: site.canonicalUrl,
-  logo: `${site.canonicalUrl}logo/assuromieux-paris.jpeg`,
+  url: 'https://assuromieuxparis.com/',
+  logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+  image: 'https://assuromieuxparis.com/og-assuromieux-paris.png',
+  brand: {
+    '@type': 'Brand',
+    name: 'Assuromieux Paris',
+    logo: 'https://assuromieuxparis.com/favicon-512x512.png',
+  },
   email: site.email,
   telephone: '+33695699674',
   identifier: [

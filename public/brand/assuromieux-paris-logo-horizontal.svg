@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title">
+  <title id="title">Assuromieux Paris</title>
+  <svg x="12" y="12" width="236" height="236" viewBox="0 0 512 512">
+    <rect width="512" height="512" rx="88" fill="#071c33"/>
+    <path d="M62 404 132 108h38l-58 296H62Z" fill="#fff"/>
+    <path d="m152 108h38l70 296h-50l-58-296Z" fill="#fff"/>
+    <path d="M106 288h102l12 44H96l10-44Z" fill="#c99a46"/>
+    <path fill="#fff" fill-rule="evenodd" d="M276 108h106c46 0 76 33 76 84 0 52-30 84-76 84h-52v128h-54V108Zm54 52v64h48c18 0 28-12 28-32s-10-32-28-32h-48Z"/>
+  </svg>
+  <text x="286" y="157" fill="#0b2747" font-family="Inter, Avenir, 'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="82" font-weight="750" letter-spacing="-2">
+    <tspan>Assuromieux</tspan><tspan dx="18" fill="#8a6222">Paris</tspan>
+  </text>
+</svg>

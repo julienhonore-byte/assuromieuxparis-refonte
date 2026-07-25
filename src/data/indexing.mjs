@@ -7,6 +7,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/rc-professionnelle/',
   '/flotte-automobile/',
   '/multirisque-professionnelle/',
+  '/protection-dirigeant/',
   '/cabinet/',
   '/secteurs/',
   '/secteurs/transport-routier-marchandises/',

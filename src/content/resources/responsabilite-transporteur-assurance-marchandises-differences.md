@@ -5,7 +5,7 @@ description: "Responsabilité, assurance de responsabilité, marchandises transp
 slug: "responsabilite-transporteur-assurance-marchandises-differences"
 publishDate: 2026-07-21
 updatedDate: 2026-07-24
-author: "Cabinet Assuromieux Paris"
+author: "Assuromieux Paris"
 category: "transport-logistique"
 tags: ["transport", "marchandises", "responsabilité transporteur", "flotte"]
 keywords: ["responsabilité transporteur assurance marchandises", "assurance marchandises transportées", "assurance transport"]
@@ -21,6 +21,8 @@ faq:
     answer: "Pas automatiquement. L’assurance automobile traite notamment la responsabilité liée à la circulation et, selon les options, le véhicule. La marchandise et la responsabilité de transport relèvent d’analyses distinctes."
   - question: "La responsabilité du transporteur correspond-elle toujours à la valeur totale de la marchandise ?"
     answer: "Il ne faut pas le présumer. Les responsabilités, limites et causes d’exonération dépendent notamment des textes, du contrat de transport, de la mission et des circonstances."
+  - question: "Quelle est la différence entre un transporteur et un commissionnaire de transport ?"
+    answer: "Le transporteur exécute le déplacement confié. Le commissionnaire organise le transport en son nom et sous sa responsabilité selon le cadre applicable, sans être nécessairement le transporteur exécutant. La qualification exacte dépend des opérations, des documents et des engagements réellement pris."
 draft: false
 ---
 
@@ -28,67 +30,62 @@ draft: false
 
 La responsabilité du transporteur, l’assurance de cette responsabilité, l’assurance des marchandises et l’assurance automobile ne désignent pas la même chose. Elles peuvent se croiser lors d’un dommage, mais répondent à des objets et à des limites distincts.
 
-Pour analyser un dossier, il faut identifier le rôle de l’entreprise, le contrat de transport, les marchandises, leur valeur, les opérations confiées, les véhicules et les éventuels sous-traitants.
+Pour analyser un dossier, la première étape consiste à identifier le rôle de l’entreprise, le contrat de transport, les marchandises, leur valeur, les opérations confiées, les véhicules et les éventuels sous-traitants.
 
 > Une marchandise endommagée ne signifie pas automatiquement que le transporteur doit sa valeur totale, ni qu’un contrat déterminé indemnisera sans condition.
 
-## 1. Identifier le rôle de chaque acteur
+| Sujet | Ce qu’il concerne | Question à examiner |
+| --- | --- | --- |
+| Responsabilité du transporteur | Responsabilité liée à l’exécution du transport | Dans quelles conditions la responsabilité peut-elle être recherchée ? |
+| Assurance de responsabilité | Conséquences financières de la responsabilité assurée | Quelles responsabilités et limites sont prévues par le contrat ? |
+| Assurance des marchandises | Intérêt financier attaché aux biens transportés | Qui souhaite protéger les marchandises et pour quelle valeur ? |
+| Assurance du véhicule | Véhicule utilisé pour le transport | Quels véhicules, usages et conducteurs sont déclarés ? |
+
+## 1. Les rôles et les responsabilités
 
 Commencez par préciser qui commande, qui organise, qui exécute et qui possède la marchandise. Transporteur public, commissionnaire, donneur d’ordre, sous-traitant et entreprise transportant pour son propre compte n’occupent pas la même place.
 
-Le commissionnaire de transport ne doit pas être assimilé automatiquement au transporteur qui exécute matériellement le déplacement. Il organise le transport en son nom et sous sa responsabilité, selon le cadre applicable à la mission. La qualification du rôle contractuel doit être vérifiée à partir des opérations réalisées, des documents et des engagements pris ; cette présentation générale ne remplace pas une analyse juridique individualisée.
-
-Le [ministère chargé des Transports](https://www.ecologie.gouv.fr/politiques-publiques/acces-exercice-profession-transporteur-marchandises) documente l’accès et l’exercice de la profession de transporteur public routier de marchandises. Cette qualification ne doit pas être déduite du seul usage d’un véhicule.
-
-## 2. Décrire la mission et le contrat de transport
-
-Listez l’origine, la destination, les opérations prévues, les délais, le chargement, l’arrimage, les ruptures de charge, le stockage temporaire et la remise. Rassemblez les documents de transport et les conditions convenues.
-
-Le Code des transports et les contrats types peuvent encadrer certaines relations lorsqu’un contrat spécifique n’existe pas. [Légifrance publie le contrat type général](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000034330431). Son application et ses effets doivent toutefois être vérifiés pour la mission concernée.
-
-## 3. Comprendre la responsabilité du transporteur
+Le commissionnaire de transport organise le transport en son nom et sous sa responsabilité selon le cadre applicable. Il n’est pas pour autant assimilable au transporteur qui exécute matériellement le déplacement. La qualification exacte se rapproche des opérations réalisées, des documents et des engagements pris ; cette présentation générale ne remplace pas une analyse juridique individualisée.
 
 La responsabilité décrit les conditions dans lesquelles le transporteur peut devoir répondre d’un dommage, d’une perte ou d’un retard. Elle dépend des faits, des textes, du contrat, des réserves et des éventuelles causes d’exonération.
 
-Les limites d’indemnisation et règles applicables ne doivent pas être remplacées par une formule générale. Nature du transport, poids, valeur déclarée, faute invoquée ou convention internationale peuvent modifier l’analyse.
+Une cause d’exonération désigne ici une circonstance susceptible d’écarter ou de limiter une responsabilité selon le régime applicable. Sa portée, comme celle des limitations d’indemnisation, ne se déduit pas d’une formule générale : nature du transport, poids, valeur déclarée, faute invoquée ou convention internationale peuvent modifier l’analyse.
 
-## 4. Lire l’assurance de responsabilité
+## 2. Les contrats à ne pas confondre
+
+### Assurance de responsabilité
 
 L’assurance de responsabilité vise à garantir l’assuré lorsque sa responsabilité est engagée dans les conditions du contrat. Elle possède ses propres activités déclarées, plafonds, franchises, exclusions, territoires et obligations.
 
-Elle ne transforme pas la responsabilité juridique et ne garantit pas nécessairement toute valeur confiée. Il faut comparer la mission réelle, la responsabilité susceptible d’être retenue et la réponse contractuelle.
+Elle ne transforme pas la responsabilité juridique et ne garantit pas nécessairement toute valeur confiée. L’analyse rapproche donc la mission réelle, la responsabilité susceptible d’être retenue et la réponse contractuelle.
 
-## 5. Distinguer l’assurance des marchandises
+### Assurance des marchandises
 
-Une assurance portant sur les marchandises protège un intérêt sur les biens selon des événements, valeurs, périodes et limites définis. Elle peut être souscrite par le propriétaire, un donneur d’ordre ou pour compte, selon le montage.
+Une assurance portant sur les marchandises protège un intérêt sur les biens, c’est-à-dire l’intérêt financier d’une personne exposée à leur perte ou à leur détérioration, selon des événements, valeurs, périodes et limites définis. Elle peut être souscrite par le propriétaire, un donneur d’ordre ou « pour compte », lorsqu’un souscripteur conclut le contrat au bénéfice de la ou des personnes désignées ou déterminables selon le montage retenu.
 
-Cette assurance ne prouve pas que le transporteur est responsable. Elle peut conduire à des recours entre acteurs après indemnisation. Les bénéficiaires, valeurs assurées, exclusions et preuves doivent donc être compris.
+Cette assurance n’établit pas, à elle seule, la responsabilité du transporteur. Une indemnisation peut ensuite ouvrir des questions de recours entre acteurs, dont les conditions doivent être appréciées selon le contrat et le droit applicable. Les bénéficiaires, valeurs assurées, exclusions et preuves restent donc à identifier.
 
-## 6. Vérifier valeurs et cumuls
+### Assurance du véhicule
 
-Recensez la valeur habituelle, la valeur maximale par véhicule ou site, les pics et les marchandises sensibles. Distinguez valeur commerciale, valeur déclarée et base d’indemnisation prévue.
+L’assurance automobile traite le socle de responsabilité lié à la circulation et, selon les garanties, les dommages au véhicule. Elle ne constitue pas une assurance globale de l’activité de transport.
 
-Un plafond adapté à une livraison moyenne peut devenir insuffisant lors d’un pic. À l’inverse, une valeur élevée ne signifie pas que la responsabilité du transporteur porte automatiquement sur ce montant.
+Conducteurs, usages, territoires et assistance restent néanmoins essentiels : un même événement peut endommager le véhicule, la marchandise et mettre en jeu différentes responsabilités.
 
-## 7. Examiner exclusions et prévention
+## 3. Les marchandises, les valeurs et les flux
 
-Vol, stationnement, température, marchandises exclues, emballage, chargement, arrimage ou sous-traitance peuvent faire l’objet de conditions spécifiques. L’entreprise doit comprendre les exigences qui correspondent réellement à ses opérations.
+Décrivez l’origine, la destination, les opérations prévues, les délais, le chargement, l’arrimage, le stockage temporaire et la remise. Une rupture de charge correspond à une interruption du trajet continu, par exemple lors d’un transbordement, d’un changement de véhicule ou d’un passage par un site intermédiaire. Ces étapes peuvent modifier les responsabilités, les preuves disponibles et les conditions contractuelles à étudier.
 
-La prévention et la traçabilité ne remplacent pas l’assurance. Elles améliorent la maîtrise du risque et la qualité des informations disponibles lors d’une réclamation.
+Recensez ensuite la valeur habituelle, la valeur maximale par véhicule ou site, les pics et les marchandises sensibles. Valeur commerciale, valeur déclarée et base d’indemnisation prévue ne se confondent pas. Un plafond adapté à une livraison moyenne peut devenir insuffisant lors d’un pic, sans que la valeur élevée d’un chargement détermine automatiquement la responsabilité du transporteur.
 
-## 8. Articuler flotte et circulation
+## 4. Les points de contrôle contractuels
 
-L’assurance automobile traite le socle de responsabilité lié à la circulation et, selon les garanties, les dommages au véhicule. Elle ne doit pas être présentée comme une assurance globale de l’activité de transport.
+Vol, stationnement, température, marchandises exclues, emballage, chargement, arrimage ou sous-traitance peuvent faire l’objet de conditions spécifiques. La prévention et la traçabilité participent à la maîtrise du risque et à la qualité des informations disponibles lors d’une réclamation, sans se substituer à l’assurance.
 
-Conducteurs, usages, territoires et assistance restent néanmoins essentiels : un même événement peut endommager le véhicule, la marchandise et engager différentes responsabilités.
+En présence de sous-traitants, précisez qui les sélectionne, qui contracte avec le client, quelles attestations sont demandées et quels recours sont prévus. Le transfert opérationnel d’une mission n’emporte pas nécessairement le transfert de toutes les responsabilités. Les contrats doivent être rapprochés des engagements pris envers le donneur d’ordre.
 
-## 9. Intégrer la sous-traitance
+Le Code des transports et les contrats types peuvent encadrer certaines relations. Leur application et leurs effets restent à confirmer pour la mission considérée, notamment en l’absence de convention écrite spécifique.
 
-Précisez qui sélectionne le sous-traitant, qui contracte avec le client, quelles attestations sont demandées et quels recours sont prévus. Le transfert opérationnel d’une mission ne transfère pas automatiquement toutes les responsabilités.
-
-Les contrats de responsabilité et de marchandises doivent décrire la sous-traitance acceptée. Les limites des intervenants doivent être rapprochées des engagements pris envers le donneur d’ordre.
-
-## 10. Construire la grille de vérification
+## 5. Une grille de contrôle par flux
 
 Pour chaque flux, notez : acteurs, rôle, marchandise, valeur, mission, véhicule, documents, responsabilité possible, contrat mobilisable, plafond, franchise, exclusion et preuve attendue.
 
@@ -96,8 +93,16 @@ Cette grille aide à poser les bonnes questions. Elle ne remplace ni l’analyse
 
 ## Prolonger l’analyse par activité
 
+La page [Assurance transport](/assurance-transport/) replace ces contrats dans le programme de l’entreprise. La méthode générale de [l’audit des assurances](/audit-assurances-entreprise/) aide ensuite à rapprocher les responsabilités, les flux et les documents avant une éventuelle consultation.
+
 La grille ne s’applique pas de manière identique à tous les métiers. La page [Transport routier de marchandises](/secteurs/transport-routier-marchandises/) coordonne flux, responsabilités, marchandises, flotte et sous-traitance. La page [Convoyage de véhicules](/secteurs/convoyage-vehicules/) part d’un véhicule qui circule tout en restant confié. La page [Déménagement](/secteurs/demenagement/) suit les biens depuis la préparation et la manutention jusqu’à leur restitution.
 
-### Point de vigilance
+## Sources de cadrage
+
+- [Ministère chargé des Transports — accès à la profession de transporteur routier de marchandises](https://www.ecologie.gouv.fr/politiques-publiques/acces-exercice-profession-transporteur-marchandises).
+- [Légifrance — définition du commissionnaire de transport](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028999635/).
+- [Légifrance — contrat type général applicable au transport public routier de marchandises](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000034330431).
+
+## Point de vigilance
 
 Les transporteurs routiers, convoyeurs et déménageurs ont des organisations différentes. Les pages sectorielles aident à préparer les questions ; elles ne créent aucune conclusion commune à ces métiers.

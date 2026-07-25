@@ -53,6 +53,7 @@ const products = props.relatedProducts.map((key) => productLinks[key]).filter(Bo
 <style>
   .resource-body { padding-block: var(--section-space); }
   .resource-body__grid { display: grid; grid-template-columns: minmax(14rem, 18rem) minmax(0, 48rem); justify-content: center; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .resource-prose { min-width: 0; }
   .resource-prose :global(h2) { margin: var(--space-14) 0 var(--space-5); color: var(--color-brand-deep); font-size: clamp(1.75rem, 1.55rem + .8vw, 2.35rem); line-height: 1.15; scroll-margin-top: 2rem; }
   .resource-prose :global(h2:first-child) { margin-top: 0; }
   .resource-prose :global(h3) { margin: var(--space-8) 0 var(--space-3); color: var(--color-brand-deep); font-size: var(--font-size-h3); line-height: 1.25; }
@@ -61,6 +62,9 @@ const products = props.relatedProducts.map((key) => productLinks[key]).filter(Bo
   .resource-prose :global(ul), .resource-prose :global(ol) { display: grid; gap: var(--space-3); margin: var(--space-5) 0 0; padding-left: 1.3rem; }
   .resource-prose :global(blockquote) { margin: var(--space-8) 0; padding: var(--space-5) var(--space-6); color: var(--color-brand-deep); background: var(--color-gold-wash); border-left: 4px solid var(--color-gold); border-radius: var(--radius-control); }
   .resource-prose :global(blockquote p) { margin: 0; color: inherit; font-weight: var(--font-weight-medium); }
+  .resource-prose :global(table) { display: block; width: 100%; max-width: 100%; margin-top: var(--space-6); overflow-x: auto; border-collapse: collapse; color: var(--color-text-soft); }
+  .resource-prose :global(th), .resource-prose :global(td) { min-width: 10rem; padding: var(--space-3); border: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  .resource-prose :global(th) { color: var(--color-brand-deep); background: var(--color-surface); font-weight: var(--font-weight-strong); }
   .product-links { margin-top: var(--space-12); padding: var(--space-7); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card-sm); }
   .product-links h2 { margin: 0; font-size: var(--font-size-h3); }
   .product-links ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-5); padding: 0; list-style: none; }

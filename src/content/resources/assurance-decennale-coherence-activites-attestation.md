@@ -4,7 +4,7 @@ seoTitle: "Décennale : activités et attestation"
 description: "Une méthode de lecture prudente pour rapprocher travaux réalisés, activités déclarées, attestation décennale, périodes, procédés et sous-traitance."
 slug: "assurance-decennale-coherence-activites-attestation"
 publishDate: 2026-07-21
-updatedDate: 2026-07-21
+updatedDate: 2026-07-24
 author: "Assuromieux Paris"
 category: "btp"
 tags: ["décennale", "attestation", "activités déclarées", "BTP"]
@@ -21,6 +21,8 @@ faq:
     answer: "Non. L’attestation donne des informations importantes, mais l’activité, les travaux, la période, le contrat, les procédés et les circonstances doivent être rapprochés. Une analyse spécialisée peut être nécessaire."
   - question: "Un sous-traitant relève-t-il automatiquement de la même obligation décennale ?"
     answer: "Il ne faut pas l’affirmer sans examiner son rôle. Service Public distingue notamment le sous-traitant sans lien direct avec le maître d’ouvrage, tout en rappelant ses engagements envers le constructeur."
+  - question: "Que faire lorsqu’une entreprise ajoute ou modifie une activité ?"
+    answer: "La nouvelle activité doit être décrite avec précision et examinée avec l’assureur ou l’intermédiaire avant sa réalisation lorsque sa nature ou son importance modifie le risque déclaré. La mise à jour du contrat et des justificatifs doit être confirmée selon la situation."
 draft: false
 ---
 
@@ -32,66 +34,62 @@ Vérifier une attestation décennale consiste à rapprocher les activités qui y
 
 > Une ressemblance entre un libellé et un métier ne suffit pas. Les travaux, le procédé, le rôle contractuel et les pièces doivent être décrits avec précision.
 
-## 1. Décrire les activités réellement exercées
+## Étape 1 : décrire précisément les travaux et le rôle exercé
 
-Listez les travaux principaux et accessoires, sans vous limiter au nom commercial de l’entreprise. Précisez si elle conçoit, pose, réalise, rénove, coordonne ou sous-traite, ainsi que les supports et matériaux concernés.
+Commencez par écrire, en termes simples, ce que l’entreprise réalise réellement. Le nom commercial ou le code d’activité ne suffit pas à décrire un chantier.
 
-Ajoutez les évolutions récentes : nouveau procédé, élargissement de lot, intervention sur un autre type d’ouvrage ou changement de clientèle. Une activité ancienne dans le contrat peut ne plus représenter l’exploitation actuelle.
+La description utile précise notamment :
 
-## 2. Identifier le rôle contractuel
+- la nature des travaux principaux et accessoires ;
+- les techniques, procédés, supports et matériaux utilisés ;
+- l’intervention directe ou sous-traitée ;
+- le rôle contractuel de l’entreprise ;
+- le type d’ouvrage ou de chantier concerné.
 
-Déterminez avec qui l’entreprise contracte et quelle mission elle accepte. Entrepreneur, maître d’œuvre, bureau d’études, entreprise générale ou sous-traitant ne se lisent pas de la même façon.
+Le rôle doit être rapproché des faits. Entrepreneur, maître d’œuvre, bureau d’études, entreprise générale ou sous-traitant n’occupent pas la même position. Service Public distingue notamment le constructeur professionnel lié au maître d’ouvrage et le sous-traitant sans lien direct avec celui-ci. Une qualification juridique sensible reste à faire valider selon la situation.
 
-Service Public indique que le constructeur professionnel lié au maître d’ouvrage par un contrat de louage d’ouvrage entre dans le champ décrit, et distingue les sous-traitants sans lien direct. Cette information générale doit être rapprochée des faits et validée lorsqu’une qualification juridique est nécessaire.
+## Étape 2 : lire les informations présentes sur l’attestation
 
-## 3. Lire l’attestation sans l’isoler
+L’attestation sert à justifier des informations relatives au contrat. Selon le document effectivement délivré, relevez :
 
-Contrôlez l’identité de l’assuré, le numéro du contrat, l’assureur, la période, les activités et les mentions territoriales. Vérifiez que l’attestation correspond à la bonne entité et à la bonne version.
+- l’identité de l’entreprise assurée ;
+- le nom de l’assureur et les références du contrat ;
+- la période de validité ou la période concernée ;
+- les activités mentionnées ;
+- les procédés, techniques ou limites éventuellement indiqués ;
+- le territoire prévu.
 
-Rapprochez-la ensuite des conditions particulières et des éventuels avenants. L’attestation synthétise ; elle ne remplace pas les clauses qui définissent les activités, limites et exclusions.
+Assurez-vous que le document correspond à la bonne entité et à la bonne version. L’attestation synthétise des informations ; elle ne remplace pas la lecture des conditions particulières, des clauses du contrat et de ses avenants.
 
-## 4. Rapprocher travaux et libellés
+## Étape 3 : rapprocher les travaux, les activités, les dates et le territoire
 
-Pour chaque famille de chantier, écrivez en termes simples ce qui est réalisé. Placez en face le libellé de l’attestation et notez les termes à clarifier.
+Placez en regard les travaux prévus et les libellés d’activité. Une ressemblance de vocabulaire ne suffit pas : un terme peut comporter des limites liées à la technique, au support, à la destination, au procédé ou au rôle exercé.
 
-Évitez les conclusions par mot-clé. Un libellé peut contenir des limites de technique, de support, de destination ou de procédé. Une réponse écrite de l’assureur ou du courtier peut être nécessaire.
+Le même rapprochement porte sur les procédés utilisés, la période de souscription, la date d’ouverture du chantier et le territoire. Les travaux longs ou une succession de contrats demandent une attention particulière. La date d’émission de l’attestation ne résout pas, à elle seule, toutes les questions temporelles.
 
-## 5. Examiner procédés et techniques
+Un écart ou une imprécision ne permet pas de conclure automatiquement à une absence totale de garantie. Il signale un point à documenter et, selon son importance, à soumettre à l’assureur ou à l’intermédiaire.
 
-Certains travaux utilisent des techniques courantes, d’autres des procédés particuliers, produits nouveaux ou systèmes complets. Documentez leur nature, les avis ou qualifications disponibles et les conditions de mise en œuvre.
+## Étape 4 : documenter les écarts et demander une confirmation
 
-Ne déduisez pas automatiquement la garantie d’une qualification professionnelle ou d’un document technique. Ces éléments peuvent éclairer le dossier, mais leur portée contractuelle doit être vérifiée.
+En présence d’un doute, décrivez précisément les travaux, le rôle, les procédés et le calendrier. Transmettez les pièces utiles et demandez une confirmation écrite sur le point identifié. Les attestations, avenants et échanges sont ensuite conservés avec le dossier du chantier concerné.
 
-## 6. Contrôler les dates utiles
+L’organisation interne compte également. Une personne peut être chargée de contrôler les attestations avant chantier et de signaler une évolution significative de l’activité. Nouveau procédé, nouveau lot ou nouveau territoire peuvent justifier une vérification ciblée et, selon la situation, une mise à jour du contrat et des justificatifs avant l’intervention.
 
-Repérez la date d’ouverture du chantier, la période de validité du contrat et la date des travaux. La réception et ses documents ont également une place dans la chronologie de la responsabilité décennale.
+Cette démarche peut être approfondie depuis la page [Assurance BTP et décennale](/assurance-btp-decennale/), puis replacée dans une lecture d’ensemble grâce à [l’audit des assurances d’entreprise](/audit-assurances-entreprise/).
 
-Les successions de contrats et les travaux longs appellent une attention spécifique. Une simple date d’émission d’attestation ne résout pas toutes les questions temporelles.
+## Checklist de lecture d’une attestation décennale
 
-## 7. Vérifier la portée territoriale
+Cette checklist aide à identifier les points à vérifier. Elle ne permet pas, à elle seule, de conclure définitivement à l’existence ou à l’absence d’une garantie.
 
-Identifiez où sont réalisés les travaux et quelle loi ou juridiction peut être concernée. Une attestation destinée à des opérations en France ne doit pas être transposée sans analyse à un chantier étranger.
+- L’entreprise indiquée est-elle bien celle qui réalise ou contracte les travaux ?
+- La période de validité correspond-elle au chantier concerné ?
+- Les activités mentionnées correspondent-elles aux travaux prévus ?
+- Les procédés ou techniques utilisés sont-ils cohérents avec les mentions du document ?
+- Le territoire est-il adapté au lieu du chantier ?
+- Le rôle de l’entreprise est-il correctement décrit ?
+- Les éventuelles activités sous-traitées ou accessoires ont-elles été examinées ?
+- Une confirmation écrite est-elle nécessaire en cas d’écart ou de doute ?
 
-Les territoires, collectivités et opérations particulières peuvent exiger des documents adaptés. La vérification doit intervenir avant l’engagement du chantier.
-
-## 8. Examiner exclusions et limites
-
-Lisez les exclusions relatives aux activités, techniques, ouvrages, coûts ou responsabilités. Vérifiez les plafonds et franchises lorsqu’ils sont pertinents, ainsi que les autres garanties du programme BTP.
-
-La décennale ne doit pas être présentée comme la seule assurance de l’entreprise : RC professionnelle, véhicules, matériels, locaux, équipes et continuité peuvent nécessiter des analyses distinctes.
-
-## 9. Documenter la sous-traitance
-
-Pour chaque sous-traitant, rassemblez contrat, mission, attestation et période. Pour les travaux sous-traités par l’entreprise, décrivez ce qu’elle conserve comme engagement et contrôle.
-
-Le rôle de sous-traitant ne permet pas une conclusion automatique sur toutes les responsabilités. Les obligations envers le constructeur et les assurances contractuelles doivent être étudiées.
-
-## 10. Organiser le processus de mise à jour
-
-Désignez la personne qui contrôle les attestations avant chantier et celle qui signale une évolution d’activité. Conservez les versions et les réponses écrites avec le dossier concerné.
-
-Une revue annuelle ne suffit pas toujours : nouveau procédé, nouveau lot ou nouveau territoire doit déclencher une vérification ciblée avant signature.
-
-### Point de vigilance juridique
+## Point de vigilance juridique
 
 Ce guide aide à préparer les pièces et les questions. Il ne qualifie pas définitivement un ouvrage, une activité ou une responsabilité. Les cas sensibles doivent être examinés avec le courtier, l’assureur et, si nécessaire, un professionnel du droit.

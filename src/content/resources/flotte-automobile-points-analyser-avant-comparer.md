@@ -1,9 +1,10 @@
 ---
 title: "Assurance flotte automobile : les points à analyser avant de comparer"
+seoTitle: "Assurance flotte : points à comparer"
 description: "Parc, usages, conducteurs, sinistralité, garanties, franchises et gestion : les informations à structurer avant de comparer une assurance flotte."
 slug: "flotte-automobile-points-analyser-avant-comparer"
 publishDate: 2026-07-21
-updatedDate: 2026-07-21
+updatedDate: 2026-07-24
 author: "Assuromieux Paris"
 category: "assurance-entreprise"
 tags: ["flotte automobile", "véhicules", "sinistralité", "franchises"]
@@ -20,6 +21,8 @@ faq:
     answer: "Pas automatiquement. Le véhicule, le matériel, les marchandises et la responsabilité professionnelle répondent à des objets différents. Chaque garantie et contrat doit être identifié."
   - question: "La prime suffit-elle pour comparer deux offres de flotte ?"
     answer: "Non. Il faut rapprocher la prime des véhicules, conducteurs, usages, garanties, franchises, services, procédures de mouvement et conditions de gestion des sinistres."
+  - question: "Quels documents préparer pour analyser une assurance flotte ?"
+    answer: "Un état du parc, les cartes grises ou données d’identification, les usages, les catégories de conducteurs, le relevé de sinistralité, les garanties et franchises actuelles ainsi que les règles de gestion des entrées et sorties forment une base utile. Les besoins d’assistance, équipements ou marchandises transportés sont ajoutés lorsqu’ils sont concernés."
 draft: false
 ---
 
@@ -51,7 +54,7 @@ L’objectif n’est pas d’établir seul l’admissibilité d’un conducteur,
 
 Regroupez les relevés disponibles et la connaissance interne des incidents. Analysez fréquence, coût, responsabilité, circonstances, véhicule, conducteur et causes possibles lorsque les données le permettent.
 
-Une fréquence élevée peut inviter à revoir les franchises ou la prévention. Un sinistre exceptionnel peut nécessiter une explication différente. Aucun seuil arbitraire ne remplace cette lecture.
+Une fréquence élevée peut conduire à examiner l’organisation, la prévention, les franchises ou les garanties. Un sinistre exceptionnel peut nécessiter une explication différente. Aucun seuil arbitraire ne remplace cette lecture.
 
 ## 5. Distinguer les garanties
 
@@ -75,7 +78,7 @@ Un service utile pour une berline de fonction peut être insuffisant pour un vé
 
 Documentez qui déclare une entrée, une sortie, un changement d’usage ou d’affectation, dans quel délai et avec quelle preuve. La flotte évolue souvent plus vite que son dossier administratif.
 
-Une procédure simple réduit les écarts. Elle doit correspondre aux modalités du contrat et aux outils utilisés, pas à une habitude informelle impossible à contrôler.
+Une procédure claire aide à limiter les écarts de déclaration et de gestion. Elle doit correspondre aux modalités du contrat et aux outils utilisés, pas à une habitude informelle impossible à contrôler.
 
 ## 9. Séparer véhicule, matériel et marchandises
 
@@ -91,6 +94,8 @@ Remettez aux assureurs le même inventaire, les mêmes usages et la même sinist
 
 La décision peut consister à maintenir le contrat, modifier certaines options, renforcer la prévention ou consulter davantage. Une comparaison utile ne force pas le changement.
 
-### Point de vigilance
+La page [Assurance flotte automobile](/flotte-automobile/) présente la manière dont cette analyse peut être replacée dans le programme de l’entreprise.
+
+## Point de vigilance
 
 Les modalités d’une flotte varient selon le contrat, le parc et l’activité. Ce guide ne décrit ni un nombre universel de véhicules ni un niveau de garantie recommandé pour toutes les entreprises.

@@ -10,7 +10,9 @@ category: "assurance-entreprise"
 tags: ["flotte automobile", "véhicules", "sinistralité", "franchises"]
 keywords: ["comparer assurance flotte automobile", "audit flotte entreprise", "assurance parc automobile"]
 canonical: "https://www.assuromieuxparis.com/ressources/guides/flotte-automobile-points-analyser-avant-comparer/"
-status: "review-required"
+status: "published"
+reviewedBy: "Jules HONORE"
+reviewDate: 2026-07-24
 featured: false
 readingTime: 7
 relatedProducts: ["flotte", "audit", "transport", "multirisque"]
@@ -20,7 +22,7 @@ faq:
   - question: "Une assurance flotte couvre-t-elle les marchandises transportées ?"
     answer: "Pas automatiquement. Le véhicule, le matériel, les marchandises et la responsabilité professionnelle répondent à des objets différents. Chaque garantie et contrat doit être identifié."
   - question: "La prime suffit-elle pour comparer deux offres de flotte ?"
-    answer: "Non. Il faut rapprocher la prime des véhicules, conducteurs, usages, garanties, franchises, services, procédures de mouvement et conditions de gestion des sinistres."
+    answer: "La prime seule ne suffit pas. La comparaison doit être adaptée au parc et rapprocher les critères pertinents : véhicules, conducteurs, usages, garanties, franchises, services et gestion des sinistres."
   - question: "Quels documents préparer pour analyser une assurance flotte ?"
     answer: "Un état du parc, les cartes grises ou données d’identification, les usages, les catégories de conducteurs, le relevé de sinistralité, les garanties et franchises actuelles ainsi que les règles de gestion des entrées et sorties forment une base utile. Les besoins d’assistance, équipements ou marchandises transportés sont ajoutés lorsqu’ils sont concernés."
 draft: false
@@ -28,7 +30,7 @@ draft: false
 
 ## La réponse directe
 
-Avant de comparer une assurance flotte, l’entreprise doit structurer son parc, ses conducteurs, ses usages, sa sinistralité et ses procédures de gestion. Deux offres ne sont comparables que si elles répondent au même risque et si leurs garanties, franchises et services sont lus sur une base commune.
+Avant de comparer une assurance flotte, l’entreprise doit structurer son parc, ses conducteurs, ses usages, sa sinistralité et ses procédures de gestion. Une comparaison utile suppose de vérifier que les offres répondent à un risque défini et de rapprocher leurs garanties, franchises et services sur une base explicite.
 
 Le socle obligatoire est la responsabilité civile automobile pour les véhicules concernés. [Service Public](https://www.service-public.gouv.fr/particuliers/vosdroits/F2628) distingue cette obligation des garanties facultatives. Une flotte exige ensuite une analyse propre à l’entreprise.
 
@@ -40,7 +42,7 @@ Regroupez les véhicules par usage plutôt que par modèle uniquement. Un utilit
 
 ## 2. Préciser les usages et zones de circulation
 
-Décrivez les déplacements professionnels, tournées, kilomètres, stationnement, transport de personnes, matériel ou marchandises et circulation internationale. Les usages réels doivent correspondre aux déclarations et restrictions prévues.
+Décrivez les déplacements professionnels, tournées, kilomètres, stationnement, transport de personnes, matériel ou marchandises et circulation internationale. Les usages réels doivent être rapprochés des déclarations et restrictions prévues par le contrat.
 
 La territorialité doit être rapprochée des pays parcourus, de la durée des déplacements et des services d’assistance. Une carte géographique générale ne suffit pas à décrire toutes les conditions.
 
@@ -48,7 +50,7 @@ La territorialité doit être rapprochée des pays parcourus, de la durée des d
 
 Identifiez les conducteurs habituels, occasionnels et nouveaux, ainsi que les modalités de prêt. Permis, ancienneté, affectation, formation et règles internes peuvent être demandés selon le risque et le contrat.
 
-L’objectif n’est pas d’établir seul l’admissibilité d’un conducteur, mais de vérifier que le marché dispose des informations nécessaires et que l’entreprise connaît ses procédures.
+L’objectif n’est pas d’établir seul l’admissibilité d’un conducteur, mais de vérifier que les informations disponibles permettent de présenter le risque, puis de compléter le dossier selon les demandes du marché.
 
 ## 4. Analyser la sinistralité
 
@@ -66,7 +68,7 @@ Vérifiez aussi les aménagements et accessoires. Leur présence dans le véhicu
 
 Une franchise plus élevée peut modifier la prime, mais elle augmente la part conservée par l’entreprise. Simulez son effet sur la fréquence observée, le budget et la capacité de gestion interne.
 
-La comparaison doit inclure les franchises différentes selon l’usage, le conducteur, le dommage ou les circonstances. Un montant « standard » affiché ne résume pas toujours le contrat.
+La comparaison doit identifier, lorsqu’elles existent, les franchises variant selon l’usage, le conducteur, le dommage ou les circonstances. Un montant « standard » affiché ne résume pas toujours le contrat.
 
 ## 7. Évaluer assistance et continuité
 
@@ -90,7 +92,7 @@ Dans le [transport routier de marchandises](/secteurs/transport-routier-marchand
 
 ## 10. Comparer sur une base homogène
 
-Remettez aux assureurs le même inventaire, les mêmes usages et la même sinistralité. Construisez ensuite un tableau des garanties, franchises, exclusions, services, procédures et prime.
+Lorsqu’une consultation est pertinente, partez d’un socle commun décrivant le parc, les usages et la sinistralité, puis répondez aux demandes propres à chaque assureur. Construisez ensuite un tableau des garanties, franchises, exclusions, services, procédures et prime.
 
 La décision peut consister à maintenir le contrat, modifier certaines options, renforcer la prévention ou consulter davantage. Une comparaison utile ne force pas le changement.
 

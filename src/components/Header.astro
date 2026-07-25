@@ -33,8 +33,14 @@ const {
   <div class="site-header">
     <div class="container-wide site-header__inner">
       <a class="brand" href="/" aria-label="Assuromieux Paris — Accueil">
-        <img src="/logo/assuromieux-paris.jpeg" width="300" height="83" alt="Assuromieux Paris" />
-        <span>Paris</span>
+        <img
+          src="/brand/assuromieux-paris-logo-horizontal.svg"
+          width="1200"
+          height="260"
+          alt="Assuromieux Paris"
+          data-brand-logo
+        />
+        <span class="brand__fallback" data-brand-fallback hidden>Assuromieux Paris</span>
       </a>
       <DesktopNavigation {items} {currentPath} />
       <div class="site-header__actions">
@@ -44,6 +50,21 @@ const {
     </div>
   </div>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('[data-brand-logo]').forEach((logo) => {
+    const fallback = logo.parentElement?.querySelector<HTMLElement>('[data-brand-fallback]');
+    if (!fallback) return;
+
+    const showFallback = () => {
+      logo.hidden = true;
+      fallback.hidden = false;
+    };
+
+    if (logo.complete && logo.naturalWidth === 0) showFallback();
+    else logo.addEventListener('error', showFallback, { once: true });
+  });
+</script>
 
 <style>
   .site-header-shell {
@@ -79,8 +100,15 @@ const {
   }
 
   .brand img {
-    width: clamp(8.75rem, 13vw, 10.75rem);
+    width: clamp(9.75rem, 15vw, 11rem);
     height: auto;
+  }
+
+  .brand__fallback {
+    color: var(--color-brand-deep);
+    font-size: 1rem;
+    font-weight: var(--font-weight-heading);
+    line-height: 1.1;
   }
 
   .site-header__actions {
@@ -111,12 +139,15 @@ const {
 
   @media (max-width: 420px) {
     .brand {
-      gap: var(--space-2);
       font-size: 0.875rem;
     }
 
     .brand img {
-      width: 8.35rem;
+      width: 10rem;
+    }
+
+    .brand__fallback {
+      font-size: 0.9375rem;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { site } from '../data/site';
 import CTA from './CTA.astro';
 
 const desktopImageUrl = '/images/paris-tour-eiffel-hero.webp';
@@ -47,11 +48,11 @@ const hasMobileImage = existsSync(mobileImagePath);
         <li><span>Immatriculation</span><strong>ORIAS 26003798</strong></li>
         <li><span>Interlocuteur direct</span><strong>Jules HONORE</strong></li>
         <li><span>Implantation</span><strong>Paris · France entière</strong></li>
-        <li><span>Approche</span><strong>Méthode documentée</strong></li>
+        <li><span>Méthode &amp; contenus</span><strong>Méthode · politique éditoriale</strong></li>
       </ul>
       <div class="home-hero__actions">
         <CTA href="#contact" label="Demander un audit gratuit" size="large" />
-        <CTA href="#produits" label="Voir nos assurances" variant="secondary" size="large" />
+        <CTA href={site.phoneHref} label={`Appeler le ${site.phoneDisplay}`} variant="secondary" size="large" />
       </div>
     </div>
   </div>
@@ -60,7 +61,7 @@ const hasMobileImage = existsSync(mobileImagePath);
 <style>
   .home-hero {
     position: relative;
-    min-height: clamp(39rem, 76vh, 50rem);
+    min-height: clamp(37rem, 70vh, 46rem);
     display: grid;
     align-items: center;
     overflow: hidden;
@@ -115,13 +116,13 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__inner {
-    padding-block: clamp(4.75rem, 9vw, 7.75rem);
+    padding-block: clamp(3.5rem, 7vw, 5.25rem);
   }
 
   .home-hero__copy {
     position: relative;
     z-index: 2;
-    max-width: 51rem;
+    max-width: 50rem;
   }
 
   .home-hero :global(.eyebrow) {
@@ -129,10 +130,10 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   h1 {
-    max-width: 18ch;
+    max-width: 17ch;
     margin: 0;
     color: var(--color-surface);
-    font-size: clamp(2.55rem, 2rem + 2.65vw, 4.3rem);
+    font-size: clamp(2.45rem, 1.95rem + 2.5vw, 4.05rem);
     font-weight: var(--font-weight-heading);
     letter-spacing: var(--letter-spacing-display);
     line-height: 0.99;
@@ -140,8 +141,8 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__lead {
-    max-width: 41rem;
-    margin: var(--space-6) 0 0;
+    max-width: 39rem;
+    margin: var(--space-5) 0 0;
     color: var(--color-text-on-dark);
     font-size: var(--font-size-lead);
     line-height: 1.55;
@@ -151,7 +152,7 @@ const hasMobileImage = existsSync(mobileImagePath);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
-    margin-top: var(--space-7);
+    margin-top: var(--space-6);
   }
 
   .home-hero__actions :global(.button--secondary) {
@@ -169,8 +170,8 @@ const hasMobileImage = existsSync(mobileImagePath);
   .home-hero__proof {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: var(--space-7) 0 0;
-    padding: var(--space-4) 0;
+    margin: var(--space-6) 0 0;
+    padding: var(--space-3) 0;
     list-style: none;
     border-block: 1px solid rgba(244, 227, 191, 0.2);
   }
@@ -197,12 +198,10 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__proof strong {
-    overflow: hidden;
     color: var(--color-surface);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-strong);
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    line-height: 1.35;
   }
 
   .home-hero__fallback {
@@ -306,7 +305,12 @@ const hasMobileImage = existsSync(mobileImagePath);
 
     .home-hero__fallback {
       inset-inline-start: 56%;
-      opacity: 0.62;
+      opacity: 0.46;
+    }
+
+    .home-hero__proof {
+      background: rgba(7, 28, 51, 0.34);
+      backdrop-filter: blur(4px);
     }
   }
 
@@ -330,17 +334,26 @@ const hasMobileImage = existsSync(mobileImagePath);
     }
 
     .home-hero__inner {
-      padding-block: 4.5rem 3.25rem;
+      padding-block: 2.75rem 2.5rem;
     }
 
     h1 {
-      max-width: 16ch;
-      font-size: clamp(2.45rem, 11vw, 3.4rem);
+      max-width: 17ch;
+      font-size: clamp(2.15rem, 10vw, 2.65rem);
+      line-height: 1.01;
+    }
+
+    .home-hero__lead {
+      margin-top: var(--space-4);
+      font-size: var(--font-size-body);
+      line-height: 1.5;
     }
 
     .home-hero__actions {
       align-items: stretch;
       flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
     }
 
     .home-hero__actions :global(.button) {
@@ -350,11 +363,20 @@ const hasMobileImage = existsSync(mobileImagePath);
     .home-hero__proof {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0;
-      padding-block: var(--space-2);
+      margin-top: var(--space-5);
+      padding-block: var(--space-1);
     }
 
     .home-hero__proof li {
-      padding: var(--space-2) var(--space-3);
+      padding: 0.4rem var(--space-2);
+    }
+
+    .home-hero__proof span {
+      font-size: 0.58rem;
+    }
+
+    .home-hero__proof strong {
+      font-size: 0.72rem;
     }
 
     .home-hero__proof li:nth-child(odd) {

@@ -94,28 +94,42 @@ const structuredData = [
       <div class="container-wide">
         <div class="products__heading">
           <SectionHeader
-            kicker="Accès direct"
+            kicker="Choisir son point d’entrée"
             title="Quelle assurance recherchez-vous ?"
             text="Accédez immédiatement à la protection qui correspond à votre besoin."
             id="products-title"
           />
-          <p>Neuf points d’entrée, une même exigence : relier chaque contrat à l’activité réelle de l’entreprise.</p>
+          <div class="products__positioning">
+            <p class="eyebrow">Notre parti pris</p>
+            <h2 id="manifesto-title">Un contrat n’est pertinent que s’il répond à la réalité de l’entreprise.</h2>
+            <p>Notre rôle ne consiste pas simplement à distribuer des contrats. Nous étudions l’activité, les risques, les garanties et les conditions du marché pour permettre au dirigeant de prendre une décision cohérente.</p>
+          </div>
         </div>
+        <nav class="products__families" aria-label="Trois façons d’aborder votre besoin">
+          <a href="/assurances-entreprises/">
+            <span>01</span>
+            <strong>Assurances entreprises</strong>
+            <small>Les protections transversales de l’activité.</small>
+            <i aria-hidden="true">→</i>
+          </a>
+          <a href="#secteurs">
+            <span>02</span>
+            <strong>Secteurs</strong>
+            <small>Transport, logistique, BTP et décennale.</small>
+            <i aria-hidden="true">→</i>
+          </a>
+          <a href="/audit-assurances-entreprise/">
+            <span>03</span>
+            <strong>Audit</strong>
+            <small>Analyser les contrats avant de décider.</small>
+            <i aria-hidden="true">→</i>
+          </a>
+        </nav>
         <ProductSelector products={insuranceProducts} variant="editorial" />
         <p class="products__need-link">
           <span>Vous ne savez pas par quel contrat commencer ?</span>
           <a href="/votre-besoin/">Choisir un parcours selon ma situation <span aria-hidden="true">→</span></a>
         </p>
-      </div>
-    </section>
-
-    <section class="section section--compact manifesto" aria-labelledby="manifesto-title">
-      <div class="container-wide manifesto__grid">
-        <p class="eyebrow">Notre parti pris</p>
-        <div>
-          <h2 id="manifesto-title">Un contrat n’est pertinent que s’il répond à la réalité de l’entreprise.</h2>
-          <p>Notre rôle ne consiste pas simplement à distribuer des contrats. Nous étudions l’activité, les risques, les garanties et les conditions du marché pour permettre au dirigeant de prendre une décision cohérente.</p>
-        </div>
       </div>
     </section>
 
@@ -228,51 +242,100 @@ const structuredData = [
 
   .products__heading {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.42fr);
-    gap: clamp(2rem, 6vw, 6rem);
-    align-items: end;
-  }
-
-  .products__heading :global(.section-header) {
-    margin-bottom: var(--space-8);
-  }
-
-  .products__heading > p {
-    margin: 0 0 var(--space-8);
-    padding-left: var(--space-5);
-    color: var(--color-text-soft);
-    border-left: 1px solid var(--color-gold);
-    font-size: var(--font-size-sm);
-  }
-
-  .manifesto {
-    background:
-      linear-gradient(90deg, rgba(201, 154, 70, 0.1), transparent 38%),
-      var(--color-page);
-  }
-
-  .manifesto__grid {
-    display: grid;
-    grid-template-columns: minmax(10rem, 0.34fr) minmax(0, 1.2fr);
-    gap: clamp(2rem, 8vw, 8rem);
+    grid-template-columns: minmax(0, 0.78fr) minmax(19rem, 1.22fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
     align-items: start;
   }
 
-  .manifesto__grid h2 {
-    max-width: 23ch;
-    margin: 0;
-    color: var(--color-brand-ink);
-    font-size: clamp(1.8rem, 1.45rem + 1.55vw, 2.8rem);
-    font-weight: var(--font-weight-heading);
-    letter-spacing: var(--letter-spacing-heading);
-    line-height: 1.12;
+  .products__heading :global(.section-header) {
+    margin-bottom: var(--space-6);
   }
 
-  .manifesto__grid div > p {
-    max-width: 48rem;
-    margin: var(--space-5) 0 0;
+  .products__positioning {
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
+    border-left: 1px solid var(--color-gold);
+  }
+
+  .products__positioning h2 {
+    max-width: 24ch;
+    margin: 0;
+    color: var(--color-brand-ink);
+    font-size: clamp(1.55rem, 1.3rem + 0.85vw, 2.15rem);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    line-height: 1.15;
+  }
+
+  .products__positioning > p:not(.eyebrow) {
+    max-width: 44rem;
+    margin: var(--space-4) 0 0;
     color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .products__families {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: var(--space-8) 0 var(--space-10);
+    border-block: 1px solid var(--color-border-strong);
+  }
+
+  .products__families a {
+    min-width: 0;
+    min-height: 7rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-1) var(--space-3);
+    align-content: center;
+    padding: var(--space-5) clamp(1rem, 2.4vw, 2rem);
+    color: var(--color-text);
+    border-left: 1px solid var(--color-border);
+    text-decoration: none;
+    transition:
+      color var(--transition-base),
+      background var(--transition-base);
+  }
+
+  .products__families a:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .products__families a:hover {
+    color: var(--color-brand-deep);
+    background: var(--color-page-soft);
+  }
+
+  .products__families span {
+    grid-row: 1 / span 2;
+    color: var(--color-gold-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: 0.08em;
+  }
+
+  .products__families strong {
+    color: var(--color-brand-deep);
     font-size: var(--font-size-body-lg);
+  }
+
+  .products__families small {
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+
+  .products__families i {
+    grid-row: 1 / span 2;
+    grid-column: 3;
+    align-self: center;
+    color: var(--color-gold-dark);
+    font-style: normal;
+    transition: transform var(--transition-fast);
+  }
+
+  .products__families a:hover i {
+    transform: translateX(0.2rem);
   }
 
   .program__layout {
@@ -622,8 +685,8 @@ const structuredData = [
       grid-template-columns: 1fr;
     }
 
-    .products__heading > p {
-      display: none;
+    .products__positioning {
+      max-width: 48rem;
     }
 
     .products__need-link {
@@ -648,13 +711,28 @@ const structuredData = [
   }
 
   @media (max-width: 760px) {
-    .manifesto__grid,
+    .products__families,
     .article-grid {
       grid-template-columns: 1fr;
     }
 
-    .manifesto__grid {
-      gap: var(--space-3);
+    .products__positioning {
+      padding-left: var(--space-5);
+    }
+
+    .products__families {
+      margin-block: var(--space-6) var(--space-8);
+    }
+
+    .products__families a {
+      min-height: 5.75rem;
+      padding-inline: 0;
+      border-top: 1px solid var(--color-border);
+      border-left: 0;
+    }
+
+    .products__families a:first-child {
+      border-top: 0;
     }
 
     .program__flow li {

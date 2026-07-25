@@ -6,6 +6,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/assurance-btp-decennale/',
   '/rc-professionnelle/',
   '/flotte-automobile/',
+  '/multirisque-professionnelle/',
   '/cabinet/',
   '/secteurs/',
   '/secteurs/transport-routier-marchandises/',

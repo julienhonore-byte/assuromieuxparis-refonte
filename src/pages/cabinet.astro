@@ -69,7 +69,7 @@ const structuredData = [
       </div>
     </section>
 
-    <SolutionMethod title="Une approche conseil en quatre temps." text="Comprendre l’activité, analyser les contrats, consulter lorsque cela apporte une comparaison utile et recommander des arbitrages explicites." />
+    <SolutionMethod title="Une approche conseil en quatre temps." text="La méthode distingue l’analyse des contrats de la consultation du marché. Celle-ci intervient lorsqu’elle apporte une comparaison utile, avant des recommandations et arbitrages explicités." />
 
     <section class="section section--surface" aria-labelledby="engagements-title">
       <div class="container-wide content-grid content-grid--reverse">
@@ -86,9 +86,10 @@ const structuredData = [
         <div class="content-copy">
           <p class="eyebrow">Relation directe</p>
           <h2>Un interlocuteur pour comprendre votre entreprise</h2>
-          <p>Jules HONORE accompagne les entreprises dans l’analyse et l’organisation de leurs assurances professionnelles.</p>
+          <p><a class="inline-link" href="/jules-honore/">Jules HONORE</a> accompagne les entreprises dans l’analyse et l’organisation de leurs assurances professionnelles.</p>
           <p>Son rôle n’est pas de proposer immédiatement un contrat standardisé. Il commence par comprendre l’activité, les responsabilités, les moyens humains et matériels, les engagements contractuels et les évolutions de l’entreprise.</p>
           <p>Cette démarche permet ensuite d’identifier les protections à examiner, les éventuelles incohérences et les sujets qui nécessitent une comparaison ou une consultation du marché.</p>
+          <p>La préparation, la relecture et la mise à jour des ressources suivent une <a class="inline-link" href="/politique-editoriale/">politique éditoriale documentée</a>.</p>
           <p class="cabinet-direct"><strong>Téléphone :</strong> <a href={site.phoneHref}>{site.phoneDisplay}</a><br /><strong>Email :</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
         </div>
       </div>
@@ -119,7 +120,8 @@ const structuredData = [
 
     <RelatedLinks items={[
       { href: '/audit-assurances-entreprise/', label: 'Notre audit', text: 'Voir comment nous structurons l’analyse.' },
-      { href: '/assurances-entreprises/', label: 'Nos assurances', text: 'Découvrir les protections transversales.' },
+      { href: '/jules-honore/', label: 'Jules HONORE', text: 'Comprendre son rôle et sa méthode de travail.' },
+      { href: '/politique-editoriale/', label: 'Politique éditoriale', text: 'Connaître les règles de préparation et de relecture.' },
       { href: '/assurance-transport/', label: 'Expertise transport', text: 'Approfondir une expertise sectorielle du cabinet.' },
       { href: '/assurance-btp-decennale/', label: 'Expertise BTP', text: 'Comprendre la lecture des activités, attestations et contrats.' },
       { href: '/ressources/', label: 'Centre de ressources', text: 'Approfondir les questions avant de décider.' },
@@ -134,5 +136,6 @@ const structuredData = [
   .cabinet-facts span { color: var(--color-gold-dark); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); letter-spacing: .08em; text-transform: uppercase; }
   .cabinet-facts strong { color: var(--color-brand-deep); }
   .cabinet-direct :global(a) { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  .inline-link { min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--color-brand); font-weight: var(--font-weight-strong); }
   @media (max-width: 540px) { .cabinet-facts { grid-template-columns: 1fr; } }
 </style>

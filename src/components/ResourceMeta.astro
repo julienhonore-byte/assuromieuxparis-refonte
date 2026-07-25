@@ -1,10 +1,10 @@
 ---
 import { formatDate } from '../data/resources';
-interface Props { author: string; publishDate: Date; updatedDate: Date; readingTime: number; }
-const { author, publishDate, updatedDate, readingTime } = Astro.props;
+interface Props { author: string; publishDate: Date; updatedDate: Date; readingTime: number; authorHref?: string; }
+const { author, publishDate, updatedDate, readingTime, authorHref = '/cabinet/' } = Astro.props;
 ---
 <dl class="resource-meta">
-  <div><dt>Par</dt><dd>{author}</dd></div>
+  <div><dt>Par</dt><dd><a href={authorHref}>{author}</a></dd></div>
   <div><dt>Publié le</dt><dd><time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time></dd></div>
   <div><dt>Mis à jour le</dt><dd><time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></dd></div>
   <div><dt>Lecture</dt><dd>{readingTime} min</dd></div>
@@ -14,4 +14,5 @@ const { author, publishDate, updatedDate, readingTime } = Astro.props;
   .resource-meta div { display: grid; gap: .1rem; }
   dt { color: var(--color-text-muted); font-size: var(--font-size-xs); }
   dd { margin: 0; color: var(--color-text-strong); font-size: var(--font-size-sm); font-weight: var(--font-weight-strong); }
+  a { min-height: 2.75rem; display: inline-flex; align-items: center; color: inherit; }
 </style>

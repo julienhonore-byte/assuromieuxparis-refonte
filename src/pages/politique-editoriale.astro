@@ -1,0 +1,96 @@
+---
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl, webPageSchema } from '../data/seo';
+
+const path = '/politique-editoriale/';
+const description = 'Politique éditoriale d’Assuromieux Paris : préparation, sources, relecture, statuts de publication et mise à jour des contenus.';
+const structuredData = [
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Ressources', path: '/ressources/' }, { name: 'Politique éditoriale', path }]),
+  webPageSchema('Politique éditoriale d’Assuromieux Paris', description, path),
+];
+---
+
+<SiteLayout title="Politique éditoriale | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Confiance éditoriale"
+      title="Comment les contenus sont préparés et relus."
+      lead="Cette politique décrit le processus réellement utilisé pour préparer, documenter, relire et mettre à jour les ressources d’Assuromieux Paris."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/ressources/', label: 'Ressources' }, { label: 'Politique éditoriale' }]}
+    />
+
+    <article class="section editorial-policy">
+      <div class="container editorial-policy__inner">
+        <section aria-labelledby="purpose-title">
+          <p class="eyebrow">Finalité</p>
+          <h2 id="purpose-title">Aider à comprendre avant de décider.</h2>
+          <p>Les contenus expliquent des méthodes de lecture, des points de vigilance et des questions à poser. Ils ne remplacent ni l’analyse d’un contrat précis, ni un conseil juridique ou comptable, ni la décision d’un assureur.</p>
+        </section>
+
+        <section aria-labelledby="preparation-title">
+          <p class="eyebrow">Préparation</p>
+          <h2 id="preparation-title">Une intention et un périmètre définis avant la rédaction.</h2>
+          <p>Chaque guide répond à une question identifiée et reste relié aux pages commerciales ou sectorielles utiles. La rédaction distingue les règles générales, les pratiques de lecture et les éléments qui dépendent du contrat, de l’activité ou de l’assureur.</p>
+          <p>Assuromieux Paris reste l’auteur éditorial des guides. La personne ayant réalisé une relecture métier est indiquée séparément lorsque cette relecture est documentée.</p>
+        </section>
+
+        <section aria-labelledby="sources-title">
+          <p class="eyebrow">Sources</p>
+          <h2 id="sources-title">Privilégier les sources officielles et le contexte contractuel.</h2>
+          <p>Selon le sujet, les guides peuvent s’appuyer sur Service-Public.fr, les ministères compétents, Légifrance, la CNIL ou d’autres sources institutionnelles. Ces références cadrent le sujet ; elles ne suffisent pas à déterminer la portée d’un contrat particulier.</p>
+          <p>Les liens vers les sources sont intégrés lorsque leur consultation apporte un repère utile au lecteur.</p>
+        </section>
+
+        <section aria-labelledby="review-title">
+          <p class="eyebrow">Relecture</p>
+          <h2 id="review-title">Une validation adaptée au sujet.</h2>
+          <p>La relecture porte sur la clarté, la prudence des formulations et la cohérence avec la pratique présentée par le cabinet. Les sujets spécialisés peuvent nécessiter une validation métier ciblée.</p>
+          <p>Aucune validation systématique par un juriste n’est revendiquée. Lorsqu’un avis spécialisé reste nécessaire, le contenu conserve un statut qui signale cette réserve.</p>
+        </section>
+
+        <section aria-labelledby="status-title">
+          <p class="eyebrow">Statuts</p>
+          <h2 id="status-title">Deux états éditoriaux visibles.</h2>
+          <dl>
+            <div>
+              <dt><code>review-required</code></dt>
+              <dd>Le contenu est disponible dans la prévisualisation, mais une relecture ou une validation reste à finaliser. Il ne doit pas être ouvert à l’indexation sur cette seule base.</dd>
+            </div>
+            <div>
+              <dt><code>published</code></dt>
+              <dd>La validation enregistrée pour le guide est terminée. Le nom et la date du relecteur apparaissent uniquement lorsque ces informations existent réellement.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="updates-title">
+          <p class="eyebrow">Mise à jour</p>
+          <h2 id="updates-title">Des dates visibles, sans fréquence artificielle.</h2>
+          <p>Chaque guide affiche une date de publication et une date de mise à jour. Une date de relecture est ajoutée lorsqu’une validation métier est documentée.</p>
+          <p>Il n’existe pas de fréquence de mise à jour uniforme : un contenu est revu lorsque ses sources, son contexte réglementaire, les pratiques décrites ou la structure du site le justifient. Une modification de forme ne vaut pas validation métier nouvelle.</p>
+        </section>
+      </div>
+    </article>
+
+    <RelatedLinks items={[
+      { href: '/ressources/guides/', label: 'Guides', text: 'Consulter les ressources actuellement disponibles.' },
+      { href: '/jules-honore/', label: 'Jules HONORE', text: 'Comprendre son rôle dans les relectures documentées.' },
+      { href: '/cabinet/', label: 'Le cabinet', text: 'Découvrir le positionnement et la méthode Assuromieux.' },
+    ]} />
+  </main>
+</SiteLayout>
+
+<style>
+  .editorial-policy__inner { max-width: 52rem; }
+  .editorial-policy section + section { margin-top: var(--space-14); }
+  .editorial-policy h2 { margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h3); }
+  .editorial-policy p:not(.eyebrow) { color: var(--color-text-soft); }
+  dl { display: grid; gap: 1px; margin: var(--space-6) 0 0; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+  dl div { display: grid; grid-template-columns: minmax(10rem,.42fr) minmax(0,1fr); gap: var(--space-5); padding: var(--space-5); background: var(--color-surface); }
+  dt { color: var(--color-brand-deep); font-weight: var(--font-weight-heading); }
+  dd { margin: 0; color: var(--color-text-soft); }
+  code { overflow-wrap: anywhere; }
+  @media (max-width: 640px) { dl div { grid-template-columns: 1fr; gap: var(--space-2); } }
+</style>

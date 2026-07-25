@@ -6,6 +6,7 @@ import ResourceHeader from '../components/ResourceHeader.astro';
 import ResourceMeta from '../components/ResourceMeta.astro';
 import ResourceTableOfContents from '../components/ResourceTableOfContents.astro';
 import { productLinks, resourceCategories } from '../data/resources';
+import { site } from '../data/site';
 import SiteLayout from './SiteLayout.astro';
 
 interface Heading { depth: number; slug: string; text: string; }
@@ -30,7 +31,11 @@ const products = props.relatedProducts.map((key) => productLinks[key]).filter(Bo
       <div class="container-wide resource-body__grid">
         <aside class="resource-body__aside">
           <ResourceTableOfContents headings={props.headings} />
-          <ExpertReview reviewedBy={props.reviewedBy} reviewDate={props.reviewDate} />
+          <ExpertReview
+            reviewedBy={props.reviewedBy}
+            reviewDate={props.reviewDate}
+            reviewerHref={props.reviewedBy === site.personName ? '/jules-honore/' : undefined}
+          />
         </aside>
         <article class="resource-prose">
           <slot />

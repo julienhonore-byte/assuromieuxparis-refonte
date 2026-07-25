@@ -12,6 +12,8 @@ export const site = {
   personName: 'Jules HONORE',
   canonicalOrigin,
   canonicalUrl: absoluteSiteUrl('/'),
+  personUrl: absoluteSiteUrl('/jules-honore/'),
+  editorialPolicyUrl: absoluteSiteUrl('/politique-editoriale/'),
   logoUrl: absoluteSiteUrl('/favicon-512x512.png'),
   ogImageUrl: absoluteSiteUrl('/og-assuromieux-paris.png'),
   phoneDisplay: '06 95 69 96 74',
@@ -56,6 +58,7 @@ export const footerAdviceLinks: NavigationItem[] = [
   { href: '/assurance-transport/', label: 'Transport et logistique' },
   { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
   { href: '/cabinet/', label: 'Le cabinet' },
+  { href: '/jules-honore/', label: 'Jules HONORE' },
   { href: '/ressources/', label: 'Centre de ressources' },
 ];
 
@@ -98,11 +101,22 @@ export const personSchema = {
   '@type': 'Person',
   '@id': `${site.canonicalUrl}#jules-honore`,
   name: site.personName,
-  jobTitle: 'Courtier en assurance',
+  jobTitle: 'Courtier d’assurance ou de réassurance',
+  url: site.personUrl,
   email: site.email,
   telephone: '+33695699674',
   address: organizationSchema.address,
   worksFor: { '@id': `${site.canonicalUrl}#organization` },
+  knowsAbout: [
+    'Audit des assurances d’entreprise',
+    'Assurance transport et logistique',
+    'Assurance BTP et décennale',
+    'Assurance flotte automobile',
+    'Responsabilité civile professionnelle',
+    'Protection du dirigeant',
+    'Santé et prévoyance d’entreprise',
+    'Cyberassurance',
+  ],
 };
 
 export const websiteSchema = {

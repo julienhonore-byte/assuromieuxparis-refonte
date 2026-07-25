@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import ResourceLayout from '../../../layouts/ResourceLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl } from '../../../data/seo';
 import { resourceCategories, resourcePath } from '../../../data/resources';
+import { site } from '../../../data/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived');
@@ -21,6 +22,16 @@ const articleSchema = {
   description: entry.data.description, datePublished: entry.data.publishDate.toISOString(),
   dateModified: entry.data.updatedDate.toISOString(), author: { '@type': 'Organization', name: entry.data.author },
   publisher: { '@id': `${pageUrl('/')}#organization` }, mainEntityOfPage: entry.data.canonical,
+  ...(entry.data.status === 'published' && entry.data.reviewedBy ? {
+    reviewedBy: {
+      '@type': 'Person',
+      name: entry.data.reviewedBy,
+      ...(entry.data.reviewedBy === site.personName ? {
+        '@id': `${site.canonicalUrl}#jules-honore`,
+        url: site.personUrl,
+      } : {}),
+    },
+  } : {}),
 };
 const structuredData = [
   ...baseSchemas,

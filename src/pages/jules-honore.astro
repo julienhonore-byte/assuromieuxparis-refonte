@@ -1,0 +1,120 @@
+---
+import CTA from '../components/CTA.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import SolutionMethod from '../components/SolutionMethod.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { breadcrumbSchema, pageUrl } from '../data/seo';
+import { organizationSchema, personSchema, site } from '../data/site';
+
+const path = '/jules-honore/';
+const description = 'Découvrez le rôle de Jules HONORE, interlocuteur direct d’Assuromieux Paris, son approche de l’audit et ses domaines d’intervention.';
+const structuredData = [
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name: 'Le cabinet', path: '/cabinet/' }, { name: 'Jules HONORE', path }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: 'Jules HONORE — Assuromieux Paris',
+    description,
+    url: pageUrl(path),
+    mainEntity: { '@id': `${site.canonicalUrl}#jules-honore` },
+  },
+];
+---
+
+<SiteLayout title="Jules HONORE | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} {structuredData}>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Interlocuteur direct"
+      title="Jules HONORE, au service des décisions d’assurance de l’entreprise."
+      lead="Courtier d’assurance ou de réassurance, Jules HONORE accompagne les dirigeants dans l’analyse, l’organisation et l’évolution de leurs assurances professionnelles."
+      breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/cabinet/', label: 'Le cabinet' }, { label: 'Jules HONORE' }]}
+    >
+      <CTA href="/audit-assurances-entreprise/" label="Découvrir la méthode d’audit" size="large" />
+      <CTA href="/#contact" label="Prendre contact" variant="secondary" size="large" />
+    </PageHero>
+
+    <section class="section" aria-labelledby="role-title">
+      <div class="container-wide profile-grid">
+        <div>
+          <p class="eyebrow">Rôle au cabinet</p>
+          <h2 id="role-title">Comprendre la situation avant de rechercher une solution.</h2>
+        </div>
+        <div class="profile-copy">
+          <p>Jules HONORE est l’interlocuteur direct d’Assuromieux Paris. Il exerce comme courtier d’assurance ou de réassurance en catégorie COA, sous le numéro ORIAS {site.orias}.</p>
+          <p>Son intervention commence par la compréhension de l’activité, des responsabilités, des moyens engagés, des contrats existants et des échéances. La consultation du marché n’intervient que lorsqu’elle apporte une comparaison pertinente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="domains-title">
+      <div class="container-wide profile-grid">
+        <div>
+          <p class="eyebrow">Domaines d’intervention</p>
+          <h2 id="domains-title">Une lecture transversale, complétée par des expertises sectorielles.</h2>
+          <p>Les domaines présentés correspondent aux pages et accompagnements décrits par Assuromieux Paris.</p>
+        </div>
+        <ul class="domain-list">
+          <li><a href="/audit-assurances-entreprise/">Audit des assurances d’entreprise</a></li>
+          <li><a href="/rc-professionnelle/">Responsabilité civile professionnelle</a></li>
+          <li><a href="/multirisque-professionnelle/">Multirisque professionnelle</a></li>
+          <li><a href="/flotte-automobile/">Flotte automobile</a></li>
+          <li><a href="/assurance-transport/">Transport et logistique</a></li>
+          <li><a href="/assurance-btp-decennale/">BTP et décennale</a></li>
+          <li><a href="/protection-dirigeant/">Protection du dirigeant</a></li>
+          <li><a href="/sante-prevoyance-entreprise/">Santé et prévoyance d’entreprise</a></li>
+          <li><a href="/cyberassurance/">Cyberassurance</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <SolutionMethod
+      title="Analyser avant de comparer."
+      text="La méthode relie l’activité, les contrats et les risques. Elle peut conduire à maintenir un contrat, demander un ajustement ou consulter le marché sur un périmètre défini."
+    />
+
+    <section class="section section--surface" aria-labelledby="review-title">
+      <div class="container-wide profile-grid">
+        <div>
+          <p class="eyebrow">Ressources et relecture</p>
+          <h2 id="review-title">Une relecture affichée uniquement lorsqu’elle est documentée.</h2>
+        </div>
+        <div class="profile-copy">
+          <p>Les guides sont publiés sous la responsabilité éditoriale d’Assuromieux Paris. Lorsque Jules HONORE réalise une relecture métier et que cette validation est enregistrée, son nom et la date de relecture apparaissent sur le guide concerné.</p>
+          <p>Un contenu en attente conserve son statut de relecture à finaliser. Cette distinction est expliquée dans la <a href="/politique-editoriale/">politique éditoriale</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <RelatedLinks items={[
+      { href: '/cabinet/', label: 'Le cabinet', text: 'Comprendre le positionnement et les engagements.' },
+      { href: '/politique-editoriale/', label: 'Politique éditoriale', text: 'Consulter le processus de préparation et de relecture.' },
+      { href: '/ressources/', label: 'Centre de ressources', text: 'Accéder aux guides et repères publiés par le cabinet.' },
+    ]} />
+
+    <PageCTA
+      title="Échangez directement avec Jules HONORE."
+      text={`Présentez votre activité et le point d’assurance prioritaire, ou contactez le cabinet au ${site.phoneDisplay}.`}
+      secondaryHref={`mailto:${site.email}`}
+      secondaryLabel="Écrire à Jules HONORE"
+    />
+  </main>
+</SiteLayout>
+
+<style>
+  .profile-grid { display: grid; grid-template-columns: minmax(16rem,.72fr) minmax(0,1.28fr); gap: clamp(2.5rem,7vw,7rem); align-items: start; }
+  .profile-grid h2 { max-width: 18ch; margin: 0; color: var(--color-brand-deep); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
+  .profile-grid > div > p:not(.eyebrow), .profile-copy p { color: var(--color-text-soft); }
+  .profile-copy p { max-width: 46rem; margin: 0; font-size: var(--font-size-body-lg); }
+  .profile-copy p + p { margin-top: var(--space-5); }
+  .profile-copy a { min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--color-brand); font-weight: var(--font-weight-strong); }
+  .domain-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-panel); overflow: hidden; list-style: none; }
+  .domain-list li { background: var(--color-surface); }
+  .domain-list a { min-height: 4.5rem; display: flex; align-items: center; padding: var(--space-4) var(--space-5); color: var(--color-brand-deep); font-weight: var(--font-weight-strong); text-decoration: none; }
+  .domain-list a:hover { color: var(--color-brand); text-decoration: underline; }
+  @media (max-width: 860px) { .profile-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .domain-list { grid-template-columns: 1fr; } }
+</style>

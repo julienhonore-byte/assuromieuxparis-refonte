@@ -92,22 +92,22 @@
   --radius-pill: 999px;
 
   /* Ombres */
-  --shadow-card: 0 18px 45px rgba(12, 42, 78, 0.075);
-  --shadow-card-hover: 0 24px 60px rgba(12, 42, 78, 0.13);
-  --shadow-panel: 0 28px 80px rgba(12, 42, 78, 0.16);
-  --shadow-action: 0 16px 34px rgba(12, 42, 78, 0.24);
+  --shadow-card: 0 10px 30px rgba(12, 42, 78, 0.06);
+  --shadow-card-hover: 0 16px 42px rgba(12, 42, 78, 0.1);
+  --shadow-panel: 0 20px 60px rgba(12, 42, 78, 0.12);
+  --shadow-action: 0 10px 24px rgba(12, 42, 78, 0.18);
   --shadow-focus: 0 0 0 4px rgba(201, 154, 70, 0.28);
 
   /* Interactions */
-  --transition-fast: 140ms ease;
-  --transition-base: 220ms ease;
-  --transition-slow: 420ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  --transition-fast: 180ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 220ms cubic-bezier(0.2, 0.75, 0.25, 1);
   --focus-ring: 3px solid var(--color-gold);
   --focus-offset: 3px;
 
   /* Boutons */
   --button-height: 3.25rem;
-  --button-height-lg: 3.625rem;
+  --button-height-lg: 3.5rem;
   --button-padding-inline: 1.625rem;
   --button-padding-inline-lg: 1.875rem;
 

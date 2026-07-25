@@ -36,20 +36,26 @@ const year = new Date().getFullYear();
   <div class="container-wide">
     <div class="site-footer__top">
       <div class="site-footer__brand">
-        <img src="/logo/assuromieux-paris.jpeg" width="300" height="83" alt="Assuromieux Paris" />
+        <img src="/brand/assuromieux-paris-logo-horizontal-white.svg" width="1200" height="260" alt="Assuromieux Paris" />
         <p>Cabinet de courtage et de conseil en assurances d’entreprise, basé à Paris et présent aux côtés des dirigeants partout en France.</p>
         <a class="site-footer__audit" href={auditHref}>Demander un audit gratuit <span aria-hidden="true">→</span></a>
       </div>
 
-      <nav aria-label="Assurances">
-        <h2>Assurances</h2>
-        {productLinks.map((item) => <a href={item.href}>{item.label}</a>)}
-      </nav>
+      <details class="site-footer__group" data-footer-group open>
+        <summary>Assurances <span aria-hidden="true">⌄</span></summary>
+        <nav aria-label="Assurances">
+          <h2>Assurances</h2>
+          {productLinks.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </details>
 
-      <nav aria-label="Conseil et expertises">
-        <h2>Conseil &amp; expertises</h2>
-        {adviceLinks.map((item) => <a href={item.href}>{item.label}</a>)}
-      </nav>
+      <details class="site-footer__group" data-footer-group open>
+        <summary>Conseil &amp; expertises <span aria-hidden="true">⌄</span></summary>
+        <nav aria-label="Conseil et expertises">
+          <h2>Conseil &amp; expertises</h2>
+          {adviceLinks.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </details>
 
       <div class="site-footer__contact">
         <h2>Nous contacter</h2>
@@ -88,9 +94,23 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
+<script>
+  const footerGroupMedia = window.matchMedia('(max-width: 640px)');
+  const footerGroups = document.querySelectorAll<HTMLDetailsElement>('[data-footer-group]');
+
+  const syncFooterGroups = () => {
+    footerGroups.forEach((group) => {
+      group.open = !footerGroupMedia.matches;
+    });
+  };
+
+  footerGroupMedia.addEventListener('change', syncFooterGroups);
+  syncFooterGroups();
+</script>
+
 <style>
   .site-footer {
-    padding-block: clamp(4.5rem, 8vw, 7rem) var(--space-6);
+    padding-block: clamp(3.75rem, 6vw, 5.5rem) var(--space-6);
     color: var(--color-text-on-dark-soft);
     background:
       radial-gradient(circle at 8% 4%, rgba(201, 154, 70, 0.14), transparent 22%),
@@ -101,20 +121,20 @@ const year = new Date().getFullYear();
   .site-footer__top {
     display: grid;
     grid-template-columns: 1.45fr 0.85fr 0.85fr 1fr;
-    gap: clamp(2rem, 4vw, 4rem);
-    padding-bottom: var(--space-16);
+    gap: clamp(1.75rem, 3vw, 3.25rem);
+    padding-bottom: var(--space-10);
     border-bottom: 1px solid rgba(217, 227, 238, 0.16);
   }
 
   .site-footer__brand img {
-    width: 10.75rem;
+    width: min(14rem, 100%);
     height: auto;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
   }
 
   .site-footer__brand p {
     max-width: 25rem;
-    margin: 0 0 var(--space-6);
+    margin: 0 0 var(--space-5);
     font-size: 0.9375rem;
   }
 
@@ -128,12 +148,16 @@ const year = new Date().getFullYear();
     letter-spacing: 0.04em;
   }
 
+  .site-footer__group summary {
+    display: none;
+  }
+
   nav,
   .site-footer__contact,
   address {
     display: grid;
     align-content: start;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   address {
@@ -168,15 +192,18 @@ const year = new Date().getFullYear();
   .site-footer__legal {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-8);
-    padding-block: var(--space-8);
-    border-bottom: 1px solid rgba(217, 227, 238, 0.16);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: var(--space-6);
+    padding: var(--space-6);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(217, 227, 238, 0.12);
+    border-radius: var(--radius-card-sm);
   }
 
   .site-footer__legal p,
   .site-footer__bottom p {
     margin: 0;
-    font-size: var(--font-size-xs);
+    font-size: 0.8125rem;
     line-height: 1.65;
   }
 
@@ -190,7 +217,7 @@ const year = new Date().getFullYear();
 
   .site-footer__bottom {
     justify-content: space-between;
-    padding-top: var(--space-6);
+    padding-top: var(--space-5);
   }
 
   .site-footer__bottom span {
@@ -210,12 +237,58 @@ const year = new Date().getFullYear();
 
   @media (max-width: 640px) {
     .site-footer {
-      padding-bottom: 6.5rem;
+      padding-bottom: 5.5rem;
     }
 
     .site-footer__top,
     .site-footer__legal {
       grid-template-columns: 1fr;
+    }
+
+    .site-footer__group {
+      border-block: 1px solid rgba(217, 227, 238, 0.14);
+    }
+
+    .site-footer__group + .site-footer__group {
+      border-top: 0;
+    }
+
+    .site-footer__group summary {
+      min-height: 3.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      color: var(--color-surface);
+      font-weight: var(--font-weight-heading);
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .site-footer__group summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .site-footer__group summary span {
+      color: var(--color-gold-soft);
+      font-size: 1.25rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .site-footer__group[open] summary span {
+      transform: rotate(180deg);
+    }
+
+    .site-footer__group nav {
+      padding-bottom: var(--space-4);
+    }
+
+    .site-footer__group nav h2 {
+      display: none;
+    }
+
+    .site-footer__legal {
+      padding: var(--space-5);
     }
 
     .site-footer__bottom,

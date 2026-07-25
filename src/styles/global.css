@@ -227,6 +227,14 @@ h4 {
     transform var(--transition-base);
 }
 
+.button > span[aria-hidden='true'] {
+  transition: transform var(--transition-fast);
+}
+
+.button:hover > span[aria-hidden='true'] {
+  transform: translateX(0.2rem);
+}
+
 .button--large {
   min-height: var(--button-height-lg);
   padding-inline: var(--button-padding-inline-lg);
@@ -240,8 +248,8 @@ h4 {
 
 .button--primary:hover {
   background: var(--color-brand-deep);
-  box-shadow: 0 20px 42px rgba(12, 42, 78, 0.3);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(12, 42, 78, 0.22);
+  transform: translateY(-1px);
 }
 
 .button--secondary {
@@ -253,7 +261,7 @@ h4 {
 .button--secondary:hover {
   border-color: var(--color-brand);
   box-shadow: var(--shadow-card);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button--gold {
@@ -264,7 +272,7 @@ h4 {
 
 .button--gold:hover {
   background: #efd49b;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button:active {
@@ -295,7 +303,7 @@ h4 {
 .card--interactive:hover {
   border-color: rgba(18, 54, 95, 0.28);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-4px);
+  transform: translateY(-1px);
 }
 
 .card h3,
@@ -417,6 +425,27 @@ h4 {
 
 [hidden] {
   display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .button:hover,
+  .button:hover > span[aria-hidden='true'],
+  .card--interactive:hover {
+    transform: none;
+  }
 }
 
 /* Pages éditoriales MVP */

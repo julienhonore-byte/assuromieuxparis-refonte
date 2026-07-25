@@ -7,9 +7,54 @@ interface Props {
 const { href = '#contact', label = 'Demander mon audit gratuit' } = Astro.props;
 ---
 
-<div class="sticky-mobile-cta">
+<div class="sticky-mobile-cta" data-sticky-mobile-cta aria-hidden="true">
   <a href={href}>{label} <span aria-hidden="true">→</span></a>
 </div>
+
+<script>
+  const stickyCtas = document.querySelectorAll<HTMLElement>('[data-sticky-mobile-cta]');
+  const stickyCtaMedia = window.matchMedia('(max-width: 640px)');
+  const heroSelector = [
+    '.home-hero',
+    '.page-hero',
+    '.resource-header',
+    '.resources-hero',
+    '.hub-hero',
+    'main > header',
+    'main > section:first-child',
+  ].join(',');
+
+  stickyCtas.forEach((root) => {
+    let observer: IntersectionObserver | undefined;
+
+    const setVisible = (visible: boolean) => {
+      const shouldShow = visible && stickyCtaMedia.matches;
+      root.classList.toggle('is-visible', shouldShow);
+      root.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    };
+
+    const sync = () => {
+      observer?.disconnect();
+      setVisible(false);
+
+      if (!stickyCtaMedia.matches) return;
+
+      const hero = document.querySelector<HTMLElement>(heroSelector);
+      if (!hero) {
+        setVisible(window.scrollY > 320);
+        return;
+      }
+
+      observer = new IntersectionObserver(([entry]) => {
+        setVisible(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+      });
+      observer.observe(hero);
+    };
+
+    stickyCtaMedia.addEventListener('change', sync);
+    sync();
+  });
+</script>
 
 <style>
   .sticky-mobile-cta {
@@ -28,6 +73,21 @@ const { href = '#contact', label = 'Demander mon audit gratuit' } = Astro.props;
       background: rgba(255, 255, 255, 0.94);
       border-top: 1px solid var(--color-border);
       backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(100%);
+      transition:
+        opacity var(--transition-base),
+        visibility var(--transition-base),
+        transform var(--transition-base);
+    }
+
+    .sticky-mobile-cta.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     a {
@@ -43,6 +103,12 @@ const { href = '#contact', label = 'Demander mon audit gratuit' } = Astro.props;
       font-weight: var(--font-weight-strong);
       text-decoration: none;
       box-shadow: var(--shadow-action);
+    }
+  }
+
+  @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+    .sticky-mobile-cta {
+      transition: none;
     }
   }
 </style>

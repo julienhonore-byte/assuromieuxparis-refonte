@@ -51,4 +51,52 @@ const { items } = Astro.props;
   a:hover {
     color: var(--color-brand);
   }
+
+  @media (max-width: 640px) {
+    ol {
+      flex-wrap: nowrap;
+      gap: var(--space-2);
+      padding-block: var(--space-3);
+      overflow: hidden;
+      font-size: var(--font-size-xs);
+    }
+
+    li {
+      min-width: 0;
+    }
+
+    li:not(:nth-last-child(-n + 2)) {
+      display: none;
+    }
+
+    li:nth-last-child(2) {
+      max-width: 42%;
+      display: flex;
+      align-items: center;
+      flex: 0 1 auto;
+      white-space: nowrap;
+    }
+
+    li:last-child {
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+
+    li:last-child span,
+    li:nth-last-child(2) a {
+      max-width: 100%;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    li:not(:last-child)::after {
+      flex: 0 0 auto;
+    }
+
+    a {
+      min-height: 2.25rem;
+    }
+  }
 </style>

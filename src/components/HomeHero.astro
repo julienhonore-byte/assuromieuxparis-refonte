@@ -43,11 +43,16 @@ const hasMobileImage = existsSync(mobileImagePath);
       <p class="eyebrow">Conseil & courtage en assurances d’entreprise</p>
       <h1 id="home-title">Vos assurances d’entreprise méritent mieux qu’un simple renouvellement.</h1>
       <p class="home-hero__lead">Assuromieux Paris analyse vos contrats, identifie les risques et consulte le marché pour construire une protection cohérente avec votre activité.</p>
+      <ul class="home-hero__proof" aria-label="Repères de confiance">
+        <li><span>Immatriculation</span><strong>ORIAS 26003798</strong></li>
+        <li><span>Interlocuteur direct</span><strong>Jules HONORE</strong></li>
+        <li><span>Implantation</span><strong>Paris · France entière</strong></li>
+        <li><span>Approche</span><strong>Méthode documentée</strong></li>
+      </ul>
       <div class="home-hero__actions">
         <CTA href="#contact" label="Demander un audit gratuit" size="large" />
         <CTA href="#produits" label="Voir nos assurances" variant="secondary" size="large" />
       </div>
-      <p class="home-hero__proof"><span>Paris 8e</span><span>Accompagnement en France</span><span>Interlocuteur direct</span></p>
     </div>
   </div>
 </section>
@@ -110,7 +115,6 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__inner {
-    width: 100%;
     padding-block: clamp(4.75rem, 9vw, 7.75rem);
   }
 
@@ -147,7 +151,7 @@ const hasMobileImage = existsSync(mobileImagePath);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
-    margin-top: var(--space-8);
+    margin-top: var(--space-7);
   }
 
   .home-hero__actions :global(.button--secondary) {
@@ -163,29 +167,42 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__proof {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3) var(--space-6);
-    margin: var(--space-8) 0 0;
-    color: var(--color-text-on-dark-soft);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: 0.045em;
-    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: var(--space-7) 0 0;
+    padding: var(--space-4) 0;
+    list-style: none;
+    border-block: 1px solid rgba(244, 227, 191, 0.2);
+  }
+
+  .home-hero__proof li {
+    min-width: 0;
+    display: grid;
+    gap: 0.15rem;
+    padding-inline: var(--space-4);
+    border-left: 1px solid rgba(244, 227, 191, 0.16);
+  }
+
+  .home-hero__proof li:first-child {
+    padding-left: 0;
+    border-left: 0;
   }
 
   .home-hero__proof span {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
+    color: var(--color-text-on-dark-soft);
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .home-hero__proof span:not(:first-child)::before {
-    width: 0.25rem;
-    height: 0.25rem;
-    content: '';
-    background: var(--color-gold);
-    border-radius: 50%;
+  .home-hero__proof strong {
+    overflow: hidden;
+    color: var(--color-surface);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-strong);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .home-hero__fallback {
@@ -330,12 +347,23 @@ const hasMobileImage = existsSync(mobileImagePath);
       width: 100%;
     }
 
-    .home-hero__proof span:not(:first-child)::before {
-      display: none;
+    .home-hero__proof {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      padding-block: var(--space-2);
     }
 
-    .home-hero__proof {
-      gap: var(--space-2) var(--space-4);
+    .home-hero__proof li {
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .home-hero__proof li:nth-child(odd) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .home-hero__proof li:nth-child(n + 3) {
+      border-top: 1px solid rgba(244, 227, 191, 0.16);
     }
 
     .home-hero__fallback {

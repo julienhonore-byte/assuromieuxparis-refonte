@@ -26,4 +26,9 @@ const { title, description, category, categoryHref } = Astro.props;
   .resource-header__inner { max-width: 60rem; }
   h1 { max-width: 19ch; margin: var(--space-5) 0 0; color: var(--color-brand-ink); font-size: clamp(2.4rem, 1.75rem + 2.7vw, 4.4rem); font-weight: var(--font-weight-heading); letter-spacing: var(--letter-spacing-display); line-height: 1.02; }
   .resource-header__lead { max-width: 47rem; margin: var(--space-6) 0 0; color: var(--color-text-soft); font-size: var(--font-size-lead); }
+  @media (max-width: 640px) {
+    .resource-header { padding-bottom: var(--space-12); }
+    h1 { margin-top: var(--space-4); font-size: clamp(2rem, 10vw, 2.35rem); letter-spacing: -0.04em; line-height: 1.04; }
+    .resource-header__lead { margin-top: var(--space-5); }
+  }
 </style>

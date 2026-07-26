@@ -33,13 +33,16 @@ const {
   <div class="site-header">
     <div class="container-wide site-header__inner">
       <a class="brand" href="/" aria-label="Assuromieux Paris — Accueil">
-        <img
-          src="/brand/assuromieux-paris-logo-horizontal.svg"
-          width="1200"
-          height="260"
-          alt="Assuromieux Paris"
-          data-brand-logo
-        />
+        <span class="brand__lockup" data-brand-lockup>
+          <img
+            src="/logo/assuromieux-paris.jpeg"
+            width="300"
+            height="83"
+            alt="Assuromieux, assurance des professionnels"
+            data-brand-logo
+          />
+          <span class="brand__city">Paris</span>
+        </span>
         <span class="brand__fallback" data-brand-fallback hidden>Assuromieux Paris</span>
       </a>
       <DesktopNavigation {items} {currentPath} />
@@ -53,11 +56,14 @@ const {
 
 <script>
   document.querySelectorAll<HTMLImageElement>('[data-brand-logo]').forEach((logo) => {
-    const fallback = logo.parentElement?.querySelector<HTMLElement>('[data-brand-fallback]');
+    const brand = logo.closest<HTMLElement>('.brand');
+    const fallback = brand?.querySelector<HTMLElement>('[data-brand-fallback]');
+    const lockup = logo.closest<HTMLElement>('[data-brand-lockup]');
     if (!fallback) return;
 
     const showFallback = () => {
-      logo.hidden = true;
+      if (lockup) lockup.hidden = true;
+      else logo.hidden = true;
       fallback.hidden = false;
     };
 
@@ -99,9 +105,29 @@ const {
     white-space: nowrap;
   }
 
+  .brand__lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.5rem, 0.8vw, 0.75rem);
+  }
+
   .brand img {
-    width: clamp(9.75rem, 15vw, 11rem);
+    width: clamp(9rem, 13vw, 10.5rem);
     height: auto;
+  }
+
+  .brand__city {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+    padding-left: clamp(0.5rem, 0.8vw, 0.75rem);
+    color: var(--color-brand-deep);
+    border-left: 1px solid rgba(11, 39, 71, 0.28);
+    font-size: clamp(0.6875rem, 0.64rem + 0.16vw, 0.75rem);
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   .brand__fallback {
@@ -138,12 +164,19 @@ const {
   }
 
   @media (max-width: 420px) {
-    .brand {
-      font-size: 0.875rem;
+    .brand__lockup {
+      gap: 0.4rem;
     }
 
     .brand img {
-      width: 10rem;
+      width: clamp(7.75rem, 40vw, 8.75rem);
+    }
+
+    .brand__city {
+      min-height: 1.25rem;
+      padding-left: 0.4rem;
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
     }
 
     .brand__fallback {

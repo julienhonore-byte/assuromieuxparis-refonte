@@ -28,7 +28,7 @@ const {
     <h2 id="page-cta-title">{title}</h2>
     <p class="page-cta__text">{text}</p>
     <div class="page-cta__actions">
-      <CTA href={primaryHref} label={primaryLabel} variant="gold" size="large" />
+      <CTA href={primaryHref} label={primaryLabel} variant="gold" size="large" analyticsLocation="page_cta" analyticsSource="page_cta" />
       {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
     </div>
   </div>

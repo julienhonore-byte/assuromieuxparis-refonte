@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { phoneDisplay, phoneHref, email, orias, auditHref = '#contact' } = Astro.props;
+const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : undefined;
 ---
 
 <div class="topbar">
@@ -20,9 +21,16 @@ const { phoneDisplay, phoneHref, email, orias, auditHref = '#contact' } = Astro.
       <span>ORIAS {orias}</span>
     </p>
     <div class="topbar__contact">
-      <a href={phoneHref}>{phoneDisplay}</a>
-      <a href={`mailto:${email}`}>{email}</a>
-      <a class="topbar__audit" href={auditHref}>Analyse gratuite <span aria-hidden="true">→</span></a>
+      <a href={phoneHref} data-analytics-source="topbar">{phoneDisplay}</a>
+      <a href={`mailto:${email}`} data-analytics-source="topbar">{email}</a>
+      <a
+        class="topbar__audit"
+        href={auditHref}
+        data-analytics-event={analyticsEvent}
+        data-analytics-label={analyticsEvent ? 'Analyse gratuite' : undefined}
+        data-analytics-location={analyticsEvent ? 'header' : undefined}
+        data-analytics-source={analyticsEvent ? 'topbar' : undefined}
+      >Analyse gratuite <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </div>

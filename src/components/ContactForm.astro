@@ -3,9 +3,10 @@ interface Props {
   action: string;
   calUrl: string;
   privacyHref?: string;
+  analyticsContext?: string;
 }
 
-const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.props;
+const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsContext = 'audit' } = Astro.props;
 ---
 
 <div class="contact-form-shell">
@@ -15,7 +16,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
     <p>Ce premier échange sert à comprendre votre activité, identifier le contrat ou l’échéance prioritaire et déterminer les pièces utiles à l’analyse. Aucun document confidentiel n’est demandé dans ce formulaire.</p>
   </div>
 
-  <form class="contact-form form-grid" {action} method="POST" data-contact-form>
+  <form class="contact-form form-grid" {action} method="POST" data-contact-form data-form-context={analyticsContext}>
     <div class="form-field">
       <label for="contact-first-name">Prénom <span aria-hidden="true">*</span></label>
       <input id="contact-first-name" name="prenom" type="text" autocomplete="given-name" required maxlength="100" aria-describedby="contact-required contact-first-name-error" />
@@ -94,11 +95,21 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
     <p class="eyebrow">Demande reçue</p>
     <h3 tabindex="-1" data-success-heading>Merci, votre demande a bien été envoyée.</h3>
     <p>Nous reviendrons vers vous pour comprendre votre activité, vos contrats et vos prochaines échéances.</p>
-    <a class="button button--gold button--large" href={calUrl} target="_blank" rel="noopener noreferrer">Prendre rendez-vous maintenant <span aria-hidden="true">→</span></a>
+    <a
+      class="button button--gold button--large"
+      href={calUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-analytics-location="form_success"
+      data-analytics-source="contact_form"
+      data-form-context={analyticsContext}
+    >Prendre rendez-vous maintenant <span aria-hidden="true">→</span></a>
   </div>
 </div>
 
 <script>
+  import { trackAnalyticsEvent } from '../lib/analytics';
+
   const forms = document.querySelectorAll<HTMLFormElement>('[data-contact-form]');
   const selectedProductKey = 'assuromieux:selected-product';
 
@@ -110,6 +121,25 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
     const priority = form.querySelector<HTMLSelectElement>('#contact-priority');
     const validatedFields = Array.from(form.querySelectorAll<HTMLInputElement>('input[required]'));
     if (!submit || !status || !success) return;
+
+    const formContext = form.dataset.formContext ?? 'audit';
+    let formStarted = false;
+    let validationErrorQueued = false;
+    let successTracked = false;
+
+    const selectedServiceInterest = () => priority?.selectedOptions[0]?.dataset.productSlug;
+
+    const trackFormStart = () => {
+      if (formStarted) return;
+      formStarted = true;
+      trackAnalyticsEvent('form_start', {
+        form_context: formContext,
+        source_component: 'contact_form',
+      });
+    };
+
+    form.addEventListener('input', trackFormStart);
+    form.addEventListener('change', trackFormStart);
 
     if (priority) {
       let requestedProduct = new URLSearchParams(window.location.search).get('besoin');
@@ -161,6 +191,18 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
       if (!(field instanceof HTMLInputElement)) return;
       setFieldError(field);
       setStatus('Certains champs obligatoires sont incomplets ou invalides. Vérifiez les champs signalés.', 'error');
+
+      if (!validationErrorQueued) {
+        validationErrorQueued = true;
+        trackAnalyticsEvent('audit_form_submit_error', {
+          form_context: formContext,
+          error_type: 'validation',
+          source_component: 'contact_form',
+        });
+        window.setTimeout(() => {
+          validationErrorQueued = false;
+        }, 0);
+      }
     }, true);
 
     validatedFields.forEach((field) => {
@@ -185,6 +227,8 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
       submit.textContent = 'Envoi en cours…';
       setStatus('Envoi de votre demande en cours.', '');
 
+      let errorType: 'network' | 'server' | 'unknown' = 'network';
+
       try {
         const response = await fetch(form.action, {
           method: 'POST',
@@ -192,17 +236,37 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
           headers: { Accept: 'application/json' },
         });
 
-        if (!response.ok) throw new Error('Formspree response was not successful.');
+        if (!response.ok) {
+          errorType = 'server';
+          throw new Error('Formspree response was not successful.');
+        }
+
+        errorType = 'unknown';
 
         form.hidden = true;
         success.hidden = false;
         successHeading?.focus();
+
+        if (!successTracked) {
+          successTracked = true;
+          trackAnalyticsEvent('audit_form_submit_success', {
+            form_context: formContext,
+            service_interest: selectedServiceInterest(),
+            source_component: 'contact_form',
+          });
+        }
+
         try {
           window.sessionStorage.removeItem(selectedProductKey);
         } catch {
           // Aucun impact sur la confirmation si le stockage est indisponible.
         }
       } catch {
+        trackAnalyticsEvent('audit_form_submit_error', {
+          form_context: formContext,
+          error_type: errorType,
+          source_component: 'contact_form',
+        });
         setStatus('La demande n’a pas pu être envoyée. Réessayez dans quelques instants ou contactez-nous par téléphone.', 'error');
         submit.disabled = false;
         submit.textContent = originalLabel;

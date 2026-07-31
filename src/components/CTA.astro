@@ -7,6 +7,9 @@ interface Props {
   external?: boolean;
   showArrow?: boolean;
   class?: string;
+  analyticsLocation?: string;
+  analyticsSource?: string;
+  serviceInterest?: string;
 }
 
 const {
@@ -17,7 +20,12 @@ const {
   external = false,
   showArrow = true,
   class: className,
+  analyticsLocation,
+  analyticsSource = 'cta',
+  serviceInterest,
 } = Astro.props;
+
+const analyticsEvent = href.includes('#contact') ? 'audit_cta_click' : undefined;
 ---
 
 <a
@@ -25,6 +33,11 @@ const {
   href={href}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
+  data-analytics-event={analyticsEvent}
+  data-analytics-label={analyticsEvent ? label : undefined}
+  data-analytics-location={analyticsLocation}
+  data-analytics-source={analyticsEvent ? analyticsSource : undefined}
+  data-service-interest={serviceInterest}
 >
   <span>{label}</span>
   {showArrow && <span aria-hidden="true">→</span>}

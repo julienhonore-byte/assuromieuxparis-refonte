@@ -11,6 +11,7 @@ interface Props {
 const { items, ctaHref = '/#contact', ctaLabel = 'Demander un audit gratuit', currentPath = '/' } = Astro.props;
 
 const isCurrent = (href: string) => !href.includes('#') && href === currentPath;
+const analyticsEvent = ctaHref.includes('#contact') ? 'audit_cta_click' : undefined;
 ---
 
 <div class="mobile-nav" data-mobile-nav>
@@ -30,7 +31,14 @@ const isCurrent = (href: string) => !href.includes('#') && href === currentPath;
       {items.map((item) => (
         <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
       ))}
-      <a class="mobile-nav__cta" href={ctaHref}>{ctaLabel} <span aria-hidden="true">→</span></a>
+      <a
+        class="mobile-nav__cta"
+        href={ctaHref}
+        data-analytics-event={analyticsEvent}
+        data-analytics-label={analyticsEvent ? ctaLabel : undefined}
+        data-analytics-location={analyticsEvent ? 'header' : undefined}
+        data-analytics-source={analyticsEvent ? 'mobile_navigation' : undefined}
+      >{ctaLabel} <span aria-hidden="true">→</span></a>
     </nav>
   </div>
 </div>

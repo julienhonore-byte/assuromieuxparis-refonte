@@ -38,7 +38,14 @@ const year = new Date().getFullYear();
       <div class="site-footer__brand">
         <img src="/brand/assuromieux-paris-logo-horizontal-white.svg" width="1200" height="260" alt="Assuromieux Paris" />
         <p>Cabinet de courtage et de conseil en assurances d’entreprise, basé à Paris et présent aux côtés des dirigeants partout en France.</p>
-        <a class="site-footer__audit" href={auditHref}>Demander un audit gratuit <span aria-hidden="true">→</span></a>
+        <a
+          class="site-footer__audit"
+          href={auditHref}
+          data-analytics-event="audit_cta_click"
+          data-analytics-label="Demander un audit gratuit"
+          data-analytics-location="footer"
+          data-analytics-source="footer"
+        >Demander un audit gratuit <span aria-hidden="true">→</span></a>
       </div>
 
       <details class="site-footer__group" data-footer-group open>
@@ -64,8 +71,8 @@ const year = new Date().getFullYear();
           <span>{addressLocality}</span>
           <span>{addressCountry}</span>
         </address>
-        <a href={phoneHref}>{phoneDisplay}</a>
-        <a href={`mailto:${email}`}>{email}</a>
+        <a href={phoneHref} data-analytics-source="footer">{phoneDisplay}</a>
+        <a href={`mailto:${email}`} data-analytics-source="footer">{email}</a>
         <a href="https://orias.fr" target="_blank" rel="noopener noreferrer">ORIAS {orias}</a>
       </div>
     </div>

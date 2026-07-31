@@ -47,7 +47,7 @@ const {
       </a>
       <DesktopNavigation {items} {currentPath} />
       <div class="site-header__actions">
-        <CTA class="site-header__cta" href={ctaHref} label={ctaLabel} showArrow={false} />
+        <CTA class="site-header__cta" href={ctaHref} label={ctaLabel} showArrow={false} analyticsLocation="header" analyticsSource="header" />
         <MobileNavigation {items} {ctaHref} {ctaLabel} {currentPath} />
       </div>
     </div>

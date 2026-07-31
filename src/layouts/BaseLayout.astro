@@ -41,5 +41,10 @@ const effectiveNoindex = noindex || !releaseIndexingEnabled || !routeIsApproved;
   <body>
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <slot />
+    <script>
+      import { initializeAnalytics } from '../lib/analytics';
+
+      initializeAnalytics();
+    </script>
   </body>
 </html>

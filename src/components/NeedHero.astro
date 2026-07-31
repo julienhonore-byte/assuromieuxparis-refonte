@@ -39,7 +39,7 @@ const steps = ['Point de départ', 'Situation', 'Vérifications', 'Décision', '
         <h1>{title}</h1>
         <p class="need-hero__lead">{lead}</p>
         <div class="need-hero__actions">
-          <CTA href={primaryHref} label={primaryLabel} size="large" />
+          <CTA href={primaryHref} label={primaryLabel} size="large" analyticsLocation="hero" analyticsSource="need_hero" />
           {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
         </div>
       </div>

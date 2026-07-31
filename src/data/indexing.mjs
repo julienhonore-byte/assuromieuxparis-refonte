@@ -16,6 +16,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/secteurs/convoyage-vehicules/',
   '/secteurs/demenagement/',
   '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/',
+  '/ressources/guides/comment-auditer-assurances-entreprise/',
 ]);
 
 export const isPublicIndexingEnabled = (value, context) => value === 'true' && context === 'production';

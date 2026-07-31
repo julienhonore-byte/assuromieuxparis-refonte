@@ -213,7 +213,7 @@ h4 {
   gap: var(--space-2);
   padding: 0 var(--button-padding-inline);
   border: 1px solid transparent;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-control);
   font-size: 0.9375rem;
   font-weight: var(--font-weight-strong);
   line-height: 1;
@@ -232,7 +232,7 @@ h4 {
 }
 
 .button:hover > span[aria-hidden='true'] {
-  transform: translateX(0.2rem);
+  transform: translateX(0.125rem);
 }
 
 .button--large {
@@ -248,8 +248,7 @@ h4 {
 
 .button--primary:hover {
   background: var(--color-brand-deep);
-  box-shadow: 0 12px 28px rgba(12, 42, 78, 0.22);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(12, 42, 78, 0.18);
 }
 
 .button--secondary {
@@ -260,8 +259,7 @@ h4 {
 
 .button--secondary:hover {
   border-color: var(--color-brand);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-1px);
+  background: var(--color-page-soft);
 }
 
 .button--gold {
@@ -272,7 +270,6 @@ h4 {
 
 .button--gold:hover {
   background: #efd49b;
-  transform: translateY(-1px);
 }
 
 .button:active {
@@ -303,7 +300,6 @@ h4 {
 .card--interactive:hover {
   border-color: rgba(18, 54, 95, 0.28);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-1px);
 }
 
 .card h3,
@@ -351,7 +347,7 @@ h4 {
   min-height: 3.25rem;
   padding: 0.8rem 0.9rem;
   color: var(--color-text);
-  background: #fbfdff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-control);
   transition:
@@ -676,21 +672,6 @@ h4 {
 
   .section-actions .button {
     width: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
   }
 }
 

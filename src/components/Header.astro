@@ -80,12 +80,12 @@ const {
 
   .site-header {
     background: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(185, 202, 219, 0.72);
-    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(185, 202, 219, 0.62);
+    backdrop-filter: blur(14px);
   }
 
   .site-header__inner {
-    min-height: 5.25rem;
+    min-height: 5rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -103,6 +103,10 @@ const {
     letter-spacing: -0.02em;
     text-decoration: none;
     white-space: nowrap;
+  }
+
+  .brand:focus-visible {
+    border-radius: var(--radius-sm);
   }
 
   .brand__lockup {
@@ -147,6 +151,7 @@ const {
     min-height: 2.875rem;
     padding-inline: 1.25rem;
     font-size: 0.8125rem;
+    box-shadow: none;
   }
 
   @media (max-width: 1180px) {
@@ -157,9 +162,10 @@ const {
 
   @media (max-width: 980px) {
     .site-header__inner {
-      min-height: 4.75rem;
+      min-height: 4.625rem;
       display: flex;
       justify-content: space-between;
+      gap: var(--space-2);
     }
   }
 

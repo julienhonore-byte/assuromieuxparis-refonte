@@ -215,7 +215,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
   .contact-form-shell {
     padding: clamp(1.25rem, 3vw, 2rem);
     background: var(--color-surface);
-    border: 1px solid rgba(217, 227, 238, 0.92);
+    border: 1px solid rgba(185, 202, 219, 0.78);
     border-radius: var(--radius-panel);
     box-shadow: var(--shadow-panel);
   }
@@ -225,8 +225,8 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
   }
 
   .contact-form-context {
-    margin-bottom: var(--space-8);
-    padding-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
     border-bottom: 1px solid var(--color-border);
   }
 
@@ -283,5 +283,18 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/' } = Astro.pr
     max-width: 32rem;
     margin: var(--space-5) auto var(--space-8);
     color: var(--color-text-soft);
+  }
+
+  @media (max-width: 640px) {
+    .contact-form-shell {
+      padding: var(--space-5);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-form-context {
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-5);
+    }
   }
 </style>

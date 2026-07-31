@@ -46,11 +46,11 @@ const { products, compact = false, variant = 'cards' } = Astro.props;
   .product-selector {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
+    gap: 0;
     margin: 0;
-    padding: 1px;
-    background: var(--color-border);
-    border: 1px solid var(--color-border);
+    padding: 0;
+    background: var(--color-surface);
+    border: 1px solid rgba(185, 202, 219, 0.72);
     border-radius: var(--radius-panel);
     overflow: hidden;
     list-style: none;
@@ -58,6 +58,9 @@ const { products, compact = false, variant = 'cards' } = Astro.props;
   }
 
   li { min-width: 0; background: var(--color-surface); }
+  .product-selector--cards > li { border-left: 1px solid var(--color-border); }
+  .product-selector--cards > li:nth-child(3n + 1) { border-left: 0; }
+  .product-selector--cards > li:nth-child(n + 4) { border-top: 1px solid var(--color-border); }
 
   a {
     min-height: 9rem;
@@ -71,7 +74,7 @@ const { products, compact = false, variant = 'cards' } = Astro.props;
     transition: background var(--transition-base), color var(--transition-base);
   }
 
-  a:hover { color: var(--color-brand-deep); background: var(--color-page-soft); }
+  a:hover { color: var(--color-brand-deep); background: var(--color-surface-soft); }
 
   .product-selector__index {
     color: var(--color-gold-dark);
@@ -99,6 +102,9 @@ const { products, compact = false, variant = 'cards' } = Astro.props;
 
   .product-selector--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .product-selector--compact a { min-height: 8.25rem; }
+  .product-selector--cards.product-selector--compact > li:nth-child(3n + 1) { border-left: 1px solid var(--color-border); }
+  .product-selector--cards.product-selector--compact > li:nth-child(2n + 1) { border-left: 0; }
+  .product-selector--cards.product-selector--compact > li:nth-child(n + 3) { border-top: 1px solid var(--color-border); }
 
   .product-selector--editorial {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -158,11 +164,18 @@ const { products, compact = false, variant = 'cards' } = Astro.props;
 
   @media (max-width: 860px) {
     .product-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .product-selector--cards > li:nth-child(3n + 1) { border-left: 1px solid var(--color-border); }
+    .product-selector--cards > li:nth-child(2n + 1) { border-left: 0; }
+    .product-selector--cards > li:nth-child(n + 3) { border-top: 1px solid var(--color-border); }
   }
 
   @media (max-width: 540px) {
     .product-selector,
     .product-selector--compact { grid-template-columns: 1fr; }
+    .product-selector--cards > li,
+    .product-selector--cards > li:nth-child(2n + 1),
+    .product-selector--cards > li:nth-child(3n + 1) { border-left: 0; }
+    .product-selector--cards > li:nth-child(n + 2) { border-top: 1px solid var(--color-border); }
     a { min-height: 0; }
 
     .product-selector--editorial {

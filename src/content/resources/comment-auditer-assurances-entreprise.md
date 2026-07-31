@@ -10,7 +10,9 @@ category: "assurance-entreprise"
 tags: ["audit", "contrats", "risques", "échéances"]
 keywords: ["audit assurances entreprise", "analyse contrats assurance", "programme assurances"]
 canonical: "https://www.assuromieuxparis.com/ressources/guides/comment-auditer-assurances-entreprise/"
-status: "review-required"
+status: "published"
+reviewedBy: "Jules HONORE"
+reviewDate: 2026-07-31
 featured: true
 readingTime: 8
 relatedProducts: ["audit", "assurances", "rc", "multirisque"]
@@ -44,7 +46,7 @@ Repérez enfin les documents manquants et les divergences de version. Cette éta
 
 En parallèle, décrivez les prestations, les clients, les sites, les véhicules, les salariés, les sous-traitants et les zones d’intervention. Ajoutez les changements récents : nouveau métier, acquisition, hausse de valeur, implantation, export, travaux nouveaux ou évolution du parc.
 
-Cette description sert de référence pour rapprocher les activités déclarées, chiffres, surfaces, valeurs et usages inscrits dans les contrats. Un écart appelle une question documentée auprès du courtier ou de l’assureur. Selon sa nature et les textes ou clauses applicables, une évolution du risque peut aussi relever d’une obligation déclarative à apprécier au cas par cas.
+Cette description sert de référence pour rapprocher les activités déclarées, chiffres, surfaces, valeurs et usages inscrits dans les contrats. Un écart appelle une question documentée auprès du courtier ou de l’assureur. Selon sa nature, une évolution du risque peut nécessiter d’examiner les obligations déclaratives prévues par les textes et le contrat. Leur application dépend de la situation, des questions posées et des clauses concernées.
 
 ## 2. Lire les garanties sur une base commune
 
@@ -56,13 +58,13 @@ La lecture doit distinguer le nom commercial d’une garantie de sa définition 
 
 Une exclusion doit être rapprochée d’un scénario concret. Demandez-vous si elle concerne une activité exercée, une technique, un bien, une zone, une personne ou une circonstance plausible. Classez les exclusions selon leur importance pour l’entreprise plutôt que d’en produire une liste sans hiérarchie.
 
-Les obligations de prévention et les déclarations exigées suivent la même logique. Leur applicabilité et la capacité de l’entreprise à les respecter doivent être appréciées sans présumer de l’effet juridique d’un éventuel manquement.
+Les mesures de prévention et les informations ou déclarations demandées par un contrat suivent la même logique. Leur applicabilité et les conséquences éventuelles d’un manquement dépendent des clauses, des textes et des circonstances ; elles doivent être appréciées sans conclusion automatique.
 
 ## 4. Croiser les contrats et repérer les écarts
 
 Une fois chaque contrat lu séparément, croisez les responsabilités, biens, personnes, territoires et périodes. Cette vue d’ensemble fait apparaître les interfaces : une même situation peut relever de plusieurs garanties, tandis qu’un sujet important peut rester sans réponse contractuelle clairement identifiée.
 
-Les points de vigilance les plus fréquents concernent une activité absente du libellé, une valeur ancienne, des véhicules mal suivis, une sous-traitance non décrite, des territoires différents ou une interruption d’activité insuffisamment documentée. Une zone sans contrat identifié n’est pas nécessairement assurable : elle peut relever de la prévention, de clauses clients ou d’un risque conservé.
+Des points de vigilance peuvent notamment concerner une activité absente du libellé, une valeur ancienne, des véhicules mal suivis, une sous-traitance non décrite, des territoires différents ou une interruption d’activité insuffisamment documentée. Une zone sans contrat identifié n’est pas nécessairement assurable : elle peut relever de la prévention, de clauses clients ou d’un risque conservé.
 
 ## 5. Relire la sinistralité
 
@@ -80,7 +82,7 @@ Une consultation utile décrit l’entreprise et ses risques. Elle ne se limite 
 
 Terminez par une note courte : constats, niveau de priorité, informations manquantes, options et responsable de la décision. Chaque recommandation doit indiquer ce qu’elle améliore et ce qu’elle ne résout pas.
 
-Trois issues sont possibles : conserver, ajuster ou consulter. Le suivi compte autant que la première analyse, car l’activité, les valeurs et les contrats continuent d’évoluer.
+L’analyse peut notamment conduire à conserver, ajuster ou consulter. Le suivi compte autant que la première analyse, car l’activité, les valeurs et les contrats continuent d’évoluer.
 
 La page consacrée à [l’audit des assurances d’entreprise](/audit-assurances-entreprise/) présente la manière dont Assuromieux cadre cette analyse. Pour une activité de transport, le [hub Secteurs](/secteurs/) permet ensuite de prolonger la méthode par métier : transport routier de marchandises, convoyage de véhicules ou déménagement.
 

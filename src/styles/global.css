@@ -211,12 +211,12 @@ h4 {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0 var(--button-padding-inline);
+  padding: 0.7rem var(--button-padding-inline);
   border: 1px solid transparent;
   border-radius: var(--radius-control);
   font-size: 0.9375rem;
   font-weight: var(--font-weight-strong);
-  line-height: 1;
+  line-height: 1.25;
   text-align: center;
   text-decoration: none;
   transition:

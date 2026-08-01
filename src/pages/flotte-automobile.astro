@@ -10,6 +10,8 @@ import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
@@ -17,6 +19,7 @@ const path = '/flotte-automobile/';
 const title = 'Assurance flotte automobile entreprise | Assuromieux Paris';
 const description = 'Assurance flotte automobile : analyse du parc, des conducteurs, usages, garanties, franchises, sinistralité et gestion des véhicules.';
 const contactHref = '/?besoin=flotte#contact';
+const ctaLabel = 'Faire analyser ma flotte';
 const faqItems = [
   { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Les pratiques varient selon les assureurs et la composition du parc. Une analyse est nécessaire pour déterminer si un contrat flotte ou une autre organisation est pertinente pour l’entreprise.' },
   { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. La responsabilité civile automobile liée à la circulation, les dommages au véhicule, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
@@ -31,18 +34,19 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Flotte automobile"
       title="Assurer les véhicules selon leurs usages, pas seulement leur immatriculation."
-      lead="Nous rapprochons le parc, les conducteurs, les déplacements et la sinistralité pour construire une vision exploitable de la flotte."
+      lead="Nous rapprochons le parc, les conducteurs, les déplacements et la sinistralité pour vous aider à décider sur une base plus claire que le seul montant de la prime."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Flotte automobile' }]}
     >
-      <CTA href={contactHref} label="Échanger sur ma flotte" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#points-verifier" label="Préparer les informations" variant="secondary" size="large" />
       <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="route" />
     </PageHero>
+    <TrustBar />
 
     <ProductAudience
       title="Aux entreprises qui exploitent plusieurs véhicules et doivent suivre un parc en mouvement."
@@ -91,6 +95,7 @@ const structuredData = [
       variant="stacked"
     />
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles." />
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser votre parc." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
@@ -99,6 +104,6 @@ const structuredData = [
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Mettre la flotte en regard du programme global.' },
       { href: '/votre-besoin/assurer-flotte-vehicules/', label: 'Assurer une flotte de véhicules', text: 'Suivre le parcours depuis l’état de parc jusqu’à la décision.' },
     ]} />
-    <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel="Échanger sur ma flotte" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>
 </SiteLayout>

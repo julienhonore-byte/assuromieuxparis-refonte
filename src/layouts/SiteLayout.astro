@@ -28,6 +28,8 @@ const {
   image = site.ogImageUrl,
   ogType = 'website',
 } = Astro.props;
+
+const footerAuditHref = ctaLabel ? ctaHref : undefined;
 ---
 
 <BaseLayout {title} {description} {canonical} {image} {structuredData} {ogType}>
@@ -53,6 +55,8 @@ const {
     rcs={site.rcs}
     productLinks={footerProductLinks}
     adviceLinks={footerAdviceLinks}
+    auditHref={footerAuditHref}
+    auditLabel={ctaLabel}
   />
   <StickyMobileCTA href={ctaHref} label={ctaLabel} />
 </BaseLayout>

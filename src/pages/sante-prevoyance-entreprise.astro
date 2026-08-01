@@ -10,6 +10,8 @@ import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
@@ -17,6 +19,7 @@ const path = '/sante-prevoyance-entreprise/';
 const title = 'Santé et prévoyance entreprise | Assuromieux Paris';
 const description = 'Santé et prévoyance entreprise : analyse des catégories, garanties, conventions collectives, dispenses, portabilité et obligations applicables.';
 const contactHref = '/?besoin=sante-prevoyance#contact';
+const ctaLabel = 'Faire analyser mon régime santé et prévoyance';
 const faqItems = [
   { question: 'Santé collective et prévoyance couvrent-elles les mêmes événements ?', answer: 'Non. La complémentaire santé intervient sur des frais de soins selon ses niveaux de remboursement. La prévoyance traite notamment, selon le contrat, l’incapacité, l’invalidité ou le décès. Leur articulation doit être vérifiée.' },
   { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Le caractère collectif et, le cas échéant, les catégories objectives de salariés doivent être vérifiés selon la situation de l’entreprise, l’acte de mise en place, la convention collective et les textes en vigueur. Une validation métier ou juridique peut être nécessaire.' },
@@ -31,18 +34,19 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Santé et prévoyance collective"
       title="Construire une protection sociale lisible pour l’entreprise et ses équipes."
-      lead="Nous rapprochons la situation de l’entreprise, les catégories de personnel, les textes applicables et les garanties pour identifier les décisions à préparer."
+      lead="Nous rapprochons la situation de l’entreprise, les catégories de personnel, les textes applicables et les garanties pour vous aider à faire évoluer le régime avec méthode."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Santé et prévoyance' }]}
     >
-      <CTA href={contactHref} label="Échanger sur la protection collective" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#risques" label="Comprendre les deux volets" variant="secondary" size="large" />
       <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="collective" />
     </PageHero>
+    <TrustBar />
 
     <ProductAudience
       title="Aux employeurs qui veulent clarifier leurs régimes collectifs et leur évolution."
@@ -90,6 +94,7 @@ const structuredData = [
       variant="reverse"
     />
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique." />
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de faire évoluer un régime collectif." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
@@ -98,6 +103,6 @@ const structuredData = [
       { href: '/assurances-entreprises/', label: 'Assurances entreprises', text: 'Revenir à la vision d’ensemble des protections.' },
       { href: '/ressources/dirigeants/', label: 'Ressources pour dirigeants', text: 'Approfondir les protections de l’entreprise et de ses responsables.' },
     ]} />
-    <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel="Échanger sur la protection collective" secondaryHref="/protection-dirigeant/" secondaryLabel="Voir la protection du dirigeant" />
+    <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/protection-dirigeant/" secondaryLabel="Voir la protection du dirigeant" />
   </main>
 </SiteLayout>

@@ -6,12 +6,15 @@ import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
 const path = '/audit-assurances-entreprise/';
 const description = 'Audit des assurances d’entreprise : analyse des contrats, risques, garanties et conditions pour éclairer les arbitrages du dirigeant.';
 const contactHref = '/?besoin=audit-assurances-entreprise#contact';
+const ctaLabel = 'Demander une première analyse de mes contrats';
 const faqItems = [
   { question: 'Quand demander un audit de ses assurances ?', answer: 'Avant une échéance importante, après une évolution d’activité, une hausse sensible de cotisation ou lorsque plusieurs contrats ont été ajoutés sans vision consolidée.' },
   { question: 'Quels documents faut-il préparer ?', answer: 'Les contrats et avenants disponibles, les appels de cotisation, une description de l’activité et, selon le périmètre, les éléments de sinistralité, de flotte, de locaux ou d’obligations clients.' },
@@ -26,17 +29,18 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout title="Audit des assurances entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} ctaLabel="Demander mon audit" {structuredData}>
+<SiteLayout title="Audit des assurances entreprise | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Audit assurance entreprise"
       title="Décider avec une vision claire de ses contrats."
-      lead="Nous rapprochons votre activité, vos risques et vos assurances pour faire apparaître les priorités et les arbitrages utiles."
+      lead="Nous rapprochons votre activité, vos risques et vos assurances pour hiérarchiser les décisions utiles et vous aider à arbitrer avec davantage de clarté."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Audit des assurances entreprise' }]}
     >
-      <CTA href={contactHref} label="Demander mon audit" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#besoins" label="Voir le périmètre" variant="secondary" size="large" />
     </PageHero>
+    <TrustBar />
 
     <section class="section" aria-labelledby="public-title">
       <div class="container-wide content-grid">
@@ -86,6 +90,7 @@ const structuredData = [
       </div>
     </section>
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="À l’issue de l’analyse, une synthèse adaptée au périmètre présente les contrats étudiés, les points cohérents, les vigilances, les priorités et les scénarios à arbitrer. Son niveau de détail dépend de la complexité du programme et des documents disponibles." />
 
     <section class="section section--surface" aria-labelledby="faq-title">
@@ -106,6 +111,6 @@ const structuredData = [
       { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Coordonner les besoins du décideur et la continuité de l’activité.' },
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', label: 'Guide de l’audit', text: 'Préparer les documents et les questions avant l’analyse.' },
     ]} />
-    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel="Demander mon audit" />
+    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel={ctaLabel} />
   </main>
 </SiteLayout>

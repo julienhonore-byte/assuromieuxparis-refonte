@@ -10,6 +10,8 @@ import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
@@ -17,6 +19,7 @@ const path = '/cyberassurance/';
 const title = 'Cyberassurance entreprise et risques numériques | Assuromieux Paris';
 const description = 'Cyberassurance entreprise : analyse des données, interruptions, assistance de crise, restauration, responsabilités, prévention et exclusions.';
 const contactHref = '/?besoin=cyber#contact';
+const ctaLabel = 'Faire analyser mon exposition cyber';
 const faqItems = [
   { question: 'La cyberassurance remplace-t-elle les mesures de sécurité ?', answer: 'Non. Elle complète la prévention et la capacité de réponse. Sauvegardes, mises à jour, contrôle des accès, sensibilisation et procédures de crise restent essentiels et peuvent conditionner la souscription ou la garantie.' },
   { question: 'Quels événements peuvent être étudiés ?', answer: 'Selon le contrat, l’analyse peut porter sur une attaque, un rançongiciel, une atteinte aux données, une interruption, des frais de restauration, une assistance de crise ou une responsabilité envers des tiers. Aucune garantie ne doit être présumée.' },
@@ -31,18 +34,19 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Cyberassurance entreprise"
       title="Préparer la réponse financière et opérationnelle à un incident numérique."
-      lead="Nous rapprochons les données, les dépendances informatiques, la prévention et les scénarios de crise pour analyser la portée d’une couverture cyber."
+      lead="Nous rapprochons les données, les dépendances informatiques, la prévention et les scénarios de crise pour vous aider à préparer une réponse cohérente avant l’incident."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Cyberassurance' }]}
     >
-      <CTA href={contactHref} label="Échanger sur mon risque cyber" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#points-verifier" label="Voir les points à préparer" variant="secondary" size="large" />
       <ProductHeroDiagram slot="visual" label="Risque cyber" items={['Prévention', 'Incident', 'Assistance', 'Reprise']} variant="steps" />
     </PageHero>
+    <TrustBar />
 
     <ProductAudience
       title="Aux entreprises dont l’activité dépend de données, logiciels, réseaux ou prestataires numériques."
@@ -91,6 +95,7 @@ const structuredData = [
       variant="split"
     />
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Analyser le scénario avant la garantie." text="Assuromieux fait décrire l’environnement et les dépendances, relit le questionnaire et les exclusions, puis compare les services et limites. Les recommandations distinguent prévention, transfert d’assurance et organisation de crise." />
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une cyberassurance." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
@@ -98,6 +103,6 @@ const structuredData = [
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier l’interruption numérique à la continuité globale.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Intégrer le cyber au programme de l’entreprise.' },
     ]} />
-    <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel="Échanger sur mon risque cyber" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>
 </SiteLayout>

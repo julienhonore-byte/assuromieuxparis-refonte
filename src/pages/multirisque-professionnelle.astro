@@ -10,6 +10,8 @@ import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
@@ -17,6 +19,7 @@ const path = '/multirisque-professionnelle/';
 const title = 'Assurance multirisque professionnelle | Assuromieux Paris';
 const description = 'Multirisque professionnelle : analyse des locaux, matériels, stocks, pertes d’exploitation, valeurs, franchises et mesures de prévention.';
 const contactHref = '/?besoin=multirisque#contact';
+const ctaLabel = 'Faire analyser ma multirisque';
 
 const faqItems = [
   { question: 'Que peut couvrir une multirisque professionnelle ?', answer: 'Selon le contrat, elle peut regrouper des garanties portant sur les locaux, le mobilier, le matériel, les stocks, certains dommages et des responsabilités liées à l’occupation. Chaque garantie, exclusion et franchise doit être vérifiée.' },
@@ -33,18 +36,19 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Multirisque professionnelle"
       title="Protéger les lieux, les biens et la capacité à poursuivre l’activité."
-      lead="Nous mettons en regard les locaux, les valeurs déclarées, les événements prévus au contrat et les conséquences possibles d’une interruption pour construire une lecture utile."
+      lead="Nous mettons en regard les locaux, les valeurs déclarées et les conséquences d’une interruption pour vous aider à protéger les biens essentiels et la continuité de l’activité."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Multirisque professionnelle' }]}
     >
-      <CTA href={contactHref} label="Échanger sur ma multirisque" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#risques" label="Voir les situations couvertes" variant="secondary" size="large" />
       <ProductHeroDiagram slot="visual" label="Multirisque" items={['Locaux', 'Matériels', 'Stocks', 'Continuité']} variant="axis" />
     </PageHero>
+    <TrustBar />
 
     <ProductAudience
       title="Aux entreprises qui occupent des locaux ou dépendent de biens physiques pour travailler."
@@ -92,6 +96,7 @@ const structuredData = [
       variant="reverse"
     />
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions." />
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir vos locaux et vos biens." id="faq-title" /><FAQ items={faqItems} /></div></section>
@@ -101,6 +106,6 @@ const structuredData = [
       { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Analyser séparément les véhicules et leurs usages.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier la multirisque aux autres contrats.' },
     ]} />
-    <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel="Échanger sur ma multirisque" secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>
 </SiteLayout>

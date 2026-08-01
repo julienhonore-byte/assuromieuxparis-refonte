@@ -1,0 +1,97 @@
+---
+import { site } from '../data/site';
+
+const items = [
+  { label: `ORIAS ${site.orias}`, href: 'https://orias.fr' },
+  { label: 'Courtier indépendant' },
+  { label: 'Basé à Paris' },
+  { label: 'Intervention nationale' },
+];
+---
+
+<aside class="trust-bar" aria-label="Repères de confiance">
+  <div class="container-wide">
+    <ul>
+      {items.map((item) => (
+        <li>
+          <span aria-hidden="true"></span>
+          {item.href ? <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a> : item.label}
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .trust-bar {
+    color: var(--color-brand-deep);
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    min-height: 3.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-strong);
+    text-align: center;
+  }
+
+  li + li {
+    border-left: 1px solid var(--color-border);
+  }
+
+  li > span {
+    width: 0.45rem;
+    height: 0.45rem;
+    flex: 0 0 auto;
+    background: var(--color-gold);
+    border-radius: 50%;
+  }
+
+  a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    li:nth-child(3) {
+      border-left: 0;
+    }
+
+    li:nth-child(n + 3) {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  @media (max-width: 380px) {
+    li {
+      padding-inline: var(--space-2);
+      font-size: 0.75rem;
+    }
+  }
+</style>

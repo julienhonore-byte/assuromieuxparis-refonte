@@ -16,6 +16,16 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     <p>Ce premier échange sert à comprendre votre activité, identifier le contrat ou l’échéance prioritaire et déterminer les pièces utiles à l’analyse. Aucun document confidentiel n’est demandé dans ce formulaire.</p>
   </div>
 
+  <div class="contact-process">
+    <p class="eyebrow">Après votre demande</p>
+    <h3>Comment se déroule la suite&nbsp;?</h3>
+    <ol>
+      <li><span aria-hidden="true">1</span><p>Vous nous présentez votre besoin.</p></li>
+      <li><span aria-hidden="true">2</span><p>Nous analysons votre situation.</p></li>
+      <li><span aria-hidden="true">3</span><p>Nous revenons vers vous avec les premières orientations.</p></li>
+    </ol>
+  </div>
+
   <form class="contact-form form-grid" {action} method="POST" data-contact-form data-form-context={analyticsContext}>
     <div class="form-field">
       <label for="contact-first-name">Prénom <span aria-hidden="true">*</span></label>
@@ -288,6 +298,53 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     margin: 0;
   }
 
+  .contact-process {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-process h3 {
+    margin: 0;
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-heading);
+  }
+
+  .contact-process ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contact-process li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: start;
+    gap: var(--space-3);
+  }
+
+  .contact-process li > span {
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    color: var(--color-surface);
+    background: var(--color-brand);
+    border-radius: 50%;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .contact-process li p {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-size: var(--font-size-sm);
+  }
+
   .contact-form-context {
     margin-bottom: var(--space-6);
     padding-bottom: var(--space-6);
@@ -359,6 +416,15 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     .contact-form-context {
       margin-bottom: var(--space-5);
       padding-bottom: var(--space-5);
+    }
+
+    .contact-process {
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-5);
+    }
+
+    .contact-process ol {
+      grid-template-columns: 1fr;
     }
   }
 </style>

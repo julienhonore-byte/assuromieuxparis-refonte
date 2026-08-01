@@ -5,9 +5,10 @@ interface Props {
   email: string;
   orias: string;
   auditHref?: string;
+  auditLabel?: string;
 }
 
-const { phoneDisplay, phoneHref, email, orias, auditHref = '#contact' } = Astro.props;
+const { phoneDisplay, phoneHref, email, orias, auditHref = '#contact', auditLabel = 'Demander un audit gratuit' } = Astro.props;
 const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : undefined;
 ---
 
@@ -27,10 +28,10 @@ const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : unde
         class="topbar__audit"
         href={auditHref}
         data-analytics-event={analyticsEvent}
-        data-analytics-label={analyticsEvent ? 'Analyse gratuite' : undefined}
+        data-analytics-label={analyticsEvent ? auditLabel : undefined}
         data-analytics-location={analyticsEvent ? 'header' : undefined}
         data-analytics-source={analyticsEvent ? 'topbar' : undefined}
-      >Analyse gratuite <span aria-hidden="true">→</span></a>
+      >{auditLabel} <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </div>
@@ -77,6 +78,8 @@ const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : unde
   .topbar__audit {
     color: var(--color-gold-soft);
     font-weight: var(--font-weight-strong);
+    line-height: 1.25;
+    text-align: center;
   }
 
   @media (max-width: 1100px) {
@@ -104,12 +107,7 @@ const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : unde
 
     .topbar__contact {
       width: 100%;
-      justify-content: space-between;
-    }
-
-    .topbar__contact::before {
-      content: 'Paris · France entière';
-      color: var(--color-text-on-dark-soft);
+      justify-content: center;
     }
 
     .topbar__audit {

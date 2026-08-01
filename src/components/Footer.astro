@@ -13,6 +13,7 @@ interface Props {
   productLinks: NavigationItem[];
   adviceLinks: NavigationItem[];
   auditHref?: string;
+  auditLabel?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   productLinks,
   adviceLinks,
   auditHref = '/audit-assurances-entreprise/',
+  auditLabel = 'Demander un audit gratuit',
 } = Astro.props;
 
 const year = new Date().getFullYear();
@@ -42,10 +44,10 @@ const year = new Date().getFullYear();
           class="site-footer__audit"
           href={auditHref}
           data-analytics-event="audit_cta_click"
-          data-analytics-label="Demander un audit gratuit"
+          data-analytics-label={auditLabel}
           data-analytics-location="footer"
           data-analytics-source="footer"
-        >Demander un audit gratuit <span aria-hidden="true">→</span></a>
+        >{auditLabel} <span aria-hidden="true">→</span></a>
       </div>
 
       <details class="site-footer__group" data-footer-group open>

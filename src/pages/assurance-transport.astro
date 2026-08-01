@@ -7,12 +7,15 @@ import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
 const path = '/assurance-transport/';
 const description = 'Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.';
 const contactHref = '/?besoin=assurance-transport#contact';
+const ctaLabel = 'Faire analyser mon programme transport';
 const faqItems = [
   { question: 'Quels métiers sont concernés ?', answer: 'Le transport routier de marchandises, la commission de transport, la logistique, l’exploitation d’entrepôts, le déménagement, le convoyage et les entreprises disposant d’une flotte significative peuvent être concernés.' },
   { question: 'La flotte suffit-elle à couvrir une activité de transport ?', answer: 'Non. Les véhicules ne traitent pas à eux seuls les responsabilités du transporteur, les marchandises confiées, le stockage, la sous-traitance ou l’interruption d’activité.' },
@@ -26,17 +29,18 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout title="Assurance transport et logistique | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} ctaLabel="Demander un audit transport" {structuredData}>
+<SiteLayout title="Assurance transport et logistique | Assuromieux Paris" {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Expertise sectorielle"
       title="Analyser l’ensemble de la chaîne transport et logistique."
-      lead="Nous rapprochons véhicules, marchandises, responsabilités, stockage et sous-traitance pour construire une lecture cohérente de l’exploitation."
+      lead="Nous rapprochons véhicules, marchandises, responsabilités, stockage et sous-traitance pour sécuriser les arbitrages qui comptent dans votre exploitation."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance transport' }]}
     >
-      <CTA href={contactHref} label="Demander un audit transport" size="large" />
+      <CTA href={contactHref} label={ctaLabel} size="large" />
       <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
     </PageHero>
+    <TrustBar />
 
     <section class="section" aria-labelledby="public-title">
       <div class="container-wide content-grid">
@@ -121,6 +125,7 @@ const structuredData = [
       </div>
     </section>
 
+    <WhatWeAnalyze />
     <SolutionMethod title="Une méthode commune, adaptée au transport." text="L’analyse sectorielle conserve les quatre temps Assuromieux et accorde une attention particulière aux flux, aux responsabilités et à la sinistralité." />
 
     <section class="section section--surface" aria-labelledby="faq-title">
@@ -141,7 +146,7 @@ const structuredData = [
     <RelatedResources items={[
       { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilité du transporteur et assurance des marchandises', description: 'Distinguer la responsabilité, les biens, la flotte et les contrats.' },
     ]} />
-    <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." primaryHref={contactHref} primaryLabel="Demander un audit transport" />
+    <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." primaryHref={contactHref} primaryLabel={ctaLabel} />
   </main>
 </SiteLayout>
 

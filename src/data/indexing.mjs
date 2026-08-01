@@ -20,6 +20,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/ressources/guides/rc-professionnelle-rc-exploitation-differences/',
   '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/',
   '/ressources/guides/assurance-decennale-coherence-activites-attestation/',
+  '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/',
 ]);
 
 export const isPublicIndexingEnabled = (value, context) => value === 'true' && context === 'production';

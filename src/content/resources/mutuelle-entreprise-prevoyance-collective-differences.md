@@ -10,7 +10,9 @@ category: "assurance-entreprise"
 tags: ["mutuelle entreprise", "prévoyance collective", "santé collective", "protection sociale"]
 keywords: ["différence mutuelle entreprise prévoyance", "mutuelle et prévoyance différence", "santé collective prévoyance collective", "complémentaire santé entreprise prévoyance"]
 canonical: "https://www.assuromieuxparis.com/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/"
-status: "review-required"
+status: "published"
+reviewedBy: "Jules HONORE"
+reviewDate: 2026-08-01
 featured: false
 readingTime: 9
 relatedProducts: ["sante", "audit", "dirigeant"]

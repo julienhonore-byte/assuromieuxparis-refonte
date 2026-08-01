@@ -4,13 +4,15 @@ seoTitle: "Décennale : activités et attestation"
 description: "Une méthode de lecture prudente pour rapprocher travaux réalisés, activités déclarées, attestation décennale, périodes, procédés et sous-traitance."
 slug: "assurance-decennale-coherence-activites-attestation"
 publishDate: 2026-07-21
-updatedDate: 2026-07-24
+updatedDate: 2026-08-01
 author: "Assuromieux Paris"
 category: "btp"
 tags: ["décennale", "attestation", "activités déclarées", "BTP"]
 keywords: ["vérifier attestation décennale", "activités assurance décennale", "cohérence travaux attestation"]
 canonical: "https://www.assuromieuxparis.com/ressources/guides/assurance-decennale-coherence-activites-attestation/"
-status: "review-required"
+status: "published"
+reviewedBy: "Jules HONORE"
+reviewDate: 2026-08-01
 featured: true
 readingTime: 8
 relatedProducts: ["btp", "rc", "audit", "multirisque"]
@@ -18,7 +20,7 @@ relatedSectors: ["btp"]
 relatedArticles: ["comment-auditer-assurances-entreprise", "quelles-assurances-prevoir-pme"]
 faq:
   - question: "Une attestation décennale suffit-elle pour confirmer qu’un chantier est couvert ?"
-    answer: "Non. L’attestation donne des informations importantes, mais l’activité, les travaux, la période, le contrat, les procédés et les circonstances doivent être rapprochés. Une analyse spécialisée peut être nécessaire."
+    answer: "Pas à elle seule. L’attestation donne des informations importantes, mais l’activité, les travaux, la période, le contrat, les procédés et les circonstances doivent être rapprochés. Une analyse spécialisée peut être nécessaire."
   - question: "Un sous-traitant relève-t-il automatiquement de la même obligation décennale ?"
     answer: "Il ne faut pas l’affirmer sans examiner son rôle. Service Public distingue notamment le sous-traitant sans lien direct avec le maître d’ouvrage, tout en rappelant ses engagements envers le constructeur."
   - question: "Que faire lorsqu’une entreprise ajoute ou modifie une activité ?"
@@ -30,7 +32,7 @@ draft: false
 
 Vérifier une attestation décennale consiste à rapprocher les activités qui y figurent des travaux réellement réalisés, du rôle de l’entreprise, des procédés employés et de la date d’ouverture du chantier. L’attestation est un document essentiel, mais elle ne permet pas seule de conclure sur toute situation.
 
-[Service Public](https://www.service-public.gouv.fr/particuliers/vosdroits/F2034) rappelle notamment que la garantie doit être souscrite avant le démarrage des travaux, que les travaux déclarés au contrat comptent et que l’ouverture de chantier doit se situer pendant la période de validité.
+Le Code des assurances impose à la personne assujettie de justifier, à l’ouverture du chantier, qu’elle a souscrit un contrat couvrant sa responsabilité décennale. Le modèle réglementaire d’attestation précise notamment les activités ou missions, la période de validité, l’étendue géographique et, selon le document, les techniques ou procédés déclarés. Il indique aussi que les travaux concernés doivent avoir fait l’objet d’une ouverture de chantier pendant la période de validité mentionnée.
 
 > Une ressemblance entre un libellé et un métier ne suffit pas. Les travaux, le procédé, le rôle contractuel et les pièces doivent être décrits avec précision.
 
@@ -65,7 +67,7 @@ Assurez-vous que le document correspond à la bonne entité et à la bonne versi
 
 Placez en regard les travaux prévus et les libellés d’activité. Une ressemblance de vocabulaire ne suffit pas : un terme peut comporter des limites liées à la technique, au support, à la destination, au procédé ou au rôle exercé.
 
-Le même rapprochement porte sur les procédés utilisés, la période de souscription, la date d’ouverture du chantier et le territoire. Les travaux longs ou une succession de contrats demandent une attention particulière. La date d’émission de l’attestation ne résout pas, à elle seule, toutes les questions temporelles.
+Le même rapprochement porte sur les procédés utilisés, la période de validité mentionnée, la date d’ouverture du chantier et le territoire. Les travaux longs ou une succession de contrats demandent une attention particulière. La date d’émission de l’attestation ne résout pas, à elle seule, toutes les questions temporelles.
 
 Un écart ou une imprécision ne permet pas de conclure automatiquement à une absence totale de garantie. Il signale un point à documenter et, selon son importance, à soumettre à l’assureur ou à l’intermédiaire.
 
@@ -89,6 +91,13 @@ Cette checklist aide à identifier les points à vérifier. Elle ne permet pas, 
 - Le rôle de l’entreprise est-il correctement décrit ?
 - Les éventuelles activités sous-traitées ou accessoires ont-elles été examinées ?
 - Une confirmation écrite est-elle nécessaire en cas d’écart ou de doute ?
+
+## Sources officielles consultées le 1er août 2026
+
+- [Légifrance — Code des assurances, article L. 241-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031010281/).
+- [Légifrance — arrêté du 5 janvier 2016 fixant les mentions minimales de l’attestation d’assurance décennale](https://www.legifrance.gouv.fr/loda/article_lc/JORFARTI000031824674/).
+- [Entreprendre.Service-Public.fr — garantie décennale des constructeurs](https://entreprendre.service-public.gouv.fr/vosdroits/F2034).
+- [Entreprendre.Service-Public.fr — modèle d’attestation d’assurance de responsabilité décennale](https://entreprendre.service-public.gouv.fr/vosdroits/R44868).
 
 ## Point de vigilance juridique
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Assuromieux Paris - direction E">
+          <rect width="512" height="512" rx="96" fill="#071C33"/>
+          <path d="M102 344 186 168h37l83 176h-47l-18-43h-75l-18 43h-46Zm79-80h45l-22-55-23 55Z" fill="#FFFFFF"/>
+          <path d="M329 167v178" stroke="#FFFFFF" stroke-width="13"/>
+          <path d="M371 168h26c45 0 72 25 72 66s-27 66-72 66h-9v45h-35V168h18Zm17 33v66h9c23 0 36-11 36-33s-13-33-36-33h-9Z" fill="#FFFFFF"/>
+        </svg>

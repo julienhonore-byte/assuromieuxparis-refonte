@@ -18,6 +18,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/',
   '/ressources/guides/comment-auditer-assurances-entreprise/',
   '/ressources/guides/rc-professionnelle-rc-exploitation-differences/',
+  '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/',
   '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/',
   '/ressources/guides/assurance-decennale-coherence-activites-attestation/',
   '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/',

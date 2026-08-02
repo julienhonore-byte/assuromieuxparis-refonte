@@ -2,6 +2,7 @@
 import PageHero from '../components/PageHero.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { breadcrumbSchema, pageUrl } from '../data/seo';
+import { site } from '../data/site';
 
 const path = '/mentions-legales/';
 const title = 'Mentions légales | Assuromieux Paris';
@@ -24,7 +25,7 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
           <h2 id="editor-title">Éditeur du site</h2>
           <dl>
             <div><dt>Éditeur</dt><dd>Jules HONORE, entrepreneur individuel, exploitant le site sous le nom commercial ASSUROMIEUX PARIS</dd></div>
-            <div><dt>Adresse de l’établissement principal</dt><dd>60 rue François-Ier, 75008 Paris, France</dd></div>
+            <div><dt>Adresse de l’établissement principal</dt><dd>{site.addressStreet}, {site.addressLocality}, {site.addressCountry}</dd></div>
             <div><dt>Immatriculation</dt><dd>SIREN 489 181 032 — SIRET 489 181 032 00033 — RCS Paris — inscrit au Registre national des entreprises</dd></div>
             <div><dt>Activité principale</dt><dd>Activités des agents et courtiers d’assurances — code APE 66.22Z</dd></div>
             <div><dt>TVA intracommunautaire</dt><dd>Le statut TVA doit être confirmé par l’éditeur avant publication d’un numéro.</dd></div>
@@ -53,7 +54,7 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
 
         <section aria-labelledby="complaints-title">
           <h2 id="complaints-title">Réclamations</h2>
-          <p>Toute réclamation peut être adressée par courrier à Assuromieux Paris, 60 rue François-Ier, 75008 Paris, France, ou par courriel à <a href="mailto:jules@assuromieuxparis.com">jules@assuromieuxparis.com</a>, avec l’objet « Réclamation ».</p>
+          <p>Toute réclamation peut être adressée par courrier à Assuromieux Paris, {site.addressStreet}, {site.addressLocality}, {site.addressCountry}, ou par courriel à <a href="mailto:jules@assuromieuxparis.com">jules@assuromieuxparis.com</a>, avec l’objet « Réclamation ».</p>
           <p>Un accusé de réception est adressé dans un délai maximal de dix jours ouvrables à compter de la réception de la réclamation, sauf si une réponse est apportée dans ce délai. Une réponse est apportée au plus tard dans les deux mois suivant la réception de la réclamation, hors circonstance particulière dûment justifiée.</p>
         </section>
 

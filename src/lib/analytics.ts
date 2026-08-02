@@ -3,7 +3,10 @@ export const analyticsEventNames = [
   'phone_click',
   'email_click',
   'cal_click',
+  'form_view',
   'form_start',
+  'form_submit',
+  'form_error',
   'audit_form_submit_error',
   'audit_form_submit_success',
 ] as const;
@@ -45,8 +48,11 @@ const eventParameters: Record<AnalyticsEventName, AnalyticsParameterName[]> = {
   phone_click: ['link_location', 'source_component'],
   email_click: ['link_location', 'source_component'],
   cal_click: ['link_location', 'form_context', 'source_component'],
-  form_start: ['form_context', 'conversion_intent', 'source_component'],
-  audit_form_submit_error: ['form_context', 'conversion_intent', 'error_type', 'source_component'],
+  form_view: ['form_context', 'service_interest', 'conversion_intent', 'source_component'],
+  form_start: ['form_context', 'service_interest', 'conversion_intent', 'source_component'],
+  form_submit: ['form_context', 'service_interest', 'conversion_intent', 'source_component'],
+  form_error: ['form_context', 'service_interest', 'conversion_intent', 'error_type', 'source_component'],
+  audit_form_submit_error: ['form_context', 'service_interest', 'conversion_intent', 'error_type', 'source_component'],
   audit_form_submit_success: ['form_context', 'service_interest', 'conversion_intent', 'source_component'],
 };
 
@@ -168,6 +174,26 @@ const delegatedClick = (event: MouseEvent) => {
   const location = linkLocation(link);
   const source = linkSource(link);
 
+  if (href.includes('#contact')) {
+    const intent = conversionIntent(link);
+    const product = serviceInterest(link);
+
+    if ((intent === 'quote' || intent === 'audit') && product) {
+      try {
+        const originUrl = `${window.location.origin}${window.location.pathname}`;
+        window.sessionStorage.setItem('assuromieux:form-attribution', JSON.stringify({
+          ctaLabel: link.dataset.analyticsLabel ?? link.textContent?.trim().slice(0, 100) ?? '',
+          originPath: window.location.pathname,
+          originUrl,
+          intent,
+          product,
+        }));
+      } catch {
+        // Le parcours reste fonctionnel lorsque le stockage est indisponible.
+      }
+    }
+  }
+
   if (href.startsWith('tel:')) {
     trackAnalyticsEvent('phone_click', { link_location: location, source_component: source });
     return;
@@ -202,7 +228,5 @@ const delegatedClick = (event: MouseEvent) => {
 export const initializeAnalytics = () => {
   if (typeof window === 'undefined' || window.assuromieuxAnalyticsInitialized) return;
   window.assuromieuxAnalyticsInitialized = true;
-
-  if (!measurementIdIsValid && !debugEnabled) return;
   document.addEventListener('click', delegatedClick, { capture: true });
 };

@@ -7,13 +7,158 @@ interface Props {
 }
 
 const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsContext = 'audit' } = Astro.props;
+
+interface QualificationField {
+  name: string;
+  label: string;
+  type?: 'text' | 'number' | 'date';
+  options?: string[];
+  inputmode?: 'numeric' | 'decimal';
+  min?: string;
+  max?: string;
+  placeholder?: string;
+  help?: string;
+}
+
+interface ProductQualification {
+  key: string;
+  label: string;
+  aliases: string[];
+  fields: QualificationField[];
+}
+
+const turnoverOptions = [
+  'Moins de 250 000 €',
+  'De 250 000 € à 1 M€',
+  'De 1 M€ à 5 M€',
+  'Plus de 5 M€',
+  'À préciser',
+];
+
+const productQualifications: ProductQualification[] = [
+  {
+    key: 'transport',
+    label: 'Transport',
+    aliases: ['assurance-transport', 'transport', 'activite-transport', 'transport-routier', 'convoyage', 'demenagement'],
+    fields: [
+      { name: 'qualification_transport_activite', label: 'Activité principale', options: ['Transport routier de marchandises', 'Logistique', 'Déménagement', 'Convoyage', 'Transport de personnes', 'Autre'] },
+      { name: 'qualification_transport_vehicules', label: 'Nombre de véhicules', type: 'number', inputmode: 'numeric', min: '0', max: '9999', placeholder: 'Ex. : 12' },
+      { name: 'qualification_transport_zone', label: 'Zone d’activité principale', options: ['France', 'Europe', 'International', 'À préciser'] },
+      { name: 'qualification_transport_contrat', label: 'Contrat actuel', options: ['Oui', 'Non', 'Entreprise en création'] },
+      { name: 'qualification_transport_echeance', label: 'Date d’échéance ou d’effet souhaitée', type: 'date' },
+    ],
+  },
+  {
+    key: 'decennale',
+    label: 'Décennale et BTP',
+    aliases: ['assurance-btp-decennale'],
+    fields: [
+      { name: 'qualification_decennale_activite', label: 'Activité ou métier principal', placeholder: 'Ex. : maçonnerie, électricité…' },
+      { name: 'qualification_decennale_ca', label: 'Chiffre d’affaires approximatif', options: turnoverOptions },
+      { name: 'qualification_decennale_situation', label: 'Situation actuelle', options: ['Déjà assuré', 'Résilié', 'Entreprise en création', 'Jamais assuré'] },
+      { name: 'qualification_decennale_date', label: 'Date d’échéance ou de démarrage souhaitée', type: 'date' },
+      { name: 'qualification_decennale_antecedents', label: 'Antécédents ou sinistres', options: ['Non', 'Oui', 'À préciser'] },
+    ],
+  },
+  {
+    key: 'flotte',
+    label: 'Flotte automobile',
+    aliases: ['flotte', 'assurer-flotte-vehicules'],
+    fields: [
+      { name: 'qualification_flotte_vehicules', label: 'Nombre de véhicules', type: 'number', inputmode: 'numeric', min: '0', max: '9999', placeholder: 'Ex. : 8' },
+      { name: 'qualification_flotte_types', label: 'Types de véhicules', placeholder: 'Ex. : utilitaires, poids lourds…' },
+      { name: 'qualification_flotte_usages', label: 'Usages principaux', placeholder: 'Ex. : livraisons, déplacements commerciaux…' },
+      { name: 'qualification_flotte_sinistralite', label: 'Sinistralité récente', options: ['Faible', 'Moyenne', 'Importante', 'Inconnue'] },
+      { name: 'qualification_flotte_echeance', label: 'Date d’échéance du contrat', type: 'date' },
+    ],
+  },
+  {
+    key: 'rc-professionnelle',
+    label: 'RC professionnelle',
+    aliases: ['rc-professionnelle'],
+    fields: [
+      { name: 'qualification_rc_activite', label: 'Activité principale', placeholder: 'Décrivez votre activité en quelques mots' },
+      { name: 'qualification_rc_ca', label: 'Chiffre d’affaires approximatif', options: turnoverOptions },
+      { name: 'qualification_rc_salaries', label: 'Nombre de salariés', type: 'number', inputmode: 'numeric', min: '0', max: '99999' },
+      { name: 'qualification_rc_reglementee', label: 'Activité réglementée', options: ['Oui', 'Non', 'Incertain'] },
+      { name: 'qualification_rc_date', label: 'Date d’effet souhaitée', type: 'date' },
+    ],
+  },
+  {
+    key: 'sante-prevoyance',
+    label: 'Santé et prévoyance',
+    aliases: ['sante-prevoyance'],
+    fields: [
+      { name: 'qualification_sante_salaries', label: 'Nombre de salariés', type: 'number', inputmode: 'numeric', min: '0', max: '99999' },
+      { name: 'qualification_sante_convention', label: 'Convention collective, si connue', placeholder: 'Nom ou identifiant de la convention' },
+      { name: 'qualification_sante_besoin', label: 'Type de besoin', options: ['Santé', 'Prévoyance', 'Santé et prévoyance'] },
+      { name: 'qualification_sante_population', label: 'Population concernée', options: ['Tous les salariés', 'Cadres', 'Non-cadres', 'Dirigeants', 'À préciser'] },
+      { name: 'qualification_sante_echeance', label: 'Date d’échéance ou d’effet souhaitée', type: 'date' },
+    ],
+  },
+  {
+    key: 'cyber',
+    label: 'Cyberassurance',
+    aliases: ['cyber'],
+    fields: [
+      { name: 'qualification_cyber_salaries', label: 'Nombre de salariés', type: 'number', inputmode: 'numeric', min: '0', max: '99999' },
+      { name: 'qualification_cyber_donnees', label: 'Données sensibles traitées', options: ['Oui', 'Non', 'Incertain'] },
+      { name: 'qualification_cyber_outils', label: 'Outils ou services critiques', options: ['Oui', 'Non', 'À préciser'] },
+      { name: 'qualification_cyber_contrat', label: 'Contrat cyber actuel', options: ['Oui', 'Non', 'Incertain'] },
+      { name: 'qualification_cyber_incident', label: 'Incident cyber antérieur', options: ['Non', 'Oui', 'À préciser'] },
+    ],
+  },
+  {
+    key: 'multirisque',
+    label: 'Multirisque professionnelle',
+    aliases: ['multirisque'],
+    fields: [
+      { name: 'qualification_multirisque_activite', label: 'Activité principale' },
+      { name: 'qualification_multirisque_locaux', label: 'Type de locaux', options: ['Bureau', 'Commerce', 'Entrepôt', 'Atelier', 'Autre'] },
+      { name: 'qualification_multirisque_surface', label: 'Surface approximative en m²', type: 'number', inputmode: 'decimal', min: '0', max: '999999' },
+      { name: 'qualification_multirisque_valeur', label: 'Valeur approximative du matériel ou du stock', options: ['Moins de 50 000 €', 'De 50 000 € à 250 000 €', 'De 250 000 € à 1 M€', 'Plus de 1 M€', 'À préciser'] },
+      { name: 'qualification_multirisque_echeance', label: 'Date d’échéance du contrat', type: 'date' },
+    ],
+  },
+  {
+    key: 'protection-dirigeant',
+    label: 'Protection du dirigeant',
+    aliases: ['protection-dirigeant'],
+    fields: [
+      { name: 'qualification_dirigeant_statut', label: 'Statut du dirigeant', options: ['Travailleur non salarié', 'Assimilé salarié', 'Salarié', 'Autre ou incertain'] },
+      { name: 'qualification_dirigeant_nombre', label: 'Nombre de dirigeants concernés', type: 'number', inputmode: 'numeric', min: '1', max: '99' },
+      { name: 'qualification_dirigeant_besoin', label: 'Type de besoin', options: ['Prévoyance', 'Santé', 'Homme-clé', 'Responsabilité du dirigeant', 'Protection juridique', 'À préciser'] },
+      { name: 'qualification_dirigeant_couverture', label: 'Couverture actuelle', options: ['Oui', 'Non', 'Partielle', 'Incertain'] },
+      { name: 'qualification_dirigeant_date', label: 'Date d’effet souhaitée', type: 'date' },
+    ],
+  },
+];
+
+const genericQuoteFields: QualificationField[] = [
+  { name: 'qualification_generique_activite', label: 'Activité principale' },
+  { name: 'qualification_generique_contrat', label: 'Contrat actuel', options: ['Oui', 'Non', 'Entreprise en création', 'À préciser'] },
+  { name: 'qualification_generique_date', label: 'Date d’échéance ou d’effet souhaitée', type: 'date' },
+];
+
+const auditFields: QualificationField[] = [
+  { name: 'qualification_audit_contrat', label: 'Contrat actuel', options: ['Oui', 'Non', 'Entreprise en création', 'À préciser'] },
+  { name: 'qualification_audit_besoin', label: 'Point à analyser en priorité', options: ['Garanties et exclusions', 'Franchises et plafonds', 'Évolution de l’activité', 'Renouvellement ou mise en concurrence', 'Sinistralité', 'Autre point'] },
+  { name: 'qualification_audit_echeance', label: 'Prochaine échéance connue', type: 'date' },
+];
 ---
 
 <div class="contact-form-shell">
   <div class="contact-form-context">
-    <p class="eyebrow">Premier échange</p>
-    <h3>Commencer par cadrer la situation.</h3>
-    <p>Ce premier échange sert à comprendre votre activité, identifier le contrat ou l’échéance prioritaire et déterminer les pièces utiles à l’analyse. Aucun document confidentiel n’est demandé dans ce formulaire.</p>
+    <p class="eyebrow" data-form-kicker>Premier échange</p>
+    <h3 data-form-title>Présentez votre besoin.</h3>
+    <p data-form-introduction>Ce premier échange sert à comprendre votre activité et à préparer notre retour. Aucun document confidentiel n’est demandé dans ce formulaire.</p>
+    <ul class="contact-form-reassurance" aria-label="Repères avant votre demande">
+      <li><span aria-hidden="true">✓</span> Première réponse sous 48 h ouvrées</li>
+      <li><span aria-hidden="true">✓</span> Sans engagement</li>
+      <li><span aria-hidden="true">✓</span> Suivi par votre interlocuteur Assuromieux Paris</li>
+      <li><span aria-hidden="true">✓</span> Les informations demandées servent uniquement à préparer notre retour</li>
+      <li><span aria-hidden="true">✓</span> Aucun devis définitif sans étude du dossier complet</li>
+    </ul>
   </div>
 
   <div class="contact-process">
@@ -53,13 +198,20 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     </div>
 
     <div class="form-field">
-      <label for="contact-phone">Téléphone <span aria-hidden="true">*</span></label>
-      <input id="contact-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="40" aria-describedby="contact-required contact-phone-help contact-phone-error" />
-      <p class="form-help" id="contact-phone-help">Le numéro auquel vous souhaitez être rappelé.</p>
+      <label for="contact-phone">Téléphone <span data-phone-required aria-hidden="true" hidden>*</span> <span class="label-optional" data-phone-optional>(facultatif)</span></label>
+      <input id="contact-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="contact-phone-help contact-phone-error" />
+      <p class="form-help" id="contact-phone-help" data-phone-help>Indiquez-le si vous souhaitez être rappelé.</p>
       <p class="form-error" id="contact-phone-error" data-error-for="contact-phone" hidden></p>
     </div>
 
     <div class="form-field">
+      <label for="contact-postal-code">Code postal <span aria-hidden="true">*</span></label>
+      <input id="contact-postal-code" name="code_postal" type="text" autocomplete="postal-code" inputmode="numeric" required minlength="3" maxlength="10" pattern="[0-9A-Za-z -]{3,10}" aria-describedby="contact-required contact-postal-code-help contact-postal-code-error" />
+      <p class="form-help" id="contact-postal-code-help">Votre zone d’activité principale.</p>
+      <p class="form-error" id="contact-postal-code-error" data-error-for="contact-postal-code" hidden></p>
+    </div>
+
+    <div class="form-field" data-generic-product-selector>
       <label for="contact-priority">Besoin principal</label>
       <select id="contact-priority" name="contrat_prioritaire">
         <option value="">Je souhaite être conseillé</option>
@@ -80,11 +232,101 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       </select>
     </div>
 
-    <div class="form-field form-field--full">
-      <label for="contact-message">Message</label>
+    <div class="form-field form-field--full form-field--message">
+      <label for="contact-message"><span data-message-label>Message ou précision libre</span> <span data-message-required aria-hidden="true" hidden>*</span></label>
       <textarea id="contact-message" name="message" maxlength="3000" aria-describedby="contact-message-help"></textarea>
-      <p class="form-help" id="contact-message-help">Précisez votre contexte ou votre prochaine échéance si vous la connaissez. N'envoyez aucun document confidentiel à cette étape.</p>
+      <p class="form-help" id="contact-message-help" data-message-help>Précisez votre contexte ou votre prochaine échéance si vous la connaissez. N'envoyez aucun document confidentiel à cette étape.</p>
+      <p class="form-error" id="contact-message-error" data-error-for="contact-message" hidden></p>
     </div>
+
+    <details class="qualification-section form-field--full" data-qualification-group="audit" hidden>
+      <summary>Quelques informations pour préparer notre retour</summary>
+      <p>Trois repères suffisent à cadrer une première analyse. Vous pourrez préciser votre situation dans le message.</p>
+      <div class="qualification-grid">
+        {auditFields.map((field) => (
+          <div class="form-field">
+            <label for={`contact-${field.name}`}>{field.label}</label>
+            {field.options ? (
+              <select id={`contact-${field.name}`} name={field.name} disabled>
+                <option value="">Sélectionner</option>
+                {field.options.map((option) => <option>{option}</option>)}
+              </select>
+            ) : (
+              <input
+                id={`contact-${field.name}`}
+                name={field.name}
+                type={field.type ?? 'text'}
+                inputmode={field.inputmode}
+                min={field.min}
+                max={field.max}
+                placeholder={field.placeholder}
+                disabled
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
+
+    {productQualifications.map((product) => (
+      <details
+        class="qualification-section form-field--full"
+        data-qualification-group="quote"
+        data-product-key={product.key}
+        data-product-label={product.label}
+        data-product-aliases={product.aliases.join(' ')}
+        hidden
+      >
+        <summary>Quelques informations pour préparer notre retour</summary>
+        <p>Ces renseignements facilitent un premier cadrage. Ils ne remplacent pas l’étude complète du dossier.</p>
+        <div class="qualification-grid">
+          {product.fields.map((field) => (
+            <div class="form-field">
+              <label for={`contact-${field.name}`}>{field.label}</label>
+              {field.options ? (
+                <select id={`contact-${field.name}`} name={field.name} disabled>
+                  <option value="">Sélectionner</option>
+                  {field.options.map((option) => <option>{option}</option>)}
+                </select>
+              ) : (
+                <input
+                  id={`contact-${field.name}`}
+                  name={field.name}
+                  type={field.type ?? 'text'}
+                  inputmode={field.inputmode}
+                  min={field.min}
+                  max={field.max}
+                  placeholder={field.placeholder}
+                  aria-describedby={field.help ? `contact-${field.name}-help` : undefined}
+                  disabled
+                />
+              )}
+              {field.help && <p class="form-help" id={`contact-${field.name}-help`}>{field.help}</p>}
+            </div>
+          ))}
+        </div>
+      </details>
+    ))}
+
+    <details class="qualification-section form-field--full" data-qualification-group="quote-generic" data-product-label="Assurances d’entreprise" hidden>
+      <summary>Quelques informations pour préparer notre retour</summary>
+      <p>Ces premiers repères nous aideront à identifier la protection concernée.</p>
+      <div class="qualification-grid">
+        {genericQuoteFields.map((field) => (
+          <div class="form-field">
+            <label for={`contact-${field.name}`}>{field.label}</label>
+            {field.options ? (
+              <select id={`contact-${field.name}`} name={field.name} disabled>
+                <option value="">Sélectionner</option>
+                {field.options.map((option) => <option>{option}</option>)}
+              </select>
+            ) : (
+              <input id={`contact-${field.name}`} name={field.name} type={field.type ?? 'text'} disabled />
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
 
     <div class="form-field visually-hidden" aria-hidden="true">
       <label for="contact-website">Ne pas remplir ce champ</label>
@@ -95,6 +337,10 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     <input type="hidden" name="campagne" value="Audit assurances entreprise" />
     <input type="hidden" name="intention" value="" data-form-intent />
     <input type="hidden" name="produit" value="" data-form-product />
+    <input type="hidden" name="page_origine" value="" data-form-origin-page />
+    <input type="hidden" name="libelle_cta" value="" data-form-cta-label />
+    <input type="hidden" name="url_provenance" value="" data-form-referrer-url />
+    <input type="hidden" name="horodatage" value="" data-form-timestamp />
 
     <p class="form-note form-field--full" id="contact-required">Les champs signalés par un astérisque sont obligatoires.</p>
     <p class="form-note form-field--full">Les informations transmises servent à traiter votre demande. Consultez notre <a href={privacyHref}>politique de confidentialité</a> avant l’envoi.</p>
@@ -124,6 +370,15 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
 
   const forms = document.querySelectorAll<HTMLFormElement>('[data-contact-form]');
   const selectedProductKey = 'assuromieux:selected-product';
+  const formAttributionKey = 'assuromieux:form-attribution';
+
+  interface FormAttribution {
+    ctaLabel?: string;
+    originPath?: string;
+    originUrl?: string;
+    intent?: string;
+    product?: string;
+  }
 
   forms.forEach((form) => {
     const submit = form.querySelector<HTMLButtonElement>('[data-form-submit]');
@@ -133,36 +388,165 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     const priority = form.querySelector<HTMLSelectElement>('#contact-priority');
     const intentField = form.querySelector<HTMLInputElement>('[data-form-intent]');
     const productField = form.querySelector<HTMLInputElement>('[data-form-product]');
-    const validatedFields = Array.from(form.querySelectorAll<HTMLInputElement>('input[required]'));
+    const originPageField = form.querySelector<HTMLInputElement>('[data-form-origin-page]');
+    const ctaLabelField = form.querySelector<HTMLInputElement>('[data-form-cta-label]');
+    const referrerUrlField = form.querySelector<HTMLInputElement>('[data-form-referrer-url]');
+    const timestampField = form.querySelector<HTMLInputElement>('[data-form-timestamp]');
+    const title = form.parentElement?.querySelector<HTMLElement>('[data-form-title]');
+    const kicker = form.parentElement?.querySelector<HTMLElement>('[data-form-kicker]');
+    const introduction = form.parentElement?.querySelector<HTMLElement>('[data-form-introduction]');
+    const genericProductSelector = form.querySelector<HTMLElement>('[data-generic-product-selector]');
+    const phone = form.querySelector<HTMLInputElement>('#contact-phone');
+    const phoneRequired = form.querySelector<HTMLElement>('[data-phone-required]');
+    const phoneOptional = form.querySelector<HTMLElement>('[data-phone-optional]');
+    const phoneHelp = form.querySelector<HTMLElement>('[data-phone-help]');
+    const message = form.querySelector<HTMLTextAreaElement>('#contact-message');
+    const messageLabel = form.querySelector<HTMLElement>('[data-message-label]');
+    const messageRequired = form.querySelector<HTMLElement>('[data-message-required]');
+    const messageHelp = form.querySelector<HTMLElement>('[data-message-help]');
+    const qualificationGroups = Array.from(form.querySelectorAll<HTMLDetailsElement>('[data-qualification-group]'));
     if (!submit || !status || !success) return;
 
     const formContext = form.dataset.formContext ?? 'audit';
     const searchParams = new URLSearchParams(window.location.search);
     const requestedIntent = searchParams.get('intent');
-    const requestedProductContext = searchParams.get('product');
+    const rawProductContext = searchParams.get('product');
+    const requestedProductContext = rawProductContext && /^[a-z0-9-]+$/.test(rawProductContext)
+      ? rawProductContext
+      : undefined;
     const conversionIntent = requestedIntent === 'quote' || requestedIntent === 'audit'
       ? requestedIntent
       : undefined;
 
     if (intentField && conversionIntent) intentField.value = conversionIntent;
-    if (productField && requestedProductContext && /^[a-z0-9-]+$/.test(requestedProductContext)) {
+    if (productField && requestedProductContext) {
       productField.value = requestedProductContext;
     }
     let formStarted = false;
     let validationErrorQueued = false;
     let successTracked = false;
 
-    const selectedServiceInterest = () => priority?.selectedOptions[0]?.dataset.productSlug;
+    const selectedServiceInterest = () => productField?.value || priority?.selectedOptions[0]?.dataset.productSlug;
+
+    const findProductGroup = (product: string | undefined) => qualificationGroups.find((group) => {
+      if (group.dataset.qualificationGroup !== 'quote') return false;
+      const aliases = group.dataset.productAliases?.split(' ') ?? [];
+      return aliases.includes(product ?? '');
+    });
+
+    const selectedProductGroup = findProductGroup(requestedProductContext);
+    const productLabel = selectedProductGroup?.dataset.productLabel ?? 'Assurances d’entreprise';
+
+    qualificationGroups.forEach((group) => {
+      group.hidden = true;
+      group.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')
+        .forEach((field) => { field.disabled = true; });
+    });
+
+    const activeQualificationGroup = conversionIntent === 'audit'
+      ? qualificationGroups.find((group) => group.dataset.qualificationGroup === 'audit')
+      : conversionIntent === 'quote'
+        ? selectedProductGroup ?? qualificationGroups.find((group) => group.dataset.qualificationGroup === 'quote-generic')
+        : undefined;
+
+    if (activeQualificationGroup) {
+      activeQualificationGroup.hidden = false;
+      activeQualificationGroup.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')
+        .forEach((field) => { field.disabled = false; });
+    }
+
+    if (genericProductSelector) {
+      genericProductSelector.hidden = Boolean(conversionIntent && requestedProductContext);
+    }
+
+    if (conversionIntent === 'quote') {
+      if (kicker) kicker.textContent = 'Demande de devis';
+      if (title) title.textContent = `Demande de devis — ${productLabel}`;
+      if (introduction) introduction.textContent = 'Quelques informations suffisent pour préparer un premier retour. Aucun devis définitif ne peut être établi sans étude du dossier complet.';
+      if (phone) {
+        phone.required = true;
+        phone.setAttribute('aria-describedby', 'contact-required contact-phone-help contact-phone-error');
+      }
+      if (phoneRequired) phoneRequired.hidden = false;
+      if (phoneOptional) phoneOptional.hidden = true;
+      if (phoneHelp) phoneHelp.textContent = 'Le numéro auquel vous souhaitez être rappelé.';
+    } else if (conversionIntent === 'audit') {
+      if (kicker) kicker.textContent = 'Demande d’analyse';
+      if (title) title.textContent = `Audit de contrats — ${productLabel}`;
+      if (introduction) introduction.textContent = 'Décrivez le point que vous souhaitez faire analyser. Le questionnaire reste volontairement court pour préparer un premier échange.';
+      if (message) {
+        message.required = true;
+        message.setAttribute('aria-describedby', 'contact-required contact-message-help contact-message-error');
+      }
+      if (messageLabel) messageLabel.textContent = 'Problème rencontré ou besoin d’analyse';
+      if (messageRequired) messageRequired.hidden = false;
+      if (messageHelp) messageHelp.textContent = 'Indiquez le contrat concerné, la difficulté rencontrée ou la décision à préparer. N’envoyez aucun document confidentiel.';
+    }
+
+    let attribution: FormAttribution | undefined;
+    try {
+      const storedAttribution = window.sessionStorage.getItem(formAttributionKey);
+      if (storedAttribution) {
+        const parsedAttribution = JSON.parse(storedAttribution) as FormAttribution;
+        if (parsedAttribution.intent === conversionIntent && parsedAttribution.product === requestedProductContext) {
+          attribution = parsedAttribution;
+        }
+      }
+    } catch {
+      // Les champs disposent de valeurs de repli lorsque le stockage est indisponible.
+    }
+
+    let safeReferrerUrl = '';
+    let safeReferrerPath = '';
+    try {
+      const referrer = new URL(document.referrer);
+      if (referrer.origin === window.location.origin) {
+        safeReferrerPath = referrer.pathname;
+        safeReferrerUrl = `${referrer.origin}${referrer.pathname}`;
+      }
+    } catch {
+      // Une provenance externe ou absente n'est pas enregistrée dans le formulaire.
+    }
+
+    if (originPageField) originPageField.value = attribution?.originPath || safeReferrerPath || window.location.pathname;
+    if (ctaLabelField) ctaLabelField.value = attribution?.ctaLabel ?? '';
+    if (referrerUrlField) referrerUrlField.value = attribution?.originUrl || safeReferrerUrl || `${window.location.origin}${window.location.pathname}`;
+    if (timestampField) timestampField.value = new Date().toISOString();
 
     const trackFormStart = () => {
       if (formStarted) return;
       formStarted = true;
       trackAnalyticsEvent('form_start', {
         form_context: formContext,
+        service_interest: selectedServiceInterest(),
         conversion_intent: conversionIntent,
         source_component: 'contact_form',
       });
     };
+
+    const trackFormView = () => {
+      trackAnalyticsEvent('form_view', {
+        form_context: formContext,
+        service_interest: selectedServiceInterest(),
+        conversion_intent: conversionIntent,
+        source_component: 'contact_form',
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const formObserver = new IntersectionObserver(
+        (entries, observer) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          trackFormView();
+          observer.disconnect();
+        },
+        { threshold: 0.2 },
+      );
+
+      formObserver.observe(form);
+    } else {
+      trackFormView();
+    }
 
     form.addEventListener('input', trackFormStart);
     form.addEventListener('change', trackFormStart);
@@ -182,7 +566,14 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
         const aliases = option.dataset.productAliases?.split(' ') ?? [];
         return option.dataset.productSlug === requestedProduct || aliases.includes(requestedProduct ?? '');
       });
-      if (matchingOption) priority.value = matchingOption.value;
+      if (matchingOption) {
+        priority.value = matchingOption.value;
+        if (productField && !productField.value) productField.value = matchingOption.dataset.productSlug ?? '';
+      }
+
+      priority.addEventListener('change', () => {
+        if (productField) productField.value = selectedServiceInterest() ?? '';
+      });
     }
 
     const setStatus = (message: string, state: 'error' | 'success' | '') => {
@@ -191,7 +582,9 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       status.hidden = message.length === 0;
     };
 
-    const setFieldError = (field: HTMLInputElement) => {
+    type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+    const setFieldError = (field: FormControl) => {
       const error = form.querySelector<HTMLElement>(`[data-error-for="${field.id}"]`);
       if (!error) return;
       const message = field.validity.valueMissing
@@ -204,7 +597,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       field.setAttribute('aria-invalid', 'true');
     };
 
-    const clearFieldError = (field: HTMLInputElement) => {
+    const clearFieldError = (field: FormControl) => {
       const error = form.querySelector<HTMLElement>(`[data-error-for="${field.id}"]`);
       if (!error) return;
       error.textContent = '';
@@ -214,7 +607,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
 
     form.addEventListener('invalid', (event) => {
       const field = event.target;
-      if (!(field instanceof HTMLInputElement)) return;
+      if (!(field instanceof HTMLInputElement) && !(field instanceof HTMLSelectElement) && !(field instanceof HTMLTextAreaElement)) return;
       setFieldError(field);
       setStatus('Certains champs obligatoires sont incomplets ou invalides. Vérifiez les champs signalés.', 'error');
 
@@ -222,6 +615,14 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
         validationErrorQueued = true;
         trackAnalyticsEvent('audit_form_submit_error', {
           form_context: formContext,
+          service_interest: selectedServiceInterest(),
+          conversion_intent: conversionIntent,
+          error_type: 'validation',
+          source_component: 'contact_form',
+        });
+        trackAnalyticsEvent('form_error', {
+          form_context: formContext,
+          service_interest: selectedServiceInterest(),
           conversion_intent: conversionIntent,
           error_type: 'validation',
           source_component: 'contact_form',
@@ -232,7 +633,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       }
     }, true);
 
-    validatedFields.forEach((field) => {
+    form.querySelectorAll<FormControl>('input, select, textarea').forEach((field) => {
       field.addEventListener('input', () => {
         if (field.validity.valid) clearFieldError(field);
       });
@@ -243,7 +644,9 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       setStatus('', '');
 
       if (!form.checkValidity()) {
-        validatedFields.filter((field) => !field.validity.valid).forEach(setFieldError);
+        Array.from(form.querySelectorAll<FormControl>('input[required], select[required], textarea[required]'))
+          .filter((field) => !field.validity.valid)
+          .forEach(setFieldError);
         setStatus('Certains champs obligatoires sont incomplets ou invalides. Vérifiez les champs signalés.', 'error');
         form.querySelector<HTMLElement>(':invalid')?.focus();
         return;
@@ -282,6 +685,12 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
             conversion_intent: conversionIntent,
             source_component: 'contact_form',
           });
+          trackAnalyticsEvent('form_submit', {
+            form_context: formContext,
+            service_interest: selectedServiceInterest(),
+            conversion_intent: conversionIntent,
+            source_component: 'contact_form',
+          });
         }
 
         try {
@@ -292,6 +701,14 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       } catch {
         trackAnalyticsEvent('audit_form_submit_error', {
           form_context: formContext,
+          service_interest: selectedServiceInterest(),
+          conversion_intent: conversionIntent,
+          error_type: errorType,
+          source_component: 'contact_form',
+        });
+        trackAnalyticsEvent('form_error', {
+          form_context: formContext,
+          service_interest: selectedServiceInterest(),
           conversion_intent: conversionIntent,
           error_type: errorType,
           source_component: 'contact_form',
@@ -377,10 +794,98 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     line-height: var(--line-height-heading);
   }
 
-  .contact-form-context > p:last-child {
+  .contact-form-context > [data-form-introduction] {
     max-width: 46rem;
     margin: var(--space-3) 0 0;
     color: var(--color-text-soft);
+  }
+
+  .contact-form-reassurance {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem var(--space-4);
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    color: var(--color-text-soft);
+    list-style: none;
+  }
+
+  .contact-form-reassurance li {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: var(--font-size-sm);
+    line-height: 1.45;
+  }
+
+  .contact-form-reassurance span {
+    color: var(--color-gold-dark);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .label-optional {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .qualification-section {
+    margin: var(--space-2) 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface-soft);
+  }
+
+  .qualification-section[hidden],
+  [data-generic-product-selector][hidden] {
+    display: none;
+  }
+
+  .qualification-section summary {
+    min-height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    color: var(--color-brand-deep);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--line-height-heading);
+    cursor: pointer;
+  }
+
+  .qualification-section summary::after {
+    content: '+';
+    color: var(--color-gold-dark);
+    font-size: 1.35rem;
+  }
+
+  .qualification-section[open] summary::after {
+    content: '−';
+  }
+
+  .qualification-section summary:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+  }
+
+  .qualification-section > p {
+    margin: 0;
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--color-text-soft);
+    font-size: var(--font-size-sm);
+  }
+
+  .qualification-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    padding: 0 var(--space-5) var(--space-5);
+  }
+
+  .qualification-grid .form-field:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .form-error {
@@ -390,7 +895,9 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     font-weight: var(--font-weight-medium);
   }
 
-  input[aria-invalid='true'] {
+  input[aria-invalid='true'],
+  select[aria-invalid='true'],
+  textarea[aria-invalid='true'] {
     border-color: var(--color-error);
     box-shadow: 0 0 0 3px var(--color-error-soft);
   }
@@ -444,6 +951,29 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
 
     .contact-process ol {
       grid-template-columns: 1fr;
+    }
+
+    .contact-form-reassurance,
+    .qualification-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .qualification-section {
+      border-radius: var(--radius-card);
+    }
+
+    .qualification-section summary {
+      padding-inline: var(--space-4);
+    }
+
+    .qualification-section > p,
+    .qualification-grid {
+      padding-inline: var(--space-4);
+    }
+
+    .qualification-grid .form-field:last-child:nth-child(odd) {
+      grid-column: auto;
     }
   }
 </style>

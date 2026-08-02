@@ -1,5 +1,5 @@
 ---
-import type { NavigationItem } from '../data/site';
+import { site, type NavigationItem } from '../data/site';
 
 interface Props {
   phoneDisplay: string;
@@ -75,7 +75,7 @@ const year = new Date().getFullYear();
         </address>
         <a href={phoneHref} data-analytics-source="footer">{phoneDisplay}</a>
         <a href={`mailto:${email}`} data-analytics-source="footer">{email}</a>
-        <a href="https://orias.fr" target="_blank" rel="noopener noreferrer">ORIAS {orias}</a>
+        <a href={site.oriasUrl} target="_blank" rel="noopener noreferrer">ORIAS {orias}</a>
       </div>
     </div>
 

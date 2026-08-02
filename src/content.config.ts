@@ -1,6 +1,9 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { firstWaveIndexablePaths } from './data/indexing.mjs';
+
+const canonicalOrigin = 'https://www.assuromieuxparis.com';
 
 const faqItem = z.object({
   question: z.string().min(8),
@@ -35,13 +38,44 @@ const resources = defineCollection({
       'btp',
     ])).default([]),
     relatedArticles: z.array(z.string()).max(3).default([]),
-    reviewedBy: z.string().optional(),
+    reviewedBy: z.string().min(2).optional(),
     reviewDate: z.coerce.date().optional(),
     faq: z.array(faqItem).max(6).default([]),
     draft: z.boolean().default(false),
   }).superRefine((data, context) => {
+    const resourcePath = `/ressources/guides/${data.slug}/`;
+    const expectedCanonical = new URL(resourcePath, `${canonicalOrigin}/`).toString();
+
     if (data.image && !data.imageAlt) {
       context.addIssue({ code: 'custom', path: ['imageAlt'], message: 'Une image éditoriale exige un texte alternatif.' });
+    }
+
+    if (data.updatedDate < data.publishDate) {
+      context.addIssue({ code: 'custom', path: ['updatedDate'], message: 'La date de mise à jour ne peut pas précéder la date de publication.' });
+    }
+
+    if (data.status === 'published' && !data.reviewedBy) {
+      context.addIssue({ code: 'custom', path: ['reviewedBy'], message: 'Une ressource publiée exige un relecteur documenté.' });
+    }
+
+    if (data.status === 'published' && !data.reviewDate) {
+      context.addIssue({ code: 'custom', path: ['reviewDate'], message: 'Une ressource publiée exige une date de relecture documentée.' });
+    }
+
+    if ((data.reviewedBy && !data.reviewDate) || (!data.reviewedBy && data.reviewDate)) {
+      context.addIssue({ code: 'custom', path: ['reviewDate'], message: 'Le relecteur et la date de relecture doivent être renseignés ensemble.' });
+    }
+
+    if (data.reviewDate && data.reviewDate < data.publishDate) {
+      context.addIssue({ code: 'custom', path: ['reviewDate'], message: 'La date de relecture ne peut pas précéder la date de publication.' });
+    }
+
+    if (data.canonical !== expectedCanonical) {
+      context.addIssue({ code: 'custom', path: ['canonical'], message: `Le canonical attendu pour ce slug est ${expectedCanonical}.` });
+    }
+
+    if (firstWaveIndexablePaths.includes(resourcePath) && data.status !== 'published') {
+      context.addIssue({ code: 'custom', path: ['status'], message: 'Une ressource indexable doit avoir le statut published.' });
     }
   }),
 });

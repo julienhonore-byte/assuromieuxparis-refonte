@@ -8,6 +8,7 @@ import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -102,6 +103,12 @@ const structuredData = [
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer prestations, tiers et responsabilité numérique.' },
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier l’interruption numérique à la continuité globale.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Intégrer le cyber au programme de l’entreprise.' },
+      { href: '/protection-dirigeant/', label: 'Organisation autour du dirigeant', text: 'Préparer la continuité des décisions et des accès en cas d’indisponibilité.' },
+      { href: '/assurances-entreprises/', label: 'Vision globale des assurances', text: 'Replacer le risque numérique parmi les autres expositions de l’entreprise.' },
+    ]} />
+    <RelatedResources title="Pour aller plus loin" items={[
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer un audit du programme d’assurances', description: 'Identifier les dépendances, les contrats et les informations à réunir avant l’analyse.' },
+      { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Distinguer les responsabilités de l’entreprise', description: 'Lire les prestations, les faits générateurs et les clauses avant de qualifier une garantie.' },
     ]} />
     <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>

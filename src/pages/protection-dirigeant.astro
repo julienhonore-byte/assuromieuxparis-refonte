@@ -8,6 +8,7 @@ import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -99,6 +100,12 @@ const structuredData = [
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Relier les biens, les charges et la continuité de l’activité.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Coordonner protection personnelle et programme d’entreprise.' },
       { href: '/lexique/', label: 'Lexique', text: 'Retrouver les définitions prudentes des principales notions.' },
+      { href: '/cyberassurance/', label: 'Continuité des accès et des décisions', text: 'Intégrer les dépendances numériques et l’organisation de crise à la réflexion.' },
+      { href: '/assurances-entreprises/', label: 'Programme d’assurances de l’entreprise', text: 'Replacer la protection du dirigeant parmi les autres besoins de l’organisation.' },
+    ]} />
+    <RelatedResources title="À lire également" items={[
+      { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Guide pratique de la santé et de la prévoyance collective', description: 'Distinguer les régimes des salariés de la protection personnelle du dirigeant.' },
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer une analyse coordonnée des contrats', description: 'Rassembler les protections existantes et identifier les écarts avant de décider.' },
     ]} />
     <PageCTA title="Que se passerait-il si le dirigeant devait s’arrêter ?" text="Un premier échange permet de distinguer les conséquences pour la personne, la famille et la continuité de l’entreprise." primaryHref={contactHref} primaryLabel="Échanger sur ma protection" secondaryHref="/sante-prevoyance-entreprise/" secondaryLabel="Voir la protection collective" />
   </main>

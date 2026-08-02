@@ -8,6 +8,7 @@ import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -105,6 +106,14 @@ const structuredData = [
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer les biens des responsabilités liées à l’activité.' },
       { href: '/flotte-automobile/', label: 'Flotte automobile', text: 'Analyser séparément les véhicules et leurs usages.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Relier la multirisque aux autres contrats.' },
+      { href: '/cyberassurance/', label: 'Continuité après un incident numérique', text: 'Rapprocher les dépendances informatiques des scénarios d’interruption de l’activité.' },
+      { href: '/protection-dirigeant/', label: 'Continuité autour du dirigeant', text: 'Distinguer les conséquences sur les biens de celles liées à l’indisponibilité d’une personne-clé.' },
+      { href: '/sante-prevoyance-entreprise/', label: 'Protection collective des équipes', text: 'Replacer la santé et la prévoyance dans le programme global de l’entreprise.' },
+    ]} />
+    <RelatedResources title="Ressources complémentaires" items={[
+      { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Organiser l’audit de ses contrats', description: 'Préparer les documents et rapprocher garanties, franchises, exclusions et échéances.' },
+      { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Comprendre les responsabilités à séparer', description: 'Distinguer la protection des biens des garanties de responsabilité liées à l’activité.' },
+      { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Situer la santé et la prévoyance dans le programme', description: 'Clarifier deux protections collectives qui ne relèvent pas de la multirisque professionnelle.' },
     ]} />
     <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>

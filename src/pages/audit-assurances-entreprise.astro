@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -14,8 +14,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 
 const path = '/audit-assurances-entreprise/';
 const description = 'Audit des assurances d’entreprise : analyse des contrats, risques, garanties et conditions pour éclairer les arbitrages du dirigeant.';
-const contactHref = '/?besoin=audit-assurances-entreprise#contact';
-const ctaLabel = 'Demander une première analyse de mes contrats';
+const contactHref = '/?besoin=comparaison-assurances&intent=quote&product=comparaison-assurances#contact';
+const ctaLabel = 'Recevoir un devis personnalisé';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=audit-assurances-entreprise#contact';
+const auditLabel = 'Faire analyser mes contrats';
 const faqItems = [
   { question: 'Quand demander un audit de ses assurances ?', answer: 'Avant une échéance importante, après une évolution d’activité, une hausse sensible de cotisation ou lorsque plusieurs contrats ont été ajoutés sans vision consolidée.' },
   { question: 'Quels documents faut-il préparer ?', answer: 'Les contrats et avenants disponibles, les appels de cotisation, une description de l’activité et, selon le périmètre, les éléments de sinistralité, de flotte, de locaux ou d’obligations clients.' },
@@ -38,8 +40,7 @@ const structuredData = [
       lead="Nous rapprochons votre activité, vos risques et vos assurances pour hiérarchiser les décisions utiles et vous aider à arbitrer avec davantage de clarté."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Audit des assurances entreprise' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#besoins" label="Voir le périmètre" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="audit_hero" />
     </PageHero>
     <TrustBar />
 
@@ -92,7 +93,9 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="À l’issue de l’analyse, une synthèse adaptée au périmètre présente les contrats étudiés, les points cohérents, les vigilances, les priorités et les scénarios à arbitrer. Son niveau de détail dépend de la complexité du programme et des documents disponibles." />
+    <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="À l’issue de l’analyse, une synthèse adaptée au périmètre présente les contrats étudiés, les points cohérents, les vigilances, les priorités et les scénarios à arbitrer. Son niveau de détail dépend de la complexité du programme et des documents disponibles.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="audit_method" />
+    </SolutionMethod>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">
@@ -118,6 +121,6 @@ const structuredData = [
       { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Interpréter les indicateurs de sinistralité flotte', description: 'Rapprocher les événements du parc, des usages et des franchises.' },
       { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Vérifier si une RC professionnelle est obligatoire', description: 'Partir de l’activité et des textes avant d’examiner le contrat.' },
     ]} />
-    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel={ctaLabel} />
+    <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

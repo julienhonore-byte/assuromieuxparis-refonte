@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -17,7 +17,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/protection-dirigeant/';
 const title = 'Protection du dirigeant d’entreprise | Assuromieux Paris';
 const description = 'Protection du dirigeant : analyse de la santé, prévoyance, revenus, homme-clé, frais généraux, responsabilité et continuité de l’entreprise.';
-const contactHref = '/?besoin=protection-dirigeant#contact';
+const contactHref = '/?besoin=protection-dirigeant&intent=quote&product=protection-dirigeant#contact';
+const ctaLabel = 'Recevoir une étude personnalisée';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=protection-dirigeant#contact';
+const auditLabel = 'Faire analyser ma protection';
 const faqItems = [
   { question: 'Quelles protections faut-il étudier pour un dirigeant ?', answer: 'Le périmètre peut inclure santé, prévoyance personnelle, incapacité, invalidité, décès, responsabilité des dirigeants, protection juridique, homme-clé ou frais généraux permanents. Ces solutions ont des objets différents.' },
   { question: 'L’assurance homme-clé protège-t-elle directement le dirigeant ?', answer: 'Son objectif principal est généralement de protéger l’entreprise contre les conséquences financières liées à l’indisponibilité ou au décès d’une personne essentielle, selon le contrat. Elle ne remplace pas la prévoyance personnelle.' },
@@ -32,7 +35,7 @@ const structuredData = [
 ];
 ---
 
-<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {structuredData}>
+<SiteLayout {title} {description} canonical={pageUrl(path)} currentPath={path} ctaHref={contactHref} {ctaLabel} {structuredData}>
   <main id="contenu-principal">
     <PageHero
       eyebrow="Protection du dirigeant"
@@ -40,8 +43,7 @@ const structuredData = [
       lead="Nous distinguons les risques personnels du dirigeant de ceux que son indisponibilité peut créer pour l’entreprise."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Protection du dirigeant' }]}
     >
-      <CTA href={contactHref} label="Échanger sur ma protection" size="large" />
-      <CTA href="#risques" label="Distinguer les solutions" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="dirigeant_hero" />
       <ProductHeroDiagram slot="visual" label="Dirigeant" items={['Personne', 'Revenus', 'Responsabilité', 'Continuité']} variant="focus" />
     </PageHero>
 
@@ -92,7 +94,9 @@ const structuredData = [
       variant="stacked"
     />
 
-    <SolutionMethod title="Séparer les besoins pour mieux les coordonner." text="Assuromieux inventorie les dispositifs, décrit les conséquences personnelles et professionnelles, puis identifie les écarts. Les sujets sociaux, fiscaux, patrimoniaux ou juridiques sont signalés lorsqu’ils nécessitent une validation spécialisée." />
+    <SolutionMethod title="Séparer les besoins pour mieux les coordonner." text="Assuromieux inventorie les dispositifs, décrit les conséquences personnelles et professionnelles, puis identifie les écarts. Les sujets sociaux, fiscaux, patrimoniaux ou juridiques sont signalés lorsqu’ils nécessitent une validation spécialisée.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="dirigeant_method" />
+    </SolutionMethod>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’organiser la protection du dirigeant." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/sante-prevoyance-entreprise/', label: 'Santé et prévoyance entreprise', text: 'Distinguer la protection collective de la situation du dirigeant.' },
@@ -107,6 +111,6 @@ const structuredData = [
       { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Guide pratique de la santé et de la prévoyance collective', description: 'Distinguer les régimes des salariés de la protection personnelle du dirigeant.' },
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer une analyse coordonnée des contrats', description: 'Rassembler les protections existantes et identifier les écarts avant de décider.' },
     ]} />
-    <PageCTA title="Que se passerait-il si le dirigeant devait s’arrêter ?" text="Un premier échange permet de distinguer les conséquences pour la personne, la famille et la continuité de l’entreprise." primaryHref={contactHref} primaryLabel="Échanger sur ma protection" secondaryHref="/sante-prevoyance-entreprise/" secondaryLabel="Voir la protection collective" />
+    <PageCTA title="Que se passerait-il si le dirigeant devait s’arrêter ?" text="Un premier échange permet de distinguer les conséquences pour la personne, la famille et la continuité de l’entreprise." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

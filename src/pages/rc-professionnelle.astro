@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -19,8 +19,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/rc-professionnelle/';
 const title = 'Assurance RC professionnelle entreprise | Assuromieux Paris';
 const description = 'RC professionnelle : analyse des activités déclarées, responsabilités, dommages, plafonds, franchises, exclusions et sous-traitance.';
-const contactHref = '/?besoin=rc-professionnelle#contact';
-const ctaLabel = 'Faire analyser ma RC professionnelle';
+const contactHref = '/?besoin=rc-professionnelle&intent=quote&product=rc-professionnelle#contact';
+const ctaLabel = 'Démarrer ma demande de devis RC Pro';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=rc-professionnelle#contact';
+const auditLabel = 'Faire analyser ma RC professionnelle';
 
 const audience = {
   title: 'Aux entreprises dont l’activité peut engager une responsabilité envers un client ou un tiers.',
@@ -78,8 +80,7 @@ const structuredData = [
       lead="Nous rapprochons vos prestations, vos engagements et les réclamations possibles pour vous aider à vérifier si le contrat répond aux responsabilités réellement exposées."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'RC professionnelle' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#points-verifier" label="Voir les points à vérifier" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="rc_pro_hero" />
       <ProductHeroDiagram slot="visual" label="RC professionnelle" items={['Prestations', 'Tiers', 'Exploitation', 'Réclamations']} variant="orbit" />
     </PageHero>
     <TrustBar />
@@ -104,7 +105,9 @@ const structuredData = [
     />
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation présente les limites identifiées et les arbitrages envisageables." />
+    <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation présente les limites identifiées et les arbitrages envisageables.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="rc_pro_method" />
+    </SolutionMethod>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir votre RC professionnelle." id="faq-title" /><FAQ items={faqItems} /></div>
@@ -123,6 +126,6 @@ const structuredData = [
       { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Voir comment s’organise un audit assurance transport', description: 'Rapprocher les activités, contrats, responsabilités et exclusions.' },
       { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Rapprocher sinistralité, flotte et prévention', description: 'Analyser les événements avec les usages, conducteurs et franchises.' },
     ]} />
-    <PageCTA title="Votre activité est-elle décrite avec suffisamment de précision ?" text="Présentez vos prestations, vos clients et votre prochaine échéance pour cadrer les clauses à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Votre activité est-elle décrite avec suffisamment de précision ?" text="Présentez vos prestations, vos clients et votre prochaine échéance pour cadrer les clauses à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

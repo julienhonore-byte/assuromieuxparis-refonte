@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -18,8 +18,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/sante-prevoyance-entreprise/';
 const title = 'Santé et prévoyance entreprise | Assuromieux Paris';
 const description = 'Santé et prévoyance entreprise : analyse des catégories, garanties, conventions collectives, dispenses, portabilité et obligations applicables.';
-const contactHref = '/?besoin=sante-prevoyance#contact';
-const ctaLabel = 'Faire analyser mon régime santé et prévoyance';
+const contactHref = '/?besoin=sante-prevoyance&intent=quote&product=sante-prevoyance#contact';
+const ctaLabel = 'Recevoir mon devis Santé Entreprise';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=sante-prevoyance#contact';
+const auditLabel = 'Faire analyser mon régime santé et prévoyance';
 const faqItems = [
   { question: 'Santé collective et prévoyance couvrent-elles les mêmes événements ?', answer: 'Non. La complémentaire santé intervient sur des frais de soins selon ses niveaux de remboursement. La prévoyance traite notamment, selon le contrat, l’incapacité, l’invalidité ou le décès. Leur articulation doit être vérifiée.' },
   { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Le caractère collectif et, le cas échéant, les catégories objectives de salariés doivent être vérifiés selon la situation de l’entreprise, l’acte de mise en place, la convention collective et les textes en vigueur. Une validation métier ou juridique peut être nécessaire.' },
@@ -42,8 +44,7 @@ const structuredData = [
       lead="Nous rapprochons la situation de l’entreprise, les catégories de personnel, les textes applicables et les garanties pour vous aider à faire évoluer le régime avec méthode."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Santé et prévoyance' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#risques" label="Comprendre les deux volets" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="sante_hero" />
       <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="collective" />
     </PageHero>
     <TrustBar />
@@ -95,7 +96,9 @@ const structuredData = [
     />
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique." />
+    <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="sante_method" />
+    </SolutionMethod>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de faire évoluer un régime collectif." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Étudier les besoins personnels et la continuité.' },
@@ -107,6 +110,6 @@ const structuredData = [
       { href: '/cyberassurance/', label: 'Données sociales et risque cyber', text: 'Intégrer les données du personnel et les dépendances numériques à la lecture du programme.' },
       { href: '/rc-professionnelle/', label: 'Responsabilités de l’entreprise', text: 'Distinguer la protection des personnes des responsabilités liées aux prestations et à l’exploitation.' },
     ]} />
-    <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/protection-dirigeant/" secondaryLabel="Voir la protection du dirigeant" />
+    <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

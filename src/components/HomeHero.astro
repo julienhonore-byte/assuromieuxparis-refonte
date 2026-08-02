@@ -1,8 +1,21 @@
 ---
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { site } from '../data/site';
-import CTA from './CTA.astro';
+import ConversionActions from './ConversionActions.astro';
+
+interface Props {
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  primaryHref = '/?besoin=comparaison-assurances&intent=quote&product=comparaison-assurances#contact',
+  primaryLabel = 'Recevoir un devis personnalisé',
+  secondaryHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=audit-assurances-entreprise#contact',
+  secondaryLabel = 'Faire analyser mes contrats',
+} = Astro.props;
 
 const desktopImageUrl = '/images/paris-tour-eiffel-hero.webp';
 const mobileImageUrl = '/images/paris-tour-eiffel-hero-mobile.webp';
@@ -51,8 +64,16 @@ const hasMobileImage = existsSync(mobileImagePath);
         <li><span>Méthode &amp; contenus</span><strong>Méthode · politique éditoriale</strong></li>
       </ul>
       <div class="home-hero__actions">
-        <CTA href="#contact" label="Demander un audit gratuit" size="large" analyticsLocation="hero" analyticsSource="home_hero" />
-        <CTA href={site.phoneHref} label={`Appeler le ${site.phoneDisplay}`} variant="secondary" size="large" />
+        <ConversionActions
+          {primaryHref}
+          {primaryLabel}
+          {secondaryHref}
+          {secondaryLabel}
+          tone="dark"
+          density="hero"
+          analyticsLocation="hero"
+          analyticsSource="home_hero"
+        />
       </div>
     </div>
   </div>
@@ -149,9 +170,6 @@ const hasMobileImage = existsSync(mobileImagePath);
   }
 
   .home-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
     margin-top: var(--space-6);
   }
 

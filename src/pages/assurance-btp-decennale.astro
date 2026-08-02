@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -14,8 +14,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 
 const path = '/assurance-btp-decennale/';
 const description = 'Assurance BTP et décennale : analyse des activités déclarées, attestations, procédés, sous-traitance, véhicules et multirisque.';
-const contactHref = '/?besoin=assurance-btp-decennale#contact';
-const ctaLabel = 'Vérifier mes activités et mon attestation';
+const contactHref = '/?besoin=assurance-btp-decennale&intent=quote&product=assurance-btp-decennale#contact';
+const ctaLabel = 'Démarrer ma demande de devis Décennale';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=assurance-btp-decennale#contact';
+const auditLabel = 'Vérifier mes activités et mes contrats';
 const faqItems = [
   { question: 'La décennale suffit-elle à couvrir une entreprise du BTP ?', answer: 'Non. Selon l’activité, il faut aussi examiner la RC professionnelle, les locaux, matériels, véhicules, salariés, sous-traitants et conséquences d’une interruption d’activité.' },
   { question: 'Pourquoi vérifier les activités déclarées ?', answer: 'L’attestation et le contrat doivent rester cohérents avec les travaux réellement réalisés. Les libellés, procédés et évolutions d’activité méritent donc une lecture attentive.' },
@@ -37,8 +39,7 @@ const structuredData = [
       lead="Nous examinons les activités, attestations, procédés et chantiers pour vous aider à repérer les écarts avant une échéance ou une nouvelle opération."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance BTP et décennale' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#risques" label="Voir les risques" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="btp_hero" />
     </PageHero>
     <TrustBar />
 
@@ -107,7 +108,9 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise." />
+    <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="btp_method" />
+    </SolutionMethod>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">
@@ -128,6 +131,6 @@ const structuredData = [
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer un audit des assurances de l’entreprise', description: 'Rassembler les contrats, les déclarations et les échéances avant de hiérarchiser les vérifications.' },
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Distinguer RC professionnelle et RC exploitation', description: 'Comprendre comment les activités, les faits et les clauses orientent la lecture des responsabilités.' },
     ]} />
-    <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} />
+    <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

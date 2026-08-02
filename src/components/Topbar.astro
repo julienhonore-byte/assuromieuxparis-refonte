@@ -82,6 +82,12 @@ const analyticsEvent = auditHref.includes('#contact') ? 'audit_cta_click' : unde
     text-align: center;
   }
 
+  @media (min-width: 1181px) {
+    .topbar__audit {
+      display: none;
+    }
+  }
+
   @media (max-width: 1100px) {
     .topbar__positioning span:nth-child(1),
     .topbar__positioning span:nth-child(2) {

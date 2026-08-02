@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -19,8 +19,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/cyberassurance/';
 const title = 'Cyberassurance entreprise et risques numériques | Assuromieux Paris';
 const description = 'Cyberassurance entreprise : analyse des données, interruptions, assistance de crise, restauration, responsabilités, prévention et exclusions.';
-const contactHref = '/?besoin=cyber#contact';
-const ctaLabel = 'Faire analyser mon exposition cyber';
+const contactHref = '/?besoin=cyber&intent=quote&product=cyber#contact';
+const ctaLabel = 'Recevoir mon devis Cyber';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=cyber#contact';
+const auditLabel = 'Faire analyser mon exposition cyber';
 const faqItems = [
   { question: 'La cyberassurance remplace-t-elle les mesures de sécurité ?', answer: 'Non. Elle complète la prévention et la capacité de réponse. Sauvegardes, mises à jour, contrôle des accès, sensibilisation et procédures de crise restent essentiels et peuvent conditionner la souscription ou la garantie.' },
   { question: 'Quels événements peuvent être étudiés ?', answer: 'Selon le contrat, l’analyse peut porter sur une attaque, un rançongiciel, une atteinte aux données, une interruption, des frais de restauration, une assistance de crise ou une responsabilité envers des tiers. Aucune garantie ne doit être présumée.' },
@@ -43,8 +45,7 @@ const structuredData = [
       lead="Nous rapprochons les données, les dépendances informatiques, la prévention et les scénarios de crise pour vous aider à préparer une réponse cohérente avant l’incident."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Cyberassurance' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#points-verifier" label="Voir les points à préparer" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="cyber_hero" />
       <ProductHeroDiagram slot="visual" label="Risque cyber" items={['Prévention', 'Incident', 'Assistance', 'Reprise']} variant="steps" />
     </PageHero>
     <TrustBar />
@@ -97,7 +98,9 @@ const structuredData = [
     />
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Analyser le scénario avant la garantie." text="Assuromieux fait décrire l’environnement et les dépendances, relit le questionnaire et les exclusions, puis compare les services et limites. Les recommandations distinguent prévention, transfert d’assurance et organisation de crise." />
+    <SolutionMethod title="Analyser le scénario avant la garantie." text="Assuromieux fait décrire l’environnement et les dépendances, relit le questionnaire et les exclusions, puis compare les services et limites. Les recommandations distinguent prévention, transfert d’assurance et organisation de crise.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="cyber_method" />
+    </SolutionMethod>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une cyberassurance." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer prestations, tiers et responsabilité numérique.' },
@@ -110,6 +113,6 @@ const structuredData = [
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer un audit du programme d’assurances', description: 'Identifier les dépendances, les contrats et les informations à réunir avant l’analyse.' },
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Distinguer les responsabilités de l’entreprise', description: 'Lire les prestations, les faits générateurs et les clauses avant de qualifier une garantie.' },
     ]} />
-    <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

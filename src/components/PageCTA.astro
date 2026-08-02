@@ -1,5 +1,6 @@
 ---
 import CTA from './CTA.astro';
+import ConversionActions from './ConversionActions.astro';
 
 interface Props {
   eyebrow?: string;
@@ -9,6 +10,7 @@ interface Props {
   primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  conversionMode?: boolean;
 }
 
 const {
@@ -19,6 +21,7 @@ const {
   primaryLabel = 'Demander un audit gratuit',
   secondaryHref,
   secondaryLabel,
+  conversionMode = false,
 } = Astro.props;
 ---
 
@@ -27,10 +30,25 @@ const {
     <p class="eyebrow">{eyebrow}</p>
     <h2 id="page-cta-title">{title}</h2>
     <p class="page-cta__text">{text}</p>
-    <div class="page-cta__actions">
-      <CTA href={primaryHref} label={primaryLabel} variant="gold" size="large" analyticsLocation="page_cta" analyticsSource="page_cta" />
-      {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
-    </div>
+    {conversionMode && secondaryHref && secondaryLabel ? (
+      <div class="page-cta__conversion">
+        <ConversionActions
+          {primaryHref}
+          {primaryLabel}
+          {secondaryHref}
+          {secondaryLabel}
+          tone="dark"
+          density="full"
+          analyticsLocation="page_cta"
+          analyticsSource="page_cta"
+        />
+      </div>
+    ) : (
+      <div class="page-cta__actions">
+        <CTA href={primaryHref} label={primaryLabel} variant="gold" size="large" analyticsLocation="page_cta" analyticsSource="page_cta" />
+        {secondaryHref && secondaryLabel && <CTA href={secondaryHref} label={secondaryLabel} variant="secondary" size="large" />}
+      </div>
+    )}
   </div>
 </section>
 
@@ -41,5 +59,6 @@ const {
   h2 { margin: 0; color: var(--color-surface); font-size: var(--font-size-h2); line-height: var(--line-height-heading); }
   .page-cta__text { max-width: 43rem; margin: var(--space-5) auto 0; font-size: var(--font-size-body-lg); }
   .page-cta__actions { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-8); }
+  .page-cta__conversion { display: flex; justify-content: center; margin-top: var(--space-8); text-align: left; }
   @media (max-width: 640px) { .page-cta__actions { flex-direction: column; } .page-cta__actions :global(.button) { width: 100%; } }
 </style>

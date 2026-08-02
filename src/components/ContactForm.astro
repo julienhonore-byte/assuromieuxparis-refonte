@@ -93,6 +93,8 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
 
     <input type="hidden" name="source" value="Accueil Astro Assuromieux Paris" />
     <input type="hidden" name="campagne" value="Audit assurances entreprise" />
+    <input type="hidden" name="intention" value="" data-form-intent />
+    <input type="hidden" name="produit" value="" data-form-product />
 
     <p class="form-note form-field--full" id="contact-required">Les champs signalés par un astérisque sont obligatoires.</p>
     <p class="form-note form-field--full">Les informations transmises servent à traiter votre demande. Consultez notre <a href={privacyHref}>politique de confidentialité</a> avant l’envoi.</p>
@@ -129,10 +131,23 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     const success = form.parentElement?.querySelector<HTMLElement>('[data-form-success]');
     const successHeading = success?.querySelector<HTMLElement>('[data-success-heading]');
     const priority = form.querySelector<HTMLSelectElement>('#contact-priority');
+    const intentField = form.querySelector<HTMLInputElement>('[data-form-intent]');
+    const productField = form.querySelector<HTMLInputElement>('[data-form-product]');
     const validatedFields = Array.from(form.querySelectorAll<HTMLInputElement>('input[required]'));
     if (!submit || !status || !success) return;
 
     const formContext = form.dataset.formContext ?? 'audit';
+    const searchParams = new URLSearchParams(window.location.search);
+    const requestedIntent = searchParams.get('intent');
+    const requestedProductContext = searchParams.get('product');
+    const conversionIntent = requestedIntent === 'quote' || requestedIntent === 'audit'
+      ? requestedIntent
+      : undefined;
+
+    if (intentField && conversionIntent) intentField.value = conversionIntent;
+    if (productField && requestedProductContext && /^[a-z0-9-]+$/.test(requestedProductContext)) {
+      productField.value = requestedProductContext;
+    }
     let formStarted = false;
     let validationErrorQueued = false;
     let successTracked = false;
@@ -144,6 +159,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       formStarted = true;
       trackAnalyticsEvent('form_start', {
         form_context: formContext,
+        conversion_intent: conversionIntent,
         source_component: 'contact_form',
       });
     };
@@ -152,7 +168,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
     form.addEventListener('change', trackFormStart);
 
     if (priority) {
-      let requestedProduct = new URLSearchParams(window.location.search).get('besoin');
+      let requestedProduct = requestedProductContext ?? searchParams.get('besoin');
 
       if (!requestedProduct) {
         try {
@@ -206,6 +222,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
         validationErrorQueued = true;
         trackAnalyticsEvent('audit_form_submit_error', {
           form_context: formContext,
+          conversion_intent: conversionIntent,
           error_type: 'validation',
           source_component: 'contact_form',
         });
@@ -262,6 +279,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
           trackAnalyticsEvent('audit_form_submit_success', {
             form_context: formContext,
             service_interest: selectedServiceInterest(),
+            conversion_intent: conversionIntent,
             source_component: 'contact_form',
           });
         }
@@ -274,6 +292,7 @@ const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsCo
       } catch {
         trackAnalyticsEvent('audit_form_submit_error', {
           form_context: formContext,
+          conversion_intent: conversionIntent,
           error_type: errorType,
           source_component: 'contact_form',
         });

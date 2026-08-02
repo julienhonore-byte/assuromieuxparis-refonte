@@ -15,6 +15,7 @@ type AnalyticsParameterName =
   | 'page_title'
   | 'form_context'
   | 'service_interest'
+  | 'conversion_intent'
   | 'cta_location'
   | 'cta_label'
   | 'link_location'
@@ -40,19 +41,20 @@ const debugEnabled = import.meta.env.DEV || import.meta.env.PUBLIC_ANALYTICS_DEB
 
 const commonParameters: AnalyticsParameterName[] = ['page_path', 'page_title'];
 const eventParameters: Record<AnalyticsEventName, AnalyticsParameterName[]> = {
-  audit_cta_click: ['cta_location', 'cta_label', 'service_interest', 'source_component'],
+  audit_cta_click: ['cta_location', 'cta_label', 'service_interest', 'conversion_intent', 'source_component'],
   phone_click: ['link_location', 'source_component'],
   email_click: ['link_location', 'source_component'],
   cal_click: ['link_location', 'form_context', 'source_component'],
-  form_start: ['form_context', 'source_component'],
-  audit_form_submit_error: ['form_context', 'error_type', 'source_component'],
-  audit_form_submit_success: ['form_context', 'service_interest', 'source_component'],
+  form_start: ['form_context', 'conversion_intent', 'source_component'],
+  audit_form_submit_error: ['form_context', 'conversion_intent', 'error_type', 'source_component'],
+  audit_form_submit_success: ['form_context', 'service_interest', 'conversion_intent', 'source_component'],
 };
 
 const eventNameSet = new Set<string>(analyticsEventNames);
 const codeParameters = new Set<AnalyticsParameterName>([
   'form_context',
   'service_interest',
+  'conversion_intent',
   'cta_location',
   'link_location',
   'source_component',
@@ -136,6 +138,16 @@ const serviceInterest = (link: HTMLAnchorElement) => {
   }
 };
 
+const conversionIntent = (link: HTMLAnchorElement) => {
+  if (link.dataset.conversionIntent) return link.dataset.conversionIntent;
+
+  try {
+    return new URL(link.href, window.location.href).searchParams.get('intent') ?? undefined;
+  } catch {
+    return undefined;
+  }
+};
+
 const isCalLink = (link: HTMLAnchorElement) => {
   try {
     const hostname = new URL(link.href, window.location.href).hostname;
@@ -182,6 +194,7 @@ const delegatedClick = (event: MouseEvent) => {
     cta_location: location,
     cta_label: link.dataset.analyticsLabel,
     service_interest: serviceInterest(link),
+    conversion_intent: conversionIntent(link),
     source_component: source,
   });
 };

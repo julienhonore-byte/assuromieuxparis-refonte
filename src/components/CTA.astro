@@ -10,6 +10,7 @@ interface Props {
   analyticsLocation?: string;
   analyticsSource?: string;
   serviceInterest?: string;
+  conversionIntent?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   analyticsLocation,
   analyticsSource = 'cta',
   serviceInterest,
+  conversionIntent,
 } = Astro.props;
 
 const analyticsEvent = href.includes('#contact') ? 'audit_cta_click' : undefined;
@@ -38,6 +40,7 @@ const analyticsEvent = href.includes('#contact') ? 'audit_cta_click' : undefined
   data-analytics-location={analyticsLocation}
   data-analytics-source={analyticsEvent ? analyticsSource : undefined}
   data-service-interest={serviceInterest}
+  data-conversion-intent={conversionIntent}
 >
   <span>{label}</span>
   {showArrow && <span aria-hidden="true">→</span>}

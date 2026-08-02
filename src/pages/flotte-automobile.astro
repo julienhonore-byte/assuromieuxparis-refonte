@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -19,8 +19,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/flotte-automobile/';
 const title = 'Assurance flotte automobile entreprise | Assuromieux Paris';
 const description = 'Assurance flotte automobile : analyse du parc, des conducteurs, usages, garanties, franchises, sinistralité et gestion des véhicules.';
-const contactHref = '/?besoin=flotte#contact';
-const ctaLabel = 'Faire analyser ma flotte';
+const contactHref = '/?besoin=flotte&intent=quote&product=flotte#contact';
+const ctaLabel = 'Démarrer ma demande de devis Flotte';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=flotte#contact';
+const auditLabel = 'Faire analyser ma flotte';
 const faqItems = [
   { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Les pratiques varient selon les assureurs et la composition du parc. Une analyse est nécessaire pour déterminer si un contrat flotte ou une autre organisation est pertinente pour l’entreprise.' },
   { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. La responsabilité civile automobile liée à la circulation, les dommages au véhicule, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
@@ -43,8 +45,7 @@ const structuredData = [
       lead="Nous rapprochons le parc, les conducteurs, les déplacements et la sinistralité pour vous aider à décider sur une base plus claire que le seul montant de la prime."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Flotte automobile' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#points-verifier" label="Préparer les informations" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="flotte_hero" />
       <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="route" />
     </PageHero>
     <TrustBar />
@@ -97,7 +98,9 @@ const structuredData = [
     />
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles." />
+    <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="flotte_method" />
+    </SolutionMethod>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser votre parc." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', label: 'Guide : analyser une flotte avant de comparer', text: 'Préparer le parc, les usages, la sinistralité, les garanties et les franchises.' },
@@ -111,6 +114,6 @@ const structuredData = [
       { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Relier la flotte à une méthode d’audit transport', description: 'Examiner ensemble véhicules, flux, responsabilités et conditions contractuelles.' },
       { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Situer l’obligation de RC professionnelle', description: 'Vérifier les obligations propres aux activités exercées par l’entreprise.' },
     ]} />
-    <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

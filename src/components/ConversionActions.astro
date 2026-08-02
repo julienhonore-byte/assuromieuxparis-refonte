@@ -1,0 +1,209 @@
+---
+import CTA from './CTA.astro';
+import { site } from '../data/site';
+
+interface Props {
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+  tone?: 'light' | 'dark';
+  density?: 'hero' | 'compact' | 'full';
+  analyticsLocation?: string;
+  analyticsSource?: string;
+}
+
+const {
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+  tone = 'light',
+  density = 'full',
+  analyticsLocation = 'conversion',
+  analyticsSource = 'conversion_actions',
+} = Astro.props;
+
+const shortReassuranceItems = [
+  'Première réponse sous 48 h ouvrées',
+  'Sans engagement',
+];
+
+const fullReassuranceItems = [
+  ...shortReassuranceItems,
+  'Suivi par votre interlocuteur Assuromieux Paris',
+  'Consultation du marché lorsque le dossier le permet',
+];
+
+const reassuranceItems = density === 'hero'
+  ? shortReassuranceItems
+  : density === 'full'
+    ? fullReassuranceItems
+    : [];
+
+const readCtaContext = (href: string) => {
+  const url = new URL(href, site.canonicalUrl);
+  return {
+    conversionIntent: url.searchParams.get('intent') ?? undefined,
+    serviceInterest: url.searchParams.get('product') ?? url.searchParams.get('besoin') ?? undefined,
+  };
+};
+
+const primaryContext = readCtaContext(primaryHref);
+const secondaryContext = readCtaContext(secondaryHref);
+---
+
+<div class:list={['conversion-actions', `conversion-actions--${tone}`, `conversion-actions--${density}`]}>
+  <div class="conversion-actions__buttons">
+    <CTA
+      href={primaryHref}
+      label={primaryLabel}
+      variant={tone === 'dark' ? 'gold' : 'primary'}
+      size={density === 'compact' ? 'default' : 'large'}
+      analyticsLocation={analyticsLocation}
+      analyticsSource={analyticsSource}
+      serviceInterest={primaryContext.serviceInterest}
+      conversionIntent={primaryContext.conversionIntent}
+    />
+    <CTA
+      href={secondaryHref}
+      label={secondaryLabel}
+      variant="secondary"
+      size={density === 'compact' ? 'default' : 'large'}
+      class={density === 'compact' ? 'conversion-actions__text-link' : undefined}
+      analyticsLocation={analyticsLocation}
+      analyticsSource={analyticsSource}
+      serviceInterest={secondaryContext.serviceInterest}
+      conversionIntent={secondaryContext.conversionIntent}
+    />
+  </div>
+  {reassuranceItems.length > 0 && (
+    <ul class="conversion-actions__reassurance" aria-label="Repères avant votre demande">
+      {reassuranceItems.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}
+      <li>
+        <span aria-hidden="true">✓</span>
+        <a href={site.oriasUrl} target="_blank" rel="noopener noreferrer">ORIAS {site.orias}</a>
+      </li>
+    </ul>
+  )}
+</div>
+
+<style>
+  .conversion-actions {
+    width: 100%;
+    max-width: 58rem;
+  }
+
+  .conversion-actions__buttons {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .conversion-actions__buttons :global(.button:first-child) {
+    min-width: min(100%, 18rem);
+  }
+
+  .conversion-actions--compact {
+    max-width: none;
+  }
+
+  .conversion-actions--compact .conversion-actions__buttons {
+    align-items: center;
+  }
+
+  .conversion-actions--compact .conversion-actions__buttons :global(.conversion-actions__text-link) {
+    min-height: 2.75rem;
+    padding-inline: var(--space-3);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .conversion-actions__reassurance {
+    display: flex;
+    gap: 0.45rem var(--space-4);
+    flex-wrap: wrap;
+    margin: var(--space-4) 0 0;
+    padding: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .conversion-actions__reassurance li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+  }
+
+  .conversion-actions__reassurance span {
+    color: var(--color-gold-dark);
+    font-weight: var(--font-weight-heading);
+  }
+
+  .conversion-actions__reassurance a {
+    color: inherit;
+    text-underline-offset: 0.15em;
+  }
+
+  .conversion-actions--dark .conversion-actions__reassurance {
+    color: var(--color-text-on-dark-soft);
+    border-top-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .conversion-actions--dark .conversion-actions__reassurance span {
+    color: var(--color-gold-soft);
+  }
+
+  .conversion-actions--dark .conversion-actions__buttons :global(.button--secondary) {
+    color: var(--color-surface);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.38);
+  }
+
+  .conversion-actions--dark .conversion-actions__buttons :global(.button--secondary:hover) {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.72);
+  }
+
+  .conversion-actions--dark.conversion-actions--compact .conversion-actions__buttons :global(.conversion-actions__text-link) {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .conversion-actions--dark.conversion-actions--compact .conversion-actions__buttons :global(.conversion-actions__text-link:hover) {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  @media (max-width: 640px) {
+    .conversion-actions__buttons {
+      flex-direction: column;
+    }
+
+    .conversion-actions__buttons :global(.button) {
+      width: 100%;
+    }
+
+    .conversion-actions--compact .conversion-actions__buttons :global(.conversion-actions__text-link) {
+      width: auto;
+      align-self: flex-start;
+    }
+
+    .conversion-actions__reassurance {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem var(--space-3);
+    }
+  }
+
+  @media (max-width: 380px) {
+    .conversion-actions__reassurance {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

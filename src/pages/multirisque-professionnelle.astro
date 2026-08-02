@@ -1,5 +1,5 @@
 ---
-import CTA from '../components/CTA.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
@@ -19,8 +19,10 @@ import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/s
 const path = '/multirisque-professionnelle/';
 const title = 'Assurance multirisque professionnelle | Assuromieux Paris';
 const description = 'Multirisque professionnelle : analyse des locaux, matériels, stocks, pertes d’exploitation, valeurs, franchises et mesures de prévention.';
-const contactHref = '/?besoin=multirisque#contact';
-const ctaLabel = 'Faire analyser ma multirisque';
+const contactHref = '/?besoin=multirisque&intent=quote&product=multirisque#contact';
+const ctaLabel = 'Recevoir mon devis Multirisque';
+const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=multirisque#contact';
+const auditLabel = 'Faire analyser ma multirisque';
 
 const faqItems = [
   { question: 'Que peut couvrir une multirisque professionnelle ?', answer: 'Selon le contrat, elle peut regrouper des garanties portant sur les locaux, le mobilier, le matériel, les stocks, certains dommages et des responsabilités liées à l’occupation. Chaque garantie, exclusion et franchise doit être vérifiée.' },
@@ -45,8 +47,7 @@ const structuredData = [
       lead="Nous mettons en regard les locaux, les valeurs déclarées et les conséquences d’une interruption pour vous aider à protéger les biens essentiels et la continuité de l’activité."
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { href: '/assurances-entreprises/', label: 'Assurances entreprises' }, { label: 'Multirisque professionnelle' }]}
     >
-      <CTA href={contactHref} label={ctaLabel} size="large" />
-      <CTA href="#risques" label="Voir les situations couvertes" variant="secondary" size="large" />
+      <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="multirisque_hero" />
       <ProductHeroDiagram slot="visual" label="Multirisque" items={['Locaux', 'Matériels', 'Stocks', 'Continuité']} variant="axis" />
     </PageHero>
     <TrustBar />
@@ -98,7 +99,9 @@ const structuredData = [
     />
 
     <WhatWeAnalyze />
-    <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions." />
+    <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions.">
+      <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="multirisque_method" />
+    </SolutionMethod>
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir vos locaux et vos biens." id="faq-title" /><FAQ items={faqItems} /></div></section>
 
@@ -115,6 +118,6 @@ const structuredData = [
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Comprendre les responsabilités à séparer', description: 'Distinguer la protection des biens des garanties de responsabilité liées à l’activité.' },
       { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Situer la santé et la prévoyance dans le programme', description: 'Clarifier deux protections collectives qui ne relèvent pas de la multirisque professionnelle.' },
     ]} />
-    <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
+    <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

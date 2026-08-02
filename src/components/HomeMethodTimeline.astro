@@ -1,3 +1,7 @@
+---
+const hasActions = Astro.slots.has('actions');
+---
+
 <section class="section section--dark home-method" aria-labelledby="method-title">
   <div class="container-wide">
     <header class="home-method__header">
@@ -14,6 +18,7 @@
       <li><span>03</span><strong>Consulter</strong><small>Le marché lorsque la situation le justifie.</small></li>
       <li><span>04</span><strong>Recommander</strong><small>Des arbitrages expliqués et hiérarchisés.</small></li>
     </ol>
+    {hasActions && <div class="home-method__actions"><slot name="actions" /></div>}
   </div>
 </section>
 
@@ -107,6 +112,12 @@
     color: var(--color-text-on-dark-soft);
     font-size: var(--font-size-sm);
     line-height: 1.5;
+  }
+
+  .home-method__actions {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: var(--space-7);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
 
   @media (max-width: 760px) {

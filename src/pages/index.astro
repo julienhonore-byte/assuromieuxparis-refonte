@@ -1,14 +1,21 @@
 ---
 import ArticleCard from '../components/ArticleCard.astro';
 import ContactForm from '../components/ContactForm.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import HomeHero from '../components/HomeHero.astro';
 import HomeMethodTimeline from '../components/HomeMethodTimeline.astro';
+import PageCTA from '../components/PageCTA.astro';
 import ProductSelector from '../components/ProductSelector.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { insuranceProducts } from '../data/products';
 import { organizationSchema, personSchema, site, websiteSchema } from '../data/site';
+
+const primaryHref = '/?besoin=comparaison-assurances&intent=quote&product=comparaison-assurances#contact';
+const primaryLabel = 'Recevoir un devis personnalisé';
+const secondaryHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=audit-assurances-entreprise#contact';
+const secondaryLabel = 'Faire analyser mes contrats';
 
 const faqItems = [
   {
@@ -84,11 +91,12 @@ const structuredData = [
   description="Assuromieux Paris analyse les risques et les contrats des entreprises avant de conseiller, comparer et optimiser leurs assurances professionnelles."
   canonical={site.canonicalUrl}
   currentPath="/"
-  ctaHref="#contact"
+  ctaHref={primaryHref}
+  ctaLabel={primaryLabel}
   {structuredData}
 >
   <main id="contenu-principal">
-    <HomeHero />
+    <HomeHero {primaryHref} {primaryLabel} {secondaryHref} {secondaryLabel} />
 
     <section id="produits" class="section section--surface products" aria-labelledby="products-title">
       <div class="container-wide">
@@ -149,7 +157,19 @@ const structuredData = [
       </div>
     </section>
 
-    <HomeMethodTimeline />
+    <HomeMethodTimeline>
+      <ConversionActions
+        slot="actions"
+        {primaryHref}
+        {primaryLabel}
+        {secondaryHref}
+        {secondaryLabel}
+        tone="dark"
+        density="compact"
+        analyticsLocation="method"
+        analyticsSource="home_method"
+      />
+    </HomeMethodTimeline>
 
     <section id="secteurs" class="section section--compact sectors" aria-labelledby="sectors-title">
       <div id="expertises-sectorielles" class="container-wide sectors__layout">
@@ -212,6 +232,17 @@ const structuredData = [
         <FAQ items={faqItems} />
       </div>
     </section>
+
+    <PageCTA
+      eyebrow="Deux façons d’avancer"
+      title="Obtenir un devis ou commencer par l’analyse de vos contrats."
+      text="Choisissez l’étape qui correspond à votre situation. Le premier échange permet de cadrer votre demande sans engagement."
+      primaryHref={primaryHref}
+      primaryLabel={primaryLabel}
+      secondaryHref={secondaryHref}
+      secondaryLabel={secondaryLabel}
+      conversionMode
+    />
 
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container-wide contact__grid">

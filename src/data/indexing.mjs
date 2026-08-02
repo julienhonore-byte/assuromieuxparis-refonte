@@ -23,6 +23,7 @@ export const firstWaveIndexablePaths = Object.freeze([
   '/ressources/guides/assurance-decennale-coherence-activites-attestation/',
   '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/',
   '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/',
+  '/ressources/methodes/audit-assurance-transport-optimisation-garanties/',
 ]);
 
 export const isPublicIndexingEnabled = (value, context) => value === 'true' && context === 'production';

@@ -1,0 +1,431 @@
+---
+import ResourceLayout from '../../../../layouts/ResourceLayout.astro';
+import { baseSchemas, breadcrumbSchema, pageUrl } from '../../../../data/seo';
+
+const path = '/ressources/methodes/audit-assurance-transport-optimisation-garanties/';
+const title = 'Méthode d’audit assurance transport : identifier les axes à examiner';
+const seoTitle = 'Méthode d’audit assurance transport';
+const description = 'Méthode d’audit assurance transport : documents à réunir, responsabilités, garanties, écarts possibles et préparation du renouvellement.';
+const canonical = pageUrl(path);
+const status = 'published' as const;
+const reviewedBy = 'Jules HONORE';
+const reviewDate = new Date('2026-08-01T00:00:00.000Z');
+const publishDate = new Date('2026-08-01T00:00:00.000Z');
+const updatedDate = new Date('2026-08-01T00:00:00.000Z');
+const keywords = [
+  'audit assurance transport',
+  'optimisation garanties transport',
+  'audit contrats transporteur',
+  'assurance marchandises transportées',
+  'responsabilité transporteur',
+  'renouvellement assurance transport',
+];
+const tags = ['audit assurance', 'transport', 'responsabilités', 'garanties', 'renouvellement'];
+const relatedProducts = ['audit', 'transport', 'flotte', 'rc'];
+const relatedSectors = ['transport-logistique', 'transport-routier-marchandises'];
+const relatedArticles = [
+  'responsabilite-transporteur-assurance-marchandises-differences',
+  'sinistralite-flotte-automobile-indicateurs-prevention',
+];
+const faq = [
+  {
+    question: 'En quoi consiste un audit d’assurance transport ?',
+    answer: 'Il rapproche l’activité réellement exercée, les flux, les responsabilités, les véhicules, les marchandises et les contrats disponibles. Son périmètre est défini au préalable et ses conclusions dépendent des documents transmis, des clauses applicables et des situations examinées.',
+  },
+  {
+    question: 'Un audit impose-t-il de changer d’assureur ?',
+    answer: 'Non. Selon les observations, il peut conduire à conserver les contrats, à demander des précisions, à ajuster certaines déclarations ou garanties, ou à consulter le marché lorsque cette démarche paraît pertinente. Le changement n’est pas une finalité automatique.',
+  },
+  {
+    question: 'Quels documents préparer pour analyser un programme transport ?',
+    answer: 'Les pièces utiles peuvent comprendre les contrats et avenants, les questionnaires, les attestations, les relevés de sinistres, l’état du parc, les activités déclarées, les principaux flux, les conditions de sous-traitance et des exemples de documents commerciaux. La liste dépend du périmètre retenu.',
+  },
+  {
+    question: 'La responsabilité du transporteur suffit-elle à protéger la valeur des marchandises ?',
+    answer: 'Pas nécessairement. La responsabilité juridique, ses éventuelles limites et l’assurance portant sur les marchandises répondent à des objets différents. Il faut examiner le contrat de transport, le régime applicable, les valeurs exposées, les garanties souscrites et les besoins du donneur d’ordre.',
+  },
+  {
+    question: 'Une meilleure présentation du risque garantit-elle de meilleures conditions ?',
+    answer: 'Non. Un dossier structuré facilite la compréhension du risque, mais chaque assureur conserve ses critères de souscription, ses capacités et sa décision. Aucune acceptation, baisse de prime, extension de garantie ou condition particulière ne peut être garantie.',
+  },
+  {
+    question: 'Quand préparer l’audit avant le renouvellement ?',
+    answer: 'Il est utile de commencer assez tôt pour réunir les documents, clarifier les écarts et décider si une consultation est pertinente. Le calendrier dépend toutefois de l’échéance, de la complexité du programme, de la disponibilité des données et des délais propres aux interlocuteurs concernés.',
+  },
+];
+const headings = [
+  { depth: 2, slug: 'lire-cette-methode', text: 'Comment lire cette méthode' },
+  { depth: 2, slug: 'contexte-entreprise', text: 'Contexte de l’entreprise' },
+  { depth: 2, slug: 'objectifs-audit', text: 'Objectifs de l’audit' },
+  { depth: 2, slug: 'methode-analyse', text: 'Méthode d’analyse' },
+  { depth: 2, slug: 'documents-etudies', text: 'Documents étudiés' },
+  { depth: 2, slug: 'points-verifies', text: 'Points vérifiés' },
+  { depth: 2, slug: 'garanties-analysees', text: 'Garanties analysées' },
+  { depth: 2, slug: 'observations', text: 'Observations réalisables' },
+  { depth: 2, slug: 'actions-proposees', text: 'Actions proposées' },
+  { depth: 2, slug: 'preparer-renouvellement', text: 'Préparer le renouvellement' },
+  { depth: 2, slug: 'apports-possibles', text: 'Livrables et apports possibles' },
+  { depth: 2, slug: 'checklist', text: 'Checklist' },
+  { depth: 2, slug: 'vigilance-juridique', text: 'Point de vigilance juridique' },
+  { depth: 2, slug: 'sources-officielles', text: 'Sources officielles' },
+  { depth: 2, slug: 'conclusion', text: 'Conclusion' },
+];
+const relatedItems = relatedArticles.map((slug) => slug === 'responsabilite-transporteur-assurance-marchandises-differences'
+  ? {
+      href: `/ressources/guides/${slug}/`,
+      title: 'Responsabilité du transporteur et assurance des marchandises',
+      description: 'Distinguer le régime de responsabilité, ses limites et la protection de la marchandise.',
+    }
+  : {
+      href: `/ressources/guides/${slug}/`,
+      title: 'Sinistralité d’une flotte automobile',
+      description: 'Lire la fréquence, le coût, la gravité et les causes avant le renouvellement.',
+    });
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString(),
+  dateModified: updatedDate.toISOString(),
+  author: { '@type': 'Organization', name: 'Assuromieux Paris' },
+  publisher: { '@id': `${pageUrl('/')}#organization` },
+  mainEntityOfPage: canonical,
+  articleSection: 'Méthodes d’audit',
+  creativeWorkStatus: status,
+  keywords: [...keywords, ...tags],
+  about: [
+    ...relatedProducts.map((name) => ({ '@type': 'Thing', name })),
+    ...relatedSectors.map((name) => ({ '@type': 'Thing', name })),
+  ],
+};
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([
+    { name: 'Accueil', path: '/' },
+    { name: 'Ressources', path: '/ressources/' },
+    { name: title, path },
+  ]),
+  articleSchema,
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<ResourceLayout
+  {title}
+  {seoTitle}
+  {description}
+  {canonical}
+  category="transport-logistique"
+  author="Assuromieux Paris"
+  {publishDate}
+  {updatedDate}
+  readingTime={24}
+  {relatedProducts}
+  {faq}
+  {headings}
+  {relatedItems}
+  {structuredData}
+  {reviewedBy}
+  {reviewDate}
+>
+  <p class="notice"><strong>Nature du contenu :</strong> cette page décrit une méthode d’audit au moyen d’un exemple générique, fictif et volontairement non chiffré. Elle ne décrit aucune mission, entreprise accompagnée, négociation ou résultat réel. Les situations illustrent des vérifications possibles et ne constituent pas une preuve de gain.</p>
+
+  <h2 id="lire-cette-methode">Comment lire cette méthode</h2>
+
+  <p>Un audit d’assurance transport ne consiste pas à aligner des contrats puis à choisir la prime la plus basse. Il commence par une question plus simple : que fait réellement l’entreprise, pour qui, avec quels moyens, sur quels territoires et sous quelles responsabilités ? La réponse détermine les documents à réunir, les clauses à lire et les écarts à traiter avant une éventuelle consultation du marché.</p>
+
+  <p>L’exemple présenté ci-dessous est entièrement générique. Il rassemble des situations qu’un audit peut devoir examiner, sans affirmer qu’elles sont présentes dans toutes les entreprises de transport. Il ne comporte aucun chiffre de prime, montant de sinistre, nom de compagnie, donnée client ou économie supposée. Cette prudence empêche de transformer une méthode en promesse ou en preuve d’intervention.</p>
+
+  <p>L’entreprise-type exerce plusieurs opérations autour du transport routier de marchandises. Elle exploite des véhicules, emploie des conducteurs, réalise une partie des transports elle-même et peut confier certaines opérations à des partenaires. Elle remet à plat son programme d’assurance avant une échéance. Ce point de départ permet d’examiner les interactions entre la <a href="/assurance-transport/">couverture des activités de transport</a>, la flotte, les responsabilités professionnelles et les marchandises.</p>
+
+  <p>La démarche reste transposable à d’autres organisations, mais ses conclusions ne le sont pas automatiquement. Le transport pour compte propre, le transport public routier, la commission de transport, le déménagement, le stockage ou le convoyage ne créent pas les mêmes responsabilités. Les contrats, les marchandises, les territoires et les pratiques de sous-traitance modifient aussi l’analyse.</p>
+
+  <h2 id="contexte-entreprise">Contexte de l’entreprise</h2>
+
+  <p>Dans cet exemple générique, l’entreprise-type évolue par étapes : son parc change, de nouveaux flux peuvent être acceptés et des donneurs d’ordre peuvent demander des attestations plus précises. Plusieurs contrats peuvent avoir été souscrits ou ajustés à des dates différentes. Les principales pièces existent, mais ne sont pas nécessairement organisées autour d’une vision unique de l’activité.</p>
+
+  <p>Cette situation n’indique pas qu’un contrat est défaillant. Elle montre seulement pourquoi une lecture police par police peut devenir insuffisante. Un véhicule figure peut-être correctement à l’état de parc, tandis que son usage a évolué. Une garantie de responsabilité peut exister, tandis que le questionnaire initial ne reflète plus certains flux. Une assurance portant sur des marchandises peut être souscrite, sans que les valeurs maximales ou les zones de circulation aient été rapprochées des opérations actuelles.</p>
+
+  <p>L’entreprise veut préparer son renouvellement sans présumer de la solution. Elle ne demande pas immédiatement des devis. Elle cherche d’abord à distinguer ce qui est cohérent, ce qui doit être documenté, ce qui appelle une question à l’assureur et ce qui pourrait justifier un ajustement ou une consultation.</p>
+
+  <p>Le périmètre de travail retient les activités assurées, les principaux contrats de responsabilité, la flotte automobile, les éventuelles garanties de marchandises, la protection juridique et les éléments de sinistralité disponibles. Les assurances de personnes ou les locaux peuvent être traités séparément si elles ne conditionnent pas directement l’analyse transport.</p>
+
+  <h2 id="objectifs-audit">Objectifs de l’audit</h2>
+
+  <p>Le premier objectif est descriptif : produire une représentation fidèle du risque. Il faut identifier les activités exercées, les moyens utilisés, les flux confiés, les territoires, les catégories de marchandises et les partenaires qui interviennent. Cette photographie doit correspondre aux informations effectivement déclarées dans les conditions particulières, questionnaires et avenants.</p>
+
+  <p>Le deuxième objectif est contractuel : comprendre la fonction de chaque police. L’assurance automobile traite notamment la responsabilité liée à la circulation et, selon les garanties souscrites, les dommages aux véhicules. Une responsabilité civile professionnelle peut viser certaines conséquences de l’activité. Une police de responsabilité transporteur ou commissionnaire répond à un cadre propre. Une assurance de marchandises protège un intérêt sur les biens selon ses conditions. Ces objets ne sont ni interchangeables ni automatiquement cumulables.</p>
+
+  <p>Le troisième objectif est décisionnel : classer les sujets. Une information manquante ne constitue pas forcément une absence de garantie. Une clause restrictive n’est pas nécessairement inadaptée si l’exposition correspondante n’existe pas. À l’inverse, une attestation générale ne suffit pas toujours à comprendre les sous-limites, exclusions, obligations de prévention ou modalités de déclaration figurant dans le contrat complet.</p>
+
+  <p>Le quatrième objectif est opérationnel : préparer la suite. L’audit doit permettre au dirigeant de savoir quelles informations compléter, quelles questions poser, quels documents actualiser et quels arbitrages soumettre. Une consultation du marché n’intervient que si elle est pertinente, avec un dossier décrivant le risque de manière cohérente.</p>
+
+  <h2 id="methode-analyse">Méthode d’analyse</h2>
+
+  <p>La méthode commence par un entretien de cadrage. L’objectif n’est pas de recueillir immédiatement tous les détails, mais de comprendre le modèle d’exploitation : nature des prestations, clients, organisation des flux, moyens propres, recours à la sous-traitance, zones géographiques, saisonnalité et évolutions récentes. Les termes employés doivent être clarifiés, car un même mot commercial peut recouvrir plusieurs qualifications.</p>
+
+  <p>Une cartographie relie ensuite quatre couches. La première décrit l’activité réelle. La deuxième recense les responsabilités pouvant en découler. La troisième associe les contrats et garanties disponibles. La quatrième rassemble les preuves documentaires : questionnaires, procédures, états de parc, relevés de sinistres, contrats commerciaux et attestations. Les incohérences apparaissent souvent dans les passages d’une couche à l’autre.</p>
+
+  <p>La lecture se fait dans les deux sens. En partant de l’exploitation, l’auditeur demande quel contrat est susceptible de répondre. En partant du contrat, il vérifie quelle activité, quel véhicule, quelle marchandise ou quel territoire correspond à chaque garantie. Cette double lecture évite de conclure trop vite à partir du seul intitulé d’une police.</p>
+
+  <p>Chaque observation reçoit un statut de travail. Elle peut être documentée et cohérente, à confirmer, à mettre à jour, à arbitrer ou hors périmètre. Ce classement distingue les faits des interprétations. Il empêche aussi de présenter comme certaine une conclusion qui dépend encore d’une réponse de l’entreprise, de l’assureur ou d’un conseil spécialisé.</p>
+
+  <p>Enfin, les observations sont hiérarchisées par exposition et par échéance. Une divergence sur l’activité déclarée peut être traitée avant une amélioration de confort. Une question relative à une valeur maximale de marchandises peut précéder la comparaison d’un service d’assistance. La priorité ne dépend donc pas seulement du prix ou de la facilité de correction.</p>
+
+  <h2 id="documents-etudies">Documents étudiés</h2>
+
+  <p>La liste documentaire est adaptée au périmètre. Dans la méthode présentée, les pièces suivantes constituent une base de travail possible :</p>
+
+  <ul>
+    <li>conditions générales, conditions particulières, conventions spéciales et avenants des contrats concernés ;</li>
+    <li>questionnaires de souscription et déclarations de risque disponibles ;</li>
+    <li>attestations remises aux clients ou donneurs d’ordre ;</li>
+    <li>état daté du parc, cartes grises ou données équivalentes, dates d’entrée et de sortie des véhicules ;</li>
+    <li>description des usages, des zones de circulation et des catégories de conducteurs ;</li>
+    <li>relevés de sinistres, états de règlements et provisions selon les éléments disponibles ;</li>
+    <li>typologie des marchandises, valeurs habituelles et maximales, contraintes de température ou de sûreté ;</li>
+    <li>conditions générales de vente, contrats de transport, ordres de mission et exemples de lettres de voiture ;</li>
+    <li>contrats de sous-traitance, procédures de sélection et attestations demandées aux partenaires ;</li>
+    <li>procédures internes de prévention, d’entretien, de déclaration et de gestion des incidents.</li>
+  </ul>
+
+  <p>L’absence d’un document n’autorise pas une conclusion définitive. Elle devient une observation : la pièce doit-elle exister, peut-elle être reconstituée, est-elle détenue par un autre service, ou l’information figure-t-elle ailleurs ? Par exemple, une activité peut être décrite dans un avenant récent sans avoir été reportée dans une synthèse interne plus ancienne.</p>
+
+  <p>La date et la version de chaque pièce comptent. Comparer une attestation de l’année en cours avec des conditions particulières antérieures peut créer un faux écart. De même, un état de parc non daté ne permet pas toujours de vérifier qu’un véhicule était déclaré au moment considéré.</p>
+
+  <h2 id="points-verifies">Points vérifiés</h2>
+
+  <p>Le contrôle ne se limite pas à rechercher la présence d’un mot-clé. Il examine l’articulation entre le risque et la clause. Les activités déclarées sont rapprochées des prestations facturées et des évolutions connues. Les qualités juridiques utilisées dans les contrats sont comparées au rôle réellement tenu : transporteur, donneur d’ordre, commissionnaire, dépositaire ou autre intervenant selon la situation.</p>
+
+  <p>Les personnes et moyens sont ensuite reliés à l’exploitation. L’état du parc doit distinguer les véhicules détenus, loués ou utilisés ponctuellement. Les conducteurs peuvent être salariés, intérimaires ou relever d’autres cadres qui doivent être décrits correctement. Les remorques, équipements, aménagements, engins de manutention et moyens de géolocalisation ne sont pas supposés couverts du seul fait qu’ils participent à l’activité.</p>
+
+  <p>Les flux sont analysés par nature, valeur, conditionnement, trajet et organisation. Une marchandise courante en transport national n’appelle pas nécessairement les mêmes vérifications qu’un bien sensible, un transport sous température dirigée ou une opération internationale. Les lieux de stationnement, ruptures de charge, passages en entrepôt et temps d’immobilisation peuvent également modifier l’exposition.</p>
+
+  <p>La sinistralité est lue avec son contexte. Le nombre d’événements, leur coût, leur gravité et leur typologie sont rapprochés du parc, des kilomètres disponibles, des usages et des franchises. Le <a href="/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/">guide consacré à la sinistralité des flottes</a> détaille cette méthode sans réduire l’analyse à un ratio unique.</p>
+
+  <h2 id="garanties-analysees">Garanties analysées</h2>
+
+  <h3>Responsabilités liées au transport</h3>
+
+  <p>La première étape consiste à identifier la qualité dans laquelle l’entreprise intervient pour chaque flux. Exécuter matériellement un transport, l’organiser en son nom, stocker temporairement des biens ou transporter ses propres marchandises ne relève pas automatiquement du même régime. Une dénomination commerciale ne suffit pas à fixer la responsabilité.</p>
+
+  <p>Pour le transport public routier, les contrats et textes applicables peuvent encadrer les obligations des parties et l’indemnisation. L’audit ne tranche pas un litige ; il vérifie plutôt si les activités déclarées, la garantie de responsabilité et les limites contractuelles paraissent cohérentes avec les opérations décrites. Le guide sur la <a href="/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/">responsabilité du transporteur et l’assurance des marchandises</a> approfondit cette frontière.</p>
+
+  <p>Les points de lecture peuvent inclure les événements garantis, les frais de défense ou d’expertise, les plafonds, les franchises, les exclusions, les déclarations de valeur, les intérêts spéciaux à la livraison et les conditions relatives aux recours. Leur pertinence dépend du contrat, du régime applicable et des engagements convenus avec le client.</p>
+
+  <h3>Marchandises</h3>
+
+  <p>L’audit distingue la responsabilité encourue par un professionnel et l’assurance portant sur la marchandise. Une limitation de responsabilité ne correspond pas nécessairement à la valeur économique du bien. Inversement, la présence d’une police marchandises ne signifie pas que toute chose, tout trajet et toute cause de dommage sont couverts.</p>
+
+  <p>La lecture porte par exemple sur l’intérêt assuré, les bénéficiaires, les catégories de biens, les valeurs par véhicule ou par événement, le conditionnement, les zones géographiques, les opérations de chargement et déchargement, les stationnements, les vols, les ruptures de température et les exclusions propres à certains biens. Chaque point est vérifié au regard des conditions réelles, sans supposer une garantie automatique.</p>
+
+  <p>Lorsque l’entreprise transporte ses propres biens, elle peut être exposée à un dommage matériel sans engager une responsabilité de transporteur envers un donneur d’ordre. Lorsqu’elle transporte les biens d’autrui, la question de la responsabilité et celle de la protection de la valeur doivent être distinguées. Le besoin dépend aussi des contrats commerciaux et de la personne qui supporte le risque.</p>
+
+  <h3>Flotte automobile</h3>
+
+  <p>La responsabilité civile liée à la circulation des véhicules terrestres à moteur relève d’une obligation d’assurance définie par le Code des assurances. Au-delà de ce socle, les dommages aux véhicules, le vol, l’incendie, le bris de glace, l’assistance, les équipements ou les pertes financières éventuelles dépendent des garanties souscrites.</p>
+
+  <p>L’état de parc est rapproché des conditions de déclaration : immatriculation, catégorie, poids, valeur, mode de détention, usage, zone, conducteur et date de mouvement. Une flotte change régulièrement. L’enjeu est donc autant la qualité de la procédure d’entrée et de sortie que la photographie prise le jour de l’audit.</p>
+
+  <p>Les franchises sont reliées aux typologies de sinistres. Une franchise supportable sur un événement rare peut produire un autre effet lorsque de nombreux dommages similaires surviennent. Cette lecture ne permet pas de conclure qu’une formule est meilleure dans l’absolu ; elle éclaire un arbitrage entre transfert du risque, coût et capacité de l’entreprise à absorber les événements.</p>
+
+  <p>La page <a href="/flotte-automobile/">Assurance flotte automobile</a> présente l’accompagnement commercial correspondant. La présente ressource reste centrée sur la méthode d’audit et sur la préparation de la décision.</p>
+
+  <h3>Responsabilité civile professionnelle</h3>
+
+  <p>Une entreprise de transport peut exercer des prestations annexes qui ne relèvent pas exclusivement de la circulation ou de la responsabilité contractuelle du transporteur. L’audit recherche alors la manière dont le contrat de <a href="/rc-professionnelle/">responsabilité civile professionnelle</a> décrit les activités, les dommages, les faits générateurs et les exclusions.</p>
+
+  <p>Le risque doit être lu sans créer de chevauchement artificiel. Deux contrats peuvent traiter des événements voisins selon des déclenchements différents. Le travail consiste à identifier les frontières, les renvois et les éventuelles clauses de subsidiarité, puis à demander une clarification lorsque la lecture ne permet pas une conclusion certaine.</p>
+
+  <h3>Protection juridique</h3>
+
+  <p>La protection juridique peut accompagner certains différends, mais son périmètre varie. Il faut vérifier les domaines couverts, les seuils d’intervention, les plafonds, les délais de carence éventuels, le choix de l’avocat, les exclusions et l’articulation avec la défense prévue dans une garantie de responsabilité.</p>
+
+  <p>Un contrat ne doit pas être jugé sur le seul intitulé « protection juridique ». L’audit met en regard les litiges plausibles — contrats, véhicules, fournisseurs, salariés ou donneurs d’ordre selon le périmètre — et les conditions effectivement prévues. Il ne garantit pas qu’un litige futur sera pris en charge.</p>
+
+  <h3>Franchises</h3>
+
+  <p>Les franchises sont recensées par garantie et par type d’événement. Leur montant apparent ne suffit pas : il faut lire leur mode de calcul, leur cumul possible, les minima et maxima, les franchises spécifiques au vol, aux conducteurs ou à certaines zones, ainsi que les conséquences d’une fréquence élevée.</p>
+
+  <p>L’entreprise peut ensuite simuler des scénarios avec ses propres données, sans transformer la simulation en prévision. Cette étape aide à comprendre la part de risque conservée et à comparer des offres sur une base homogène si une consultation est décidée.</p>
+
+  <h3>Exclusions</h3>
+
+  <p>Une exclusion est lue dans son contexte contractuel. L’audit repère sa formulation, son emplacement, les définitions auxquelles elle renvoie et l’activité susceptible d’être concernée. Il évite de présenter toute exclusion comme anormale ou toute absence de mention comme une couverture.</p>
+
+  <p>Les sujets à vérifier peuvent concerner certains biens, usages, comportements, territoires, conditions de stationnement, équipements, événements ou obligations de prévention. Seule la lecture du contrat applicable et des circonstances permet d’apprécier leur portée.</p>
+
+  <h3>Territorialité</h3>
+
+  <p>La territorialité recouvre plusieurs questions : lieu de circulation, origine et destination du transport, pays d’immatriculation, droit applicable, juridiction, extension de garantie et conventions internationales éventuelles. Une mention « Europe » ne répond pas nécessairement à toutes ces dimensions.</p>
+
+  <p>L’audit compare les zones réellement desservies aux définitions contractuelles et aux documents d’exploitation. Les opérations occasionnelles sont incluses dans la discussion, car une faible fréquence ne signifie pas une absence d’exposition. Toute interprétation juridique complexe doit être soumise au professionnel compétent.</p>
+
+  <h3>Sous-traitance</h3>
+
+  <p>La sous-traitance modifie l’organisation du risque sans faire disparaître automatiquement les responsabilités de l’entreprise qui confie ou organise l’opération. L’audit décrit qui choisit le partenaire, qui contracte avec le client, qui émet les documents, qui contrôle les attestations et qui suit l’exécution.</p>
+
+  <p>Les contrats avec les partenaires, les procédures de référencement, les vérifications réglementaires et les assurances demandées sont examinés. Il peut être utile de distinguer la sous-traitance ponctuelle d’une organisation régulière et de vérifier que la description communiquée à l’assureur correspond à la pratique.</p>
+
+  <p>Le rôle de commissionnaire ne doit pas être déduit du seul recours à un sous-traitant. Le ministère chargé des transports décrit le commissionnaire comme un professionnel organisant librement le déplacement, sous sa responsabilité et en son nom propre. La qualification dépend des faits et des contrats ; l’audit d’assurance ne remplace pas une analyse juridique.</p>
+
+  <h2 id="observations">Observations réalisables</h2>
+
+  <p>À ce stade, l’audit produit des observations, pas un verdict. Dans certaines situations, les documents peuvent être cohérents mais difficiles à exploiter : les garanties existent, toutefois l’entreprise ne dispose pas d’une synthèse des plafonds, franchises et interlocuteurs. La première action consiste alors à rendre l’information lisible plutôt qu’à modifier le programme.</p>
+
+  <p>Dans d’autres situations, l’audit peut mettre en évidence un décalage documentaire. Par exemple, un questionnaire pourrait mentionner une zone géographique historique tandis que les factures ou tableaux de flux montreraient une extension récente. Cet écart hypothétique appellerait une vérification et, si nécessaire, une mise à jour auprès de l’assureur ; il ne permettrait pas, à lui seul, de conclure sur une garantie.</p>
+
+  <p>Il peut aussi être observé que plusieurs contrats utilisent des définitions différentes pour les marchandises, les activités annexes ou les sous-traitants. Le travail consiste alors à cartographier ces définitions et à poser une question précise. Une réponse écrite est plus utile qu’une supposition fondée sur la proximité des intitulés.</p>
+
+  <h3>Exemples d’écarts à rechercher</h3>
+
+  <p>Sans prétendre que ces écarts existent dans un dossier donné, l’analyse peut notamment rechercher les situations suivantes :</p>
+
+  <ul>
+    <li>une activité ou prestation nouvelle n’apparaît pas clairement dans les documents de souscription disponibles ;</li>
+    <li>l’état de parc interne et la liste transmise à l’assureur ne portent pas la même date ou le même périmètre ;</li>
+    <li>les valeurs de marchandises communiquées ne distinguent pas la valeur habituelle d’un maximum exceptionnel ;</li>
+    <li>la territorialité décrite par l’exploitation est plus large ou différente de celle lue dans une police ;</li>
+    <li>le recours à la sous-traitance a évolué sans synthèse actualisée des procédures et déclarations ;</li>
+    <li>les franchises sont comparées par montant mais pas par événement, garantie ou fréquence de sinistres ;</li>
+    <li>une attestation destinée à un client est interprétée comme un résumé exhaustif du contrat.</li>
+  </ul>
+
+  <h3>Exemples d’informations incomplètes</h3>
+
+  <p>Une information est incomplète lorsqu’elle ne permet pas de relier le risque à la clause. « Transport de marchandises diverses » peut être insuffisant si certaines catégories ont des contraintes particulières. « France et Europe » doit parfois être précisé par des pays, des fréquences et des modalités. « Sous-traitance occasionnelle » demande un périmètre, une proportion ou au moins une description de l’organisation.</p>
+
+  <p>Les données de sinistralité peuvent également manquer de contexte. Un montant sans date d’observation, statut du dossier, recours ou franchise ne permet pas une comparaison fiable. Un nombre de sinistres sans taille du parc, kilomètres ou typologie ne décrit pas la fréquence réelle.</p>
+
+  <h3>Exemples de garanties à vérifier</h3>
+
+  <p>Selon l’activité et les contrats, l’audit peut vérifier la responsabilité civile automobile, les dommages aux véhicules, le vol, l’incendie, les équipements, l’assistance, la responsabilité contractuelle du transporteur, la responsabilité du commissionnaire, les marchandises, les opérations de chargement ou déchargement, les frais de retrait ou de transbordement, la protection juridique et certaines responsabilités professionnelles annexes.</p>
+
+  <p>Cette liste ne constitue pas un programme standard. Une garantie utile à une entreprise peut être sans objet pour une autre. Inversement, une appellation identique peut recouvrir des conditions différentes selon les contrats.</p>
+
+  <h3>Exemples de clauses importantes</h3>
+
+  <p>Les définitions de l’assuré, de l’activité, du véhicule, de la marchandise et du sinistre structurent la lecture. Viennent ensuite les plafonds et sous-limites, les franchises, les exclusions, les obligations de déclaration, les mesures de prévention, les conditions de stationnement, la territorialité, les délais de déclaration et les règles de cumul ou d’articulation entre garanties.</p>
+
+  <p>Une clause peut renvoyer à une autre annexe ou à un tableau. L’audit reconstitue ces renvois et vérifie la version applicable. Il ne suffit pas d’extraire une phrase : la portée dépend souvent des définitions, exceptions et conditions qui l’entourent.</p>
+
+  <h2 id="actions-proposees">Actions proposées</h2>
+
+  <p>Les actions sont rédigées de manière vérifiable. « Améliorer la couverture » est trop vague. Une action utile indique le document, l’information attendue, le responsable et la décision à prendre. Par exemple : confirmer par écrit la zone réellement garantie pour une catégorie de flux ; rapprocher la liste des véhicules de l’état assureur ; documenter le processus d’entrée et de sortie du parc ; demander le détail d’une sous-limite.</p>
+
+  <p>L’audit peut proposer de compléter une déclaration, d’obtenir une précision contractuelle, de formaliser une procédure, de modifier un plafond ou une franchise, ou d’étudier une garantie complémentaire. Chaque proposition reste conditionnelle. Elle doit être discutée avec l’entreprise et, lorsqu’elle concerne le contrat, acceptée par l’assureur pour produire effet.</p>
+
+  <p>Certaines observations conduisent à ne rien changer. Un contrat peut rester adapté lorsque l’activité est correctement déclarée et que les arbitrages sont compris. Conserver une solution existante est une décision possible, au même titre qu’un ajustement ou une consultation.</p>
+
+  <h3>Ordre des priorités</h3>
+
+  <p>Une première priorité concerne généralement les informations structurantes : identité de l’assuré, activités, responsabilités, parc, territoires et valeurs exposées. Tant que ce socle reste incertain, comparer des options secondaires peut donner une précision trompeuse.</p>
+
+  <p>Une deuxième priorité porte sur les écarts susceptibles d’affecter fortement l’exploitation ou les engagements clients : limite manifestement éloignée des valeurs décrites, activité non confirmée, procédure de sous-traitance insuffisamment documentée ou exposition territoriale à clarifier. L’importance exacte doit toutefois être appréciée au cas par cas.</p>
+
+  <p>Une troisième priorité regroupe les arbitrages économiques et de service : franchises, assistance, véhicule de remplacement, modalités de gestion, reporting et prévention. Ces éléments restent importants, mais ils sont lus après la cohérence fondamentale du risque.</p>
+
+  <h2 id="preparer-renouvellement">Préparer le renouvellement</h2>
+
+  <p>Le renouvellement est préparé à partir d’un dossier consolidé. L’entreprise valide d’abord la description de son activité et les évolutions attendues. Elle arrête ensuite un état de parc, qualifie les principaux flux, rassemble la sinistralité et décrit ses mesures de prévention. Les incohérences internes sont traitées avant l’envoi à des assureurs.</p>
+
+  <p>Le calendrier doit laisser du temps à la collecte et aux échanges. Il n’existe pas de délai universel garantissant une consultation complète. Une activité complexe, des données dispersées ou plusieurs territoires peuvent nécessiter davantage de préparation. Commencer tôt permet surtout de ne pas confondre urgence d’échéance et qualité de décision.</p>
+
+  <p>Les critères de comparaison sont définis avant réception des offres. Ils peuvent inclure l’étendue des activités, les plafonds, franchises, exclusions, territorialités, services et conditions de gestion. La prime est intégrée à cette grille, mais elle n’en est pas le seul axe.</p>
+
+  <h3>Présentation du dossier aux compagnies</h3>
+
+  <p>Lorsque la consultation est pertinente, le dossier présente un risque cohérent et traçable. Il décrit l’entreprise, les activités, le parc, les marchandises, les flux, les zones, la sous-traitance, la sinistralité et les mesures de prévention documentées. Les questions sans réponse sont signalées plutôt que masquées.</p>
+
+  <p>Un socle commun aide à comparer les retours. Les mêmes informations et besoins principaux sont transmis aux interlocuteurs retenus, sous réserve des questionnaires propres à chacun. Les variantes demandées sont clairement identifiées. Cette discipline réduit le risque de comparer des offres construites sur des hypothèses différentes.</p>
+
+  <p>La présentation du dossier ne garantit ni réponse, ni acceptation, ni conditions particulières. Les assureurs conservent leur politique de souscription, leur appréciation et leurs capacités. L’intérêt du travail préparatoire est de permettre une décision plus lisible, pas de promettre l’issue du marché.</p>
+
+  <h2 id="apports-possibles">Livrables et apports possibles</h2>
+
+  <p>Selon le périmètre et les documents disponibles, un premier livrable possible est une cartographie compréhensible. Le dirigeant peut y identifier les contrats analysés, les risques auxquels ils se rattachent, les points confirmés et les questions ouvertes. Cette présentation vise à organiser une succession de documents techniques non hiérarchisés.</p>
+
+  <p>Un autre livrable possible est une liste d’actions ordonnée. Elle peut distinguer les informations à compléter, les clarifications à demander, les décisions internes et les éventuelles évolutions contractuelles. Le format dépend du périmètre ; il ne prend pas nécessairement la forme d’un rapport standardisé.</p>
+
+  <p>La méthode peut enfin contribuer à structurer la préparation du renouvellement. Si une consultation est décidée, les critères de comparaison peuvent être définis. Si le contrat est conservé, l’entreprise peut néanmoins documenter les mises à jour qu’elle juge nécessaires.</p>
+
+  <h3>Ce qu’un audit permet</h3>
+
+  <p>Un <a href="/audit-assurances-entreprise/">audit des assurances d’entreprise</a> peut notamment :</p>
+
+  <ul>
+    <li>rapprocher l’activité réelle des déclarations et contrats disponibles ;</li>
+    <li>distinguer les responsabilités, les véhicules et les marchandises ;</li>
+    <li>mettre en évidence des informations absentes, anciennes ou contradictoires ;</li>
+    <li>lire ensemble garanties, plafonds, franchises, exclusions et territorialités ;</li>
+    <li>classer les sujets selon leur exposition et leur échéance ;</li>
+    <li>préparer une clarification, un ajustement ou une consultation lorsque cela est pertinent ;</li>
+    <li>documenter les arbitrages retenus par le dirigeant.</li>
+  </ul>
+
+  <h3>Ce qu’il ne permet pas</h3>
+
+  <p>Un audit ne certifie pas qu’un événement futur sera garanti. Il ne remplace pas la décision de l’assureur, l’interprétation d’une juridiction, l’expertise d’un sinistre ou un conseil juridique individualisé. Il ne garantit pas une économie, une baisse de franchise, une extension, une absence de résiliation ou une acceptation du risque.</p>
+
+  <p>Il ne corrige pas rétroactivement une déclaration et ne crée pas une garantie. Toute modification contractuelle doit être formalisée et acceptée selon les modalités applicables. Les informations transmises doivent rester exactes, complètes au regard des questions posées et mises à jour lorsque la situation l’exige.</p>
+
+  <h2 id="checklist">Checklist avant un audit d’assurance transport</h2>
+
+  <ul>
+    <li>Définir le périmètre : société, établissements, activités et contrats concernés.</li>
+    <li>Décrire chaque rôle : compte propre, transport public, organisation, stockage ou prestation annexe.</li>
+    <li>Rassembler les contrats complets, avenants, questionnaires et attestations à jour.</li>
+    <li>Établir un état daté des véhicules, remorques, équipements et usages.</li>
+    <li>Qualifier les marchandises, valeurs, conditionnements et contraintes particulières.</li>
+    <li>Cartographier les zones de circulation, trajets occasionnels et opérations internationales.</li>
+    <li>Décrire les modalités de sous-traitance et les contrôles effectués.</li>
+    <li>Réunir la sinistralité avec la date d’observation, les statuts et le contexte disponible.</li>
+    <li>Recenser les engagements contractuels importants pris envers les clients.</li>
+    <li>Identifier les changements intervenus depuis la dernière déclaration de risque.</li>
+    <li>Classer les échéances et les questions nécessitant une réponse écrite.</li>
+    <li>Définir les critères de comparaison avant toute éventuelle consultation.</li>
+  </ul>
+
+  <p>Cette checklist est un point de départ. Elle ne constitue ni une liste réglementaire exhaustive ni un questionnaire universel. Les documents utiles dépendent de l’activité, des contrats, des territoires et de la situation de l’entreprise.</p>
+
+  <h2 id="vigilance-juridique">Point de vigilance juridique</h2>
+
+  <blockquote><p>La qualification d’une activité, la détermination d’une responsabilité et la portée d’une clause dépendent des faits, des contrats et des textes applicables. Cette page présente une méthode d’analyse assurantielle générale. Elle ne constitue pas une consultation juridique et ne permet pas de conclure à la garantie d’un sinistre particulier.</p></blockquote>
+
+  <p>Le Code des assurances impose notamment à l’assuré de répondre exactement aux questions posées par l’assureur et de déclarer certaines circonstances nouvelles dans les conditions prévues par le texte. L’application de ces obligations à une situation concrète doit être examinée avec les documents et dates utiles.</p>
+
+  <p>En transport, les règles varient selon la qualité de l’intervenant, le type d’opération, le contrat écrit, les contrats types et, le cas échéant, les conventions internationales. Les limitations ou exclusions ne doivent jamais être résumées sans vérifier le régime concerné et la version applicable.</p>
+
+  <h2 id="sources-officielles">Sources officielles</h2>
+
+  <p>Sources consultées le 1er août 2026 :</p>
+
+  <ul>
+    <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035731302" rel="noopener noreferrer">Code des assurances, article L. 113-2</a>, version en vigueur depuis le 1er avril 2018 : déclarations de l’assuré et information sur les circonstances nouvelles.</li>
+    <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000017735447" rel="noopener noreferrer">Code des assurances, article L. 211-1</a>, version en vigueur depuis le 8 décembre 2023 : obligation d’assurance de responsabilité civile liée aux véhicules terrestres à moteur.</li>
+    <li><a href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146034/" rel="noopener noreferrer">Code de commerce, articles L. 133-1 à L. 133-9</a>, version consultée au 1er août 2026 : règles relatives aux transporteurs à apprécier avec les autres textes applicables.</li>
+    <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023630976" rel="noopener noreferrer">Code des transports, article L. 1432-4</a>, version en vigueur depuis le 1er décembre 2010 : application des contrats types à défaut de convention écrite.</li>
+    <li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000034330431" rel="noopener noreferrer">Décret n° 2017-461 du 31 mars 2017</a>, entré en vigueur le 1er mai 2017 : contrat type général applicable à certains transports publics routiers de marchandises.</li>
+    <li><a href="https://www.ecologie.gouv.fr/politiques-publiques/acces-exercice-profession-transporteur-marchandises" rel="noopener noreferrer">Ministère chargé des transports, accès et exercice de la profession de transporteur de marchandises</a>, page consultée le 1er août 2026 : distinction présentée par l’administration entre transport public et transport pour compte propre.</li>
+    <li><a href="https://www.ecologie.gouv.fr/politiques-publiques/commissionnaires-transport-routier" rel="noopener noreferrer">Ministère chargé des transports, commissionnaires de transport routier</a>, mise à jour le 18 décembre 2025 et consultée le 1er août 2026 : définition administrative et cadre d’exercice.</li>
+  </ul>
+
+  <p>Ces liens donnent accès aux textes ou pages officielles consultés pour cadrer les distinctions générales. Ils ne remplacent pas la vérification de la version applicable à une opération, à une date et à un contrat déterminés.</p>
+
+  <h2 id="conclusion">Conclusion</h2>
+
+  <p>Un audit d’assurance transport apporte d’abord une méthode : décrire l’exploitation, distinguer les responsabilités, relier les contrats aux risques, documenter les écarts et hiérarchiser les décisions. Sa valeur ne repose pas sur une promesse d’économie, mais sur la qualité des questions posées avant le renouvellement.</p>
+
+  <p>Dans l’exemple générique présenté, aucune conclusion n’est imposée. Les contrats peuvent être conservés, clarifiés, ajustés ou comparés selon les observations et les décisions du dirigeant. Ce cadre peut aider à préparer un dossier lorsqu’une consultation est utile, tout en respectant la décision des assureurs et les limites de l’analyse.</p>
+
+  <p>Pour approfondir la démarche, la page <a href="/audit-assurances-entreprise/">Audit des assurances entreprise</a> présente le cadrage général, tandis que la page <a href="/assurance-transport/">Assurance transport</a> détaille l’accompagnement sectoriel. L’objectif reste le même : comprendre avant de comparer et décider à partir d’un risque correctement décrit.</p>
+</ResourceLayout>

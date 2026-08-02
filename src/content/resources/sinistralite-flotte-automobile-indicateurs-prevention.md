@@ -17,7 +17,7 @@ featured: false
 readingTime: 20
 relatedProducts: ["flotte", "transport", "audit"]
 relatedSectors: []
-relatedArticles: []
+relatedArticles: ["responsabilite-transporteur-assurance-marchandises-differences", "flotte-automobile-points-analyser-avant-comparer"]
 faq:
   - question: "Qu’est-ce que la sinistralité d’une flotte automobile ?"
     answer: "La sinistralité regroupe les événements déclarés sur une période et les informations permettant de les comprendre : nombre, circonstances, responsabilités, coûts payés ou provisionnés, véhicules, usages et conducteurs concernés. Son analyse exige un périmètre et une période clairement définis."

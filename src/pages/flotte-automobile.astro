@@ -8,6 +8,7 @@ import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -104,6 +105,11 @@ const structuredData = [
       { href: '/assurance-transport/', label: 'Transport et logistique', text: 'Relier la flotte aux flux et responsabilités sectorielles.' },
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Mettre la flotte en regard du programme global.' },
       { href: '/votre-besoin/assurer-flotte-vehicules/', label: 'Assurer une flotte de véhicules', text: 'Suivre le parcours depuis l’état de parc jusqu’à la décision.' },
+    ]} />
+    <RelatedResources title="Pour aller plus loin" items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Distinguer flotte, responsabilité et marchandises', description: 'Comprendre pourquoi l’assurance du véhicule ne traite pas tous les risques transport.' },
+      { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Relier la flotte à une méthode d’audit transport', description: 'Examiner ensemble véhicules, flux, responsabilités et conditions contractuelles.' },
+      { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Situer l’obligation de RC professionnelle', description: 'Vérifier les obligations propres aux activités exercées par l’entreprise.' },
     ]} />
     <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>

@@ -13,9 +13,30 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const allEntries = await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived');
-const relatedItems = entry.data.relatedArticles.map((slug) => allEntries.find((item) => item.data.slug === slug)).filter(Boolean).map((item) => ({
-  href: resourcePath(item!.data.slug), title: item!.data.title, description: item!.data.description,
-}));
+const methodPath = '/ressources/methodes/audit-assurance-transport-optimisation-garanties/';
+const transportMethodLinks: Record<string, { href: string; title: string; description: string }[]> = {
+  'responsabilite-transporteur-assurance-marchandises-differences': [{
+    href: methodPath,
+    title: 'Notre méthode pour auditer un programme transport',
+    description: 'Relier les flux, responsabilités, véhicules et garanties avant une éventuelle consultation.',
+  }],
+  'sinistralite-flotte-automobile-indicateurs-prevention': [{
+    href: methodPath,
+    title: 'Intégrer la sinistralité dans l’audit transport',
+    description: 'Replacer les indicateurs de flotte dans l’analyse globale de l’exploitation.',
+  }],
+  'rc-professionnelle-obligatoire-qui-est-concerne': [{
+    href: methodPath,
+    title: 'Appliquer la méthode d’audit aux activités de transport',
+    description: 'Examiner les responsabilités et les contrats à partir de l’activité réellement exercée.',
+  }],
+};
+const relatedItems = [
+  ...entry.data.relatedArticles.map((slug) => allEntries.find((item) => item.data.slug === slug)).filter(Boolean).map((item) => ({
+    href: resourcePath(item!.data.slug), title: item!.data.title, description: item!.data.description,
+  })),
+  ...(transportMethodLinks[entry.data.slug] ?? []),
+];
 const category = resourceCategories[entry.data.category];
 const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article', headline: entry.data.title,

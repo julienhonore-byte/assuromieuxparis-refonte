@@ -26,6 +26,7 @@ const relatedSectors = ['transport-logistique', 'transport-routier-marchandises'
 const relatedArticles = [
   'responsabilite-transporteur-assurance-marchandises-differences',
   'sinistralite-flotte-automobile-indicateurs-prevention',
+  'rc-professionnelle-obligatoire-qui-est-concerne',
 ];
 const faq = [
   {
@@ -70,17 +71,24 @@ const headings = [
   { depth: 2, slug: 'sources-officielles', text: 'Sources officielles' },
   { depth: 2, slug: 'conclusion', text: 'Conclusion' },
 ];
-const relatedItems = relatedArticles.map((slug) => slug === 'responsabilite-transporteur-assurance-marchandises-differences'
-  ? {
-      href: `/ressources/guides/${slug}/`,
-      title: 'Responsabilité du transporteur et assurance des marchandises',
-      description: 'Distinguer le régime de responsabilité, ses limites et la protection de la marchandise.',
-    }
-  : {
-      href: `/ressources/guides/${slug}/`,
-      title: 'Sinistralité d’une flotte automobile',
-      description: 'Lire la fréquence, le coût, la gravité et les causes avant le renouvellement.',
-    });
+const relatedResourceDetails = {
+  'responsabilite-transporteur-assurance-marchandises-differences': {
+    title: 'Responsabilité du transporteur et assurance des marchandises',
+    description: 'Distinguer le régime de responsabilité, ses limites et la protection de la marchandise.',
+  },
+  'sinistralite-flotte-automobile-indicateurs-prevention': {
+    title: 'Sinistralité d’une flotte automobile',
+    description: 'Lire la fréquence, le coût, la gravité et les causes avant le renouvellement.',
+  },
+  'rc-professionnelle-obligatoire-qui-est-concerne': {
+    title: 'RC professionnelle obligatoire : qui est concerné ?',
+    description: 'Identifier les activités et les textes à vérifier avant de conclure à une obligation.',
+  },
+};
+const relatedItems = relatedArticles.map((slug) => ({
+  href: `/ressources/guides/${slug}/`,
+  ...relatedResourceDetails[slug as keyof typeof relatedResourceDetails],
+}));
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',

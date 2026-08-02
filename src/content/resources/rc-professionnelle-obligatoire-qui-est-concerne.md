@@ -15,9 +15,9 @@ reviewedBy: "Jules HONORE"
 reviewDate: 2026-08-01
 featured: false
 readingTime: 15
-relatedProducts: ["rc", "audit", "assurances"]
+relatedProducts: ["rc", "audit", "transport", "assurances"]
 relatedSectors: []
-relatedArticles: []
+relatedArticles: ["responsabilite-transporteur-assurance-marchandises-differences", "comment-auditer-assurances-entreprise"]
 faq:
   - question: "La RC professionnelle est-elle obligatoire pour toutes les entreprises ?"
     answer: "Non. Son caractère obligatoire dépend principalement de l’activité exercée, des textes qui la réglementent et, parfois, du mode d’exercice. Une exigence d’un client ou d’un donneur d’ordre peut aussi exister sans constituer une obligation légale générale."

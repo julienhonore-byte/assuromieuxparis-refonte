@@ -8,6 +8,7 @@ import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -116,6 +117,11 @@ const structuredData = [
       { href: '/assurance-btp-decennale/', label: 'BTP et décennale', text: 'Relier activités déclarées, responsabilités et attestations.' },
       { href: '/multirisque-professionnelle/', label: 'Multirisque professionnelle', text: 'Examiner les locaux, les biens et la continuité.' },
       { href: '/cyberassurance/', label: 'Cyberassurance', text: 'Distinguer responsabilité numérique, crise et restauration.' },
+    ]} />
+    <RelatedResources title="À lire également pour les activités de transport" items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Responsabilités du transporteur et marchandises', description: 'Distinguer la responsabilité de transport des autres garanties professionnelles.' },
+      { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Voir comment s’organise un audit assurance transport', description: 'Rapprocher les activités, contrats, responsabilités et exclusions.' },
+      { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Rapprocher sinistralité, flotte et prévention', description: 'Analyser les événements avec les usages, conducteurs et franchises.' },
     ]} />
     <PageCTA title="Votre activité est-elle décrite avec suffisamment de précision ?" text="Présentez vos prestations, vos clients et votre prochaine échéance pour cadrer les clauses à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref="/audit-assurances-entreprise/" secondaryLabel="Découvrir l’audit" />
   </main>

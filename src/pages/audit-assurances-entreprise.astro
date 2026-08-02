@@ -4,6 +4,7 @@ import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -111,6 +112,11 @@ const structuredData = [
       { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Coordonner les besoins du décideur et la continuité de l’activité.' },
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', label: 'Guide de l’audit', text: 'Préparer les documents et les questions avant l’analyse.' },
       { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', label: 'Méthode d’audit transport', text: 'Voir comment structurer l’analyse des garanties, responsabilités et écarts.' },
+    ]} />
+    <RelatedResources title="À lire également sur les risques transport" items={[
+      { href: '/ressources/guides/responsabilite-transporteur-assurance-marchandises-differences/', title: 'Comprendre la responsabilité du transporteur', description: 'Séparer responsabilité, marchandises confiées et assurance du véhicule.' },
+      { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Interpréter les indicateurs de sinistralité flotte', description: 'Rapprocher les événements du parc, des usages et des franchises.' },
+      { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Vérifier si une RC professionnelle est obligatoire', description: 'Partir de l’activité et des textes avant d’examiner le contrat.' },
     ]} />
     <PageCTA title="Cadrons l’analyse utile à votre entreprise." text="Indiquez votre activité, le contrat prioritaire et votre prochaine échéance. Aucun document confidentiel n’est nécessaire au premier échange." primaryHref={contactHref} primaryLabel={ctaLabel} />
   </main>

@@ -1,16 +1,20 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -23,6 +27,43 @@ const contactHref = '/?besoin=rc-professionnelle&intent=quote&product=rc-profess
 const ctaLabel = 'Démarrer ma demande de devis RC Pro';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=rc-professionnelle#contact';
 const auditLabel = 'Faire analyser ma RC professionnelle';
+const rcAnalysisProcess = [
+  { label: 'Comprendre l’activité', icon: 'activity' as const },
+  { label: 'Identifier les prestations réellement réalisées', icon: 'search' as const },
+  { label: 'Analyser le contrat existant', icon: 'document' as const },
+  { label: 'Vérifier les responsabilités et dommages exposés', icon: 'search' as const },
+  { label: 'Examiner plafonds, franchises et exclusions', icon: 'document' as const },
+  { label: 'Consulter le marché', note: 'Si nécessaire', icon: 'market' as const },
+  { label: 'Formuler des recommandations', icon: 'recommendation' as const },
+];
+const responsibilityRisks = [
+  { label: 'Erreur professionnelle', icon: 'shield' as const },
+  { label: 'Omission', icon: 'continuity' as const },
+  { label: 'Conseil', icon: 'people' as const },
+  { label: 'Dommage matériel', icon: 'goods' as const },
+  { label: 'Dommage immatériel', icon: 'continuity' as const },
+  { label: 'RC exploitation', icon: 'shield' as const },
+  { label: 'Sous-traitance', icon: 'network' as const },
+  { label: 'Biens confiés', icon: 'goods' as const },
+  { label: 'Données / Cyber', icon: 'cyber' as const },
+  { label: 'Engagements contractuels', icon: 'shield' as const },
+];
+const responsibilityCoverageStages = [
+  { label: 'Activité exercée' },
+  { label: 'Situation ou fait générateur' },
+  { label: 'Type de dommage' },
+  { label: 'Responsabilité possible' },
+  { label: 'Garantie à vérifier', items: ['RC professionnelle', 'RC exploitation', 'Après livraison / après travaux', 'Biens confiés', 'Protection juridique', 'Cyber'] },
+];
+const rcReviewTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Description des activités', icon: 'people' as const },
+  { label: 'Collecte des contrats', icon: 'document' as const },
+  { label: 'Analyse des garanties', icon: 'search' as const },
+  { label: 'Identification des écarts', icon: 'search' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 
 const audience = {
   title: 'Aux entreprises dont l’activité peut engager une responsabilité envers un client ou un tiers.',
@@ -93,6 +134,11 @@ const structuredData = [
       distinction="RC Pro et RC exploitation : deux notions à distinguer. Elles peuvent figurer dans un même contrat, mais ne répondent pas nécessairement aux mêmes faits, dommages ou plafonds."
       variant="ledger"
     />
+    <section class="section" aria-label="Cartographie pédagogique des risques de responsabilité">
+      <div class="container-wide">
+        <RiskMap title="Plusieurs risques de responsabilité entourent l’activité." description="Cette cartographie présente des situations à examiner selon le métier et le contrat, sans présumer qu’elles sont toutes couvertes par une responsabilité civile professionnelle." center="Entreprise / professionnel" risks={responsibilityRisks} />
+      </div>
+    </section>
     <ProductReview
       checksTitle="Lire les limites avant d’évaluer la protection."
       checksIntro="Une analyse du risque est nécessaire pour hiérarchiser les clauses réellement déterminantes."
@@ -103,11 +149,26 @@ const structuredData = [
       note={{ title: 'RC Pro et RC exploitation : deux notions à distinguer', text: 'Selon le contrat, leurs garanties peuvent être regroupées ou séparées. Il faut vérifier les dommages visés, les plafonds, les exclusions et le moment où la responsabilité est engagée.' }}
       variant="split"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique des responsabilités">
+      <div class="container-wide">
+        <CoverageMap title="Relier les faits, les dommages et les garanties." description="L’intitulé « RC Pro » ne suffit pas à définir la portée du contrat : l’activité, le fait générateur, le dommage et la responsabilité possible doivent conduire à la garantie réellement prévue." stages={responsibilityCoverageStages} />
+      </div>
+    </section>
 
     <WhatWeAnalyze />
+    <section class="section" aria-label="Méthode d’analyse RC professionnelle en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse RC professionnelle." description="Sept étapes structurent la lecture des activités, responsabilités et contrats. Cette analyse ne constitue pas une qualification juridique définitive." steps={rcAnalysisProcess} />
+      </div>
+    </section>
     <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation présente les limites identifiées et les arbitrages envisageables.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="rc_pro_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue RC professionnelle">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue RC professionnelle." description="La revue organise les informations disponibles et, si nécessaire, une consultation du marché, sans promettre une acceptation, une économie ou une garantie automatique." events={rcReviewTimeline} />
+      </div>
+    </section>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir votre RC professionnelle." id="faq-title" /><FAQ items={faqItems} /></div>

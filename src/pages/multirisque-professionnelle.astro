@@ -1,16 +1,20 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -23,6 +27,40 @@ const contactHref = '/?besoin=multirisque&intent=quote&product=multirisque#conta
 const ctaLabel = 'Recevoir mon devis Multirisque';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=multirisque#contact';
 const auditLabel = 'Faire analyser ma multirisque';
+const multirisqueAnalysisProcess = [
+  { label: 'Comprendre l’activité et l’occupation des lieux', icon: 'activity' as const },
+  { label: 'Identifier les locaux et dépendances', icon: 'search' as const },
+  { label: 'Inventorier les biens, matériels et stocks', icon: 'document' as const },
+  { label: 'Analyser les événements, plafonds et franchises', icon: 'search' as const },
+  { label: 'Examiner les conditions de reprise de l’activité', icon: 'search' as const },
+  { label: 'Consulter le marché si nécessaire', icon: 'market' as const },
+  { label: 'Formuler des recommandations', icon: 'recommendation' as const },
+];
+const multirisqueRisks = [
+  { label: 'Locaux', icon: 'goods' as const },
+  { label: 'Incendie', icon: 'continuity' as const },
+  { label: 'Dégât des eaux', icon: 'continuity' as const },
+  { label: 'Vol', icon: 'shield' as const },
+  { label: 'Bris de glace', icon: 'shield' as const },
+  { label: 'Matériel', icon: 'goods' as const },
+  { label: 'Pertes d’exploitation', icon: 'continuity' as const },
+  { label: 'Responsabilité liée aux locaux', icon: 'shield' as const },
+];
+const multirisqueCoverageStages = [
+  { label: 'Locaux et activité' },
+  { label: 'Biens et valeurs' },
+  { label: 'Événements redoutés' },
+  { label: 'Garanties à vérifier', items: ['Dommages aux biens', 'Contenu', 'Matériel', 'Stocks', 'Pertes d’exploitation', 'Protection juridique', 'Garanties complémentaires'] },
+  { label: 'Contrat multirisque' },
+];
+const multirisqueReviewTimeline = [
+  { label: 'Découverte', icon: 'activity' as const },
+  { label: 'Analyse', icon: 'search' as const },
+  { label: 'Identification des écarts', icon: 'search' as const },
+  { label: 'Recommandations', icon: 'recommendation' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution', icon: 'support' as const },
+];
 
 const faqItems = [
   { question: 'Que peut couvrir une multirisque professionnelle ?', answer: 'Selon le contrat, elle peut regrouper des garanties portant sur les locaux, le mobilier, le matériel, les stocks, certains dommages et des responsabilités liées à l’occupation. Chaque garantie, exclusion et franchise doit être vérifiée.' },
@@ -73,6 +111,11 @@ const structuredData = [
       ]}
       variant="columns"
     />
+    <section class="section" aria-label="Cartographie pédagogique des risques d’une multirisque professionnelle">
+      <div class="container-wide">
+        <RiskMap title="Cartographier les risques liés aux locaux et aux biens professionnels." description="Cette cartographie rassemble les principales expositions à examiner sans présumer que chaque événement ou conséquence figure systématiquement au contrat." center="Entreprise et ses locaux" risks={multirisqueRisks} />
+      </div>
+    </section>
 
     <ProductReview
       checksTitle="Déclarer ce qui devrait être reconstruit ou remplacé."
@@ -97,11 +140,26 @@ const structuredData = [
       note={{ title: 'La valeur du contenu professionnel doit être régulièrement réévaluée', text: 'Matériels, aménagements et stocks évoluent. Une revue périodique limite les écarts entre le risque déclaré et les biens à remplacer après un événement couvert.' }}
       variant="reverse"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique des garanties multirisques">
+      <div class="container-wide">
+        <CoverageMap title="Relier les garanties aux locaux, aux biens et aux conséquences d’un arrêt." description="L’architecture du contrat s’apprécie en rapprochant les valeurs et événements redoutés des garanties, limites et franchises effectivement prévues." stages={multirisqueCoverageStages} />
+      </div>
+    </section>
 
     <WhatWeAnalyze />
+    <section class="section" aria-label="Méthode d’analyse d’un contrat multirisque professionnelle">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse d’un contrat multirisque professionnelle." description="Sept étapes structurent l’étude des locaux, des biens, des valeurs et des conditions de reprise avant toute recommandation." steps={multirisqueAnalysisProcess} />
+      </div>
+    </section>
     <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="multirisque_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue multirisque professionnelle">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue multirisque professionnelle." description="La revue organise l’analyse, les écarts et les recommandations puis, si elle est pertinente, une consultation du marché avant la restitution." events={multirisqueReviewTimeline} />
+      </div>
+    </section>
 
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de revoir vos locaux et vos biens." id="faq-title" /><FAQ items={faqItems} /></div></section>
 

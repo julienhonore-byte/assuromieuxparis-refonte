@@ -194,24 +194,6 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="section section--compact" aria-label="Emplacement du futur visuel d’audit transport">
-      <div class="container-wide">
-        <SectionIllustration
-          image={transportVisuals.audit.image}
-          responsive={transportVisuals.audit.responsive}
-          alt="Quai logistique en activité avec palettes, remorques et entrepôt en profondeur."
-          ratio="4:3"
-          width={2400}
-          height={1800}
-          filename="audit-transport-entrepot.webp"
-          imageType="Quai, palettes, remorques et activité réelle"
-          loading="lazy"
-          overlay="light"
-          position="52% 50%"
-        />
-      </div>
-    </section>
-
     <section class="section section--surface" aria-label="Architecture pédagogique des garanties Transport">
       <div class="container-wide">
         <CoverageMap title="Relier l’activité aux contrats." description="Une lecture cohérente part de l’entreprise et de ses risques avant d’examiner l’architecture des garanties." stages={coverageStages} />
@@ -223,24 +205,6 @@ const structuredData = [
     <section class="section" aria-label="Méthode d’audit Transport en sept étapes">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’audit Transport." description="Sept étapes structurent l’analyse, de la découverte de l’exploitation à l’accompagnement des décisions." steps={auditProcess} />
-      </div>
-    </section>
-
-    <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode transport">
-      <div class="container-wide">
-        <SectionIllustration
-          image={transportVisuals.method.image}
-          responsive={transportVisuals.method.responsive}
-          alt="Analyse de contrats d’assurance transport sur une tablette et des documents de travail."
-          ratio="3:2"
-          width={2400}
-          height={1600}
-          filename="methode-transport-analyse-documentaire.webp"
-          imageType="Contrats, tablette et documents sur bureau contemporain"
-          loading="lazy"
-          overlay="light"
-          position="50% 54%"
-        />
       </div>
     </section>
 
@@ -275,24 +239,6 @@ const structuredData = [
       { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Analyser la sinistralité d’une flotte', description: 'Lire fréquence, coût, gravité et causes avant le renouvellement.' },
       { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Quand la RC professionnelle devient-elle obligatoire ?', description: 'Identifier les activités, obligations et textes qui doivent être vérifiés.' },
     ]} />
-    <section class="section section--compact" aria-label="Emplacement de la future texture logistique">
-      <div class="container-wide">
-        <SectionIllustration
-          image={transportVisuals.texture.image}
-          responsive={transportVisuals.texture.responsive}
-          alt="Texture graphique discrète inspirée des lignes d’un quai logistique."
-          ratio="21:9"
-          width={2520}
-          height={1080}
-          filename="texture-transport-logistique.webp"
-          imageType="Texture de quai abstraite, sans marque ni texte"
-          variant="panoramic-texture"
-          loading="lazy"
-          overlay="brand"
-          position="50% 50%"
-        />
-      </div>
-    </section>
     <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

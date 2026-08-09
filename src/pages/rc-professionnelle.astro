@@ -133,7 +133,6 @@ const structuredData = [
       <ProductHeroDiagram slot="visual" label="RC professionnelle" items={['Prestations', 'Tiers', 'Exploitation', 'Réclamations']} variant="orbit" />
     </PageHero>
     <TrustBar />
-    <section class="section section--compact" aria-label="Illustration de l’expertise RC professionnelle"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Échange professionnel autour des responsabilités liées à une prestation de conseil." ratio="16:9" width={3200} height={1800} filename="hero-rc-pro-conseil.webp" imageType="Conseil professionnel et responsabilités" priority overlay="brand" /></div></section>
 
     <ProductAudience {...audience} variant="split" />
     <ProductRiskOverview
@@ -165,13 +164,13 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode RC professionnelle"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Lecture structurée d’un contrat de responsabilité civile professionnelle." ratio="3:2" width={2400} height={1600} filename="methode-rc-pro-contrat.webp" imageType="Contrat et analyse structurée" loading="lazy" overlay="light" /></div></section>
     <section class="section" aria-label="Méthode d’analyse RC professionnelle en sept étapes">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’analyse RC professionnelle." description="Sept étapes structurent la lecture des activités, responsabilités et contrats. Cette analyse ne constitue pas une qualification juridique définitive." steps={rcAnalysisProcess} />
       </div>
     </section>
     <SolutionMethod title="Une analyse centrée sur vos responsabilités réelles." text="Assuromieux décrit les prestations, étudie le contrat et les réclamations possibles, puis consulte le marché lorsque les écarts justifient une comparaison. La recommandation présente les limites identifiées et les arbitrages envisageables.">
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Lecture structurée d’un contrat de responsabilité civile professionnelle." ratio="3:2" width={2400} height={1600} filename="methode-rc-pro-contrat.webp" imageType="Contrat et analyse structurée" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="rc_pro_method" />
     </SolutionMethod>
     <section class="section" aria-label="Déroulement chronologique d’une revue RC professionnelle">
@@ -197,8 +196,6 @@ const structuredData = [
       { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Voir comment s’organise un audit assurance transport', description: 'Rapprocher les activités, contrats, responsabilités et exclusions.' },
       { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Rapprocher sinistralité, flotte et prévention', description: 'Analyser les événements avec les usages, conducteurs et franchises.' },
     ]} />
-    <section class="section section--compact" aria-label="Illustration d’une analyse RC professionnelle"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Analyse d’une activité professionnelle et de ses engagements contractuels." ratio="4:3" width={2400} height={1800} filename="audit-rc-pro-activite.webp" imageType="Activité et engagements contractuels" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle RC professionnelle"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique abstraite évoquant les relations et responsabilités professionnelles." ratio="21:9" width={2520} height={1080} filename="texture-rc-pro-responsabilites.webp" imageType="Texture abstraite des responsabilités" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Votre activité est-elle décrite avec suffisamment de précision ?" text="Présentez vos prestations, vos clients et votre prochaine échéance pour cadrer les clauses à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

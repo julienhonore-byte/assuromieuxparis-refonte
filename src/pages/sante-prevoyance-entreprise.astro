@@ -92,7 +92,6 @@ const structuredData = [
       <ProductHeroDiagram slot="visual" label="Protection collective" items={['Santé', 'Incapacité', 'Invalidité', 'Décès']} variant="collective" />
     </PageHero>
     <TrustBar />
-    <section class="section section--compact" aria-label="Illustration de l’expertise Santé et Prévoyance"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Équipe d’entreprise dans un environnement de travail lumineux et inclusif." ratio="16:9" width={3200} height={1800} filename="hero-sante-prevoyance-equipe.webp" imageType="Équipe et protection collective" priority overlay="brand" /></div></section>
 
     <ProductAudience
       title="Aux employeurs qui veulent clarifier leurs régimes collectifs et leur évolution."
@@ -151,13 +150,13 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode Santé et Prévoyance"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse de régimes collectifs, catégories et garanties sur documents." ratio="3:2" width={2400} height={1600} filename="methode-sante-prevoyance-regimes.webp" imageType="Régimes collectifs et garanties" loading="lazy" overlay="light" /></div></section>
     <section class="section" aria-label="Méthode d’analyse Santé et Prévoyance en sept étapes">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’analyse Santé et Prévoyance." description="Sept étapes structurent l’étude des populations, du cadre communiqué et des garanties, sans déterminer automatiquement une obligation juridique ni garantir une conformité réglementaire." steps={socialProtectionAnalysisProcess} />
       </div>
     </section>
     <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique.">
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse de régimes collectifs, catégories et garanties sur documents." ratio="3:2" width={2400} height={1600} filename="methode-sante-prevoyance-regimes.webp" imageType="Régimes collectifs et garanties" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="sante_method" />
     </SolutionMethod>
     <section class="section" aria-label="Déroulement chronologique d’une revue Santé et Prévoyance">
@@ -176,8 +175,6 @@ const structuredData = [
       { href: '/cyberassurance/', label: 'Données sociales et risque cyber', text: 'Intégrer les données du personnel et les dépendances numériques à la lecture du programme.' },
       { href: '/rc-professionnelle/', label: 'Responsabilités de l’entreprise', text: 'Distinguer la protection des personnes des responsabilités liées aux prestations et à l’exploitation.' },
     ]} />
-    <section class="section section--compact" aria-label="Illustration d’un audit Santé et Prévoyance"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Réunion consacrée à la protection sociale collective d’une entreprise." ratio="4:3" width={2400} height={1800} filename="audit-sante-prevoyance-entreprise.webp" imageType="Protection sociale collective" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle Santé et Prévoyance"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique douce évoquant la protection collective." ratio="21:9" width={2520} height={1080} filename="texture-sante-prevoyance-collectif.webp" imageType="Texture de protection collective" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Votre régime collectif correspond-il encore à l’entreprise ?" text="Présentez les catégories, la convention collective et les dispositifs existants pour identifier les vérifications prioritaires." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

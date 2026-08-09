@@ -9,6 +9,7 @@ const {
   text = 'Le suivi des décisions et des échéances se poursuit ensuite avec l’entreprise.',
 } = Astro.props;
 const hasActions = Astro.slots.has('actions');
+const hasVisual = Astro.slots.has('visual');
 
 const steps = [
   ['01', 'Comprendre', 'L’activité, les objectifs et les contraintes.'],
@@ -19,11 +20,14 @@ const steps = [
 ---
 
 <section class="section method-short" aria-labelledby="solution-method-title">
-  <div class="container-wide method-short__grid">
-    <div>
-      <p class="eyebrow">Méthode Assuromieux</p>
-      <h2 id="solution-method-title">{title}</h2>
-      <p>{text}</p>
+  <div class:list={['container-wide', 'method-short__grid', { 'method-short__grid--with-visual': hasVisual }] }>
+    <div class="method-short__lead">
+      <div>
+        <p class="eyebrow">Méthode Assuromieux</p>
+        <h2 id="solution-method-title">{title}</h2>
+        <p>{text}</p>
+      </div>
+      {hasVisual && <div class="method-short__visual"><slot name="visual" /></div>}
     </div>
     <ol>
       {steps.map(([index, stepTitle, stepText]) => <li><span>{index}</span><strong>{stepTitle}</strong><small>{stepText}</small></li>)}
@@ -35,6 +39,12 @@ const steps = [
 <style>
   .method-short { color: var(--color-text-on-dark); background: var(--color-brand-ink); }
   .method-short__grid { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); gap: clamp(2.5rem,7vw,7rem); align-items: start; }
+  .method-short__lead { display: contents; }
+  .method-short__grid--with-visual { grid-template-columns: 1fr; gap: clamp(2.5rem,5vw,4.5rem); }
+  .method-short__grid--with-visual .method-short__lead { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(20rem,.85fr); gap: clamp(2.5rem,6vw,6rem); align-items: center; }
+  .method-short__grid--with-visual ol { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .method-short__grid--with-visual li { min-height: 8rem; }
+  .method-short__visual { width: 100%; max-width: 28.75rem; justify-self: end; }
   :global(.method-short .eyebrow) { color: var(--color-gold-soft); }
   h2 { max-width: 12ch; margin: 0; color: white; font-size: var(--font-size-h2); line-height: var(--line-height-heading); letter-spacing: var(--letter-spacing-heading); }
   p:not(.eyebrow) { max-width: 35rem; color: var(--color-text-on-dark-soft); }
@@ -44,6 +54,6 @@ const steps = [
   li strong { color: white; }
   li small { color: var(--color-text-on-dark-soft); font-size: var(--font-size-sm); line-height: 1.45; }
   .method-short__actions { grid-column: 1 / -1; padding-top: var(--space-7); border-top: 1px solid rgba(255,255,255,.15); }
-  @media (max-width: 860px) { .method-short__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .method-short__grid, .method-short__grid--with-visual .method-short__lead { grid-template-columns: 1fr; } .method-short__visual { max-width: none; justify-self: stretch; } .method-short__grid--with-visual ol { grid-template-columns: repeat(2,minmax(0,1fr)); } }
   @media (max-width: 540px) { ol { grid-template-columns: 1fr; } li { min-height: 0; } }
 </style>

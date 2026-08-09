@@ -92,7 +92,6 @@ const structuredData = [
       <ProductHeroDiagram slot="visual" label="Multirisque" items={['Locaux', 'Matériels', 'Stocks', 'Continuité']} variant="axis" />
     </PageHero>
     <TrustBar />
-    <section class="section section--compact" aria-label="Illustration de l’expertise Multirisque"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Locaux professionnels contemporains avec équipements et espaces de travail visibles." ratio="16:9" width={3200} height={1800} filename="hero-multirisque-locaux.webp" imageType="Locaux et équipements professionnels" priority overlay="brand" /></div></section>
 
     <ProductAudience
       title="Aux entreprises qui occupent des locaux ou dépendent de biens physiques pour travailler."
@@ -151,13 +150,13 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode Multirisque"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Inventaire structuré de locaux, matériels, stocks et valeurs déclarées." ratio="3:2" width={2400} height={1600} filename="methode-multirisque-inventaire.webp" imageType="Inventaire des biens professionnels" loading="lazy" overlay="light" /></div></section>
     <section class="section" aria-label="Méthode d’analyse d’un contrat multirisque professionnelle">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’analyse d’un contrat multirisque professionnelle." description="Sept étapes structurent l’étude des locaux, des biens, des valeurs et des conditions de reprise avant toute recommandation." steps={multirisqueAnalysisProcess} />
       </div>
     </section>
     <SolutionMethod title="Inventorier, hiérarchiser, puis comparer." text="Assuromieux décrit les sites, les valeurs et les contraintes de reprise avant d’analyser les garanties. La consultation du marché intervient seulement lorsque les besoins sont suffisamment structurés pour comparer les conditions.">
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Inventaire structuré de locaux, matériels, stocks et valeurs déclarées." ratio="3:2" width={2400} height={1600} filename="methode-multirisque-inventaire.webp" imageType="Inventaire des biens professionnels" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="multirisque_method" />
     </SolutionMethod>
     <section class="section" aria-label="Déroulement chronologique d’une revue multirisque professionnelle">
@@ -181,8 +180,6 @@ const structuredData = [
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Comprendre les responsabilités à séparer', description: 'Distinguer la protection des biens des garanties de responsabilité liées à l’activité.' },
       { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Situer la santé et la prévoyance dans le programme', description: 'Clarifier deux protections collectives qui ne relèvent pas de la multirisque professionnelle.' },
     ]} />
-    <section class="section section--compact" aria-label="Illustration d’un audit Multirisque"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Revue d’un site professionnel et de ses principaux biens d’exploitation." ratio="4:3" width={2400} height={1800} filename="audit-multirisque-site.webp" imageType="Site et biens d’exploitation" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle Multirisque"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique minérale inspirée de l’architecture de locaux professionnels." ratio="21:9" width={2520} height={1080} filename="texture-multirisque-batiment.webp" imageType="Texture architecturale minérale" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Vos valeurs déclarées suivent-elles encore votre entreprise ?" text="Un premier échange permet d’identifier les sites, les biens et les conséquences d’un arrêt à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

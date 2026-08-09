@@ -111,7 +111,6 @@ const structuredData = [
 >
   <main id="contenu-principal">
     <HomeHero {primaryHref} {primaryLabel} {secondaryHref} {secondaryLabel} />
-    <section class="section section--compact" aria-label="Illustration du cabinet Assuromieux Paris"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Architecture contemporaine parisienne dans une lumière matinale douce." ratio="16:9" width={3200} height={1800} filename="hero-home-paris-professionnel.webp" imageType="Paris professionnel et architecture contemporaine" priority overlay="brand" /></div></section>
 
     <section id="produits" class="section section--surface products" aria-labelledby="products-title">
       <div class="container-wide">
@@ -179,6 +178,7 @@ const structuredData = [
     </section>
 
     <HomeMethodTimeline>
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Documents d’assurance organisés sur une table de réunion contemporaine." ratio="3:2" width={2400} height={1600} filename="methode-home-analyse-programme.webp" imageType="Documents et analyse de programme" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions
         slot="actions"
         {primaryHref}
@@ -191,7 +191,6 @@ const structuredData = [
         analyticsSource="home_method"
       />
     </HomeMethodTimeline>
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode Assuromieux"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Documents d’assurance organisés sur une table de réunion contemporaine." ratio="3:2" width={2400} height={1600} filename="methode-home-analyse-programme.webp" imageType="Documents et analyse de programme" loading="lazy" overlay="light" /></div></section>
 
     <section id="secteurs" class="section section--compact sectors" aria-labelledby="sectors-title">
       <div id="expertises-sectorielles" class="container-wide sectors__layout">
@@ -255,8 +254,6 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="section section--compact" aria-label="Illustration d’une synthèse d’analyse"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Travail de synthèse et de comparaison sur des documents structurés." ratio="4:3" width={2400} height={1800} filename="audit-home-synthese-comparaison.webp" imageType="Synthèse et comparaison documentaire" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle parisienne"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique sobre inspirée de lignes architecturales parisiennes." ratio="21:9" width={2520} height={1080} filename="texture-home-paris.webp" imageType="Texture architecturale parisienne" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA
       eyebrow="Deux façons d’avancer"
       title="Obtenir un devis ou commencer par l’analyse de vos contrats."

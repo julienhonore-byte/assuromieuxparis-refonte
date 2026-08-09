@@ -1,8 +1,7 @@
 ---
 type VisualRatio = '16:9' | '3:2' | '4:3' | '4:5' | '21:9';
 type VisualOverlay = 'none' | 'light' | 'dark' | 'brand';
-type VisualVariant = 'hero-xxl' | 'standard' | 'half-width' | 'full-width-banner' | 'panoramic-texture';
-type VisualLayout = 'image-left' | 'image-right' | 'full-width' | 'content-centered' | 'text-overlay' | 'background';
+type VisualVariant = 'standard' | 'embedded';
 
 interface ResponsiveSources {
   avifSrcset?: string;
@@ -25,7 +24,6 @@ interface Props {
   filename: string;
   imageType: string;
   variant?: VisualVariant;
-  layout?: VisualLayout;
   overlayEyebrow?: string;
   overlayText?: string;
 }
@@ -45,13 +43,14 @@ const {
   filename,
   imageType,
   variant = 'standard',
-  layout = 'content-centered',
   overlayEyebrow,
   overlayText,
 } = Astro.props;
 
 const effectiveLoading = priority ? 'eager' : loading;
-const sizes = responsive?.sizes ?? '(max-width: 768px) 100vw, 50vw';
+const sizes = variant === 'embedded'
+  ? '(max-width: 860px) calc(100vw - 2rem), 460px'
+  : responsive?.sizes ?? '(max-width: 768px) 100vw, 50vw';
 const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.has('default'));
 ---
 
@@ -61,7 +60,6 @@ const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.h
     `section-illustration--ratio-${ratio.replace(':', '-')}`,
     `section-illustration--overlay-${overlay}`,
     `section-illustration--${variant}`,
-    `section-illustration--layout-${layout}`,
     { 'section-illustration--placeholder': !image },
   ]}
   style={`--visual-position: ${position};`}
@@ -112,49 +110,11 @@ const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.h
     margin: 0;
   }
 
-  .section-illustration--hero-xxl {
-    max-width: 90rem;
-  }
-
-  .section-illustration--hero-xxl .section-illustration__media {
-    min-height: clamp(22rem, 48vw, 42rem);
-  }
-
-  .section-illustration--half-width {
-    width: min(100%, 42rem);
-  }
-
-  .section-illustration--full-width-banner,
-  .section-illustration--panoramic-texture {
-    width: 100%;
-  }
-
-  .section-illustration--full-width-banner .section-illustration__media {
-    min-height: clamp(15rem, 30vw, 28rem);
-  }
-
-  .section-illustration--panoramic-texture .section-illustration__media {
-    min-height: clamp(8rem, 16vw, 14rem);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-  }
-
-  .section-illustration--layout-image-left {
-    margin-right: auto;
-  }
-
-  .section-illustration--layout-image-right {
-    margin-left: auto;
-  }
-
-  .section-illustration--layout-content-centered {
-    margin-inline: auto;
-  }
-
-  .section-illustration--layout-full-width,
-  .section-illustration--layout-text-overlay,
-  .section-illustration--layout-background {
-    max-width: none;
+  .section-illustration--embedded .section-illustration__media {
+    height: clamp(15rem, 22vw, 18.75rem);
+    aspect-ratio: auto;
+    border-radius: 1.125rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(7, 28, 51, 0.08);
   }
 
   .section-illustration__media {
@@ -212,19 +172,6 @@ const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.h
     bottom: clamp(1.25rem, 5vw, 4rem);
     width: min(40rem, calc(100% - 2.5rem));
     color: var(--color-text-on-dark);
-  }
-
-  .section-illustration--layout-content-centered .section-illustration__content {
-    left: 50%;
-    bottom: 50%;
-    text-align: center;
-    transform: translate(-50%, 50%);
-  }
-
-  .section-illustration--layout-image-right .section-illustration__content {
-    right: clamp(1.25rem, 5vw, 5rem);
-    left: auto;
-    text-align: right;
   }
 
   .section-illustration__eyebrow {
@@ -340,17 +287,11 @@ const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.h
     line-height: 1.5;
   }
 
-  .section-illustration--panoramic-texture .section-illustration__placeholder {
-    align-content: center;
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .section-illustration--panoramic-texture .section-illustration__marker,
-  .section-illustration--panoramic-texture dl {
-    grid-column: 1 / -1;
-  }
-
   @media (max-width: 640px) {
+    .section-illustration--embedded .section-illustration__media {
+      height: clamp(12.5rem, 62vw, 15rem);
+    }
+
     .section-illustration__placeholder {
       padding: var(--space-5);
     }
@@ -359,31 +300,12 @@ const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.h
       width: 44%;
     }
 
-    .section-illustration--hero-xxl .section-illustration__media,
-    .section-illustration--full-width-banner .section-illustration__media {
-      min-height: 0;
-    }
-
-    .section-illustration__content,
-    .section-illustration--layout-image-right .section-illustration__content {
+    .section-illustration__content {
       right: var(--space-5);
       bottom: var(--space-5);
       left: var(--space-5);
       width: auto;
       text-align: left;
-    }
-
-    .section-illustration--layout-content-centered .section-illustration__content {
-      right: var(--space-5);
-      bottom: 50%;
-      left: var(--space-5);
-      width: auto;
-      transform: translateY(50%);
-    }
-
-    .section-illustration--panoramic-texture .section-illustration__placeholder {
-      display: grid;
-      grid-template-columns: 1fr;
     }
 
     dl {

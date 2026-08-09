@@ -94,7 +94,6 @@ const structuredData = [
       <ProductHeroDiagram slot="visual" label="Flotte automobile" items={['Parc', 'Conducteurs', 'Usages', 'Sinistralité']} variant="route" />
     </PageHero>
     <TrustBar />
-    <section class="section section--compact" aria-label="Illustration de l’expertise Flotte"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Parc de véhicules d’entreprise récents organisé sur un site professionnel." ratio="16:9" width={3200} height={1800} filename="hero-flotte-parc-entreprise.webp" imageType="Parc automobile professionnel" priority overlay="brand" /></div></section>
 
     <ProductAudience
       title="Aux entreprises qui exploitent plusieurs véhicules et doivent suivre un parc en mouvement."
@@ -154,13 +153,13 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode Flotte"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse d’un état de parc, des usages et de la sinistralité sur tablette." ratio="3:2" width={2400} height={1600} filename="methode-flotte-donnees-parc.webp" imageType="Données de parc et sinistralité" loading="lazy" overlay="light" /></div></section>
     <section class="section" aria-label="Méthode d’analyse d’une flotte en sept étapes">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’analyse d’une flotte." description="Sept étapes structurent l’étude du parc, des usages, des garanties et de la sinistralité, sans garantir une baisse de prime." steps={fleetAnalysisProcess} />
       </div>
     </section>
     <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles.">
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse d’un état de parc, des usages et de la sinistralité sur tablette." ratio="3:2" width={2400} height={1600} filename="methode-flotte-donnees-parc.webp" imageType="Données de parc et sinistralité" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="flotte_method" />
     </SolutionMethod>
     <section class="section" aria-label="Déroulement chronologique d’une revue Flotte">
@@ -181,8 +180,6 @@ const structuredData = [
       { href: '/ressources/methodes/audit-assurance-transport-optimisation-garanties/', title: 'Relier la flotte à une méthode d’audit transport', description: 'Examiner ensemble véhicules, flux, responsabilités et conditions contractuelles.' },
       { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Situer l’obligation de RC professionnelle', description: 'Vérifier les obligations propres aux activités exercées par l’entreprise.' },
     ]} />
-    <section class="section section--compact" aria-label="Illustration d’un audit Flotte"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Inspection d’un parc de véhicules professionnels en exploitation." ratio="4:3" width={2400} height={1800} filename="audit-flotte-vehicules.webp" imageType="Véhicules professionnels en exploitation" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle Flotte"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique discrète inspirée des trajectoires d’une flotte automobile." ratio="21:9" width={2520} height={1080} filename="texture-flotte-mobilite.webp" imageType="Texture de mobilité abstraite" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Votre contrat suit-il vraiment les mouvements du parc ?" text="Préparez la liste des véhicules, les usages et la sinistralité disponible pour identifier les premiers points à analyser." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

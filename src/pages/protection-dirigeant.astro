@@ -85,7 +85,6 @@ const structuredData = [
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="dirigeant_hero" />
       <ProductHeroDiagram slot="visual" label="Dirigeant" items={['Personne', 'Revenus', 'Responsabilité', 'Continuité']} variant="focus" />
     </PageHero>
-    <section class="section section--compact" aria-label="Illustration de la protection du dirigeant"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Dirigeant dans un environnement de travail sobre, accompagné dans sa réflexion." ratio="16:9" width={3200} height={1800} filename="hero-protection-dirigeant.webp" imageType="Dirigeant et accompagnement" priority overlay="brand" /></div></section>
 
     <ProductAudience
       title="Aux dirigeants dont la situation personnelle et le rôle opérationnel méritent une lecture coordonnée"
@@ -149,8 +148,8 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="section section--compact section--surface" aria-label="Illustration de la méthode de protection du dirigeant"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse confidentielle du statut, des revenus et des dispositifs existants." ratio="3:2" width={2400} height={1600} filename="methode-protection-dirigeant-situation.webp" imageType="Situation et dispositifs du dirigeant" loading="lazy" overlay="light" /></div></section>
     <SolutionMethod title="Séparer les besoins pour mieux les coordonner." text="Assuromieux inventorie les dispositifs, décrit les conséquences personnelles et professionnelles, puis identifie les écarts. Les sujets sociaux, fiscaux, patrimoniaux ou juridiques sont signalés lorsqu’ils nécessitent une validation spécialisée.">
+      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse confidentielle du statut, des revenus et des dispositifs existants." ratio="3:2" width={2400} height={1600} filename="methode-protection-dirigeant-situation.webp" imageType="Situation et dispositifs du dirigeant" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="dirigeant_method" />
     </SolutionMethod>
     <section class="section" aria-label="Déroulement chronologique d’une revue de protection du dirigeant">
@@ -172,8 +171,6 @@ const structuredData = [
       { href: '/ressources/guides/mutuelle-entreprise-prevoyance-collective-differences/', title: 'Guide pratique de la santé et de la prévoyance collective', description: 'Distinguer les régimes des salariés de la protection personnelle du dirigeant.' },
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer une analyse coordonnée des contrats', description: 'Rassembler les protections existantes et identifier les écarts avant de décider.' },
     ]} />
-    <section class="section section--compact" aria-label="Illustration d’un audit de protection du dirigeant"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Entretien structuré consacré à la protection personnelle et à la continuité." ratio="4:3" width={2400} height={1800} filename="audit-protection-dirigeant.webp" imageType="Entretien de protection et continuité" loading="lazy" overlay="light" /></div></section>
-    <section class="section section--compact" aria-label="Texture visuelle Protection du dirigeant"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique élégante évoquant stabilité, continuité et protection." ratio="21:9" width={2520} height={1080} filename="texture-protection-dirigeant.webp" imageType="Texture de stabilité et protection" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Que se passerait-il si le dirigeant devait s’arrêter ?" text="Un premier échange permet de distinguer les conséquences pour la personne, la famille et la continuité de l’entreprise." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

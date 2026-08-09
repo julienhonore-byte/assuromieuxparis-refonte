@@ -115,16 +115,21 @@ const structuredData = [
     <section id="produits" class="section section--surface products" aria-labelledby="products-title">
       <div class="container-wide">
         <div class="products__heading">
-          <SectionHeader
-            kicker="Choisir son point d’entrée"
-            title="Quelle assurance recherchez-vous ?"
-            text="Accédez immédiatement à la protection qui correspond à votre besoin."
-            id="products-title"
-          />
-          <div class="products__positioning">
-            <p class="eyebrow">Notre parti pris</p>
-            <h2 id="manifesto-title">Un contrat n’est pertinent que s’il répond à la réalité de l’entreprise.</h2>
-            <p>Notre rôle ne consiste pas simplement à distribuer des contrats. Nous étudions l’activité, les risques, les garanties et les conditions du marché pour permettre au dirigeant de prendre une décision cohérente.</p>
+          <div class="products__copy">
+            <SectionHeader
+              kicker="Choisir son point d’entrée"
+              title="Quelle assurance recherchez-vous ?"
+              text="Accédez immédiatement à la protection qui correspond à votre besoin."
+              id="products-title"
+            />
+            <div class="products__positioning">
+              <p class="eyebrow">Notre parti pris</p>
+              <h2 id="manifesto-title">Un contrat n’est pertinent que s’il répond à la réalité de l’entreprise.</h2>
+              <p>Notre rôle ne consiste pas simplement à distribuer des contrats. Nous étudions l’activité, les risques, les garanties et les conditions du marché pour permettre au dirigeant de prendre une décision cohérente.</p>
+            </div>
+          </div>
+          <div class="products__visual">
+            <SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Vue de Paris et de la Tour Eiffel depuis un immeuble professionnel contemporain." ratio="4:3" width={3200} height={1800} filename="hero-home-paris-professionnel.webp" imageType="Paris et architecture professionnelle" variant="embedded" loading="lazy" overlay="light" position="50% 50%" />
           </div>
         </div>
         <nav class="products__families" aria-label="Trois façons d’aborder votre besoin">
@@ -178,7 +183,6 @@ const structuredData = [
     </section>
 
     <HomeMethodTimeline>
-      <SectionIllustration slot="visual" image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Documents d’assurance organisés sur une table de réunion contemporaine." ratio="3:2" width={2400} height={1600} filename="methode-home-analyse-programme.webp" imageType="Documents et analyse de programme" variant="embedded" loading="lazy" overlay="light" />
       <ConversionActions
         slot="actions"
         {primaryHref}
@@ -294,9 +298,9 @@ const structuredData = [
 
   .products__heading {
     display: grid;
-    grid-template-columns: minmax(0, 0.78fr) minmax(19rem, 1.22fr);
-    gap: clamp(2.75rem, 7vw, 7rem);
-    align-items: start;
+    grid-template-columns: minmax(0, 3fr) minmax(22rem, 2fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
   }
 
   .products__heading :global(.section-header) {
@@ -323,6 +327,19 @@ const structuredData = [
     margin: var(--space-4) 0 0;
     color: var(--color-text-soft);
     font-size: var(--font-size-sm);
+  }
+
+  .products__visual {
+    width: 100%;
+    max-width: 28.75rem;
+    justify-self: end;
+  }
+
+  .products__visual :global(.section-illustration__media) {
+    height: clamp(17.5rem, 23vw, 18.75rem);
+    border: 1px solid rgba(185, 202, 219, 0.72);
+    border-radius: 1.25rem;
+    box-shadow: 0 0.75rem 2rem rgba(7, 28, 51, 0.09);
   }
 
   .products__families {
@@ -741,6 +758,11 @@ const structuredData = [
       max-width: 48rem;
     }
 
+    .products__visual {
+      width: min(100%, 28.75rem);
+      justify-self: start;
+    }
+
     .products__need-link {
       justify-content: flex-start;
       text-align: left;
@@ -763,6 +785,19 @@ const structuredData = [
   }
 
   @media (max-width: 760px) {
+    .products__heading {
+      gap: var(--space-7);
+    }
+
+    .products__visual {
+      width: 100%;
+      max-width: none;
+    }
+
+    .products__visual :global(.section-illustration__media) {
+      height: clamp(13.75rem, 61vw, 15rem);
+    }
+
     .products__families,
     .article-grid {
       grid-template-columns: 1fr;

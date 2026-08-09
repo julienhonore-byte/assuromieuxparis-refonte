@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import ConversionActions from '../components/ConversionActions.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
@@ -19,6 +21,35 @@ const contactHref = '/?besoin=assurance-transport&intent=quote&product=assurance
 const ctaLabel = 'Démarrer ma demande de devis Transport';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=assurance-transport#contact';
 const auditLabel = 'Faire analyser mon programme transport';
+const transportImageRoot = '/images/transport';
+const transportAssetExists = (publicPath: string) => existsSync(fileURLToPath(new URL(`../../public${publicPath}`, import.meta.url)));
+const prepareTransportVisual = (baseName: string, widths: number[], masterWidth: number, sizes: string) => {
+  const variants = (format: 'avif' | 'webp') => [
+    ...widths.map((width) => `${transportImageRoot}/${baseName}-${width}.${format}`),
+    `${transportImageRoot}/${baseName}.${format}`,
+  ];
+  const avifFiles = variants('avif');
+  const webpFiles = variants('webp');
+  const ready = [...avifFiles, ...webpFiles].every(transportAssetExists);
+  const srcset = (files: string[]) => files
+    .map((file, index) => `${file} ${index < widths.length ? widths[index] : masterWidth}w`)
+    .join(', ');
+
+  return {
+    image: ready ? `${transportImageRoot}/${baseName}.webp` : undefined,
+    responsive: {
+      avifSrcset: srcset(avifFiles),
+      webpSrcset: srcset(webpFiles),
+      sizes,
+    },
+  };
+};
+const transportVisuals = {
+  hero: prepareTransportVisual('hero-transport-logistique', [960, 1280, 1600, 2000], 3200, '(max-width: 768px) 100vw, (max-width: 1280px) 44vw, 576px'),
+  audit: prepareTransportVisual('audit-transport-entrepot', [640, 960, 1280, 1600], 2400, '(max-width: 768px) 100vw, 1180px'),
+  method: prepareTransportVisual('methode-transport-analyse-documentaire', [640, 960, 1280, 1600], 2400, '(max-width: 768px) 100vw, 1180px'),
+  texture: prepareTransportVisual('texture-transport-logistique', [768, 1280, 1600], 2520, '(max-width: 768px) 100vw, 1180px'),
+};
 const faqItems = [
   { question: 'Quels métiers sont concernés ?', answer: 'Le transport routier de marchandises, la commission de transport, la logistique, l’exploitation d’entrepôts, le déménagement, le convoyage et les entreprises disposant d’une flotte significative peuvent être concernés.' },
   { question: 'La flotte suffit-elle à couvrir une activité de transport ?', answer: 'Non. Les véhicules ne traitent pas à eux seuls les responsabilités du transporteur, les marchandises confiées, le stockage, la sous-traitance ou l’interruption d’activité.' },
@@ -43,6 +74,8 @@ const structuredData = [
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="transport_hero" />
       <SectionIllustration
         slot="visual"
+        image={transportVisuals.hero.image}
+        responsive={transportVisuals.hero.responsive}
         alt="Flotte de poids lourds stationnée sur une plateforme logistique contemporaine."
         ratio="16:9"
         width={3200}
@@ -142,6 +175,8 @@ const structuredData = [
     <section class="section section--compact" aria-label="Emplacement du futur visuel d’audit transport">
       <div class="container-wide">
         <SectionIllustration
+          image={transportVisuals.audit.image}
+          responsive={transportVisuals.audit.responsive}
           alt="Quai logistique en activité avec palettes, remorques et entrepôt en profondeur."
           ratio="4:3"
           width={2400}
@@ -160,6 +195,8 @@ const structuredData = [
     <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode transport">
       <div class="container-wide">
         <SectionIllustration
+          image={transportVisuals.method.image}
+          responsive={transportVisuals.method.responsive}
           alt="Analyse de contrats d’assurance transport sur une tablette et des documents de travail."
           ratio="3:2"
           width={2400}
@@ -201,6 +238,8 @@ const structuredData = [
     <section class="section section--compact" aria-label="Emplacement de la future texture logistique">
       <div class="container-wide">
         <SectionIllustration
+          image={transportVisuals.texture.image}
+          responsive={transportVisuals.texture.responsive}
           alt="Texture graphique discrète inspirée des lignes d’un quai logistique."
           ratio="21:9"
           width={2520}

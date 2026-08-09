@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 type VisualKind = 'hero' | 'method' | 'audit' | 'texture';
 
@@ -11,7 +11,7 @@ const profiles: Record<VisualKind, { widths: number[]; masterWidth: number; size
 };
 
 const assetExists = (publicPath: string) => existsSync(
-  fileURLToPath(new URL(`../../public${publicPath}`, import.meta.url)),
+  resolve(process.cwd(), 'public', publicPath.replace(/^\//, '')),
 );
 
 export const prepareVisual = (directory: string, baseName: string, kind: VisualKind) => {

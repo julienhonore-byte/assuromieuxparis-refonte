@@ -1,15 +1,19 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -22,6 +26,43 @@ const contactHref = '/?besoin=sante-prevoyance&intent=quote&product=sante-prevoy
 const ctaLabel = 'Recevoir mon devis Santé Entreprise';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=sante-prevoyance#contact';
 const auditLabel = 'Faire analyser mon régime santé et prévoyance';
+const socialProtectionAnalysisProcess = [
+  { label: 'Comprendre l’entreprise et les populations', icon: 'activity' as const },
+  { label: 'Identifier la convention collective et les obligations applicables', icon: 'document' as const },
+  { label: 'Analyser le régime actuel', icon: 'search' as const },
+  { label: 'Examiner garanties, cotisations et catégories de bénéficiaires', icon: 'search' as const },
+  { label: 'Identifier les écarts et points de vigilance', icon: 'search' as const },
+  { label: 'Consulter le marché si nécessaire', icon: 'market' as const },
+  { label: 'Formuler des recommandations', icon: 'recommendation' as const },
+];
+const socialProtectionIssues = [
+  { label: 'Complémentaire santé', icon: 'shield' as const },
+  { label: 'Prévoyance incapacité', icon: 'continuity' as const },
+  { label: 'Invalidité', icon: 'continuity' as const },
+  { label: 'Décès', icon: 'continuity' as const },
+  { label: 'Catégories de salariés', icon: 'people' as const },
+  { label: 'Convention collective', icon: 'network' as const },
+  { label: 'Participation employeur', icon: 'people' as const },
+  { label: 'Dispenses', icon: 'shield' as const },
+  { label: 'Portabilité', icon: 'continuity' as const },
+  { label: 'Protection du dirigeant', icon: 'people' as const },
+];
+const collectiveSchemeStages = [
+  { label: 'Entreprise' },
+  { label: 'Population concernée' },
+  { label: 'Obligations et objectifs' },
+  { label: 'Garanties à vérifier', items: ['Santé', 'Incapacité', 'Invalidité', 'Décès', 'Assistance', 'Options facultatives', 'Protection du dirigeant selon statut'] },
+  { label: 'Régime collectif' },
+];
+const socialProtectionReviewTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Identification des effectifs et catégories', icon: 'people' as const },
+  { label: 'Collecte des contrats et documents', icon: 'document' as const },
+  { label: 'Analyse du régime existant', icon: 'search' as const },
+  { label: 'Vérification des garanties et points de vigilance', icon: 'search' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'Santé collective et prévoyance couvrent-elles les mêmes événements ?', answer: 'Non. La complémentaire santé intervient sur des frais de soins selon ses niveaux de remboursement. La prévoyance traite notamment, selon le contrat, l’incapacité, l’invalidité ou le décès. Leur articulation doit être vérifiée.' },
   { question: 'Les mêmes garanties doivent-elles s’appliquer à tous les salariés ?', answer: 'Le caractère collectif et, le cas échéant, les catégories objectives de salariés doivent être vérifiés selon la situation de l’entreprise, l’acte de mise en place, la convention collective et les textes en vigueur. Une validation métier ou juridique peut être nécessaire.' },
@@ -70,6 +111,11 @@ const structuredData = [
       distinction="Mutuelle d’entreprise, prévoyance collective et protection personnelle du dirigeant doivent être examinées séparément avant d’être coordonnées."
       variant="ledger"
     />
+    <section class="section" aria-label="Cartographie pédagogique des enjeux de santé et de prévoyance">
+      <div class="container-wide">
+        <RiskMap title="Les enjeux d’un régime collectif dépendent de la situation de l’entreprise." description="Cette cartographie présente les principaux sujets à examiner sans présumer qu’ils sont tous obligatoires ou applicables dans chaque situation." center="Protection sociale de l’entreprise" risks={socialProtectionIssues} />
+      </div>
+    </section>
 
     <ProductReview
       checksTitle="Vérifier le cadre avant de comparer les niveaux."
@@ -94,11 +140,26 @@ const structuredData = [
       note={{ title: 'Santé et prévoyance ne couvrent pas les mêmes événements', text: 'Les deux volets se complètent mais ne se substituent pas. Les garanties, obligations et niveaux doivent être lus selon le cadre réellement applicable à l’entreprise.' }}
       variant="reverse"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique du régime collectif">
+      <div class="container-wide">
+        <CoverageMap title="Relier le régime collectif aux populations et aux textes applicables." description="Le régime dépend notamment de la population concernée, du cadre applicable et des garanties effectivement prévues au contrat." stages={collectiveSchemeStages} />
+      </div>
+    </section>
 
     <WhatWeAnalyze />
+    <section class="section" aria-label="Méthode d’analyse Santé et Prévoyance en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse Santé et Prévoyance." description="Sept étapes structurent l’étude des populations, du cadre communiqué et des garanties, sans déterminer automatiquement une obligation juridique ni garantir une conformité réglementaire." steps={socialProtectionAnalysisProcess} />
+      </div>
+    </section>
     <SolutionMethod title="Clarifier le cadre, puis les garanties." text="Assuromieux rassemble les dispositifs existants, les catégories et les textes communiqués par l’entreprise. Les écarts sont analysés avant toute consultation, avec signalement des points qui exigent une validation métier ou juridique.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="sante_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue Santé et Prévoyance">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue Santé et Prévoyance." description="La revue organise les éléments disponibles et, si elle est pertinente, une consultation du marché, sans promettre une économie, une conformité automatique ou une amélioration garantie." events={socialProtectionReviewTimeline} />
+      </div>
+    </section>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant de faire évoluer un régime collectif." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/protection-dirigeant/', label: 'Protection du dirigeant', text: 'Étudier les besoins personnels et la continuité.' },

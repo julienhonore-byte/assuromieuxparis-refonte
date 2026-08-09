@@ -53,13 +53,6 @@ const {
 const effectiveLoading = priority ? 'eager' : loading;
 const sizes = responsive?.sizes ?? '(max-width: 768px) 100vw, 50vw';
 const hasOverlayContent = Boolean(overlayEyebrow || overlayText || Astro.slots.has('default'));
-const visualRole = filename.startsWith('methode-')
-  ? 'method'
-  : filename.startsWith('audit-')
-    ? 'audit'
-    : filename.startsWith('texture-')
-      ? 'texture'
-      : 'hero';
 ---
 
 <figure
@@ -69,7 +62,6 @@ const visualRole = filename.startsWith('methode-')
     `section-illustration--overlay-${overlay}`,
     `section-illustration--${variant}`,
     `section-illustration--layout-${layout}`,
-    `section-illustration--role-${visualRole}`,
     { 'section-illustration--placeholder': !image },
   ]}
   style={`--visual-position: ${position};`}
@@ -142,46 +134,9 @@ const visualRole = filename.startsWith('methode-')
   }
 
   .section-illustration--panoramic-texture .section-illustration__media {
-    height: clamp(5rem, 7vw, 7rem);
-    min-height: clamp(5rem, 7vw, 7rem);
-    aspect-ratio: auto;
-    border-color: rgba(185, 202, 219, 0.42);
-    border-radius: 1.5rem;
-    box-shadow: none;
-    opacity: 0.42;
-  }
-
-  .section-illustration--role-method,
-  .section-illustration--role-audit {
-    width: min(45%, 38rem);
-  }
-
-  .section-illustration--role-method {
-    margin-left: auto;
-  }
-
-  .section-illustration--role-audit {
-    margin-right: auto;
-  }
-
-  .section-illustration--role-method .section-illustration__media,
-  .section-illustration--role-audit .section-illustration__media {
-    height: clamp(20rem, 28vw, 26.25rem);
-    min-height: 0;
-    aspect-ratio: auto;
-    border-radius: 1.5rem;
-    box-shadow: 0 1rem 2.5rem rgba(7, 28, 51, 0.1);
-  }
-
-  .section-illustration--role-audit .section-illustration__media {
-    padding: clamp(0.35rem, 0.7vw, 0.65rem);
-    background: rgba(255, 255, 255, 0.82);
-    border-color: rgba(185, 202, 219, 0.62);
-  }
-
-  .section-illustration--role-audit picture,
-  .section-illustration--role-audit img {
-    border-radius: calc(1.5rem - 0.5rem);
+    min-height: clamp(8rem, 16vw, 14rem);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
   }
 
   .section-illustration--layout-image-left {
@@ -396,21 +351,6 @@ const visualRole = filename.startsWith('methode-')
   }
 
   @media (max-width: 640px) {
-    .section-illustration--role-method,
-    .section-illustration--role-audit {
-      width: 100%;
-    }
-
-    .section-illustration--role-method .section-illustration__media,
-    .section-illustration--role-audit .section-illustration__media {
-      height: clamp(15rem, 68vw, 21rem);
-    }
-
-    .section-illustration--panoramic-texture .section-illustration__media {
-      height: 4rem;
-      min-height: 4rem;
-    }
-
     .section-illustration__placeholder {
       padding: var(--space-5);
     }

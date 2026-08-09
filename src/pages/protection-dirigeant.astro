@@ -1,16 +1,20 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 
@@ -21,6 +25,38 @@ const contactHref = '/?besoin=protection-dirigeant&intent=quote&product=protecti
 const ctaLabel = 'Recevoir une étude personnalisée';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=protection-dirigeant#contact';
 const auditLabel = 'Faire analyser ma protection';
+const executiveProtectionAnalysisProcess = [
+  { label: 'Analyser le statut', icon: 'activity' as const },
+  { label: 'Analyser les revenus', icon: 'search' as const },
+  { label: 'Identifier les risques personnels', icon: 'search' as const },
+  { label: 'Analyser les contrats existants', icon: 'document' as const },
+  { label: 'Formuler des recommandations', icon: 'recommendation' as const },
+  { label: 'Consulter le marché si nécessaire', icon: 'market' as const },
+];
+const executiveProtectionRisks = [
+  { label: 'Incapacité', icon: 'continuity' as const },
+  { label: 'Invalidité', icon: 'continuity' as const },
+  { label: 'Décès', icon: 'continuity' as const },
+  { label: 'Perte de revenus', icon: 'shield' as const },
+  { label: 'Maintien du niveau de vie', icon: 'shield' as const },
+  { label: 'Protection de la famille', icon: 'people' as const },
+  { label: 'Continuité de l’entreprise', icon: 'network' as const },
+];
+const executiveProtectionCoverageStages = [
+  { label: 'Statut et situation' },
+  { label: 'Revenus et charges' },
+  { label: 'Risques à financer' },
+  { label: 'Garanties à vérifier', items: ['Prévoyance', 'Garantie décès', 'Incapacité', 'Invalidité', 'Indemnités journalières', 'Rente', 'Garanties complémentaires'] },
+  { label: 'Protection du dirigeant' },
+];
+const executiveProtectionReviewTimeline = [
+  { label: 'Découverte', icon: 'activity' as const },
+  { label: 'Analyse', icon: 'search' as const },
+  { label: 'Comparaison', icon: 'search' as const },
+  { label: 'Recommandations', icon: 'recommendation' as const },
+  { label: 'Arbitrages', icon: 'market' as const },
+  { label: 'Restitution', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'Quelles protections faut-il étudier pour un dirigeant ?', answer: 'Le périmètre peut inclure santé, prévoyance personnelle, incapacité, invalidité, décès, responsabilité des dirigeants, protection juridique, homme-clé ou frais généraux permanents. Ces solutions ont des objets différents.' },
   { question: 'L’assurance homme-clé protège-t-elle directement le dirigeant ?', answer: 'Son objectif principal est généralement de protéger l’entreprise contre les conséquences financières liées à l’indisponibilité ou au décès d’une personne essentielle, selon le contrat. Elle ne remplace pas la prévoyance personnelle.' },
@@ -69,6 +105,11 @@ const structuredData = [
       distinction="Ces quatre lectures peuvent se compléter, mais elles ne sont pas interchangeables. Leur portée dépend de la situation, des contrats et des validations spécialisées nécessaires."
       variant="ledger"
     />
+    <section class="section" aria-label="Cartographie pédagogique des risques personnels du dirigeant">
+      <div class="container-wide">
+        <RiskMap title="Cartographier les conséquences personnelles et économiques d’une indisponibilité." description="Cette cartographie présente les principaux risques à examiner sans présumer qu’ils sont tous couverts ou qu’une solution unique peut y répondre." center="Dirigeant" risks={executiveProtectionRisks} />
+      </div>
+    </section>
 
     <ProductReview
       checksTitle="Commencer par les conséquences à financer."
@@ -93,10 +134,25 @@ const structuredData = [
       note={{ title: 'Le dirigeant est souvent le premier actif stratégique de l’entreprise', text: 'Le protéger implique de distinguer sa situation personnelle, sa responsabilité et les conséquences de son absence pour l’organisation. Une même solution ne répond pas à ces trois dimensions.' }}
       variant="stacked"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique des garanties de protection du dirigeant">
+      <div class="container-wide">
+        <CoverageMap title="Relier les garanties au statut, aux revenus et aux conséquences à financer." description="L’architecture de la protection s’apprécie en rapprochant la situation réelle du dirigeant des définitions, limites et prestations effectivement prévues." stages={executiveProtectionCoverageStages} />
+      </div>
+    </section>
+    <section class="section" aria-label="Méthode d’analyse de la protection du dirigeant">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse de la protection du dirigeant." description="Six étapes structurent l’étude du statut, des revenus, des risques personnels et des contrats avant toute recommandation." steps={executiveProtectionAnalysisProcess} />
+      </div>
+    </section>
 
     <SolutionMethod title="Séparer les besoins pour mieux les coordonner." text="Assuromieux inventorie les dispositifs, décrit les conséquences personnelles et professionnelles, puis identifie les écarts. Les sujets sociaux, fiscaux, patrimoniaux ou juridiques sont signalés lorsqu’ils nécessitent une validation spécialisée.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="dirigeant_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue de protection du dirigeant">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue de protection du dirigeant." description="La revue organise la découverte, l’analyse et les arbitrages avant une restitution adaptée aux informations disponibles." events={executiveProtectionReviewTimeline} />
+      </div>
+    </section>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’organiser la protection du dirigeant." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/sante-prevoyance-entreprise/', label: 'Santé et prévoyance entreprise', text: 'Distinguer la protection collective de la situation du dirigeant.' },

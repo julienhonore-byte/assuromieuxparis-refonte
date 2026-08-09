@@ -5,6 +5,7 @@ import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -40,6 +41,18 @@ const structuredData = [
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance transport' }]}
     >
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="transport_hero" />
+      <SectionIllustration
+        slot="visual"
+        alt="Flotte de poids lourds stationnée sur une plateforme logistique contemporaine."
+        ratio="16:9"
+        width={3200}
+        height={1800}
+        filename="hero-transport-logistique.webp"
+        imageType="Flotte récente, plateforme logistique, perspective large"
+        priority
+        overlay="brand"
+        position="58% 50%"
+      />
     </PageHero>
     <TrustBar />
 
@@ -126,7 +139,40 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--compact" aria-label="Emplacement du futur visuel d’audit transport">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Quai logistique en activité avec palettes, remorques et entrepôt en profondeur."
+          ratio="4:3"
+          width={2400}
+          height={1800}
+          filename="audit-transport-entrepot.webp"
+          imageType="Quai, palettes, remorques et activité réelle"
+          loading="lazy"
+          overlay="light"
+          position="52% 50%"
+        />
+      </div>
+    </section>
+
     <WhatWeAnalyze />
+
+    <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode transport">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Analyse de contrats d’assurance transport sur une tablette et des documents de travail."
+          ratio="3:2"
+          width={2400}
+          height={1600}
+          filename="methode-transport-analyse-documentaire.webp"
+          imageType="Contrats, tablette et documents sur bureau contemporain"
+          loading="lazy"
+          overlay="light"
+          position="50% 54%"
+        />
+      </div>
+    </section>
+
     <SolutionMethod title="Une méthode commune, adaptée au transport." text="L’analyse sectorielle conserve les quatre temps Assuromieux et accorde une attention particulière aux flux, aux responsabilités et à la sinistralité.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="transport_method" />
     </SolutionMethod>
@@ -152,6 +198,22 @@ const structuredData = [
       { href: '/ressources/guides/sinistralite-flotte-automobile-indicateurs-prevention/', title: 'Analyser la sinistralité d’une flotte', description: 'Lire fréquence, coût, gravité et causes avant le renouvellement.' },
       { href: '/ressources/guides/rc-professionnelle-obligatoire-qui-est-concerne/', title: 'Quand la RC professionnelle devient-elle obligatoire ?', description: 'Identifier les activités, obligations et textes qui doivent être vérifiés.' },
     ]} />
+    <section class="section section--compact" aria-label="Emplacement de la future texture logistique">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Texture graphique discrète inspirée des lignes d’un quai logistique."
+          ratio="21:9"
+          width={2520}
+          height={1080}
+          filename="texture-transport-logistique.webp"
+          imageType="Texture de quai abstraite, sans marque ni texte"
+          variant="panoramic-texture"
+          loading="lazy"
+          overlay="brand"
+          position="50% 50%"
+        />
+      </div>
+    </section>
     <PageCTA title="Mettons votre exploitation au centre de l’analyse." text="Décrivez vos activités, votre flotte et votre prochaine échéance pour cadrer le périmètre utile." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

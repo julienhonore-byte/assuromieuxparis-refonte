@@ -5,6 +5,7 @@ import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -40,6 +41,18 @@ const structuredData = [
       breadcrumbs={[{ href: '/', label: 'Accueil' }, { label: 'Assurance BTP et décennale' }]}
     >
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="btp_hero" />
+      <SectionIllustration
+        slot="visual"
+        alt="Chef de chantier vu de dos devant un bâtiment tertiaire moderne et une grue."
+        ratio="16:9"
+        width={3200}
+        height={1800}
+        filename="hero-btp-chantier-tertiaire.webp"
+        imageType="Chantier tertiaire, grue et chef de chantier vu de dos"
+        priority
+        overlay="brand"
+        position="58% 48%"
+      />
     </PageHero>
     <TrustBar />
 
@@ -93,6 +106,22 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--compact" aria-label="Emplacement du futur visuel d’audit BTP">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Détail de structure en béton et de ferraillage sur un chantier sécurisé."
+          ratio="4:3"
+          width={2400}
+          height={1800}
+          filename="audit-btp-structure-beton.webp"
+          imageType="Structure béton, ferraillage et détails constructifs"
+          loading="lazy"
+          overlay="light"
+          position="52% 50%"
+        />
+      </div>
+    </section>
+
     <section class="section section--surface" aria-labelledby="mistakes-title">
       <div class="container-wide">
         <SectionHeader kicker="Erreurs fréquentes" title="Quatre écarts à repérer avant une attestation ou une échéance." id="mistakes-title" />
@@ -108,6 +137,23 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
+
+    <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode BTP">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Plans de construction, casque et tablette disposés sur une table de travail."
+          ratio="3:2"
+          width={2400}
+          height={1600}
+          filename="methode-btp-plans-tablette.webp"
+          imageType="Plans, casque, tablette et détails techniques"
+          loading="lazy"
+          overlay="light"
+          position="50% 54%"
+        />
+      </div>
+    </section>
+
     <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="btp_method" />
     </SolutionMethod>
@@ -131,6 +177,22 @@ const structuredData = [
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer un audit des assurances de l’entreprise', description: 'Rassembler les contrats, les déclarations et les échéances avant de hiérarchiser les vérifications.' },
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Distinguer RC professionnelle et RC exploitation', description: 'Comprendre comment les activités, les faits et les clauses orientent la lecture des responsabilités.' },
     ]} />
+    <section class="section section--compact" aria-label="Emplacement de la future texture chantier">
+      <div class="container-wide">
+        <SectionIllustration
+          alt="Texture graphique discrète inspirée des lignes d’une structure de chantier."
+          ratio="21:9"
+          width={2520}
+          height={1080}
+          filename="texture-btp-chantier.webp"
+          imageType="Texture de chantier abstraite, sans marque ni texte"
+          variant="panoramic-texture"
+          loading="lazy"
+          overlay="brand"
+          position="50% 50%"
+        />
+      </div>
+    </section>
     <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

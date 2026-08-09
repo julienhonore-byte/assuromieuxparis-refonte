@@ -1,16 +1,20 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -23,6 +27,44 @@ const contactHref = '/?besoin=flotte&intent=quote&product=flotte#contact';
 const ctaLabel = 'Démarrer ma demande de devis Flotte';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=flotte#contact';
 const auditLabel = 'Faire analyser ma flotte';
+const fleetAnalysisProcess = [
+  { label: 'Comprendre le parc', icon: 'activity' as const },
+  { label: 'Identifier les usages', icon: 'activity' as const },
+  { label: 'Analyser les conducteurs et l’exposition', icon: 'search' as const },
+  { label: 'Étudier les garanties et franchises', icon: 'document' as const },
+  { label: 'Examiner la sinistralité', icon: 'search' as const },
+  { label: 'Comparer les scénarios de couverture', icon: 'market' as const },
+  { label: 'Recommandations et accompagnement', icon: 'recommendation' as const },
+];
+const fleetRisks = [
+  { label: 'Responsabilité civile', icon: 'shield' as const },
+  { label: 'Dommages aux véhicules', icon: 'vehicle' as const },
+  { label: 'Vol', icon: 'continuity' as const },
+  { label: 'Incendie', icon: 'continuity' as const },
+  { label: 'Bris de glace', icon: 'shield' as const },
+  { label: 'Conducteurs', icon: 'people' as const },
+  { label: 'Sinistralité', icon: 'continuity' as const },
+  { label: 'Assistance', icon: 'continuity' as const },
+  { label: 'Immobilisation', icon: 'continuity' as const },
+  { label: 'Usages professionnels', icon: 'network' as const },
+  { label: 'Véhicules spécifiques', icon: 'vehicle' as const },
+];
+const fleetCoverageStages = [
+  { label: 'Parc' },
+  { label: 'Usages' },
+  { label: 'Exposition' },
+  { label: 'Garanties à vérifier', items: ['RC automobile', 'Dommages tous accidents', 'Vol / incendie', 'Bris de glace', 'Assistance', 'Protection conducteur', 'Véhicule de remplacement', 'Garanties spécifiques selon usage'] },
+  { label: 'Contrat Flotte' },
+];
+const fleetReviewTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'État du parc', icon: 'activity' as const },
+  { label: 'Collecte des contrats et relevés', icon: 'document' as const },
+  { label: 'Analyse de la sinistralité', icon: 'search' as const },
+  { label: 'Vérification des garanties et franchises', icon: 'search' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'À partir de combien de véhicules parle-t-on de flotte ?', answer: 'Les pratiques varient selon les assureurs et la composition du parc. Une analyse est nécessaire pour déterminer si un contrat flotte ou une autre organisation est pertinente pour l’entreprise.' },
   { question: 'Les marchandises transportées sont-elles couvertes par l’assurance du véhicule ?', answer: 'Pas automatiquement. La responsabilité civile automobile liée à la circulation, les dommages au véhicule, le matériel ou les marchandises transportées et la responsabilité professionnelle répondent à des logiques différentes qui doivent être articulées.' },
@@ -72,6 +114,11 @@ const structuredData = [
       distinction="Responsabilité civile automobile liée à la circulation, dommages au véhicule, matériel ou marchandises transportées et responsabilité professionnelle ne doivent pas être confondus. Ils peuvent relever de garanties ou contrats distincts."
       variant="flow"
     />
+    <section class="section" aria-label="Cartographie pédagogique des risques d’une flotte automobile">
+      <div class="container-wide">
+        <RiskMap title="Les risques d’une flotte dépassent les seuls dommages aux véhicules." description="Cette cartographie présente les principaux sujets à rapprocher du parc et de ses usages, sans présumer que toutes les garanties figurent systématiquement au contrat." center="Flotte automobile d’entreprise" risks={fleetRisks} />
+      </div>
+    </section>
 
     <ProductReview
       checksTitle="Présenter un parc que le marché peut comprendre."
@@ -96,11 +143,26 @@ const structuredData = [
       note={{ title: 'Un parc vivant exige une procédure simple', text: 'Les entrées, sorties, changements d’affectation et d’usage doivent être transmis selon les modalités du contrat. La qualité de cette gestion limite les écarts administratifs.' }}
       variant="stacked"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique des garanties d’une flotte">
+      <div class="container-wide">
+        <CoverageMap title="Relier le contrat au parc réel et à ses usages." description="Le niveau de protection s’apprécie en rapprochant les véhicules, leurs usages et leur exposition des garanties effectivement prévues au contrat Flotte." stages={fleetCoverageStages} />
+      </div>
+    </section>
 
     <WhatWeAnalyze />
+    <section class="section" aria-label="Méthode d’analyse d’une flotte en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse d’une flotte." description="Sept étapes structurent l’étude du parc, des usages, des garanties et de la sinistralité, sans garantir une baisse de prime." steps={fleetAnalysisProcess} />
+      </div>
+    </section>
     <SolutionMethod title="Transformer les données de flotte en décisions." text="Assuromieux consolide le parc, les usages et la sinistralité, puis analyse les garanties et les franchises. La consultation est préparée sur une base homogène afin de rendre les écarts plus lisibles.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="flotte_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue Flotte">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue Flotte." description="La revue organise les données disponibles et, si elle est pertinente, une consultation du marché, sans promettre une économie ou une acceptation." events={fleetReviewTimeline} />
+      </div>
+    </section>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’analyser votre parc." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/ressources/guides/flotte-automobile-points-analyser-avant-comparer/', label: 'Guide : analyser une flotte avant de comparer', text: 'Préparer le parc, les usages, la sinistralité, les garanties et les franchises.' },

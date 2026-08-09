@@ -1,6 +1,4 @@
 ---
-import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import ConversionActions from '../components/ConversionActions.astro';
 import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
@@ -18,6 +16,7 @@ import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+import { prepareVisual } from '../data/visualLibrary';
 
 const path = '/assurance-transport/';
 const description = 'Assurance transport et logistique : audit des responsabilités, flottes, marchandises, entrepôts, sous-traitance et sinistralité.';
@@ -25,34 +24,11 @@ const contactHref = '/?besoin=assurance-transport&intent=quote&product=assurance
 const ctaLabel = 'Démarrer ma demande de devis Transport';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=assurance-transport#contact';
 const auditLabel = 'Faire analyser mon programme transport';
-const transportImageRoot = '/images/transport';
-const transportAssetExists = (publicPath: string) => existsSync(fileURLToPath(new URL(`../../public${publicPath}`, import.meta.url)));
-const prepareTransportVisual = (baseName: string, widths: number[], masterWidth: number, sizes: string) => {
-  const variants = (format: 'avif' | 'webp') => [
-    ...widths.map((width) => `${transportImageRoot}/${baseName}-${width}.${format}`),
-    `${transportImageRoot}/${baseName}.${format}`,
-  ];
-  const avifFiles = variants('avif');
-  const webpFiles = variants('webp');
-  const ready = [...avifFiles, ...webpFiles].every(transportAssetExists);
-  const srcset = (files: string[]) => files
-    .map((file, index) => `${file} ${index < widths.length ? widths[index] : masterWidth}w`)
-    .join(', ');
-
-  return {
-    image: ready ? `${transportImageRoot}/${baseName}.webp` : undefined,
-    responsive: {
-      avifSrcset: srcset(avifFiles),
-      webpSrcset: srcset(webpFiles),
-      sizes,
-    },
-  };
-};
 const transportVisuals = {
-  hero: prepareTransportVisual('hero-transport-logistique', [960, 1280, 1600, 2000], 3200, '(max-width: 768px) 100vw, (max-width: 1280px) 44vw, 576px'),
-  audit: prepareTransportVisual('audit-transport-entrepot', [640, 960, 1280, 1600], 2400, '(max-width: 768px) 100vw, 1180px'),
-  method: prepareTransportVisual('methode-transport-analyse-documentaire', [640, 960, 1280, 1600], 2400, '(max-width: 768px) 100vw, 1180px'),
-  texture: prepareTransportVisual('texture-transport-logistique', [768, 1280, 1600], 2520, '(max-width: 768px) 100vw, 1180px'),
+  hero: prepareVisual('transport', 'hero-transport-logistique', 'hero'),
+  audit: prepareVisual('transport', 'audit-transport-entrepot', 'audit'),
+  method: prepareVisual('transport', 'methode-transport-analyse-documentaire', 'method'),
+  texture: prepareVisual('transport', 'texture-transport-logistique', 'texture'),
 };
 const auditProcess = [
   { label: 'Découverte', icon: 'activity' as const },

@@ -12,6 +12,7 @@ import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
 import RiskMap from '../components/RiskMap.astro';
+import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TimelineDiagram from '../components/TimelineDiagram.astro';
@@ -19,8 +20,10 @@ import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+import { prepareVisual } from '../data/visualLibrary';
 
 const path = '/cyberassurance/';
+const pageVisuals = { hero: prepareVisual('cyber', 'hero-cyber-infrastructure-numerique', 'hero'), audit: prepareVisual('cyber', 'audit-cyber-salle-serveur', 'audit'), method: prepareVisual('cyber', 'methode-cyber-securite-documentation', 'method'), texture: prepareVisual('cyber', 'texture-cyber-reseau', 'texture') };
 const title = 'Cyberassurance entreprise et risques numériques | Assuromieux Paris';
 const description = 'Cyberassurance entreprise : analyse des données, interruptions, assistance de crise, restauration, responsabilités, prévention et exclusions.';
 const contactHref = '/?besoin=cyber&intent=quote&product=cyber#contact';
@@ -91,6 +94,7 @@ const structuredData = [
       <ProductHeroDiagram slot="visual" label="Risque cyber" items={['Prévention', 'Incident', 'Assistance', 'Reprise']} variant="steps" />
     </PageHero>
     <TrustBar />
+    <section class="section section--compact" aria-label="Illustration de l’expertise Cyber"><div class="container-wide"><SectionIllustration image={pageVisuals.hero.image} responsive={pageVisuals.hero.responsive} alt="Infrastructure numérique moderne avec serveurs et supervision professionnelle." ratio="16:9" width={3200} height={1800} filename="hero-cyber-infrastructure-numerique.webp" imageType="Infrastructure numérique et supervision" priority overlay="brand" /></div></section>
 
     <ProductAudience
       title="Aux entreprises dont l’activité dépend de données, logiciels, réseaux ou prestataires numériques."
@@ -150,6 +154,7 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
+    <section class="section section--compact section--surface" aria-label="Illustration de la méthode Cyber"><div class="container-wide"><SectionIllustration image={pageVisuals.method.image} responsive={pageVisuals.method.responsive} alt="Analyse de sécurité numérique accompagnée de documents techniques." ratio="3:2" width={2400} height={1600} filename="methode-cyber-securite-documentation.webp" imageType="Sécurité numérique et documentation" loading="lazy" overlay="light" /></div></section>
     <section class="section" aria-label="Méthode d’analyse du risque cyber en sept étapes">
       <div class="container-wide">
         <ProcessDiagram title="Notre méthode d’analyse du risque cyber." description="Sept étapes structurent l’étude de l’activité, des dépendances, de la prévention et du contrat, sans garantir l’absence d’incident ni l’acceptation par un assureur." steps={cyberAnalysisProcess} />
@@ -175,6 +180,8 @@ const structuredData = [
       { href: '/ressources/guides/comment-auditer-assurances-entreprise/', title: 'Préparer un audit du programme d’assurances', description: 'Identifier les dépendances, les contrats et les informations à réunir avant l’analyse.' },
       { href: '/ressources/guides/rc-professionnelle-rc-exploitation-differences/', title: 'Distinguer les responsabilités de l’entreprise', description: 'Lire les prestations, les faits générateurs et les clauses avant de qualifier une garantie.' },
     ]} />
+    <section class="section section--compact" aria-label="Illustration d’un audit Cyber"><div class="container-wide"><SectionIllustration image={pageVisuals.audit.image} responsive={pageVisuals.audit.responsive} alt="Salle serveur moderne observée dans un environnement numérique réel." ratio="4:3" width={2400} height={1800} filename="audit-cyber-salle-serveur.webp" imageType="Salle serveur et environnement réel" loading="lazy" overlay="light" /></div></section>
+    <section class="section section--compact" aria-label="Texture visuelle Cyber"><div class="container-wide"><SectionIllustration image={pageVisuals.texture.image} responsive={pageVisuals.texture.responsive} alt="Texture panoramique abstraite évoquant un réseau numérique sécurisé." ratio="21:9" width={2520} height={1080} filename="texture-cyber-reseau.webp" imageType="Texture de réseau numérique" variant="panoramic-texture" loading="lazy" overlay="brand" /></div></section>
     <PageCTA title="Votre organisation saurait-elle mobiliser le contrat pendant une crise ?" text="Décrivez vos outils essentiels, vos sauvegardes et vos dépendances pour identifier les scénarios et clauses à examiner." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>

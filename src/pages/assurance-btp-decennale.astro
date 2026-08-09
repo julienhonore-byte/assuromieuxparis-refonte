@@ -16,6 +16,7 @@ import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
+import { prepareVisual } from '../data/visualLibrary';
 
 const path = '/assurance-btp-decennale/';
 const description = 'Assurance BTP et décennale : analyse des activités déclarées, attestations, procédés, sous-traitance, véhicules et multirisque.';
@@ -23,6 +24,12 @@ const contactHref = '/?besoin=assurance-btp-decennale&intent=quote&product=assur
 const ctaLabel = 'Démarrer ma demande de devis Décennale';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=assurance-btp-decennale#contact';
 const auditLabel = 'Vérifier mes activités et mes contrats';
+const btpVisuals = {
+  hero: prepareVisual('btp', 'hero-btp-chantier-tertiaire', 'hero'),
+  audit: prepareVisual('btp', 'audit-btp-structure-beton', 'audit'),
+  method: prepareVisual('btp', 'methode-btp-plans-tablette', 'method'),
+  texture: prepareVisual('btp', 'texture-btp-chantier', 'texture'),
+};
 const btpAnalysisProcess = [
   { label: 'Découverte de l’activité', icon: 'activity' as const },
   { label: 'Identification précise des travaux réalisés', icon: 'search' as const },
@@ -84,6 +91,8 @@ const structuredData = [
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="btp_hero" />
       <SectionIllustration
         slot="visual"
+        image={btpVisuals.hero.image}
+        responsive={btpVisuals.hero.responsive}
         alt="Chef de chantier vu de dos devant un bâtiment tertiaire moderne et une grue."
         ratio="16:9"
         width={3200}
@@ -156,6 +165,8 @@ const structuredData = [
     <section class="section section--compact" aria-label="Emplacement du futur visuel d’audit BTP">
       <div class="container-wide">
         <SectionIllustration
+          image={btpVisuals.audit.image}
+          responsive={btpVisuals.audit.responsive}
           alt="Détail de structure en béton et de ferraillage sur un chantier sécurisé."
           ratio="4:3"
           width={2400}
@@ -200,6 +211,8 @@ const structuredData = [
     <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode BTP">
       <div class="container-wide">
         <SectionIllustration
+          image={btpVisuals.method.image}
+          responsive={btpVisuals.method.responsive}
           alt="Plans de construction, casque et tablette disposés sur une table de travail."
           ratio="3:2"
           width={2400}
@@ -245,6 +258,8 @@ const structuredData = [
     <section class="section section--compact" aria-label="Emplacement de la future texture chantier">
       <div class="container-wide">
         <SectionIllustration
+          image={btpVisuals.texture.image}
+          responsive={btpVisuals.texture.responsive}
           alt="Texture graphique discrète inspirée des lignes d’une structure de chantier."
           ratio="21:9"
           width={2520}

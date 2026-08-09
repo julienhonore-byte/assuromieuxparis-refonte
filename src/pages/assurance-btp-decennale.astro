@@ -1,13 +1,17 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -19,6 +23,43 @@ const contactHref = '/?besoin=assurance-btp-decennale&intent=quote&product=assur
 const ctaLabel = 'Démarrer ma demande de devis Décennale';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=assurance-btp-decennale#contact';
 const auditLabel = 'Vérifier mes activités et mes contrats';
+const btpAnalysisProcess = [
+  { label: 'Découverte de l’activité', icon: 'activity' as const },
+  { label: 'Identification précise des travaux réalisés', icon: 'search' as const },
+  { label: 'Lecture des activités déclarées au contrat', icon: 'document' as const },
+  { label: 'Analyse des garanties et exclusions', icon: 'search' as const },
+  { label: 'Vérification de la cohérence contrat / activité réelle', icon: 'document' as const },
+  { label: 'Consultation du marché', note: 'Si nécessaire', icon: 'market' as const },
+  { label: 'Recommandations et accompagnement', icon: 'recommendation' as const },
+];
+const btpRisks = [
+  { label: 'Responsabilité décennale', icon: 'shield' as const },
+  { label: 'RC professionnelle', icon: 'shield' as const },
+  { label: 'RC exploitation', icon: 'shield' as const },
+  { label: 'Dommages en cours de chantier', icon: 'continuity' as const },
+  { label: 'Sous-traitance', icon: 'network' as const },
+  { label: 'Activités déclarées', icon: 'continuity' as const },
+  { label: 'Matériels et locaux', icon: 'goods' as const },
+  { label: 'Salariés', icon: 'people' as const },
+  { label: 'Véhicules', icon: 'vehicle' as const },
+  { label: 'Cyber / continuité', icon: 'cyber' as const },
+];
+const btpCoverageStages = [
+  { label: 'Entreprise' },
+  { label: 'Activités réellement exercées' },
+  { label: 'Risques' },
+  { label: 'Garanties à vérifier', items: ['Décennale', 'RC professionnelle', 'RC exploitation', 'Dommages en cours de chantier', 'Multirisque professionnelle', 'Flotte automobile'] },
+  { label: 'Contrats et attestations' },
+];
+const decennialReviewTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Description des activités', icon: 'people' as const },
+  { label: 'Collecte du contrat et de l’attestation', icon: 'document' as const },
+  { label: 'Analyse des activités déclarées', icon: 'search' as const },
+  { label: 'Vérification des garanties, exclusions et limites', icon: 'search' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'La décennale suffit-elle à couvrir une entreprise du BTP ?', answer: 'Non. Selon l’activité, il faut aussi examiner la RC professionnelle, les locaux, matériels, véhicules, salariés, sous-traitants et conséquences d’une interruption d’activité.' },
   { question: 'Pourquoi vérifier les activités déclarées ?', answer: 'L’attestation et le contrat doivent rester cohérents avec les travaux réellement réalisés. Les libellés, procédés et évolutions d’activité méritent donc une lecture attentive.' },
@@ -84,6 +125,12 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section" aria-label="Cartographie pédagogique des risques BTP">
+      <div class="container-wide">
+        <RiskMap title="Les risques d’une entreprise du BTP forment un ensemble." description="Cette cartographie présente les principaux sujets à rapprocher de l’activité de construction, sans présumer de leur caractère obligatoire ni de leur inclusion dans un contrat." center="Entreprise du BTP" risks={btpRisks} />
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="checks-title">
       <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
@@ -122,6 +169,12 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--surface" aria-label="Architecture pédagogique des garanties BTP">
+      <div class="container-wide">
+        <CoverageMap title="Relier les activités réelles aux contrats et attestations." description="La cohérence entre activité réelle, activité déclarée, garantie et contrat reste le point central ; une attestation décennale ne suffit pas, à elle seule, à établir cette cohérence." stages={btpCoverageStages} />
+      </div>
+    </section>
+
     <section class="section section--surface" aria-labelledby="mistakes-title">
       <div class="container-wide">
         <SectionHeader kicker="Erreurs fréquentes" title="Quatre écarts à repérer avant une attestation ou une échéance." id="mistakes-title" />
@@ -137,6 +190,12 @@ const structuredData = [
     </section>
 
     <WhatWeAnalyze />
+
+    <section class="section" aria-label="Méthode d’analyse BTP et décennale en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse BTP et décennale." description="Sept étapes structurent la revue des activités et des contrats. Cette analyse ne vaut ni validation juridique de l’activité ni garantie automatique de couverture." steps={btpAnalysisProcess} />
+      </div>
+    </section>
 
     <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode BTP">
       <div class="container-wide">
@@ -157,6 +216,12 @@ const structuredData = [
     <SolutionMethod title="Une méthode commune, adaptée au BTP." text="Les quatre temps Assuromieux sont appliqués aux activités, attestations et autres contrats du programme. Le suivi accompagne ensuite les évolutions de l’entreprise.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="btp_method" />
     </SolutionMethod>
+
+    <section class="section" aria-label="Déroulement chronologique d’une revue décennale">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue décennale." description="La revue organise les informations disponibles et les points à vérifier, sans se substituer aux décisions de l’assureur ni à une analyse juridique lorsqu’elle est nécessaire." events={decennialReviewTimeline} />
+      </div>
+    </section>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">

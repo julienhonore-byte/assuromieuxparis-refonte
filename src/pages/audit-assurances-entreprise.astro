@@ -7,6 +7,7 @@ import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -18,6 +19,15 @@ const contactHref = '/?besoin=comparaison-assurances&intent=quote&product=compar
 const ctaLabel = 'Recevoir un devis personnalisé';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=audit-assurances-entreprise#contact';
 const auditLabel = 'Faire analyser mes contrats';
+const auditMissionTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Définition du périmètre', icon: 'search' as const },
+  { label: 'Collecte des documents', icon: 'document' as const },
+  { label: 'Analyse', icon: 'search' as const },
+  { label: 'Échanges et clarifications', icon: 'people' as const },
+  { label: 'Consultation éventuelle', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'Quand demander un audit de ses assurances ?', answer: 'Avant une échéance importante, après une évolution d’activité, une hausse sensible de cotisation ou lorsque plusieurs contrats ont été ajoutés sans vision consolidée.' },
   { question: 'Quels documents faut-il préparer ?', answer: 'Les contrats et avenants disponibles, les appels de cotisation, une description de l’activité et, selon le périmètre, les éléments de sinistralité, de flotte, de locaux ou d’obligations clients.' },
@@ -96,6 +106,11 @@ const structuredData = [
     <SolutionMethod title="Quatre étapes, puis un suivi adapté." text="À l’issue de l’analyse, une synthèse adaptée au périmètre présente les contrats étudiés, les points cohérents, les vigilances, les priorités et les scénarios à arbitrer. Son niveau de détail dépend de la complexité du programme et des documents disponibles.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="audit_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une mission d’audit">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une mission d’audit." description="Sept étapes structurent le cadrage, l’analyse et la restitution, avec une consultation du marché uniquement lorsqu’elle est pertinente." events={auditMissionTimeline} />
+      </div>
+    </section>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">

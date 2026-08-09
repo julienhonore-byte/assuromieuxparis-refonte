@@ -7,6 +7,7 @@ import HomeHero from '../components/HomeHero.astro';
 import HomeMethodTimeline from '../components/HomeMethodTimeline.astro';
 import PageCTA from '../components/PageCTA.astro';
 import ProductSelector from '../components/ProductSelector.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { insuranceProducts } from '../data/products';
@@ -16,6 +17,16 @@ const primaryHref = '/?besoin=comparaison-assurances&intent=quote&product=compar
 const primaryLabel = 'Recevoir un devis personnalisé';
 const secondaryHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=audit-assurances-entreprise#contact';
 const secondaryLabel = 'Faire analyser mes contrats';
+const businessRiskFamilies = [
+  { label: 'Responsabilités', icon: 'shield' as const },
+  { label: 'Transport', icon: 'goods' as const },
+  { label: 'Construction', icon: 'continuity' as const },
+  { label: 'Flotte', icon: 'vehicle' as const },
+  { label: 'Santé / Prévoyance', icon: 'people' as const },
+  { label: 'Cyber', icon: 'cyber' as const },
+  { label: 'Locaux et biens', icon: 'goods' as const },
+  { label: 'Protection du dirigeant', icon: 'people' as const },
+];
 
 const faqItems = [
   {
@@ -154,6 +165,12 @@ const structuredData = [
           <li><span>03</span><h3>Les risques</h3><p>Expositions prioritaires et conséquences possibles.</p></li>
           <li><span>04</span><h3>Les solutions du marché</h3><p>Maintien, ajustement ou mise en concurrence.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Cartographie pédagogique des grands univers de risques professionnels">
+      <div class="container-wide">
+        <RiskMap title="Les grands univers de risques de l’entreprise." description="Cette cartographie donne une lecture transversale des principales familles à analyser, sans présumer des garanties nécessaires dans chaque situation." center="Entreprise" risks={businessRiskFamilies} />
       </div>
     </section>
 

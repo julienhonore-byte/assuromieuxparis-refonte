@@ -16,7 +16,11 @@ const assetExists = (publicPath: string) => existsSync(
 
 export const prepareVisual = (directory: string, baseName: string, kind: VisualKind) => {
   const root = `/images/${directory}`;
-  const { widths, masterWidth, sizes } = profiles[kind];
+  const profile = profiles[kind];
+  const widths = baseName === 'hero-home-paris-professionnel'
+    ? [640, ...profile.widths]
+    : profile.widths;
+  const { masterWidth, sizes } = profile;
   const variants = (format: 'avif' | 'webp') => [
     ...widths.map((width) => `${root}/${baseName}-${width}.${format}`),
     `${root}/${baseName}.${format}`,

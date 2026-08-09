@@ -1,16 +1,20 @@
 ---
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import ProductAudience from '../components/ProductAudience.astro';
 import ProductHeroDiagram from '../components/ProductHeroDiagram.astro';
 import ProductReview from '../components/ProductReview.astro';
 import ProductRiskOverview from '../components/ProductRiskOverview.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
+import RiskMap from '../components/RiskMap.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -23,6 +27,44 @@ const contactHref = '/?besoin=cyber&intent=quote&product=cyber#contact';
 const ctaLabel = 'Recevoir mon devis Cyber';
 const auditHref = '/?besoin=audit-assurances-entreprise&intent=audit&product=cyber#contact';
 const auditLabel = 'Faire analyser mon exposition cyber';
+const cyberAnalysisProcess = [
+  { label: 'Comprendre l’activité', icon: 'activity' as const },
+  { label: 'Identifier les systèmes et données critiques', icon: 'search' as const },
+  { label: 'Analyser les dépendances numériques et prestataires', icon: 'search' as const },
+  { label: 'Examiner les mesures de prévention existantes', icon: 'search' as const },
+  { label: 'Étudier les garanties et exclusions du contrat', icon: 'document' as const },
+  { label: 'Consulter le marché si nécessaire', icon: 'market' as const },
+  { label: 'Formuler des recommandations', icon: 'recommendation' as const },
+];
+const cyberRisks = [
+  { label: 'Ransomware', icon: 'continuity' as const },
+  { label: 'Vol ou fuite de données', icon: 'cyber' as const },
+  { label: 'Interruption d’activité', icon: 'continuity' as const },
+  { label: 'Fraude / ingénierie sociale', icon: 'people' as const },
+  { label: 'Atteinte aux systèmes', icon: 'network' as const },
+  { label: 'Prestataires et sous-traitants', icon: 'network' as const },
+  { label: 'Responsabilité vis-à-vis des tiers', icon: 'shield' as const },
+  { label: 'Frais de gestion de crise', icon: 'continuity' as const },
+  { label: 'Cyber-extorsion', icon: 'continuity' as const },
+  { label: 'Atteinte à la réputation', icon: 'people' as const },
+];
+const cyberCoverageStages = [
+  { label: 'Activité' },
+  { label: 'Systèmes et données' },
+  { label: 'Exposition' },
+  { label: 'Mesures de prévention' },
+  { label: 'Garanties à vérifier', items: ['Gestion de crise', 'Frais informatiques', 'Interruption d’activité', 'Responsabilité', 'Atteinte aux données', 'Fraude / cybercriminalité selon contrat', 'Assistance spécialisée'] },
+  { label: 'Contrat Cyber' },
+];
+const cyberReviewTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Identification des activités et données sensibles', icon: 'search' as const },
+  { label: 'Collecte des contrats et éléments de prévention', icon: 'document' as const },
+  { label: 'Analyse des risques et dépendances', icon: 'search' as const },
+  { label: 'Vérification des garanties et exclusions', icon: 'search' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution et accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'La cyberassurance remplace-t-elle les mesures de sécurité ?', answer: 'Non. Elle complète la prévention et la capacité de réponse. Sauvegardes, mises à jour, contrôle des accès, sensibilisation et procédures de crise restent essentiels et peuvent conditionner la souscription ou la garantie.' },
   { question: 'Quels événements peuvent être étudiés ?', answer: 'Selon le contrat, l’analyse peut porter sur une attaque, un rançongiciel, une atteinte aux données, une interruption, des frais de restauration, une assistance de crise ou une responsabilité envers des tiers. Aucune garantie ne doit être présumée.' },
@@ -72,6 +114,11 @@ const structuredData = [
       distinction="L’assurance complète la prévention, elle ne la remplace pas. Les mesures de sécurité, sauvegardes et procédures déclarées doivent correspondre aux pratiques réelles et aux exigences applicables du contrat."
       variant="columns"
     />
+    <section class="section" aria-label="Cartographie pédagogique des risques cyber">
+      <div class="container-wide">
+        <RiskMap title="Les risques cyber dépassent la seule atteinte aux systèmes." description="Cette cartographie présente les principales expositions à analyser sans présumer que tous les événements ou frais sont systématiquement assurés." center="Entreprise" risks={cyberRisks} />
+      </div>
+    </section>
 
     <ProductReview
       checksTitle="Décrire l’environnement avant de mesurer le transfert."
@@ -96,11 +143,26 @@ const structuredData = [
       note={{ title: 'L’assurance complète la prévention, elle ne la remplace pas', text: 'La couverture transfère certaines conséquences selon le contrat. Elle ne dispense ni de sécuriser les accès, ni de maintenir les systèmes, ni de tester les sauvegardes et la réponse de crise.' }}
       variant="split"
     />
+    <section class="section section--surface" aria-label="Architecture pédagogique de la protection cyber">
+      <div class="container-wide">
+        <CoverageMap title="Relier le contrat aux systèmes, aux données et aux dépendances réelles." description="La protection s’apprécie en rapprochant l’exposition et les mesures de prévention des garanties, limites et exclusions effectivement prévues au contrat Cyber." stages={cyberCoverageStages} />
+      </div>
+    </section>
 
     <WhatWeAnalyze />
+    <section class="section" aria-label="Méthode d’analyse du risque cyber en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’analyse du risque cyber." description="Sept étapes structurent l’étude de l’activité, des dépendances, de la prévention et du contrat, sans garantir l’absence d’incident ni l’acceptation par un assureur." steps={cyberAnalysisProcess} />
+      </div>
+    </section>
     <SolutionMethod title="Analyser le scénario avant la garantie." text="Assuromieux fait décrire l’environnement et les dépendances, relit le questionnaire et les exclusions, puis compare les services et limites. Les recommandations distinguent prévention, transfert d’assurance et organisation de crise.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="cyber_method" />
     </SolutionMethod>
+    <section class="section" aria-label="Déroulement chronologique d’une revue Cyber">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’une revue Cyber." description="La revue organise les informations disponibles et, si elle est pertinente, une consultation du marché, sans promettre une protection absolue ou une indemnisation automatique." events={cyberReviewTimeline} />
+      </div>
+    </section>
     <section class="section section--surface" aria-labelledby="faq-title"><div class="container faq-layout"><SectionHeader kicker="Questions fréquentes" title="Avant d’étudier une cyberassurance." id="faq-title" /><FAQ items={faqItems} /></div></section>
     <RelatedLinks items={[
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer prestations, tiers et responsabilité numérique.' },

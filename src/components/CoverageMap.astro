@@ -1,0 +1,30 @@
+---
+import DiagramFrame from './DiagramFrame.astro';
+interface Stage { label: string; items?: string[]; }
+interface Props { title: string; description: string; stages: Stage[]; }
+const { title, description, stages } = Astro.props;
+---
+
+<DiagramFrame eyebrow="Architecture" {title} intro={description}>
+  <ol class="coverage-map" aria-label={title}>
+    {stages.map((stage, index) => (
+      <li class:list={{ 'coverage-map__stage--expanded': stage.items?.length }}>
+        <div><span>{String(index + 1).padStart(2, '0')}</span><strong>{stage.label}</strong></div>
+        {stage.items && <ul>{stage.items.map((item) => <li>{item}</li>)}</ul>}
+      </li>
+    ))}
+  </ol>
+</DiagramFrame>
+
+<style>
+  .coverage-map { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
+  .coverage-map > li { position: relative; min-width: 0; }
+  .coverage-map > li:not(:last-child)::after { position: absolute; top: 2.25rem; left: calc(100% + .3rem); width: calc(var(--space-5) - .6rem); height: 1px; content: ''; background: var(--diagram-gold); }
+  .coverage-map > li:not(:last-child)::before { position: absolute; z-index: 1; top: 2.02rem; right: calc(var(--space-5) * -1 + .15rem); content: '›'; color: var(--diagram-gold); font-size: 1.2rem; }
+  .coverage-map > li > div { display: grid; gap: var(--space-2); min-height: 4.5rem; padding: var(--space-3); background: var(--diagram-surface); border: 1px solid var(--diagram-line); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+  .coverage-map span { color: var(--diagram-gold); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .coverage-map strong { color: var(--diagram-ink); line-height: 1.3; }
+  .coverage-map ul { display: grid; gap: var(--space-2); margin: var(--space-3) 0 0; padding: 0; list-style: none; }
+  .coverage-map ul li { padding: .55rem .65rem; color: var(--diagram-deep); background: rgba(238,244,250,.9); border-left: 2px solid var(--diagram-gold); border-radius: 0 var(--radius-small) var(--radius-small) 0; font-size: var(--font-size-xs); line-height: 1.3; }
+  @media (max-width: 900px) { .coverage-map { grid-template-columns: 1fr; gap: var(--space-4); } .coverage-map > li:not(:last-child)::after { top: 100%; left: 2rem; width: 1px; height: var(--space-4); } .coverage-map > li:not(:last-child)::before { top: calc(100% - .1rem); right: auto; left: 1.76rem; transform: rotate(90deg); } }
+</style>

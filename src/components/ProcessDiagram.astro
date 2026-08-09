@@ -1,0 +1,32 @@
+---
+import DiagramFrame from './DiagramFrame.astro';
+import DiagramIcon from './DiagramIcon.astro';
+type Icon = Parameters<typeof DiagramIcon>[0] extends never ? never : 'activity' | 'document' | 'search' | 'market' | 'recommendation' | 'support';
+interface Step { label: string; note?: string; icon: Icon; }
+interface Props { title: string; description: string; steps: Step[]; eyebrow?: string; }
+const { title, description, steps, eyebrow = 'Méthode' } = Astro.props;
+---
+
+<DiagramFrame {eyebrow} {title} intro={description}>
+  <ol class="process-diagram" aria-label={title}>
+    {steps.map((step, index) => (
+      <li>
+        <span class="process-diagram__index">{String(index + 1).padStart(2, '0')}</span>
+        <span class="process-diagram__icon"><DiagramIcon id={`process-${index + 1}`} icon={step.icon} label={step.label} /></span>
+        <span class="process-diagram__copy"><strong>{step.label}</strong>{step.note && <small>{step.note}</small>}</span>
+      </li>
+    ))}
+  </ol>
+</DiagramFrame>
+
+<style>
+  .process-diagram { position: relative; display: grid; gap: var(--space-3); max-width: 44rem; margin: 0 auto; padding: 0; list-style: none; }
+  .process-diagram::before { position: absolute; top: 2rem; bottom: 2rem; left: 3.15rem; width: 1px; content: ''; background: linear-gradient(var(--diagram-gold), var(--diagram-line)); }
+  .process-diagram li { position: relative; display: grid; grid-template-columns: 2rem 2.5rem minmax(0, 1fr); gap: var(--space-3); align-items: center; min-height: 4.5rem; padding: var(--space-3) var(--space-4); background: var(--diagram-surface); border: 1px solid var(--diagram-line); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+  .process-diagram__index { color: var(--diagram-gold); font-size: var(--font-size-xs); font-weight: var(--font-weight-heading); }
+  .process-diagram__icon { z-index: 1; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; color: var(--diagram-deep); background: var(--color-surface); border: 1px solid var(--diagram-line); border-radius: 50%; }
+  .process-diagram__copy { display: grid; gap: .15rem; }
+  .process-diagram strong { color: var(--diagram-ink); }
+  .process-diagram small { color: var(--color-text-soft); font-size: var(--font-size-sm); }
+  @media (max-width: 520px) { .process-diagram li { grid-template-columns: 1.7rem 2.35rem minmax(0, 1fr); padding-inline: var(--space-3); } .process-diagram::before { left: 2.8rem; } }
+</style>

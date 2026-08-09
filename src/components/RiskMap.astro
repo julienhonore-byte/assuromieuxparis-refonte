@@ -1,0 +1,31 @@
+---
+import DiagramFrame from './DiagramFrame.astro';
+import DiagramIcon from './DiagramIcon.astro';
+type RiskIcon = 'vehicle' | 'goods' | 'shield' | 'people' | 'network' | 'globe' | 'cyber' | 'continuity';
+interface Risk { label: string; icon: RiskIcon; }
+interface Props { title: string; description: string; center: string; risks: Risk[]; }
+const { title, description, center, risks } = Astro.props;
+---
+
+<DiagramFrame eyebrow="Cartographie" {title} intro={description} tone="surface">
+  <div class="risk-map" role="group" aria-label={`${center} reliée à ${risks.map((risk) => risk.label).join(', ')}`}>
+    <div class="risk-map__center"><span>Centre</span><strong>{center}</strong></div>
+    <ul>
+      {risks.map((risk, index) => <li><span><DiagramIcon id={`risk-${index + 1}`} icon={risk.icon} label={risk.label} /></span><strong>{risk.label}</strong></li>)}
+    </ul>
+  </div>
+</DiagramFrame>
+
+<style>
+  .risk-map { position: relative; display: grid; grid-template-columns: minmax(12rem, .65fr) minmax(0, 1.35fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+  .risk-map::before { position: absolute; top: 50%; left: 28%; width: 28%; height: 1px; content: ''; background: linear-gradient(90deg, var(--diagram-gold), var(--diagram-line)); }
+  .risk-map__center { z-index: 1; display: grid; gap: var(--space-2); place-content: center; min-height: 12rem; padding: var(--space-6); text-align: center; background: var(--color-brand-ink); border: 1px solid rgba(201,154,70,.5); border-radius: 50%; box-shadow: 0 1rem 2.5rem rgba(7,28,51,.16); }
+  .risk-map__center span { color: var(--color-gold-soft); font-size: var(--font-size-xs); letter-spacing: .08em; text-transform: uppercase; }
+  .risk-map__center strong { max-width: 11ch; color: white; font-size: var(--font-size-h4); line-height: var(--line-height-heading); }
+  .risk-map ul { z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+  .risk-map li { display: grid; gap: var(--space-2); align-content: start; min-height: 7.5rem; padding: var(--space-4); background: var(--diagram-surface); border: 1px solid var(--diagram-line); border-radius: var(--radius-card); }
+  .risk-map li span { color: var(--diagram-gold); }
+  .risk-map li strong { color: var(--diagram-ink); font-size: var(--font-size-sm); line-height: 1.35; }
+  @media (max-width: 820px) { .risk-map { grid-template-columns: 1fr; } .risk-map::before { top: 10rem; left: 50%; width: 1px; height: 5rem; } .risk-map__center { width: 12rem; margin-inline: auto; } }
+  @media (max-width: 560px) { .risk-map ul { grid-template-columns: repeat(2,minmax(0,1fr)); } .risk-map li:last-child { grid-column: 1 / -1; min-height: auto; } }
+</style>

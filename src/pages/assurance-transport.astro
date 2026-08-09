@@ -2,14 +2,18 @@
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import ConversionActions from '../components/ConversionActions.astro';
+import CoverageMap from '../components/CoverageMap.astro';
 import FAQ from '../components/FAQ.astro';
 import PageCTA from '../components/PageCTA.astro';
 import PageHero from '../components/PageHero.astro';
+import ProcessDiagram from '../components/ProcessDiagram.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import RelatedResources from '../components/RelatedResources.astro';
 import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
+import RiskMap from '../components/RiskMap.astro';
+import TimelineDiagram from '../components/TimelineDiagram.astro';
 import TrustBar from '../components/TrustBar.astro';
 import WhatWeAnalyze from '../components/WhatWeAnalyze.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
@@ -50,6 +54,42 @@ const transportVisuals = {
   method: prepareTransportVisual('methode-transport-analyse-documentaire', [640, 960, 1280, 1600], 2400, '(max-width: 768px) 100vw, 1180px'),
   texture: prepareTransportVisual('texture-transport-logistique', [768, 1280, 1600], 2520, '(max-width: 768px) 100vw, 1180px'),
 };
+const auditProcess = [
+  { label: 'Découverte', icon: 'activity' as const },
+  { label: 'Analyse de l’activité', icon: 'activity' as const },
+  { label: 'Étude des contrats', icon: 'document' as const },
+  { label: 'Identification des écarts', icon: 'search' as const },
+  { label: 'Consultation du marché', note: 'Si pertinente', icon: 'market' as const },
+  { label: 'Recommandations', icon: 'recommendation' as const },
+  { label: 'Accompagnement', icon: 'support' as const },
+];
+const transportRisks = [
+  { label: 'Flotte automobile', icon: 'vehicle' as const },
+  { label: 'Marchandises transportées', icon: 'goods' as const },
+  { label: 'RC professionnelle', icon: 'shield' as const },
+  { label: 'RC exploitation', icon: 'shield' as const },
+  { label: 'Conducteurs', icon: 'people' as const },
+  { label: 'Sous-traitance', icon: 'network' as const },
+  { label: 'International', icon: 'globe' as const },
+  { label: 'Cyber', icon: 'cyber' as const },
+  { label: 'Continuité d’activité', icon: 'continuity' as const },
+];
+const coverageStages = [
+  { label: 'Entreprise' },
+  { label: 'Activité' },
+  { label: 'Risques' },
+  { label: 'Garanties', items: ['RC professionnelle', 'RC exploitation', 'Flotte automobile', 'Assurance marchandises', 'Protection juridique', 'Cyber'] },
+  { label: 'Contrats' },
+];
+const auditTimeline = [
+  { label: 'Prise de contact', icon: 'activity' as const },
+  { label: 'Collecte documentaire', icon: 'document' as const },
+  { label: 'Analyse', icon: 'search' as const },
+  { label: 'Échanges', icon: 'people' as const },
+  { label: 'Consultation éventuelle du marché', icon: 'market' as const, optional: true },
+  { label: 'Restitution', icon: 'recommendation' as const },
+  { label: 'Accompagnement', icon: 'support' as const },
+];
 const faqItems = [
   { question: 'Quels métiers sont concernés ?', answer: 'Le transport routier de marchandises, la commission de transport, la logistique, l’exploitation d’entrepôts, le déménagement, le convoyage et les entreprises disposant d’une flotte significative peuvent être concernés.' },
   { question: 'La flotte suffit-elle à couvrir une activité de transport ?', answer: 'Non. Les véhicules ne traitent pas à eux seuls les responsabilités du transporteur, les marchandises confiées, le stockage, la sous-traitance ou l’interruption d’activité.' },
@@ -150,6 +190,12 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section" aria-label="Cartographie pédagogique des risques Transport">
+      <div class="container-wide">
+        <RiskMap title="Les risques d’une entreprise de transport forment un ensemble." description="Cette cartographie permet de visualiser les principaux sujets à rapprocher avant d’examiner les contrats." center="Entreprise de transport" risks={transportRisks} />
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="checks-title">
       <div class="container-wide content-grid content-grid--reverse">
         <div class="editorial-panel">
@@ -190,7 +236,19 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section section--surface" aria-label="Architecture pédagogique des garanties Transport">
+      <div class="container-wide">
+        <CoverageMap title="Relier l’activité aux contrats." description="Une lecture cohérente part de l’entreprise et de ses risques avant d’examiner l’architecture des garanties." stages={coverageStages} />
+      </div>
+    </section>
+
     <WhatWeAnalyze />
+
+    <section class="section" aria-label="Méthode d’audit Transport en sept étapes">
+      <div class="container-wide">
+        <ProcessDiagram title="Notre méthode d’audit Transport." description="Sept étapes structurent l’analyse, de la découverte de l’exploitation à l’accompagnement des décisions." steps={auditProcess} />
+      </div>
+    </section>
 
     <section class="section section--compact section--surface" aria-label="Emplacement du futur visuel de méthode transport">
       <div class="container-wide">
@@ -213,6 +271,12 @@ const structuredData = [
     <SolutionMethod title="Une méthode commune, adaptée au transport." text="L’analyse sectorielle conserve les quatre temps Assuromieux et accorde une attention particulière aux flux, aux responsabilités et à la sinistralité.">
       <ConversionActions slot="actions" primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} tone="dark" density="compact" analyticsLocation="method" analyticsSource="transport_method" />
     </SolutionMethod>
+
+    <section class="section" aria-label="Déroulement chronologique d’un audit Transport">
+      <div class="container-wide">
+        <TimelineDiagram title="Le déroulement d’un audit." description="Le rythme s’adapte aux informations disponibles et à la pertinence d’une éventuelle consultation du marché." events={auditTimeline} />
+      </div>
+    </section>
 
     <section class="section section--surface" aria-labelledby="faq-title">
       <div class="container faq-layout">

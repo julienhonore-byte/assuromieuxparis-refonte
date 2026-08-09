@@ -1,0 +1,31 @@
+---
+import DiagramFrame from './DiagramFrame.astro';
+import DiagramIcon from './DiagramIcon.astro';
+type TimelineIcon = 'activity' | 'document' | 'search' | 'people' | 'market' | 'recommendation' | 'support';
+interface Event { label: string; icon: TimelineIcon; optional?: boolean; }
+interface Props { title: string; description: string; events: Event[]; }
+const { title, description, events } = Astro.props;
+---
+
+<DiagramFrame eyebrow="Déroulement" {title} intro={description} tone="dark">
+  <ol class="timeline-diagram" aria-label={title}>
+    {events.map((event, index) => (
+      <li>
+        <span class="timeline-diagram__dot"><DiagramIcon id={`timeline-${index + 1}`} icon={event.icon} label={event.label} /></span>
+        <span class="timeline-diagram__copy"><small>{String(index + 1).padStart(2, '0')}</small><strong>{event.label}</strong>{event.optional && <em>Si pertinente</em>}</span>
+      </li>
+    ))}
+  </ol>
+</DiagramFrame>
+
+<style>
+  .timeline-diagram { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); margin: 0; padding: 0; list-style: none; }
+  .timeline-diagram li { position: relative; display: grid; justify-items: center; gap: var(--space-3); min-width: 0; padding-inline: var(--space-2); text-align: center; }
+  .timeline-diagram li:not(:last-child)::after { position: absolute; top: 1.55rem; left: calc(50% + 1.6rem); width: calc(100% - 3.2rem); height: 1px; content: ''; background: linear-gradient(90deg,var(--diagram-gold),var(--diagram-line)); }
+  .timeline-diagram__dot { z-index: 1; display: grid; place-items: center; width: 3.1rem; height: 3.1rem; color: var(--color-gold-soft); background: var(--color-brand-ink); border: 1px solid rgba(244,227,191,.45); border-radius: 50%; }
+  .timeline-diagram__copy { display: grid; gap: .25rem; }
+  .timeline-diagram small { color: var(--diagram-gold); font-size: var(--font-size-xs); }
+  .timeline-diagram strong { color: var(--diagram-ink); font-size: var(--font-size-sm); line-height: 1.35; }
+  .timeline-diagram em { color: var(--color-text-on-dark-soft); font-size: var(--font-size-xs); font-style: normal; }
+  @media (max-width: 900px) { .timeline-diagram { grid-template-columns: 1fr; gap: var(--space-3); } .timeline-diagram li { grid-template-columns: 3.1rem minmax(0,1fr); justify-items: start; align-items: center; text-align: left; } .timeline-diagram li:not(:last-child)::after { top: 3.1rem; bottom: calc(var(--space-3) * -1); left: 1.55rem; width: 1px; height: auto; } }
+</style>

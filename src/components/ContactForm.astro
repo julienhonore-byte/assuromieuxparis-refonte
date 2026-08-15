@@ -407,7 +407,8 @@ const auditFields: QualificationField[] = [
     const qualificationGroups = Array.from(form.querySelectorAll<HTMLDetailsElement>('[data-qualification-group]'));
     if (!submit || !status || !success) return;
 
-    const formContext = form.dataset.formContext ?? 'audit';
+    const analyticsFormName = 'contact_assurances_entreprise';
+    const analyticsFormLocation = 'home_contact';
     const searchParams = new URLSearchParams(window.location.search);
     const requestedIntent = searchParams.get('intent');
     const rawProductContext = searchParams.get('product');
@@ -517,37 +518,14 @@ const auditFields: QualificationField[] = [
       if (formStarted) return;
       formStarted = true;
       trackAnalyticsEvent('form_start', {
-        form_context: formContext,
-        service_interest: selectedServiceInterest(),
-        conversion_intent: conversionIntent,
-        source_component: 'contact_form',
+        form_name: analyticsFormName,
+        form_location: analyticsFormLocation,
+        intent: conversionIntent ?? 'contact',
+        insurance_product: selectedServiceInterest() ?? 'assurances-entreprises',
       });
     };
 
-    const trackFormView = () => {
-      trackAnalyticsEvent('form_view', {
-        form_context: formContext,
-        service_interest: selectedServiceInterest(),
-        conversion_intent: conversionIntent,
-        source_component: 'contact_form',
-      });
-    };
-
-    if ('IntersectionObserver' in window) {
-      const formObserver = new IntersectionObserver(
-        (entries, observer) => {
-          if (!entries.some((entry) => entry.isIntersecting)) return;
-          trackFormView();
-          observer.disconnect();
-        },
-        { threshold: 0.2 },
-      );
-
-      formObserver.observe(form);
-    } else {
-      trackFormView();
-    }
-
+    form.addEventListener('focusin', trackFormStart);
     form.addEventListener('input', trackFormStart);
     form.addEventListener('change', trackFormStart);
 
@@ -613,19 +591,9 @@ const auditFields: QualificationField[] = [
 
       if (!validationErrorQueued) {
         validationErrorQueued = true;
-        trackAnalyticsEvent('audit_form_submit_error', {
-          form_context: formContext,
-          service_interest: selectedServiceInterest(),
-          conversion_intent: conversionIntent,
-          error_type: 'validation',
-          source_component: 'contact_form',
-        });
         trackAnalyticsEvent('form_error', {
-          form_context: formContext,
-          service_interest: selectedServiceInterest(),
-          conversion_intent: conversionIntent,
+          form_name: analyticsFormName,
           error_type: 'validation',
-          source_component: 'contact_form',
         });
         window.setTimeout(() => {
           validationErrorQueued = false;
@@ -657,7 +625,7 @@ const auditFields: QualificationField[] = [
       submit.textContent = 'Envoi en cours…';
       setStatus('Envoi de votre demande en cours.', '');
 
-      let errorType: 'network' | 'server' | 'unknown' = 'network';
+      let errorType: 'network' | 'server' = 'network';
 
       try {
         const response = await fetch(form.action, {
@@ -671,25 +639,18 @@ const auditFields: QualificationField[] = [
           throw new Error('Formspree response was not successful.');
         }
 
-        errorType = 'unknown';
-
         form.hidden = true;
         success.hidden = false;
         successHeading?.focus();
 
         if (!successTracked) {
           successTracked = true;
-          trackAnalyticsEvent('audit_form_submit_success', {
-            form_context: formContext,
-            service_interest: selectedServiceInterest(),
-            conversion_intent: conversionIntent,
-            source_component: 'contact_form',
-          });
-          trackAnalyticsEvent('form_submit', {
-            form_context: formContext,
-            service_interest: selectedServiceInterest(),
-            conversion_intent: conversionIntent,
-            source_component: 'contact_form',
+          trackAnalyticsEvent('generate_lead', {
+            form_name: analyticsFormName,
+            form_location: analyticsFormLocation,
+            lead_type: conversionIntent ?? 'contact',
+            insurance_product: selectedServiceInterest() ?? 'assurances-entreprises',
+            intent: conversionIntent ?? 'contact',
           });
         }
 
@@ -699,19 +660,9 @@ const auditFields: QualificationField[] = [
           // Aucun impact sur la confirmation si le stockage est indisponible.
         }
       } catch {
-        trackAnalyticsEvent('audit_form_submit_error', {
-          form_context: formContext,
-          service_interest: selectedServiceInterest(),
-          conversion_intent: conversionIntent,
-          error_type: errorType,
-          source_component: 'contact_form',
-        });
         trackAnalyticsEvent('form_error', {
-          form_context: formContext,
-          service_interest: selectedServiceInterest(),
-          conversion_intent: conversionIntent,
+          form_name: analyticsFormName,
           error_type: errorType,
-          source_component: 'contact_form',
         });
         setStatus('La demande n’a pas pu être envoyée. Réessayez dans quelques instants ou contactez-nous par téléphone.', 'error');
         submit.disabled = false;

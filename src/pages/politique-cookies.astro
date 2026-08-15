@@ -22,17 +22,32 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
       <div class="container legal-content__inner">
         <section aria-labelledby="scope-title">
           <h2 id="scope-title">Périmètre</h2>
-          <p>Le site n’intègre actuellement aucun outil de mesure d’audience, aucune régie publicitaire et aucun traceur destiné à établir un profil publicitaire. Aucun bandeau de consentement n’est affiché en l’absence de traceur soumis au consentement déposé directement par le site.</p>
+          <p>Le site propose une mesure d’audience au moyen de Google Analytics. Le Google tag n’est chargé et aucune donnée n’est transmise à Google Analytics qu’après l’acceptation explicite des cookies statistiques. En cas de refus, le site reste pleinement accessible et aucune requête Analytics n’est émise.</p>
+          <p>Le site n’utilise ni régie publicitaire, ni personnalisation publicitaire, ni Google Signals. Les consentements liés à la publicité restent refusés.</p>
+        </section>
+
+        <section aria-labelledby="analytics-title">
+          <h2 id="analytics-title">Google Analytics</h2>
+          <p>Google Analytics sert à mesurer de manière agrégée les visites, les pages consultées et certaines interactions commerciales, par exemple le démarrage d’une demande, un clic de contact ou une soumission de formulaire techniquement réussie.</p>
+          <dl>
+            <div><dt>Finalité</dt><dd>Comprendre l’audience, les canaux d’acquisition et les parcours qui conduisent à une demande.</dd></div>
+            <div><dt>Activation</dt><dd>Uniquement après acceptation des cookies statistiques.</dd></div>
+            <div><dt>Données exclues</dt><dd>Les nom, prénom, entreprise, e-mail, téléphone, adresse, code postal, message et autres valeurs saisies dans le formulaire ne sont pas transmis à Google Analytics.</dd></div>
+            <div><dt>Traceurs possibles</dt><dd>Cookies propriétaires commençant notamment par <code>_ga</code>, utilisés par Google Analytics pour distinguer les visites après consentement.</dd></div>
+            <div><dt>Durée</dt><dd>Les cookies Google Analytics peuvent être conservés jusqu’à deux ans selon leur configuration. Le choix d’acceptation ou de refus est redemandé au plus tard après six mois.</dd></div>
+          </dl>
+          <p>Des informations techniques sur Google Analytics sont disponibles dans la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.</p>
         </section>
 
         <section aria-labelledby="storage-title">
-          <h2 id="storage-title">Stockage de session fonctionnel</h2>
+          <h2 id="storage-title">Stockages fonctionnels</h2>
           <p>Lorsqu’un utilisateur choisit un besoin avant d’accéder au formulaire, le site peut enregistrer temporairement cette sélection dans le stockage de session du navigateur sous la clé <code>assuromieux:selected-product</code>.</p>
           <dl>
             <div><dt>Finalité</dt><dd>Préremplir le besoin principal dans le formulaire de contact.</dd></div>
             <div><dt>Nature</dt><dd>Stockage strictement fonctionnel, non utilisé à des fins publicitaires ou de mesure d’audience.</dd></div>
             <div><dt>Durée</dt><dd>Jusqu’à la fin de la session de navigation ou jusqu’à l’envoi réussi du formulaire.</dd></div>
           </dl>
+          <p>Le choix relatif aux cookies statistiques est mémorisé dans le stockage local sous la clé <code>assuromieux:analytics-consent</code> pendant au maximum six mois. Ce stockage est nécessaire pour respecter le choix exprimé et ne sert pas à mesurer l’audience.</p>
         </section>
 
         <section aria-labelledby="third-party-title">
@@ -46,14 +61,15 @@ const structuredData = breadcrumbSchema([{ name: 'Accueil', path: '/' }, { name:
         </section>
 
         <section aria-labelledby="settings-title">
-          <h2 id="settings-title">Réglages du navigateur</h2>
-          <p>L’utilisateur peut supprimer le stockage de session depuis les réglages de son navigateur. Le formulaire reste accessible ; seule la fonction de préremplissage du besoin peut être perdue.</p>
+          <h2 id="settings-title">Gérer ou retirer votre consentement</h2>
+          <p>Le lien « Gérer les cookies », accessible dans le pied de page, permet à tout moment d’accepter ou de refuser la mesure d’audience. Le retrait du consentement bloque les futurs événements et déclenche la suppression des cookies Google Analytics accessibles au site.</p>
+          <p>L’utilisateur peut également supprimer les stockages et cookies depuis les réglages de son navigateur. Le formulaire et les fonctions essentielles restent accessibles.</p>
         </section>
 
         <section aria-labelledby="updates-title">
           <h2 id="updates-title">Évolution de cette politique</h2>
-          <p>Si un outil de mesure d’audience, un contenu embarqué ou un autre traceur est ajouté, cette politique et le dispositif de recueil du consentement seront adaptés avant son activation.</p>
-          <p>Politique en vigueur à compter du 22 juillet 2026.</p>
+          <p>Tout nouvel outil, contenu embarqué ou traceur devra être analysé et décrit avant son activation.</p>
+          <p>Politique mise à jour le 14 août 2026.</p>
         </section>
       </div>
     </article>

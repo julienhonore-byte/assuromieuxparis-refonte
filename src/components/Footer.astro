@@ -43,7 +43,7 @@ const year = new Date().getFullYear();
         <a
           class="site-footer__audit"
           href={auditHref}
-          data-analytics-event="audit_cta_click"
+          data-analytics-event="conversion_start"
           data-analytics-label={auditLabel}
           data-analytics-location="footer"
           data-analytics-source="footer"
@@ -96,6 +96,7 @@ const year = new Date().getFullYear();
         <a href="/mentions-legales/">Mentions légales</a>
         <a href="/politique-confidentialite/">Politique de confidentialité</a>
         <a href="/politique-cookies/">Politique Cookies</a>
+        <button type="button" data-manage-analytics-consent>Gérer les cookies</button>
         <a href="/politique-editoriale/">Politique éditoriale</a>
         <a href="/conditions-generales-utilisation/">CGU</a>
       </div>
@@ -188,6 +189,27 @@ const year = new Date().getFullYear();
   a:hover {
     color: var(--color-gold-soft);
     text-decoration: underline;
+  }
+
+  button[data-manage-analytics-consent] {
+    min-height: 2rem;
+    padding: 0;
+    color: inherit;
+    background: none;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+    text-underline-offset: 0.22em;
+  }
+
+  button[data-manage-analytics-consent]:hover {
+    color: var(--color-gold-soft);
+    text-decoration: underline;
+  }
+
+  button[data-manage-analytics-consent]:focus-visible {
+    outline: 2px solid var(--color-gold-soft);
+    outline-offset: 3px;
   }
 
   .site-footer__audit {

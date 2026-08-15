@@ -1,5 +1,6 @@
 ---
 import SEOHead from '../components/SEOHead.astro';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 import { firstWaveIndexablePaths, isPublicIndexingEnabled } from '../data/indexing.mjs';
 import { site } from '../data/site';
 import '../styles/global.css';
@@ -41,6 +42,7 @@ const effectiveNoindex = noindex || !releaseIndexingEnabled || !routeIsApproved;
   <body>
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <slot />
+    <AnalyticsConsent />
     <script>
       import { initializeAnalytics } from '../lib/analytics';
 

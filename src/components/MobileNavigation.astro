@@ -11,7 +11,7 @@ interface Props {
 const { items, ctaHref = '/#contact', ctaLabel = 'Demander un audit gratuit', currentPath = '/' } = Astro.props;
 
 const isCurrent = (href: string) => !href.includes('#') && href === currentPath;
-const analyticsEvent = ctaHref.includes('#contact') ? 'audit_cta_click' : undefined;
+const analyticsEvent = ctaHref.includes('#contact') ? 'conversion_start' : undefined;
 ---
 
 <div class="mobile-nav" data-mobile-nav>

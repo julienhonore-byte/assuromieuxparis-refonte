@@ -27,7 +27,7 @@ const {
   conversionIntent,
 } = Astro.props;
 
-const analyticsEvent = href.includes('#contact') ? 'audit_cta_click' : undefined;
+const analyticsEvent = href.includes('#contact') ? 'conversion_start' : undefined;
 ---
 
 <a

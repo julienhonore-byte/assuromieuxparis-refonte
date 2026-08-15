@@ -5,7 +5,7 @@ interface Props {
 }
 
 const { href = '#contact', label = 'Demander mon audit gratuit' } = Astro.props;
-const analyticsEvent = href.includes('#contact') ? 'audit_cta_click' : undefined;
+const analyticsEvent = href.includes('#contact') ? 'conversion_start' : undefined;
 ---
 
 <div class="sticky-mobile-cta" data-sticky-mobile-cta aria-hidden="true">

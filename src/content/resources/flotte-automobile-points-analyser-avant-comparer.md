@@ -1,10 +1,10 @@
 ---
 title: "Assurance flotte automobile : les points à analyser avant de comparer"
-seoTitle: "Assurance flotte : points à comparer"
-description: "Parc, usages, conducteurs, sinistralité, garanties, franchises et gestion : les informations à structurer avant de comparer une assurance flotte."
+seoTitle: "Assurance flotte automobile : 10 points à comparer"
+description: "Quels points comparer en assurance flotte automobile ? Parc, usages, conducteurs, sinistralité, garanties, franchises et gestion à vérifier."
 slug: "flotte-automobile-points-analyser-avant-comparer"
 publishDate: 2026-07-21
-updatedDate: 2026-07-24
+updatedDate: 2026-08-15
 author: "Assuromieux Paris"
 category: "assurance-entreprise"
 tags: ["flotte automobile", "véhicules", "sinistralité", "franchises"]
@@ -17,7 +17,7 @@ featured: false
 readingTime: 7
 relatedProducts: ["flotte", "audit", "transport", "multirisque"]
 relatedSectors: ["transport-logistique", "transport-routier-marchandises", "convoyage-vehicules", "demenagement", "btp"]
-relatedArticles: ["comment-auditer-assurances-entreprise", "responsabilite-transporteur-assurance-marchandises-differences"]
+relatedArticles: ["sinistralite-flotte-automobile-indicateurs-prevention", "comment-auditer-assurances-entreprise", "responsabilite-transporteur-assurance-marchandises-differences"]
 faq:
   - question: "Une assurance flotte couvre-t-elle les marchandises transportées ?"
     answer: "Pas automatiquement. Le véhicule, le matériel, les marchandises et la responsabilité professionnelle répondent à des objets différents. Chaque garantie et contrat doit être identifié."

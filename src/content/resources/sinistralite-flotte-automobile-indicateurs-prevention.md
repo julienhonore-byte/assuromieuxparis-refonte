@@ -4,7 +4,7 @@ seoTitle: "Sinistralité flotte automobile : analyse et prévention"
 description: "Comment analyser la sinistralité d’une flotte automobile : fréquence, coût, gravité, causes, prévention et préparation du renouvellement."
 slug: "sinistralite-flotte-automobile-indicateurs-prevention"
 publishDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-15
 author: "Assuromieux Paris"
 category: "assurance-entreprise"
 tags: ["flotte automobile", "sinistralité", "prévention routière", "renouvellement"]
@@ -21,8 +21,8 @@ relatedArticles: ["responsabilite-transporteur-assurance-marchandises-difference
 faq:
   - question: "Qu’est-ce que la sinistralité d’une flotte automobile ?"
     answer: "La sinistralité regroupe les événements déclarés sur une période et les informations permettant de les comprendre : nombre, circonstances, responsabilités, coûts payés ou provisionnés, véhicules, usages et conducteurs concernés. Son analyse exige un périmètre et une période clairement définis."
-  - question: "Quelle différence entre fréquence et gravité des sinistres ?"
-    answer: "La fréquence décrit la répétition des événements par rapport à une exposition choisie, par exemple le nombre de véhicules ou les kilomètres. La gravité décrit leur importance humaine, matérielle, opérationnelle ou financière. Une faible fréquence peut coexister avec un sinistre grave."
+  - question: "Comment calculer la fréquence des sinistres automobiles et la distinguer de leur gravité ?"
+    answer: "Une formule simple rapporte le nombre de sinistres au nombre moyen de véhicules sur la même période, puis multiplie le résultat par 100. Selon l’activité, une fréquence par million de kilomètres ou en véhicules-années peut être plus pertinente. La gravité décrit quant à elle l’importance humaine, matérielle, opérationnelle ou financière des événements."
   - question: "Comment calculer le ratio sinistres sur primes d’une flotte ?"
     answer: "Dans une approche simplifiée, le ratio S/P rapproche une charge de sinistres d’un montant de primes sur un même périmètre et une même période. Le résultat dépend toutefois des provisions, recours, taxes, frais et primes retenus. La méthode doit être confirmée avant toute comparaison."
   - question: "Une bonne sinistralité garantit-elle une baisse de prime ?"
@@ -128,9 +128,11 @@ Le nombre brut doit être ventilé au minimum par période, garantie ou typologi
 
 Le nombre seul ne mesure pas l’exposition. Il sert de point de départ pour calculer une fréquence et repérer les répétitions.
 
-### Taux de fréquence
+### Comment calculer le taux de fréquence des sinistres automobiles ?
 
 Une formule simple consiste à rapporter le nombre de sinistres au nombre moyen de véhicules, puis à appliquer un coefficient de lecture, par exemple 100 véhicules. Pour une flotte dont les kilométrages sont fiables, un taux par million de kilomètres peut être plus pertinent.
+
+**Formule de lecture simple :** `(nombre de sinistres ÷ nombre moyen de véhicules exposés) × 100`. Par exemple, 8 sinistres observés sur un parc moyen de 40 véhicules correspondent à une fréquence de 20 sinistres pour 100 véhicules sur la période. Ce résultat décrit une fréquence ; il ne mesure ni la gravité ni le coût des événements.
 
 La formule choisie doit être écrite à côté du résultat. Les véhicules présents seulement une partie de l’année peuvent être convertis en véhicules-années. Mélanger un parc de fin d’exercice avec des sinistres observés sur toute l’année peut déformer le taux.
 

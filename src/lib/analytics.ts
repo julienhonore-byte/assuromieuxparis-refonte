@@ -42,7 +42,7 @@ declare global {
     assuromieuxAnalyticsConsent?: AnalyticsConsent;
     assuromieuxAnalyticsInitialized?: boolean;
     assuromieuxAnalyticsTagLoaded?: boolean;
-    dataLayer?: unknown[][];
+    dataLayer?: unknown[];
     gtag?: Gtag;
   }
 }
@@ -169,8 +169,8 @@ const analyticsMayLoadHere = () => import.meta.env.PROD && productionHosts.has(w
 
 const ensureGtagQueue = () => {
   window.dataLayer ??= [];
-  window.gtag ??= (...args: unknown[]) => {
-    window.dataLayer?.push(args);
+  window.gtag ??= function gtag(..._args: unknown[]) {
+    window.dataLayer?.push(arguments);
   };
 };
 

@@ -198,16 +198,16 @@ const auditFields: QualificationField[] = [
     </div>
 
     <div class="form-field">
-      <label for="contact-phone">Téléphone <span data-phone-required aria-hidden="true" hidden>*</span> <span class="label-optional" data-phone-optional>(facultatif)</span></label>
+      <label for="contact-phone">Téléphone <span class="label-optional">(facultatif)</span></label>
       <input id="contact-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="contact-phone-help contact-phone-error" />
-      <p class="form-help" id="contact-phone-help" data-phone-help>Indiquez-le si vous souhaitez être rappelé.</p>
+      <p class="form-help" id="contact-phone-help">Indiquez-le si vous souhaitez être rappelé.</p>
       <p class="form-error" id="contact-phone-error" data-error-for="contact-phone" hidden></p>
     </div>
 
     <div class="form-field">
-      <label for="contact-postal-code">Code postal <span aria-hidden="true">*</span></label>
-      <input id="contact-postal-code" name="code_postal" type="text" autocomplete="postal-code" inputmode="numeric" required minlength="3" maxlength="10" pattern="[0-9A-Za-z -]{3,10}" aria-describedby="contact-required contact-postal-code-help contact-postal-code-error" />
-      <p class="form-help" id="contact-postal-code-help">Votre zone d’activité principale.</p>
+      <label for="contact-postal-code">Code postal <span class="label-optional">(facultatif)</span></label>
+      <input id="contact-postal-code" name="code_postal" type="text" autocomplete="postal-code" inputmode="numeric" minlength="3" maxlength="10" pattern="[0-9A-Za-z -]{3,10}" aria-describedby="contact-postal-code-help contact-postal-code-error" />
+      <p class="form-help" id="contact-postal-code-help">Votre zone d’activité principale, si elle est utile à la demande.</p>
       <p class="form-error" id="contact-postal-code-error" data-error-for="contact-postal-code" hidden></p>
     </div>
 
@@ -396,10 +396,6 @@ const auditFields: QualificationField[] = [
     const kicker = form.parentElement?.querySelector<HTMLElement>('[data-form-kicker]');
     const introduction = form.parentElement?.querySelector<HTMLElement>('[data-form-introduction]');
     const genericProductSelector = form.querySelector<HTMLElement>('[data-generic-product-selector]');
-    const phone = form.querySelector<HTMLInputElement>('#contact-phone');
-    const phoneRequired = form.querySelector<HTMLElement>('[data-phone-required]');
-    const phoneOptional = form.querySelector<HTMLElement>('[data-phone-optional]');
-    const phoneHelp = form.querySelector<HTMLElement>('[data-phone-help]');
     const message = form.querySelector<HTMLTextAreaElement>('#contact-message');
     const messageLabel = form.querySelector<HTMLElement>('[data-message-label]');
     const messageRequired = form.querySelector<HTMLElement>('[data-message-required]');
@@ -464,17 +460,12 @@ const auditFields: QualificationField[] = [
       if (kicker) kicker.textContent = 'Demande de devis';
       if (title) title.textContent = `Demande de devis — ${productLabel}`;
       if (introduction) introduction.textContent = 'Quelques informations suffisent pour préparer un premier retour. Aucun devis définitif ne peut être établi sans étude du dossier complet.';
-      if (phone) {
-        phone.required = true;
-        phone.setAttribute('aria-describedby', 'contact-required contact-phone-help contact-phone-error');
-      }
-      if (phoneRequired) phoneRequired.hidden = false;
-      if (phoneOptional) phoneOptional.hidden = true;
-      if (phoneHelp) phoneHelp.textContent = 'Le numéro auquel vous souhaitez être rappelé.';
+      submit.childNodes[0].textContent = 'Envoyer ma demande de devis ';
     } else if (conversionIntent === 'audit') {
       if (kicker) kicker.textContent = 'Demande d’analyse';
       if (title) title.textContent = `Audit de contrats — ${productLabel}`;
       if (introduction) introduction.textContent = 'Décrivez le point que vous souhaitez faire analyser. Le questionnaire reste volontairement court pour préparer un premier échange.';
+      submit.childNodes[0].textContent = 'Demander l’analyse de mes contrats ';
       if (message) {
         message.required = true;
         message.setAttribute('aria-describedby', 'contact-required contact-message-help contact-message-error');

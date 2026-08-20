@@ -16,6 +16,7 @@ import SectionIllustration from '../components/SectionIllustration.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SolutionMethod from '../components/SolutionMethod.astro';
 import TimelineDiagram from '../components/TimelineDiagram.astro';
+import TrustBar from '../components/TrustBar.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { baseSchemas, breadcrumbSchema, pageUrl, serviceSchema } from '../data/seo';
 import { prepareVisual } from '../data/visualLibrary';
@@ -85,6 +86,7 @@ const structuredData = [
       <ConversionActions primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} density="hero" analyticsLocation="hero" analyticsSource="dirigeant_hero" />
       <ProductHeroDiagram slot="visual" label="Dirigeant" items={['Personne', 'Revenus', 'Responsabilité', 'Continuité']} variant="focus" />
     </PageHero>
+    <TrustBar />
 
     <ProductAudience
       title="Aux dirigeants dont la situation personnelle et le rôle opérationnel méritent une lecture coordonnée"

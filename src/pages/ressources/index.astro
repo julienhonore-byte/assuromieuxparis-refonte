@@ -9,7 +9,7 @@ import { baseSchemas, breadcrumbSchema, pageUrl } from '../../data/seo';
 import { resourceCategories, resourcePath } from '../../data/resources';
 const path = '/ressources/';
 const description = 'Guides et lexique Assuromieux Paris pour comprendre, auditer et décider en matière d’assurances d’entreprise, de transport et de BTP.';
-const entries = (await getCollection('resources', ({ data }) => !data.draft && data.status !== 'archived')).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const entries = (await getCollection('resources', ({ data }) => !data.draft && data.status === 'published')).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 const featured = [
   'comment-auditer-assurances-entreprise',
   'responsabilite-transporteur-assurance-marchandises-differences',
@@ -45,7 +45,7 @@ const structuredData = [...baseSchemas, breadcrumbSchema([{ name: 'Accueil', pat
 
     <section class="section" aria-labelledby="categories-title"><div class="container-wide"><p class="eyebrow">Parcours éditoriaux</p><h2 class="section-heading" id="categories-title">Quatre angles, une même exigence de clarté.</h2><div class="category-ledger">{Object.entries(resourceCategories).map(([key, category]) => <a href={category.href}><small>{categoryCount(key)} guide{categoryCount(key) > 1 ? 's' : ''}</small><h3>{category.name}</h3><p>{category.description}</p><span aria-hidden="true">→</span></a>)}</div></div></section>
 
-    <section class="section section--gold-wash" aria-labelledby="recent-title"><div class="container-wide recent-layout"><div><p class="eyebrow">Publication raisonnée</p><h2 id="recent-title">Les six guides disponibles.</h2><p>La base est volontairement limitée. Les prochaines publications seront ajoutées selon l’intention de recherche, la valeur métier et la capacité de mise à jour.</p><a class="button button--secondary" href="/ressources/guides/">Voir tous les guides</a></div><ol>{entries.map((entry) => <li><a href={resourcePath(entry.data.slug)}>{entry.data.title}</a><span>{entry.data.readingTime} min</span></li>)}</ol></div></section>
+    <section class="section section--gold-wash" aria-labelledby="recent-title"><div class="container-wide recent-layout"><div><p class="eyebrow">Publication raisonnée</p><h2 id="recent-title">Les {entries.length} guides disponibles.</h2><p>La base est volontairement limitée. Les prochaines publications seront ajoutées selon l’intention de recherche, la valeur métier et la capacité de mise à jour.</p><a class="button button--secondary" href="/ressources/guides/">Voir tous les guides</a></div><ol>{entries.map((entry) => <li><a href={resourcePath(entry.data.slug)}>{entry.data.title}</a><span>{entry.data.readingTime} min</span></li>)}</ol></div></section>
 
     <section class="section section--surface lexicon-callout"><div class="container-wide"><div><p class="eyebrow">Lexique</p><h2>Un même mot peut changer de portée selon le contrat.</h2></div><p>Franchise, plafond, dommage immatériel, territorialité ou marchandises transportées : retrouvez des définitions courtes et volontairement prudentes.</p><a class="button button--primary" href="/lexique/">Consulter le lexique</a></div></section>
     <PageCTA title="Ces repères soulèvent une question sur vos contrats ?" text="Un audit permet de rapprocher les informations générales de votre activité, de vos déclarations et de vos échéances." secondaryHref="/votre-besoin/" secondaryLabel="Choisir mon parcours" />

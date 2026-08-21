@@ -9,6 +9,7 @@ export const analyticsEventNames = [
   'click_phone',
   'click_email',
   'booking_start',
+  'whatsapp_click',
 ] as const;
 
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];
@@ -24,6 +25,7 @@ type AnalyticsParameterName =
   | 'intent'
   | 'cta_location'
   | 'link_location'
+  | 'product_context'
   | 'error_type';
 
 export type AnalyticsParameters = Partial<Record<AnalyticsParameterName, string>>;
@@ -62,6 +64,7 @@ const eventParameters: Record<AnalyticsEventName, AnalyticsParameterName[]> = {
   click_phone: ['link_location'],
   click_email: ['link_location'],
   booking_start: ['link_location'],
+  whatsapp_click: ['product_context'],
 };
 
 const codeParameters = new Set<AnalyticsParameterName>([
@@ -72,6 +75,7 @@ const codeParameters = new Set<AnalyticsParameterName>([
   'intent',
   'cta_location',
   'link_location',
+  'product_context',
   'error_type',
 ]);
 
@@ -297,6 +301,13 @@ const delegatedClick = (event: MouseEvent) => {
 
   const href = link.getAttribute('href') ?? '';
   const location = linkLocation(link);
+
+  if (link.hasAttribute('data-whatsapp-contact')) {
+    trackAnalyticsEvent('whatsapp_click', {
+      product_context: link.dataset.productContext ?? 'assurances-entreprises',
+    });
+    return;
+  }
 
   if (href.startsWith('tel:')) {
     trackAnalyticsEvent('click_phone', { link_location: location });

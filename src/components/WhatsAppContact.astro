@@ -1,0 +1,188 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const phoneNumber = '33695699674';
+
+const contexts = {
+  generic: {
+    product: 'assurances-entreprises',
+    message: 'Bonjour Jules, je vous contacte depuis le site Assuromieux Paris. J’aurais une question concernant mes assurances professionnelles.',
+  },
+  decennale: {
+    product: 'decennale',
+    message: 'Bonjour Jules, je vous contacte depuis votre site concernant mon assurance décennale. J’aurais une question.',
+  },
+  transport: {
+    product: 'transport',
+    message: 'Bonjour Jules, je vous contacte depuis votre site concernant mes assurances transport. J’aurais une question.',
+  },
+  flotte: {
+    product: 'flotte',
+    message: 'Bonjour Jules, je vous contacte concernant l’assurance de ma flotte automobile. J’aurais une question.',
+  },
+} as const;
+
+const isDecennialPath = path.includes('decennale') || path === '/ressources/btp/';
+const isTransportPath = path.includes('transport')
+  || path === '/secteurs/convoyage-vehicules/'
+  || path === '/secteurs/demenagement/';
+const isFleetPath = path.includes('flotte-automobile');
+const context = isDecennialPath
+  ? contexts.decennale
+  : isTransportPath
+    ? contexts.transport
+    : isFleetPath
+      ? contexts.flotte
+      : contexts.generic;
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(context.message)}`;
+---
+
+<aside class="whatsapp-contact" data-whatsapp-contact-root aria-label="Contact WhatsApp">
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-whatsapp-contact
+    data-product-context={context.product}
+    aria-label="Échanger avec Jules sur WhatsApp au sujet de vos assurances professionnelles"
+  >
+    <svg viewBox="0 0 32 32" role="img" aria-labelledby="whatsapp-icon-title">
+      <title id="whatsapp-icon-title">WhatsApp</title>
+      <path d="M16 3.2a12.6 12.6 0 0 0-10.8 19l-1.7 6.3 6.4-1.7A12.7 12.7 0 1 0 16 3.2Zm0 22.9c-2 0-3.9-.5-5.5-1.5l-.4-.2-3.8 1 1-3.7-.2-.4A10.3 10.3 0 1 1 16 26Zm5.7-7.7c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.4 8.4 0 0 1-2.6-1.6 9.6 9.6 0 0 1-1.8-2.3c-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.6-.5-.8-.5h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.3 3.4 1.5 3.6c.2.2 2.5 3.8 6 5.3.9.4 1.5.6 2 .7.9.3 1.7.2 2.3.1.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.2-.2-.4-.3-.7-.4Z" />
+    </svg>
+    <span class="whatsapp-contact__copy">
+      <span class="whatsapp-contact__question">Une question sur vos assurances&nbsp;?</span>
+      <span class="whatsapp-contact__desktop">Échangez avec Jules sur WhatsApp</span>
+      <span class="whatsapp-contact__mobile">Échanger sur WhatsApp</span>
+    </span>
+  </a>
+</aside>
+
+<script>
+  const whatsappRoot = document.querySelector<HTMLElement>('[data-whatsapp-contact-root]');
+  const consentPanel = document.querySelector<HTMLElement>('[data-analytics-consent]');
+  const contactForm = document.querySelector<HTMLElement>('.contact-form-shell');
+
+  if (whatsappRoot && consentPanel) {
+    const syncWithConsent = () => {
+      whatsappRoot.classList.toggle('is-hidden-by-consent', !consentPanel.hidden);
+    };
+    new MutationObserver(syncWithConsent).observe(consentPanel, {
+      attributes: true,
+      attributeFilter: ['hidden'],
+    });
+    syncWithConsent();
+  }
+
+  if (whatsappRoot && contactForm) {
+    new IntersectionObserver(([entry]) => {
+      whatsappRoot.classList.toggle('is-hidden-by-form', entry.isIntersecting);
+    }, { threshold: 0.05 }).observe(contactForm);
+  }
+</script>
+
+<style>
+  .whatsapp-contact {
+    position: fixed;
+    z-index: 40;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    max-width: min(22rem, calc(100vw - 2rem));
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  }
+
+  .whatsapp-contact.is-hidden-by-consent,
+  .whatsapp-contact.is-hidden-by-form {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  a {
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0.7rem 1rem;
+    color: var(--color-surface);
+    background: var(--color-brand-deep);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0.7rem 1.8rem rgba(7, 28, 51, 0.2);
+    text-decoration: none;
+    transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  a:hover {
+    background: var(--color-brand);
+    box-shadow: 0 0.9rem 2rem rgba(7, 28, 51, 0.25);
+    transform: translateY(-2px);
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 2rem;
+    fill: currentColor;
+  }
+
+  .whatsapp-contact__copy,
+  .whatsapp-contact__desktop,
+  .whatsapp-contact__mobile {
+    display: block;
+  }
+
+  .whatsapp-contact__copy {
+    font-size: 0.83rem;
+    font-weight: var(--font-weight-strong);
+    line-height: 1.3;
+  }
+
+  .whatsapp-contact__question {
+    display: block;
+    color: var(--color-gold-soft);
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.02em;
+  }
+
+  .whatsapp-contact__mobile { display: none; }
+
+  @media (max-width: 640px) {
+    .whatsapp-contact {
+      right: max(0.75rem, env(safe-area-inset-right));
+      bottom: calc(5.5rem + env(safe-area-inset-bottom));
+      max-width: calc(100vw - 1.5rem);
+    }
+
+    a {
+      min-height: 3rem;
+      gap: 0.55rem;
+      padding: 0.55rem 0.8rem;
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex-basis: 1.5rem;
+    }
+
+    .whatsapp-contact__copy { font-size: 0.78rem; }
+    .whatsapp-contact__question,
+    .whatsapp-contact__desktop { display: none; }
+    .whatsapp-contact__mobile { display: block; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-contact,
+    a { transition: none; }
+  }
+</style>

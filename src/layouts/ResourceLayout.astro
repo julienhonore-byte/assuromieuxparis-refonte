@@ -1,5 +1,6 @@
 ---
 import ExpertReview from '../components/ExpertReview.astro';
+import ConversionActions from '../components/ConversionActions.astro';
 import RelatedResources from '../components/RelatedResources.astro';
 import ResourceCTA from '../components/ResourceCTA.astro';
 import ResourceHeader from '../components/ResourceHeader.astro';
@@ -17,12 +18,13 @@ interface Props {
   relatedProducts: string[]; faq: { question: string; answer: string }[];
   headings: Heading[]; relatedItems: RelatedItem[]; structuredData: Record<string, unknown>[];
   reviewedBy?: string; reviewDate?: Date;
+  primaryCtaHref?: string; primaryCtaLabel?: string; secondaryCtaHref?: string; secondaryCtaLabel?: string;
 }
 const props = Astro.props;
 const category = resourceCategories[props.category];
 const products = props.relatedProducts.map((key) => productLinks[key]).filter(Boolean);
 ---
-<SiteLayout title={`${props.seoTitle ?? props.title} | Assuromieux Paris`} description={props.description} canonical={props.canonical} currentPath="/ressources/" structuredData={props.structuredData} ogType="article">
+<SiteLayout title={props.seoTitle?.includes('| Assuromieux') ? props.seoTitle : `${props.seoTitle ?? props.title} | Assuromieux Paris`} description={props.description} canonical={props.canonical} currentPath="/ressources/" structuredData={props.structuredData} ogType="article">
   <main id="contenu-principal">
     <ResourceHeader title={props.title} description={props.description} category={category.name} categoryHref={category.href}>
       <ResourceMeta author={props.author} publishDate={props.publishDate} updatedDate={props.updatedDate} readingTime={props.readingTime} />
@@ -47,7 +49,18 @@ const products = props.relatedProducts.map((key) => productLinks[key]).filter(Bo
             <h2 id="resource-faq-title">Questions fréquentes</h2>
             {props.faq.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}
           </section>}
-          <ResourceCTA />
+          {props.primaryCtaHref && props.primaryCtaLabel && props.secondaryCtaHref && props.secondaryCtaLabel ? (
+            <div class="resource-conversion-actions">
+              <ConversionActions
+                primaryHref={props.primaryCtaHref}
+                primaryLabel={props.primaryCtaLabel}
+                secondaryHref={props.secondaryCtaHref}
+                secondaryLabel={props.secondaryCtaLabel}
+                analyticsLocation="resource_end"
+                analyticsSource="resource_conversion"
+              />
+            </div>
+          ) : <ResourceCTA />}
         </article>
       </div>
     </section>
@@ -75,6 +88,7 @@ const products = props.relatedProducts.map((key) => productLinks[key]).filter(Bo
   .product-links ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-5); padding: 0; list-style: none; }
   .product-links a { min-height: 2.75rem; display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); color: var(--color-brand); font-weight: var(--font-weight-strong); text-decoration: none; }
   .resource-faq { margin-top: var(--space-12); }
+  .resource-conversion-actions { margin-top: var(--space-12); padding: var(--space-7); background: var(--color-gold-wash); border: 1px solid var(--color-border); border-radius: var(--radius-card-sm); }
   .resource-faq > h2 { margin-top: 0; }
   details { padding-block: var(--space-4); border-top: 1px solid var(--color-border); }
   summary { color: var(--color-brand-deep); font-weight: var(--font-weight-strong); cursor: pointer; }

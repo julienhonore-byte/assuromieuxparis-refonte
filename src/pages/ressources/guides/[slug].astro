@@ -42,7 +42,12 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article', headline: entry.data.title,
   description: entry.data.description, datePublished: entry.data.publishDate.toISOString(),
   dateModified: entry.data.updatedDate.toISOString(),
-  author: {
+  author: entry.data.articleAuthorType === 'Person' ? {
+    '@type': 'Person',
+    '@id': `${site.canonicalUrl}#jules-honore`,
+    name: site.personName,
+    url: site.personUrl,
+  } : {
     '@type': 'Organization',
     '@id': `${site.canonicalUrl}#organization`,
     name: entry.data.author,

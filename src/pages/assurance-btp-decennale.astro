@@ -207,6 +207,25 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section" aria-labelledby="decennale-trades-title">
+      <div class="container-wide">
+        <SectionHeader kicker="Décennale par activité" title="Assurance décennale par métier" id="decennale-trades-title" />
+        <div class="feature-grid feature-grid--2">
+          {[
+            ['/assurance-decennale-macon/', 'Maçon'],
+            ['/assurance-decennale-plombier-chauffagiste/', 'Plombier-chauffagiste'],
+            ['/assurance-decennale-electricien/', 'Électricien'],
+            ['/assurance-decennale-charpentier-couvreur/', 'Charpentier-couvreur'],
+            ['/assurance-decennale-menuisier/', 'Menuisier'],
+            ['/assurance-decennale-carreleur/', 'Carreleur'],
+            ['/assurance-decennale-peintre/', 'Peintre'],
+          ].map(([href, label]) => (
+            <a class="feature-item" href={href}>Assurance décennale {label}<span aria-hidden="true">→</span></a>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <RelatedLinks items={[
       { href: '/audit-assurances-entreprise/', label: 'Audit des assurances', text: 'Découvrir le déroulement de l’analyse.' },
       { href: '/rc-professionnelle/', label: 'RC professionnelle', text: 'Distinguer responsabilité décennale, professionnelle et exploitation.' },
@@ -222,3 +241,9 @@ const structuredData = [
     <PageCTA title="Vérifions la cohérence de vos activités et de vos contrats." text="Un premier échange permet d’identifier les attestations et échéances à examiner en priorité." primaryHref={contactHref} primaryLabel={ctaLabel} secondaryHref={auditHref} secondaryLabel={auditLabel} conversionMode />
   </main>
 </SiteLayout>
+
+<style>
+  a.feature-item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); color: var(--color-brand-deep); font-weight: var(--font-weight-strong); text-decoration: none; }
+  a.feature-item span { color: var(--color-gold-dark); }
+  a.feature-item:hover { border-color: var(--color-gold); transform: translateY(-1px); }
+</style>

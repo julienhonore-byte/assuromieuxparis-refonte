@@ -1,0 +1,146 @@
+---
+import ConversionActions from '../components/ConversionActions.astro';
+import FAQ from '../components/FAQ.astro';
+import PageCTA from '../components/PageCTA.astro';
+import PageHero from '../components/PageHero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import SiteLayout from './SiteLayout.astro';
+import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, serviceSchema } from '../data/seo';
+
+interface FAQItem { question: string; answer: string; }
+interface RelatedLink { href: string; label: string; }
+interface Frontmatter {
+  title: string;
+  seoTitle: string;
+  description: string;
+  path: string;
+  breadcrumb: string;
+  serviceName: string;
+  lead: string;
+  imageAlt: string;
+  contactHref: string;
+  auditHref: string;
+  faq: FAQItem[];
+  relatedLinks: RelatedLink[];
+  publishDate: string;
+  updatedDate: string;
+}
+
+const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+const ctaLabel = 'Démarrer ma demande de devis Décennale';
+const auditLabel = 'Vérifier mes activités et mes contrats';
+const structuredData = [
+  ...baseSchemas,
+  breadcrumbSchema([
+    { name: 'Accueil', path: '/' },
+    { name: 'BTP et décennale', path: '/assurance-btp-decennale/' },
+    { name: frontmatter.breadcrumb, path: frontmatter.path },
+  ]),
+  serviceSchema(frontmatter.serviceName, frontmatter.description, frontmatter.path),
+  faqSchema(frontmatter.faq),
+];
+---
+
+<SiteLayout
+  title={frontmatter.seoTitle}
+  description={frontmatter.description}
+  canonical={pageUrl(frontmatter.path)}
+  currentPath={frontmatter.path}
+  ctaHref={frontmatter.contactHref}
+  {ctaLabel}
+  {structuredData}
+>
+  <main id="contenu-principal">
+    <PageHero
+      eyebrow="Assurance BTP et décennale"
+      title={frontmatter.title}
+      lead={frontmatter.lead}
+      breadcrumbs={[
+        { href: '/', label: 'Accueil' },
+        { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
+        { label: frontmatter.breadcrumb },
+      ]}
+    >
+      <ConversionActions
+        primaryHref={frontmatter.contactHref}
+        primaryLabel={ctaLabel}
+        secondaryHref={frontmatter.auditHref}
+        secondaryLabel={auditLabel}
+        density="hero"
+        analyticsLocation="hero"
+        analyticsSource="decennial_trade_hero"
+      />
+      <picture slot="visual" class="trade-hero">
+        <source
+          type="image/avif"
+          srcset="/images/btp/hero-btp-chantier-tertiaire-960.avif 960w, /images/btp/hero-btp-chantier-tertiaire-1280.avif 1280w, /images/btp/hero-btp-chantier-tertiaire-1600.avif 1600w, /images/btp/hero-btp-chantier-tertiaire-2000.avif 2000w, /images/btp/hero-btp-chantier-tertiaire.avif 3200w"
+          sizes="(max-width: 720px) 100vw, 48vw"
+        />
+        <source
+          type="image/webp"
+          srcset="/images/btp/hero-btp-chantier-tertiaire-960.webp 960w, /images/btp/hero-btp-chantier-tertiaire-1280.webp 1280w, /images/btp/hero-btp-chantier-tertiaire-1600.webp 1600w, /images/btp/hero-btp-chantier-tertiaire-2000.webp 2000w, /images/btp/hero-btp-chantier-tertiaire.webp 3200w"
+          sizes="(max-width: 720px) 100vw, 48vw"
+        />
+        <img src="/images/btp/hero-btp-chantier-tertiaire.webp" width="3200" height="1800" alt={frontmatter.imageAlt} loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </PageHero>
+    <TrustBar />
+
+    <section class="trade-content">
+      <article class="container trade-prose">
+        <slot />
+
+        <section class="trade-faq" aria-labelledby="trade-faq-title">
+          <h2 id="trade-faq-title">Questions fréquentes</h2>
+          <FAQ items={frontmatter.faq} />
+        </section>
+
+        <aside class="editorial-signature" aria-label="Signature éditoriale">
+          <p><strong>Par <a href="/jules-honore/">Jules Honoré</a>, courtier — relecture métier.</strong></p>
+          <p>Publié le <time datetime={frontmatter.publishDate}>20 août 2026</time>. Mis à jour le <time datetime={frontmatter.updatedDate}>20 août 2026</time>.</p>
+        </aside>
+
+        <nav class="related-trade-links" aria-labelledby="related-trade-title">
+          <h2 id="related-trade-title">Poursuivre votre lecture</h2>
+          <ul>{frontmatter.relatedLinks.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+        </nav>
+      </article>
+    </section>
+
+    <PageCTA
+      title={ctaLabel}
+      text={frontmatter.lead}
+      primaryHref={frontmatter.contactHref}
+      primaryLabel={ctaLabel}
+      secondaryHref={frontmatter.auditHref}
+      secondaryLabel={auditLabel}
+      conversionMode
+    />
+  </main>
+</SiteLayout>
+
+<style>
+  .trade-hero { display: block; overflow: hidden; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+  .trade-hero img { display: block; width: 100%; height: 100%; min-height: 20rem; object-fit: cover; }
+  .trade-content { padding-block: var(--section-space); }
+  .trade-prose { max-width: 52rem; }
+  .trade-prose :global(h2) { margin: var(--space-14) 0 var(--space-5); color: var(--color-brand-deep); font-size: clamp(1.75rem, 1.55rem + .8vw, 2.35rem); line-height: 1.15; scroll-margin-top: 2rem; }
+  .trade-prose :global(h2:first-child) { margin-top: 0; }
+  .trade-prose :global(h3) { margin: var(--space-8) 0 var(--space-3); color: var(--color-brand-deep); font-size: var(--font-size-h3); line-height: 1.25; }
+  .trade-prose :global(p), .trade-prose :global(li) { color: var(--color-text-soft); font-size: 1.0625rem; }
+  .trade-prose :global(p) { margin: var(--space-4) 0 0; }
+  .trade-prose :global(ul), .trade-prose :global(ol) { display: grid; gap: var(--space-3); margin: var(--space-5) 0 0; padding-left: 1.3rem; }
+  .trade-prose :global(blockquote) { margin: var(--space-8) 0; padding: var(--space-5) var(--space-6); color: var(--color-brand-deep); background: var(--color-gold-wash); border-left: 4px solid var(--color-gold); border-radius: var(--radius-control); }
+  .trade-prose :global(blockquote p) { margin: 0; color: inherit; font-weight: var(--font-weight-medium); }
+  .trade-faq { margin-top: var(--space-14); }
+  .editorial-signature, .related-trade-links { margin-top: var(--space-10); padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-card-sm); background: var(--color-surface); }
+  .editorial-signature p:first-child { margin-top: 0; }
+  .related-trade-links h2 { margin: 0 0 var(--space-4); font-size: var(--font-size-h3); }
+  .related-trade-links ul { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; list-style: none; }
+  .related-trade-links a { color: var(--color-brand); font-weight: var(--font-weight-strong); text-underline-offset: .2em; }
+  @media (max-width: 640px) {
+    .trade-hero img { min-height: 14rem; }
+    .trade-prose :global(p), .trade-prose :global(li) { font-size: 1rem; }
+    .related-trade-links ul { grid-template-columns: 1fr; }
+  }
+</style>

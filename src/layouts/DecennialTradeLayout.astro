@@ -9,6 +9,7 @@ import { baseSchemas, breadcrumbSchema, faqSchema, pageUrl, serviceSchema } from
 
 interface FAQItem { question: string; answer: string; }
 interface RelatedLink { href: string; label: string; }
+interface BreadcrumbItem { name: string; path: string; }
 interface Frontmatter {
   title: string;
   seoTitle: string;
@@ -24,16 +25,31 @@ interface Frontmatter {
   relatedLinks: RelatedLink[];
   publishDate: string;
   updatedDate: string;
+  eyebrow?: string;
+  parentBreadcrumbs?: BreadcrumbItem[];
+  ctaLabel?: string;
+  auditLabel?: string;
+  analyticsSource?: string;
+  heroImageBase?: string;
 }
 
 const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
-const ctaLabel = 'Démarrer ma demande de devis Décennale';
-const auditLabel = 'Vérifier mes activités et mes contrats';
+const ctaLabel = frontmatter.ctaLabel ?? 'Démarrer ma demande de devis Décennale';
+const auditLabel = frontmatter.auditLabel ?? 'Vérifier mes activités et mes contrats';
+const eyebrow = frontmatter.eyebrow ?? 'Assurance BTP et décennale';
+const parentBreadcrumbs = frontmatter.parentBreadcrumbs ?? [{ name: 'BTP et décennale', path: '/assurance-btp-decennale/' }];
+const heroImageBase = frontmatter.heroImageBase ?? '/images/btp/hero-btp-chantier-tertiaire';
+const visibleBreadcrumbs = [
+  { href: '/', label: 'Accueil' },
+  ...parentBreadcrumbs.map((item) => ({ href: item.path, label: item.name })),
+  { label: frontmatter.breadcrumb },
+];
+const formatDate = (date: string) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 const structuredData = [
   ...baseSchemas,
   breadcrumbSchema([
     { name: 'Accueil', path: '/' },
-    { name: 'BTP et décennale', path: '/assurance-btp-decennale/' },
+    ...parentBreadcrumbs,
     { name: frontmatter.breadcrumb, path: frontmatter.path },
   ]),
   serviceSchema(frontmatter.serviceName, frontmatter.description, frontmatter.path),
@@ -52,14 +68,10 @@ const structuredData = [
 >
   <main id="contenu-principal">
     <PageHero
-      eyebrow="Assurance BTP et décennale"
+      eyebrow={eyebrow}
       title={frontmatter.title}
       lead={frontmatter.lead}
-      breadcrumbs={[
-        { href: '/', label: 'Accueil' },
-        { href: '/assurance-btp-decennale/', label: 'BTP et décennale' },
-        { label: frontmatter.breadcrumb },
-      ]}
+      breadcrumbs={visibleBreadcrumbs}
     >
       <ConversionActions
         primaryHref={frontmatter.contactHref}
@@ -68,20 +80,20 @@ const structuredData = [
         secondaryLabel={auditLabel}
         density="hero"
         analyticsLocation="hero"
-        analyticsSource="decennial_trade_hero"
+        analyticsSource={frontmatter.analyticsSource ?? 'decennial_trade_hero'}
       />
       <picture slot="visual" class="trade-hero">
         <source
           type="image/avif"
-          srcset="/images/btp/hero-btp-chantier-tertiaire-960.avif 960w, /images/btp/hero-btp-chantier-tertiaire-1280.avif 1280w, /images/btp/hero-btp-chantier-tertiaire-1600.avif 1600w, /images/btp/hero-btp-chantier-tertiaire-2000.avif 2000w, /images/btp/hero-btp-chantier-tertiaire.avif 3200w"
+          srcset={`${heroImageBase}-960.avif 960w, ${heroImageBase}-1280.avif 1280w, ${heroImageBase}-1600.avif 1600w, ${heroImageBase}-2000.avif 2000w, ${heroImageBase}.avif 3200w`}
           sizes="(max-width: 720px) 100vw, 48vw"
         />
         <source
           type="image/webp"
-          srcset="/images/btp/hero-btp-chantier-tertiaire-960.webp 960w, /images/btp/hero-btp-chantier-tertiaire-1280.webp 1280w, /images/btp/hero-btp-chantier-tertiaire-1600.webp 1600w, /images/btp/hero-btp-chantier-tertiaire-2000.webp 2000w, /images/btp/hero-btp-chantier-tertiaire.webp 3200w"
+          srcset={`${heroImageBase}-960.webp 960w, ${heroImageBase}-1280.webp 1280w, ${heroImageBase}-1600.webp 1600w, ${heroImageBase}-2000.webp 2000w, ${heroImageBase}.webp 3200w`}
           sizes="(max-width: 720px) 100vw, 48vw"
         />
-        <img src="/images/btp/hero-btp-chantier-tertiaire.webp" width="3200" height="1800" alt={frontmatter.imageAlt} loading="eager" fetchpriority="high" decoding="async" />
+        <img src={`${heroImageBase}.webp`} width="3200" height="1800" alt={frontmatter.imageAlt} loading="eager" fetchpriority="high" decoding="async" />
       </picture>
     </PageHero>
     <TrustBar />
@@ -97,7 +109,7 @@ const structuredData = [
 
         <aside class="editorial-signature" aria-label="Signature éditoriale">
           <p><strong>Par <a href="/jules-honore/">Jules Honoré</a>, courtier — relecture métier.</strong></p>
-          <p>Publié le <time datetime={frontmatter.publishDate}>20 août 2026</time>. Mis à jour le <time datetime={frontmatter.updatedDate}>20 août 2026</time>.</p>
+          <p>Publié le <time datetime={frontmatter.publishDate}>{formatDate(frontmatter.publishDate)}</time>. Mis à jour le <time datetime={frontmatter.updatedDate}>{formatDate(frontmatter.updatedDate)}</time>.</p>
         </aside>
 
         <nav class="related-trade-links" aria-labelledby="related-trade-title">

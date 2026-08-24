@@ -10,8 +10,8 @@ articleAuthorType: "Person"
 category: "assurance-entreprise"
 tags: ["RC professionnelle", "prix", "tarif", "entreprise"]
 keywords: ["prix RC professionnelle", "tarif RC pro", "coût assurance responsabilité civile professionnelle"]
-image: "/images/rc-pro/hero-rc-pro-conseil.webp"
-imageAlt: "Professionnels dans un espace de conseil contemporain à Paris."
+image: "/images/rc-pro/methode-rc-pro-contrat.webp"
+imageAlt: "Analyse de contrats de responsabilité civile professionnelle autour d'une table de travail."
 canonical: "https://www.assuromieuxparis.com/ressources/guides/prix-rc-professionnelle-facteurs-tarif/"
 status: "published"
 featured: true
@@ -29,10 +29,10 @@ faq: [{"question": "Quel est le prix moyen d'une RC professionnelle ?", "answer"
 draft: false
 ---
 
-<picture>
-  <source type="image/avif" srcset="/images/rc-pro/hero-rc-pro-conseil-960.avif 960w, /images/rc-pro/hero-rc-pro-conseil-1280.avif 1280w, /images/rc-pro/hero-rc-pro-conseil-1600.avif 1600w, /images/rc-pro/hero-rc-pro-conseil-2000.avif 2000w, /images/rc-pro/hero-rc-pro-conseil.avif 3200w" sizes="(max-width: 768px) 100vw, 48rem" />
-  <source type="image/webp" srcset="/images/rc-pro/hero-rc-pro-conseil-960.webp 960w, /images/rc-pro/hero-rc-pro-conseil-1280.webp 1280w, /images/rc-pro/hero-rc-pro-conseil-1600.webp 1600w, /images/rc-pro/hero-rc-pro-conseil-2000.webp 2000w, /images/rc-pro/hero-rc-pro-conseil.webp 3200w" sizes="(max-width: 768px) 100vw, 48rem" />
-  <img src="/images/rc-pro/hero-rc-pro-conseil.webp" width="3200" height="1800" alt="Professionnels dans un espace de conseil contemporain à Paris." loading="eager" fetchpriority="high" decoding="async" />
+<picture style="display: block; margin: 0 0 2rem; overflow: hidden; border: 1px solid rgba(11, 39, 71, 0.1); border-radius: 20px; box-shadow: 0 16px 36px rgba(7, 28, 51, 0.08);">
+  <source type="image/avif" srcset="/images/rc-pro/methode-rc-pro-contrat-640.avif 640w, /images/rc-pro/methode-rc-pro-contrat-960.avif 960w, /images/rc-pro/methode-rc-pro-contrat-1280.avif 1280w, /images/rc-pro/methode-rc-pro-contrat-1600.avif 1600w, /images/rc-pro/methode-rc-pro-contrat.avif 2400w" sizes="(max-width: 768px) calc(100vw - 2.5rem), 48rem" />
+  <source type="image/webp" srcset="/images/rc-pro/methode-rc-pro-contrat-640.webp 640w, /images/rc-pro/methode-rc-pro-contrat-960.webp 960w, /images/rc-pro/methode-rc-pro-contrat-1280.webp 1280w, /images/rc-pro/methode-rc-pro-contrat-1600.webp 1600w, /images/rc-pro/methode-rc-pro-contrat.webp 2400w" sizes="(max-width: 768px) calc(100vw - 2.5rem), 48rem" />
+  <img src="/images/rc-pro/methode-rc-pro-contrat.webp" width="2400" height="1600" alt="Analyse de contrats de responsabilité civile professionnelle autour d'une table de travail." loading="eager" fetchpriority="high" decoding="async" style="display: block; width: 100%; height: auto; object-fit: cover; object-position: center;" />
 </picture>
 
 ## 1. La réponse directe

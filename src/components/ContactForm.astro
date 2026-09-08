@@ -6,7 +6,7 @@ interface Props {
   analyticsContext?: string;
 }
 
-const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsContext = 'audit' } = Astro.props;
+const { action, calUrl, privacyHref = '/politique-confidentialite/', analyticsContext = 'generic' } = Astro.props;
 
 interface QualificationField {
   name: string;
@@ -366,7 +366,7 @@ const auditFields: QualificationField[] = [
 </div>
 
 <script>
-  import { trackAnalyticsEvent } from '../lib/analytics';
+  import { getAnalyticsAttribution, normalizeProductContext, trackAnalyticsEvent } from '../lib/analytics';
 
   const forms = document.querySelectorAll<HTMLFormElement>('[data-contact-form]');
   const selectedProductKey = 'assuromieux:selected-product';
@@ -405,6 +405,7 @@ const auditFields: QualificationField[] = [
 
     const analyticsFormName = 'contact_assurances_entreprise';
     const analyticsFormLocation = 'home_contact';
+    const pageProductContext = form.dataset.formContext ?? 'generic';
     const searchParams = new URLSearchParams(window.location.search);
     const requestedIntent = searchParams.get('intent');
     const rawProductContext = searchParams.get('product');
@@ -509,10 +510,13 @@ const auditFields: QualificationField[] = [
       if (formStarted) return;
       formStarted = true;
       trackAnalyticsEvent('form_start', {
+        ...getAnalyticsAttribution(),
         form_name: analyticsFormName,
+        form_id: analyticsFormName,
         form_location: analyticsFormLocation,
         intent: conversionIntent ?? 'contact',
         insurance_product: selectedServiceInterest() ?? 'assurances-entreprises',
+        product_context: normalizeProductContext(selectedServiceInterest() ?? pageProductContext),
       });
     };
 
@@ -637,10 +641,13 @@ const auditFields: QualificationField[] = [
         if (!successTracked) {
           successTracked = true;
           trackAnalyticsEvent('generate_lead', {
+            ...getAnalyticsAttribution(),
             form_name: analyticsFormName,
+            form_id: analyticsFormName,
             form_location: analyticsFormLocation,
             lead_type: conversionIntent ?? 'contact',
             insurance_product: selectedServiceInterest() ?? 'assurances-entreprises',
+            product_context: normalizeProductContext(selectedServiceInterest() ?? pageProductContext),
             intent: conversionIntent ?? 'contact',
           });
         }

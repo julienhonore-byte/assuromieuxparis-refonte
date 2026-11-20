@@ -121,7 +121,7 @@ Un premier échange permet de vérifier que les activités déclarées correspon
 [Vérifier mes activités et mes contrats →](/audit-assurances-entreprise/)
 
 ## Signature éditoriale
-*Par [Jules Honoré](/jules-honore/), courtier — relecture métier. Publié le 20 août 2026. Mis à jour le 20 août 2026.*
+*Par [Jules HONORE](/jules-honore/), courtier — relecture métier. Publié le 20 août 2026. Mis à jour le 20 août 2026.*
 
 ## Maillage interne
 - [Assurance BTP et décennale](/assurance-btp-decennale/) (pilier)

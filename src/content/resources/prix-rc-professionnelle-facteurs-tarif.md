@@ -109,7 +109,7 @@ Un premier échange permet de vérifier que l'activité déclarée et les garant
 
 ## Signature éditoriale
 
-*Par [Jules Honoré](/jules-honore/), courtier — relecture métier. Publié le 23 août 2026. Mis à jour le 23 août 2026.*
+*Par [Jules HONORE](/jules-honore/), courtier — relecture métier. Publié le 23 août 2026. Mis à jour le 23 août 2026.*
 
 ## Maillage interne
 

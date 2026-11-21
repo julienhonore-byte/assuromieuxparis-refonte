@@ -2,7 +2,7 @@
 import { site } from '../data/site';
 
 const items = [
-  { label: `ORIAS ${site.orias}`, href: site.oriasUrl },
+  { label: `ORIAS ${site.orias}` },
   { label: 'Courtier indépendant' },
   { label: 'Basé à Paris' },
   { label: 'Intervention nationale' },
@@ -15,7 +15,7 @@ const items = [
       {items.map((item) => (
         <li>
           <span aria-hidden="true"></span>
-          {item.href ? <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a> : item.label}
+          {item.label}
         </li>
       ))}
     </ul>
@@ -60,18 +60,6 @@ const items = [
     flex: 0 0 auto;
     background: var(--color-gold);
     border-radius: 50%;
-  }
-
-  a {
-    min-height: 2.75rem;
-    display: inline-flex;
-    align-items: center;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 
   @media (max-width: 760px) {

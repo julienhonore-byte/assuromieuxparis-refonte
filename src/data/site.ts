@@ -24,7 +24,6 @@ export const site = {
   addressCountry: 'France',
   orias: '26003798',
   oriasCategory: 'COA',
-  oriasUrl: 'https://orias.fr/home/showIntermediaire/489181032',
   siren: '489181032',
   siret: '48918103200033',
   rcs: '489181032',
@@ -87,7 +86,6 @@ export const organizationSchema = {
     { '@type': 'PropertyValue', propertyID: 'ORIAS', value: site.orias },
   ],
   founder: { '@id': `${site.canonicalUrl}#jules-honore` },
-  sameAs: [site.oriasUrl],
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.addressStreet,
